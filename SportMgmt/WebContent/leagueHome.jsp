@@ -7,13 +7,13 @@
 <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The12thman | Football</title>
+    <title>The12thman | League</title>
     <link rel="stylesheet" href="/SportMgmt/css/foundation.css">
     <link rel="stylesheet" href="/SportMgmt/css/app.css">
     <link rel="stylesheet" href="/SportMgmt/css/superslides.css">
     <style>
     /*body{background-color:#1b75bc;}*/
-	#mainMenu a{ color:#fff; font-size:24px; text-transform:uppercase; position:relative; }
+	#mainMenu a{ color:#fff; font-size:16px; text-transform:uppercase; position:relative; }
 	#mainMenu a:hover{ color:#D4CCCC; text-align:center; border-bottom:2px solid #f0e809; padding-bottom:16px; position:relative; }
 	#mainMenu li:last-child a{ border-bottom:none !important;}
 	ul#mainMenu{ list-style:none; position:relative; top:25%; margin:auto; text-align:right;}
@@ -23,30 +23,42 @@
 	.menuOverlay{ width:100%; height:80px; z-index:9; background:#1b75bc; position:absolute; opacity:.8; }
 	#logo{top:20%; position:relative;}
 	#logo a{ color:#fff; font-size:30px; }
+    
+
+	#exampleModal1{ padding: 80px 20px 60px;     box-shadow: 0px 0px 27px #369dc4;
+    border: 2px solid #3f81c4; background:#fff;}
+	input[type="text"], input[type="email"], input[type="password"], select{ height:34px; border:1px solid #999; }
+	#exampleModal1 input{ margin-bottom:25px; }
+	select option:first-child{ color:#ccc;}
+	.btnSubmit{ display: block; width: 100%; margin: 20px 0px; background: rgba(27, 117, 188, .85); font-size: 16px; padding: 14px 20px;}
     </style>
 </head>
 <body>
 <header class="menuOverlay">
         <div id="logo" class="large-4 columns">
-    	<a href="index.php">The12thman</a>
+    	<a href="http://the12thman.in/">The12thman</a>
         </div>
         <nav class="large-8 columns">
                <ul id="mainMenu">
-                    
-                    <li><a href="#"> How to Play </a></li>
-                    <li><a href="#"> Features </a></li>
-                    <li><a href="#"> Our Partners </a></li>
-                    <li><a href="#"> Sign In </a></li>
+                    <li><a href="http://the12thman.in/"> Home </a></li>
+                    <li><a href="javascript:void(0);" data-open="exampleModal1"> Sign Up </a></li>
               </ul>
         </nav>
     </header>
     <div id="slides">
         <div class="slides-container">
+        	<img src="/SportMgmt/images/1.jpg">
+        	<img src="/SportMgmt/images/mzhnah28se4o5ykw.jpg">
             <img src="/SportMgmt/images/6922364-football-stadium-wallpaper.jpg">
-            <img src="/SportMgmt/images/mzhnah28se4o5ykw.jpg">
-            <img src="/SportMgmt/images/FreeGreatPicture.com-137-nike-nike-football-boots.jpg">
-            <img src="/SportMgmt/images/nike-nike-write-the-future-full-length-version-600-43549.jpg">
-        </div>
+            <img src="/SportMgmt/images/1.jpg">
+            <img src="/SportMgmt/images/3.jpg">
+            <img src="/SportMgmt/images/4.jpg">
+            <img src="/SportMgmt/images/5.jpg">
+            <img src="/SportMgmt/images/6.jpg">           
+            <img src="/SportMgmt/images/8.jpg">           
+            <img src="/SportMgmt/images/10.jpg">
+            <img src="/SportMgmt/images/11.jpg">
+            </div>
         <div id="main-content">
             <div class="row clearfix main-banner">
                 <div class="large-12 column logo">
@@ -57,12 +69,12 @@
                 </div>
                 <div class="large-12 column euro-headings">
                     <p>
-                        Fantasy Euro'16</p>
+                        The 12th Man League</p>
                     <div class="euro-divider">
                         <hr style="border-top: 5px solid #fff">
                     </div>
                     <p>
-                        Win Real <span class="highlight">Cash!<span></span></span></p>
+                        Play and win  <span class="highlight"> Cash!<span></span></span></p>
                 </div>
             </div>
             <div class="row clearfix big-register">
@@ -76,10 +88,10 @@
     
     
     <nav class="slides-navigation">
-          <a href="#" class="next">Next</a>
-          <a href="#" class="prev">Previous</a>
+          <a href="#" class="next"></a>
+          <a href="#" class="prev"></a>
         </nav>
-    </div>
+   
     
     <!-- pop-up container -->
    
@@ -87,7 +99,7 @@
 <div class="reveal medium" id="exampleModal1" data-reveal>
   
   
-  <form name="RegisterForm" action="user/register" method="post">
+  <form name="RegisterForm" action="mvc/user/register" method="post">
         <div class="large-12 columns">
           <label>Name*
             <input type="text" name="displayName" placeholder="Name" required />
@@ -114,15 +126,15 @@
             
              </div>
         <div class="large-12 columns">
-            <label>confirm password*</label>
-              <input type="password" name="logonPasswordConfirm" placeholder="password" />
+            <label>Confirm Password*</label>
+              <input type="password" name="logonPasswordConfirm" placeholder="confirm password" required />
             
             </div>
             <div class="large-12 columns">
-            <br>
+            
                 <div align="right">
-                    <a href="javascript:void(0);" class="button-lrg" onclick="submitForm();">REGISTER</a>
-                </div>
+                    <a href="javascript:void(0);" class="button-lrg" onclick="submitForm();"><input type="button" class="button btnSubmit" value="REGISTER"></a>
+                     </div>
             </div>
     </form>
   <button class="close-button" data-close aria-label="Close modal" type="button">
@@ -139,8 +151,11 @@
     <script src="/SportMgmt/js/jquery.superslides.js" type="text/javascript" charset="utf-8"></script>
     <script>
         $(function () {
-            $('#slides').superslides({
-                hashchange: false
+        	$('#slides').superslides({
+                pagination:false,
+        	animation:'fade',
+        	play: 10000,
+        	animation_speed: 3000,
             });
         });
         function submitForm()
@@ -148,18 +163,18 @@
         	var regForm = document.forms['RegisterForm'];
         	if(typeof regForm['displayName'] == 'undefined' || regForm['displayName'].value=='')
         	{
-        		alert("Please input  Name");
+        		alert("Please input your Name");
         		return false;
         	}
         	if(typeof regForm['emailId'] == 'undefined' || regForm['emailId'].value=='')
         	{
-        		alert("Please input email");
+        		alert("Please input Email ID");
         		return false;
         	}
         	var isEmailValid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(regForm['emailId'].value);
         	if(!isEmailValid)
        		{
-        		alert("Please input valid email");
+        		alert("Email ID is not valid");
         		return false;
        		}
         	if(typeof regForm['logonPassword'] == 'undefined' || regForm['logonPassword'].value =='')
@@ -169,7 +184,7 @@
         	}
         	if(typeof regForm['logonPasswordConfirm'] == 'undefined' || regForm['logonPasswordConfirm'].value !=regForm['logonPassword'].value)
         	{
-        		alert("Password should match");
+        		alert("Password and confirm password should match");
         		return false;
         	}
         	regForm.submit();
