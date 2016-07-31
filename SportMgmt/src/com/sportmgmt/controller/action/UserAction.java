@@ -250,11 +250,8 @@ public class UserAction {
 				{
 					GameManager.updateClubListAndPlayersList(playersList, clubList, gameId);
 				}
-				List userPlayersList = GameManager.fetchUserPlayersList(user.getUserId(),Integer.valueOf(gameId)); 
-				if(userPlayersList != null)
-				{
-					userGameMap.put("playerList", userPlayersList);
-				}
+				List<Map<String,String>> userPlayersList = GameManager.userPlayerDetailsList(user.getUserId(),Integer.valueOf(gameId)); 
+				userGameMap.put("playerList", userPlayersList);
 				HashMap totalMap= new HashMap(); 
 				int totalPlayers = GameManager.totalPlayersOfUserByGame(user.getUserId(),Integer.valueOf(gameId));
 				double totalPrice = GameManager.totalPlayersPriceOfUserByGame(user.getUserId(),Integer.valueOf(gameId));

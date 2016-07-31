@@ -19,6 +19,7 @@ import com.sportmgmt.model.manager.GameManager;
 import com.sportmgmt.utility.common.MailUtility;
 import com.sportmgmt.utility.common.PropertyFileUtility;
 import com.sportmgmt.utility.constrant.ErrorConstrant;
+import com.sportmgmt.utility.constrant.SportConstrant;
 
 @Controller
 @RequestMapping("/game")
@@ -66,8 +67,24 @@ public class GameAction {
 					HttpSession session = request.getSession();
 					Map userGameMap = (Map)session.getAttribute("userGameDetails");
 					String gameId = (String)((Map)session.getAttribute("gameDetails")).get("gameId");
-					List userPlayersList = (List)userGameMap.get("playerList");
-					userPlayersList.add(new Integer(gameClubPlayerId));
+					List<Map<String,String>> userPlayersList = (List<Map<String,String>>)userGameMap.get("playerList");
+					Map<String,String> playerDetails = new HashMap<String,String>();
+					playerDetails.put("gameClubPlayerId", gameClubPlayerId);
+					playerDetails.put("isPlaying", SportConstrant.NO);
+					playerDetails.put("playerType", SportConstrant.NULL);
+					List playersList = (List)session.getAttribute("playerList");
+					if(playersList.size()>0)
+					{
+						for(Object playerDetailObj :playersList)
+						{
+							Map playerDetailMap = (Map)playerDetailObj;
+							if(playerDetailMap.get("gameClubPlayerId") !=null && playerDetailMap.get("gameClubPlayerId").equals(gameClubPlayerId))
+							{
+								playerDetails.put("playerType", (String)playerDetailMap.get("type"));
+							}
+						}
+					}
+					userPlayersList.add(playerDetails);
 					Map totalMap = (Map)userGameMap.get("total");
 					totalMap.put("player", (Integer)totalMap.get("player")+1);
 					totalMap.put("price", GameManager.totalPlayersPriceOfUserByGame(Integer.valueOf(userId),Integer.valueOf(gameId)));
@@ -120,8 +137,20 @@ public class GameAction {
 					HttpSession session = request.getSession();
 					Map userGameMap = (Map)session.getAttribute("userGameDetails");
 					String gameId = (String)((Map)session.getAttribute("gameDetails")).get("gameId");
-					List userPlayersList = (List)userGameMap.get("playerList");
-					userPlayersList.remove(new Integer(gameClubPlayerId));
+					List<Map<String,String>> userPlayersList = (List<Map<String,String>>)userGameMap.get("playerList");
+					Map<String,String> playerDetails = null;
+					for(Object userPlayerObj:userPlayersList)
+					{
+						Map<String,String> userPlayerMap = (Map<String,String>)userPlayerObj;
+						if(userPlayerMap.get("gameClubPlayerId") !=null && userPlayerMap.get("gameClubPlayerId").equals(gameClubPlayerId))
+						{
+							playerDetails = userPlayerMap;
+						}
+					}
+					if(playerDetails !=null)
+					{
+						userPlayersList.remove(playerDetails);
+					}
 					Map totalMap = (Map)userGameMap.get("total");
 					totalMap.put("player", (Integer)totalMap.get("player")-1);
 					totalMap.put("price", GameManager.totalPlayersPriceOfUserByGame(Integer.valueOf(userId),Integer.valueOf(gameId)));

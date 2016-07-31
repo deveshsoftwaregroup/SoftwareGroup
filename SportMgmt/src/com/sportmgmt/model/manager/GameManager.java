@@ -326,6 +326,51 @@ public class GameManager {
 		logger.info("--------------- Returning user Player List: -------------"+userPlayersList);
 		return userPlayersList;
 	}
+	public static List<Object[]> fetchUserPlayersDetailsList(Integer userId, Integer gameId)
+	{
+		List<Object[]> userPlayersList = null;
+		setErrorMessage("");
+		SessionFactory factory = HibernateSessionFactory.getSessionFacotry();
+		logger.debug("--------------- fetchUserPlayersDetailsList ------------> userId:  "+userId+" gameId: "+gameId);
+		if(factory == null)
+		{
+			setErrorCode(ErrorConstrant.SESS_FACT_NULL);
+			setErrorMessage("Technical Error");
+		}
+		else
+		{
+			Session session = factory.openSession();
+			if(session != null)
+			{
+				try
+				{
+					
+					//SQLQuery query = session.createSQLQuery("select gcp.game_club_player_id from game_club_player gcp, user_player up where gcp.game_club_player_id = up.game_club_player_id and up.user_id =20 and gcp.game_id =1");
+					SQLQuery query = session.createSQLQuery(QueryConstrant.SELECT_USER_PLAYER_DETAIL_LIST);
+					query.setParameter("userId", userId);
+					query.setParameter("gameId", gameId);
+					userPlayersList =query.list();
+				}
+				catch(Exception ex)
+				{
+					logger.error("Exception fetch userPlayersList: "+ex.getMessage());
+					setErrorMessage("Technical Error");
+					setErrorCode(ErrorConstrant.TRANSACTION_ERROR);
+				}
+				finally
+				{
+					session.close();
+				}
+			}
+			else
+			{
+				setErrorCode(ErrorConstrant.SESS_NULL);
+				setErrorMessage("Technical Error");
+			}
+		}
+		logger.info("--------------- Returning user Player List: -------------"+userPlayersList);
+		return userPlayersList;
+	}
 	public static List<Object[]> fetchTotalPlayerByPostion(Integer userId, Integer gameId)
 	{
 		List<Object[]> totalPlayerByPisitionList = null;
@@ -416,7 +461,7 @@ public class GameManager {
 			}
 		}
 		logger.info("--------------- Returning user totalPlayerFetchList: -------------"+totalPlayerFetchList);
-		if(totalPlayerFetchList !=null && totalPlayerFetchList.size() >=0)
+		if(totalPlayerFetchList !=null && totalPlayerFetchList.size() >=0 && totalPlayerFetchList.get(0) !=null)
 		{
 			totalPlayers = ((java.math.BigInteger)totalPlayerFetchList.get(0)).intValue();
 		}
@@ -428,7 +473,7 @@ public class GameManager {
 		List<Object> totalPlayerPriceFetchList = null;
 		setErrorMessage("");
 		SessionFactory factory = HibernateSessionFactory.getSessionFacotry();
-		logger.debug("--------------- totalPlayersPriceOfUserByEvent ------------> userId:  "+userId+" gameId: "+gameId);
+		logger.debug("--------------- totalPlayersPriceOfUserByGame ------------> userId:  "+userId+" gameId: "+gameId);
 		if(factory == null)
 		{
 			setErrorCode(ErrorConstrant.SESS_FACT_NULL);
@@ -468,7 +513,11 @@ public class GameManager {
 		logger.info("--------------- Returning user totalPlayerPriceFetchList: -------------"+totalPlayerPriceFetchList);
 		if(totalPlayerPriceFetchList !=null && totalPlayerPriceFetchList.size() >=0)
 		{
-			totalPlayersPrice = ((java.math.BigDecimal)totalPlayerPriceFetchList.get(0)).doubleValue();
+			if(totalPlayerPriceFetchList.get(0) != null)
+			{
+				totalPlayersPrice = ((java.math.BigDecimal)totalPlayerPriceFetchList.get(0)).doubleValue();
+			}
+				
 		}
 		return totalPlayersPrice;
 	}
@@ -477,6 +526,10 @@ public class GameManager {
 	{
 		logger.debug("---------- Inside updateTotalPlayerByPostion: ");
 		List<Object[]> totalPlayerByPisitionList = fetchTotalPlayerByPostion(userId,gameId);
+		totalMap.put(SportConstrant.MID_PLAYER, 0);
+		totalMap.put(SportConstrant.FORE_PLAYER, 0);
+		totalMap.put(SportConstrant.DEFENDER, 0);
+		totalMap.put(SportConstrant.GOAL_KEEPER, 0);
 		if(totalPlayerByPisitionList != null && totalPlayerByPisitionList.size() >0)
 		{
 			logger.debug("---------- Started updating totalMap -------- ");
@@ -488,8 +541,32 @@ public class GameManager {
 		else
 		{
 			logger.debug("------------ no update found due to totalPlayerByPisitionList is empty ");
+			
 		}
 		
+	}
+	public static List<Map<String,String>> userPlayerDetailsList(Integer userId, Integer gameId)
+	{
+		logger.debug("---------- Inside userPlayerDetailsList userId: "+userId+" , gameId: "+gameId);
+		List<Map<String,String>> userPlayDetailsList = new ArrayList<Map<String,String>>();
+		List<Object[]> userPlayerDetailListObj = fetchUserPlayersDetailsList(userId,gameId);
+		if(userPlayerDetailListObj != null && userPlayerDetailListObj.size() >0)
+		{
+			logger.debug("---------- Started updating totalMap -------- ");
+			for(Object[] row:userPlayerDetailListObj)
+			{
+				Map<String,String> userPlayerDetail = new HashMap<String,String>();
+				userPlayerDetail.put("gameClubPlayerId", row[0].toString());
+				userPlayerDetail.put("playerType", row[1].toString());
+				userPlayerDetail.put("isPlaying", row[2].toString());
+				userPlayDetailsList.add(userPlayerDetail);
+			}
+		}
+		else
+		{
+			logger.debug("------------ userPlayerDetailListObj is empty ");
+		}
+		return userPlayDetailsList;
 	}
 	public static boolean addPlayeOfEventToUserAccount(String userId,String gameClubPlayerId)
 	{
