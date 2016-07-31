@@ -2,6 +2,7 @@ package com.sportmgmt.controller.action;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ravij.crypto.EncodeDecoder;
 import com.sportmgmt.controller.bean.User;
+import com.sportmgmt.model.manager.GameManager;
 import com.sportmgmt.model.manager.UserManager;
 import com.sportmgmt.utility.common.MailUtility;
 import com.sportmgmt.utility.common.PropertyFileUtility;
@@ -47,7 +49,7 @@ public class UserAction {
 		this.propFileUtility = propFileUtility;
 	}
 	@RequestMapping(value = "register", method = RequestMethod.POST)
-	public String userLogin(ModelMap modeMap,@RequestParam Map<String,String> userMap)
+	public String userRegister(ModelMap modeMap,@RequestParam Map<String,String> userMap)
 	{
 		logger.debug("Entry in register method model Map: "+modeMap);
 		if(userMap.get("emailId") == null || userMap.get("emailId").equals(SportConstrant.NULL))
@@ -130,7 +132,7 @@ public class UserAction {
 			modeMap.put("message","Your Registration is failed due to incomplete info");
 		}
 		//return "redirect:/login/loginSuccess.jsp";
-		return SportConstrant.USER_REG_RESULT_PAGE;
+		return "redirect:/"+SportConstrant.USER_REG_RESULT_PAGE+".jsp";
 
 	}
 	
@@ -234,7 +236,67 @@ public class UserAction {
 			 logger.debug("---------- Setting User to Sesison: "+user);
 			 session.setAttribute("userId", String.valueOf(user.getUserId()));
 			 session.setAttribute("user", user);
-			 
+			 ArrayList playersList = new ArrayList();
+			 ArrayList clubList = new ArrayList();
+			 HashMap gameMap = null;
+			 List games = GameManager.fetchGames();
+			 HashMap userGameMap = new HashMap();
+			if(games != null && games.size() ==1)
+			{
+				gameMap = (HashMap)games.get(0);
+				String gameId = (String)gameMap.get("gameId");
+				
+				if(gameId != null && !gameId.equals(""))
+				{
+					GameManager.updateClubListAndPlayersList(playersList, clubList, gameId);
+				}
+				List userPlayersList = GameManager.fetchUserPlayersList(user.getUserId(),Integer.valueOf(gameId)); 
+				if(userPlayersList != null)
+				{
+					userGameMap.put("playerList", userPlayersList);
+				}
+				HashMap totalMap= new HashMap(); 
+				int totalPlayers = GameManager.totalPlayersOfUserByGame(user.getUserId(),Integer.valueOf(gameId));
+				double totalPrice = GameManager.totalPlayersPriceOfUserByGame(user.getUserId(),Integer.valueOf(gameId));
+				totalMap.put("price", totalPrice);
+				totalMap.put("player", totalPlayers);
+				System.out.println("---------------- totalMap: "+userGameMap);
+				GameManager.updateTotalPlayerByPostion(user.getUserId(),Integer.valueOf(gameId),totalMap);
+				userGameMap.put("total", totalMap);
+				System.out.println("---------------- totalMap Now : "+userGameMap);
+			}
+			if(gameMap != null)
+			{
+				session.setAttribute("gameDetails", gameMap);
+				session.setAttribute("playerList", playersList);
+				session.setAttribute("clubList", clubList);
+				session.setAttribute("userGameDetails", userGameMap);
+				String gameDetailsJson = "";
+				String playerListJson = "";
+				String clubListJson = "";
+				String userGameJson = "";
+				 ObjectMapper mapperObj = new ObjectMapper();
+				 try
+				 {
+					 gameDetailsJson = mapperObj.writeValueAsString(gameMap);
+					 logger.debug("-------- Login : gameDetailsJson: "+gameDetailsJson);
+					 playerListJson = mapperObj.writeValueAsString(playersList);
+					 logger.debug("-------- Login : playerListJson: "+playerListJson);
+					 clubListJson = mapperObj.writeValueAsString(clubList);
+					 logger.debug("-------- Login : clubListJson: "+clubListJson);
+					 userGameJson = mapperObj.writeValueAsString(userGameMap);
+					 logger.debug("-------- Login : userGameJson: "+userGameJson);
+					 session.setAttribute("gameDetailsJson", gameDetailsJson);
+					 session.setAttribute("playerListJson", playerListJson);
+					 session.setAttribute("clubListJson", clubListJson);
+					 session.setAttribute("userGameJson", userGameJson);
+				 }
+				 catch(Exception ex)
+				 {
+					 logger.error("---------- Entry in parsing map to json: "+ex);
+				 }
+				
+			}
 		 }
 		 else
 		 {
@@ -246,8 +308,9 @@ public class UserAction {
 		 }
 		
 	}
-	 logger.debug("---------- Forwardng to : "+SportConstrant.USER_LANDING_PAGE);
-	 return SportConstrant.USER_LANDING_PAGE;
+	 
+	 logger.debug("---------- Redircting to : "+SportConstrant.USER_LANDING_REDIRECT_PAGE);
+	 return SportConstrant.USER_LANDING_REDIRECT_PAGE;
 	}
 	@RequestMapping(value = "forgotPassword", method = RequestMethod.GET)
 	public  String forgorPassword(ModelMap modeMap,@RequestParam String emailId)
@@ -438,13 +501,19 @@ public class UserAction {
 	@RequestMapping(value = "ChangePasswordView", method = RequestMethod.GET)
 	public  String changePasswordView(ModelMap modeMap,HttpServletRequest request)
 	{
-		 logger.debug("---------- Entry in --- ChangePasswordView");
+		logger.debug("---------- Forwardng to : "+SportConstrant.CHANGE_PASSWORD_PAGE);
 		 return SportConstrant.CHANGE_PASSWORD_PAGE;
 	}
 	@RequestMapping(value = "ForgotPasswordView", method = RequestMethod.GET)
 	public  String forgotPasswordView(ModelMap modeMap,HttpServletRequest request)
 	{
-		 logger.debug("---------- Entry in --- ChangePasswordView");
+		logger.debug("---------- Forwardng to : "+SportConstrant.FORGOT_PASSWORD_PAGE);
 		 return SportConstrant.FORGOT_PASSWORD_PAGE;
+	}
+	@RequestMapping(value = "UserLanding", method = RequestMethod.GET)
+	public  String userLanding(ModelMap modeMap,HttpServletRequest request)
+	{
+		logger.debug("---------- Forwardng to : "+SportConstrant.USER_LANDING_PAGE);;
+		 return SportConstrant.USER_LANDING_PAGE;
 	}
 }

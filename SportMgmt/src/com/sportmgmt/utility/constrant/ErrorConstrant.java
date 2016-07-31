@@ -10,4 +10,7 @@ public class ErrorConstrant {
 	public final static String ACCOUNT_LOCKED = "ER007";
 	public final static String EMPTY_LOGON = "ER008";
 	public final static String EMPTY_PASS = "ER009";
+	public final static String DUPLICATE_ENTRY = "ER010";
+	public final static String RECORD_NOT_FOUND = "ER011";
+	public final static String INVALID_PARAMETER = "ER012";
 }

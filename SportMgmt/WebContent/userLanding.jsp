@@ -7,8 +7,17 @@
 <title>User Landing</title>
 </head>
 <body>
-	isLogined:  ${isLogined}
+	isLogined:  ${param.isLogined}
 	userId: ${sessionScope.userId}
 	name: ${sessionScope.user.displayName}
+	<br/><br/>
+	gameDetailsJson:<br/> ${sessionScope.gameDetailsJson}
+	<br/><br/>
+	playerListJson:<br/> ${sessionScope.playerListJson}
+	<br/><br/>
+	clubListJson: <br/>${sessionScope.clubListJson}
+	<br/><br/>
+	userGameJson: <br/>${sessionScope.userGameJson}
+	
 </body>
 </html>

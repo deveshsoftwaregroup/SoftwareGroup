@@ -340,5 +340,4 @@ public class User {
 		this.displayName = displayName;
 	}
 	
-	
 }

@@ -1,7 +1,9 @@
 package com.sportmgmt.controller.action;
 
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.sportmgmt.model.entity.Game;
+import com.sportmgmt.model.manager.GameManager;
 import com.sportmgmt.model.manager.UserManager;
 import com.sportmgmt.utility.common.MailUtility;
 import com.sportmgmt.utility.common.PropertyFileUtility;
@@ -65,8 +69,7 @@ public class TestAction {
 	@RequestMapping("/login")
 	public String hello(ModelMap map)
 	{
-		//UserManager.getCountryStateCityMap();
-		System.out.println("<----------------- Entered By User: ");
+		//System.out.println("<----------------- Entered By User: ");
 		return "login/login";
 	}
 	

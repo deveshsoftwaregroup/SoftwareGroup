@@ -133,7 +133,7 @@
             <div class="large-12 columns">
             
                 <div align="right">
-                    <a href="javascript:void(0);" class="button-lrg" onclick="submitForm();"><input type="button" class="button btnSubmit" value="REGISTER"></a>
+                    <a href="javascript:void(0);" class="button-lrg" ></a><input type="submit" class="button btnSubmit" value="REGISTER"></a>
                      </div>
             </div>
     </form>
@@ -158,7 +158,7 @@
         	animation_speed: 3000,
             });
         });
-        function submitForm()
+       /* function submitForm()
         {
         	var regForm = document.forms['RegisterForm'];
         	if(typeof regForm['displayName'] == 'undefined' || regForm['displayName'].value=='')
@@ -188,7 +188,7 @@
         		return false;
         	}
         	regForm.submit();
-        }
+        }*/
     </script>
   </body>
 </body>

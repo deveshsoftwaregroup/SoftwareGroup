@@ -12,7 +12,6 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
-import com.sportmgmt.controller.action.UserAction;
 import com.sportmgmt.model.entity.CountryStateCity;
 import com.sportmgmt.model.entity.User;
 import com.sportmgmt.utility.constrant.ErrorConstrant;

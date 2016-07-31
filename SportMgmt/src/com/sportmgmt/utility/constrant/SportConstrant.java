@@ -2,6 +2,8 @@ package com.sportmgmt.utility.constrant;
 
 public class SportConstrant {
 	public final static String ACTIVE = "A";
+	public final static String YES = "Y";
+	public final static String NO = "N";
 	public final static String INACTIVE = "I";
 	public final static String LOCKED = "L";
 	public final static String NULL = "";
@@ -19,6 +21,7 @@ public class SportConstrant {
 	public final static String FORGOT_PASSWORD_EMAIL_SUB = "forgotPasswordEmailSubject";
 	public final static String USER_VER_URL = "userVerifyURL";
 	public final static String USER_LANDING_PAGE = "userLanding";
+	public final static String USER_LANDING_REDIRECT_PAGE = "redirect:/mvc/user/UserLanding";
 	public final static String USER_UPDATE_PAGE = "userUpdate";
 	public final static String CHANGE_PASSWORD_PAGE = "changePassword";
 	public final static String LEAGE_HOME_PAGE = "leagueHome";
@@ -30,5 +33,9 @@ public class SportConstrant {
 	public final static String FORGOT_PASS_RESULT_PAGE = "forgotPasswordResult";
 	public final static String ACTION = "action";
 	public final static String CHANGE_PASS = "ChangePassword";
+	public final static String MID_PLAYER = "Mid Player";
+	public final static String FORE_PLAYER = "front";
+	public final static String GOAL_KEEPER = "goal keeper";
+	public final static String DEFENDER = "defender";
 
 }

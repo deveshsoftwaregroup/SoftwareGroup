@@ -80,7 +80,7 @@
                 </div>
             </div>
             <p align="center" class="button btnSubmit" >
-             ${message} </p>
+             ${param.message} </p>
            
            
             <div class="row clearfix big-register">
