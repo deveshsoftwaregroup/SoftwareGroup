@@ -685,5 +685,62 @@ public class GameManager {
 		
 		return isRemoved;
 	}
+	public static boolean updatePlayeOfEventFromUserAccount(String userId,String gameClubPlayerId,String isPlaying)
+	{
+		boolean isRemoved =  false;
+		setErrorMessage("");
+		SessionFactory factory = HibernateSessionFactory.getSessionFacotry();
+		logger.debug("--------------- updatePlayeOfEventFromUserAccount ------------> userId:  "+userId+" gameClubPlayerId: "+gameClubPlayerId);
+		if(factory == null)
+		{
+			setErrorCode(ErrorConstrant.SESS_FACT_NULL);
+			setErrorMessage("Technical Error");
+		}
+		else
+		{
+			Session session = factory.openSession();
+			if(session != null)
+			{
+				try
+				{
+					Criteria cr = session.createCriteria(UserPlayer.class);
+					cr.add(Restrictions.eq("gameClubPlayerId", new Integer(gameClubPlayerId)));
+					cr.add(Restrictions.eq("userId", new Integer(userId)));
+					List results = cr.list();
+					if(results == null || results.size() ==0)
+					{
+						logger.debug(" ------- Player is not found to update ");
+						setErrorMessage("Player is  not associated with user");
+						setErrorCode(ErrorConstrant.RECORD_NOT_FOUND);
+					}
+					else
+					{
+						UserPlayer userPlayer = (UserPlayer)results.get(0);
+						userPlayer.setIsPlaying(isPlaying);
+						session.save(userPlayer);
+						session.beginTransaction().commit();
+						isRemoved = true;
+					}
+				}
+				catch(Exception ex)
+				{
+					logger.error("Exception fetch update Player: "+ex.getMessage());
+					setErrorMessage("Technical Error");
+					setErrorCode(ErrorConstrant.TRANSACTION_ERROR);
+				}
+				finally
+				{
+					session.close();
+				}
+			}
+			else
+			{
+				setErrorCode(ErrorConstrant.SESS_NULL);
+				setErrorMessage("Technical Error");
+			}
+		}
+		
+		return isRemoved;
+	}
 
 }

@@ -177,5 +177,77 @@ public class GameAction {
 		logger.debug("Returning action: with reuslt-- : "+resultMap);
 		return resultMap;
 	}
-
+	@RequestMapping(value = "ActivatePlayer", method = RequestMethod.GET)
+	public @ResponseBody Map activatePlayer(@RequestParam("userId") String userId, @RequestParam("gameClubPlayerId") String gameClubPlayerId,HttpServletRequest request)
+	{
+		logger.debug("------------ activate Player :-- calling update player");
+		return updatePlayer(userId,gameClubPlayerId,SportConstrant.YES,request);
+	}
+	@RequestMapping(value = "DeActivatePlayer", method = RequestMethod.GET)
+	public @ResponseBody Map deActivatePlayer(@RequestParam("userId") String userId, @RequestParam("gameClubPlayerId") String gameClubPlayerId,HttpServletRequest request)
+	{
+		logger.debug("------------ de-activate Player :-- calling update player");
+		return updatePlayer(userId,gameClubPlayerId,SportConstrant.NO,request);
+	}
+	public Map updatePlayer(String userId, String gameClubPlayerId,String isPlaying, HttpServletRequest request)
+	{
+		Map resultMap = new HashMap();
+		boolean isSuccess = false;
+		String errorMessage = "";
+		String errorCode = "";
+		logger.debug("------------ update Player ");
+		if(userId == null || userId.equals("") || gameClubPlayerId == null || gameClubPlayerId.equals(""))
+		{
+			errorMessage = "Parameter missing";
+			errorCode = ErrorConstrant.INVALID_PARAMETER;
+			logger.debug("------------ Parameter is invalid/missing ");
+		}
+		else
+		{
+			isSuccess = GameManager.updatePlayeOfEventFromUserAccount(userId, gameClubPlayerId,isPlaying);
+			logger.debug("------------ update Player Call isSuccess: "+isSuccess);
+			if(isSuccess)
+			{
+				logger.debug("------------ Updating session and json value");
+				try
+				{
+					HttpSession session = request.getSession();
+					Map userGameMap = (Map)session.getAttribute("userGameDetails");
+					String gameId = (String)((Map)session.getAttribute("gameDetails")).get("gameId");
+					List<Map<String,String>> userPlayersList = (List<Map<String,String>>)userGameMap.get("playerList");
+					for(Object userPlayerObj:userPlayersList)
+					{
+						Map<String,String> userPlayerMap = (Map<String,String>)userPlayerObj;
+						if(userPlayerMap.get("gameClubPlayerId") !=null && userPlayerMap.get("gameClubPlayerId").equals(gameClubPlayerId))
+						{
+							userPlayerMap.put("isPlaying", isPlaying);
+						}
+					}
+					
+					/*Map totalMap = (Map)userGameMap.get("total");
+					totalMap.put("player", (Integer)totalMap.get("player")-1);
+					totalMap.put("price", GameManager.totalPlayersPriceOfUserByGame(Integer.valueOf(userId),Integer.valueOf(gameId)));
+					GameManager.updateTotalPlayerByPostion(Integer.valueOf(userId),Integer.valueOf(gameId),totalMap);*/
+					session.setAttribute("userGameDetails", userGameMap);
+					//resultMap.put("userGameJson", userGameMap);
+				}
+				catch(Exception ex)
+				{
+					logger.error("error to creating userGameJson: "+ex.getMessage());
+					ex.printStackTrace();
+				}
+				
+			}
+			else
+			{
+				errorMessage = GameManager.getErrorMessage();
+				errorCode = GameManager.getErrorCode();
+			}
+		}
+		resultMap.put("isSuccess", isSuccess);
+		resultMap.put("errorMessage", errorMessage);
+		resultMap.put("errorCode", errorCode);
+		logger.debug("Returning action: with reuslt-- : "+resultMap);
+		return resultMap;
+	}
 }
