@@ -41,7 +41,7 @@
         <nav class="large-8 columns">
                <ul id="mainMenu">
                     <li><a href="http://the12thman.in/"> Home </a></li>
-                    <li><a href="javascript:void(0);" data-open="exampleModal1"> Sign Up </a></li>
+                    <li><a href="javascript:void(0);" data-open="exampleModal2"> Log in </a></li>
               </ul>
         </nav>
     </header>
@@ -141,6 +141,28 @@
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
+<div class="reveal medium" id="exampleModal2" data-reveal>
+  <form name="LoginForm" action="" method="get" onsubmit="event.preventDefault();">
+        <div class="large-12 columns">
+          <label>Login Id*
+            <input type="email" name="emailId" placeholder="email" required />
+          </label>
+        </div>
+        <div class="large-12 columns">
+            <label>Password*</label>
+            <input type="password" name="logonPassword" placeholder="password" required />       
+        </div>
+         <div class="large-12 columns">
+            
+                <div align="right">
+                    <a href="javascript:void(0);" class="button-lrg"><input type="submit" class="button btnSubmit" value="LOG IN" onclick="doLogin();"></a>
+                     </div>
+            </div>
+    </form>
+  <button class="close-button" data-close aria-label="Close modal" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
     
     <script src="/SportMgmt/js/vendor/jquery.js"></script>
     <script src="/SportMgmt/js/vendor/what-input.js"></script>
@@ -158,37 +180,44 @@
         	animation_speed: 3000,
             });
         });
-       /* function submitForm()
+        function doLogin()
         {
-        	var regForm = document.forms['RegisterForm'];
-        	if(typeof regForm['displayName'] == 'undefined' || regForm['displayName'].value=='')
+        	var loginForm = document.forms['LoginForm'];
+        	if(typeof loginForm['emailId'] == 'undefined' || loginForm['emailId'].value=='')
         	{
-        		alert("Please input your Name");
         		return false;
         	}
-        	if(typeof regForm['emailId'] == 'undefined' || regForm['emailId'].value=='')
-        	{
-        		alert("Please input Email ID");
-        		return false;
-        	}
-        	var isEmailValid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(regForm['emailId'].value);
+        	var isEmailValid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(loginForm['emailId'].value);
         	if(!isEmailValid)
        		{
-        		alert("Email ID is not valid");
         		return false;
        		}
-        	if(typeof regForm['logonPassword'] == 'undefined' || regForm['logonPassword'].value =='')
+        	if(typeof loginForm['logonPassword'] == 'undefined' || loginForm['logonPassword'].value =='')
         	{
-        		alert("Please input password");
         		return false;
         	}
-        	if(typeof regForm['logonPasswordConfirm'] == 'undefined' || regForm['logonPasswordConfirm'].value !=regForm['logonPassword'].value)
-        	{
-        		alert("Password and confirm password should match");
-        		return false;
-        	}
-        	regForm.submit();
-        }*/
+        	
+        	//alert(loginForm['emailId']);
+        	var url = "user/validate?logonId="+loginForm['emailId'].value+"&logonPassword="+loginForm['logonPassword'].value
+        	$.ajax({
+        		  url: url,
+        		  dataType: 'json',
+        		  success: function( resp ) {
+        			  if(resp.isValidUser)
+        			  {
+        				  window.location="user/login/"+resp.userId;
+        			  }
+        			  else
+       				  {
+       				  	alert(resp.errorMessage);
+       				  }
+        		  },
+        		  error: function( req, status, err ) {
+        		    console.log( 'something went wrong', status, err );
+        		  }
+        		});
+
+        }
     </script>
   </body>
 </body>
