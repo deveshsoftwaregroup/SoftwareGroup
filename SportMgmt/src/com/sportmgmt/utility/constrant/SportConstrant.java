@@ -33,9 +33,9 @@ public class SportConstrant {
 	public final static String FORGOT_PASS_RESULT_PAGE = "forgotPasswordResult";
 	public final static String ACTION = "action";
 	public final static String CHANGE_PASS = "ChangePassword";
-	public final static String MID_PLAYER = "Mid Player";
-	public final static String FORE_PLAYER = "front";
-	public final static String GOAL_KEEPER = "goal keeper";
-	public final static String DEFENDER = "defender";
+	public final static String MID_PLAYER = "Midfielder";
+	public final static String FORE_PLAYER = "Forward";
+	public final static String GOAL_KEEPER = "Goalkeeper";
+	public final static String DEFENDER = "Defeder";
 
 }
