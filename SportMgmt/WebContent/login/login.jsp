@@ -10,7 +10,6 @@
 <body>
 <h3>Login Form</h3>
 <FONT color="blue">
-Input User and Password
 </FONT>
 <%-- <form:form action="loginform"  commandName="loginForm" >
 	<table>
@@ -34,7 +33,7 @@ Input User and Password
 	</table>
 </form:form>
  --%>
- <form action="userLogin">
+ <%-- <form action="userLogin">
 	<table>
 		<tr>
 			<td>User Name:<FONT color="red"></FONT></td>
@@ -52,6 +51,21 @@ Input User and Password
 			<td><input type="submit" value="Submit" /></td>
 		</tr>
 	</table>
+</form>
+ --%> <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="CH7R235XRK4EG">
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>
+
+ 
+ <br/>
+ <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="6A7M7SJLZZ7PN">
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
 </form>
  
  </body>
