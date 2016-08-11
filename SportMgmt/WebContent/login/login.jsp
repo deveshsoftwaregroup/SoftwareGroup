@@ -67,6 +67,19 @@
 <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
 <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
 </form>
+ <br/> 
+ <form name="paypalForm" action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+<input type="hidden" name="cmd" value="_xclick" />
+<input type="hidden" name="business" value="deveshsoftwaregroup@gmail.com" />
+<input type="hidden" name="password" value="Software@123" />
+<input type="hidden" name="custom" value="1123" />
+<input type="text" name="item_name" value="Tshirt " />
+<input type="text" name="amount" value="1.00"/>
+<input type="text" name="rm" value="1" />
+<input type="hidden" name="return" value="http://localhost:8080/SportMgmt/mvc/login" />
+<input type="hidden" name="cancel_return" value="http://localhost:8080/SportMgmt/mvc/login" />
+<input type="hidden" name="cert_id" value="AFcWxV21C7fd0v3bYYYRCpSSRl31A1tVEekunetJaAhilY2W0cqq6fhh" /><input type="submit" value="Pay with Paypal"/>
+</form>
  
  </body>
 </html>
