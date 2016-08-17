@@ -968,6 +968,406 @@
                     </form>
 
                     <div id="ismr-sideboard"></div>
+                    
+                    <div id="ismr-elements-list"><div>
+
+    <p class="ism-elements-shown"><strong class="ism-elements-shown__num">30</strong> players shown</p>
+
+    <div id="ismjs-elements-list-tables"><div>
+    <div class="table">
+        <table class="ism-table ism-table--el ism-table--el-list">
+            <thead>
+                <tr class="ism-table__divider ism-el-type ism-el-type--1">
+                    <th class="ism-table--el-list__status"></th>
+                    <th class="ism-table--el-list__name"><a href="#" class="ism-link--bold">Goalkeepers</a></th>
+                    <th class="ism-table--el-list__price"><abbr title="Price">£</abbr></th>
+                    <th class="ism-table--el-list__stat"><abbr title="Goals scored">GS</abbr></th>
+                </tr>
+            </thead>
+            <tbody>
+            <tr class="ismjs-menu ism-row-select">
+    <td class="ism-table--el__status">
+        
+            <a href="#" class="ismjs-info ism-table--el__status-link" title="View player information"><svg class="ism-icon--element ism-icon--info" aria-labelledby="ism-title-info" aria-describedby="ism-desc-info">
+                <title id="ism-title-info">View player information</title>
+                <desc id="ism-desc-info">Information about the player, their season history and upcoming fixtures</desc>
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ism-info"></use>
+            </svg></a>
+        
+    </td>
+    <td class="ism-table--el__primary">
+        <div class="ism-media ism-media--centred">
+            <div class="ism-media__figure">
+
+                <picture>
+                    <source type="image/webp" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3_1-110.webp 110w,
+                                https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3_1-66.webp 66w,
+                                https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3_1-33.webp 33w" sizes="16px">
+                    <img src="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3_1-33.png" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3_1-110.png 110w,
+                            https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3_1-66.png 66w,
+                            https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3_1-33.png 33w" sizes="16px" alt="Arsenal" title="Arsenal" class="ism-shirt">
+                </picture>
+            </div>
+
+            <div class="ism-media__body ism-table--el__primary-text">
+                <a href="#" class="ism-table--el__name">Ospina</a>
+                <span class="ism-table--el__strong"><abbr title="Arsenal">ARS</abbr></span>
+            </div>
+        </div>
+
+    </td>
+    <td class="ism-table--el__strong">£5.0</td>
+    <td class="ism-table--el__strong">0</td>
+</tr><tr class="ismjs-menu ism-row-select">
+    <td class="ism-table--el__status">
+        
+            <a href="#" class="ismjs-info ism-table--el__status-link" title="View player information"><svg class="ism-icon--element ism-icon--info" aria-labelledby="ism-title-info" aria-describedby="ism-desc-info">
+                <title id="ism-title-info">View player information</title>
+                <desc id="ism-desc-info">Information about the player, their season history and upcoming fixtures</desc>
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ism-info"></use>
+            </svg></a>
+        
+    </td>
+    <td class="ism-table--el__primary">
+        <div class="ism-media ism-media--centred">
+            <div class="ism-media__figure">
+
+                <picture>
+                    <source type="image/webp" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3_1-110.webp 110w,
+                                https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3_1-66.webp 66w,
+                                https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3_1-33.webp 33w" sizes="16px">
+                    <img src="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3_1-33.png" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3_1-110.png 110w,
+                            https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3_1-66.png 66w,
+                            https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3_1-33.png 33w" sizes="16px" alt="Arsenal" title="Arsenal" class="ism-shirt">
+                </picture>
+            </div>
+
+            <div class="ism-media__body ism-table--el__primary-text">
+                <a href="#" class="ism-table--el__name">Cech</a>
+                <span class="ism-table--el__strong"><abbr title="Arsenal">ARS</abbr></span>
+            </div>
+        </div>
+
+    </td>
+    <td class="ism-table--el__strong">£5.5</td>
+    <td class="ism-table--el__strong">0</td>
+</tr></tbody>
+        </table>
+    </div>
+</div><div>
+    <div class="table">
+        <table class="ism-table ism-table--el ism-table--el-list">
+            <thead>
+                <tr class="ism-table__divider ism-el-type ism-el-type--2">
+                    <th class="ism-table--el-list__status"></th>
+                    <th class="ism-table--el-list__name"><a href="#" class="ism-link--bold">Defenders</a></th>
+                    <th class="ism-table--el-list__price"><abbr title="Price">£</abbr></th>
+                    <th class="ism-table--el-list__stat"><abbr title="Goals scored">GS</abbr></th>
+                </tr>
+            </thead>
+            <tbody>
+            <tr class="ismjs-menu ism-row-select">
+    <td class="ism-table--el__status">
+        
+            <a href="#" class="ismjs-info ism-table--el__status-link" title="View player information"><svg class="ism-icon--element ism-icon--info" aria-labelledby="ism-title-info" aria-describedby="ism-desc-info">
+                <title id="ism-title-info">View player information</title>
+                <desc id="ism-desc-info">Information about the player, their season history and upcoming fixtures</desc>
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ism-info"></use>
+            </svg></a>
+        
+    </td>
+    <td class="ism-table--el__primary">
+        <div class="ism-media ism-media--centred">
+            <div class="ism-media__figure">
+
+                <picture>
+                    <source type="image/webp" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-110.webp 110w,
+                                https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-66.webp 66w,
+                                https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-33.webp 33w" sizes="16px">
+                    <img src="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-33.png" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-110.png 110w,
+                            https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-66.png 66w,
+                            https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-33.png 33w" sizes="16px" alt="Arsenal" title="Arsenal" class="ism-shirt">
+                </picture>
+            </div>
+
+            <div class="ism-media__body ism-table--el__primary-text">
+                <a href="#" class="ism-table--el__name">Chambers</a>
+                <span class="ism-table--el__strong"><abbr title="Arsenal">ARS</abbr></span>
+            </div>
+        </div>
+
+    </td>
+    <td class="ism-table--el__strong">£4.5</td>
+    <td class="ism-table--el__strong">1</td>
+</tr><tr class="ismjs-menu ism-row-select">
+    <td class="ism-table--el__status">
+        
+            <a href="#" class="ismjs-info ism-table--el__status-link" title="View player information"><svg class="ism-icon--element ism-icon--info" aria-labelledby="ism-title-info" aria-describedby="ism-desc-info">
+                <title id="ism-title-info">View player information</title>
+                <desc id="ism-desc-info">Information about the player, their season history and upcoming fixtures</desc>
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ism-info"></use>
+            </svg></a>
+        
+    </td>
+    <td class="ism-table--el__primary">
+        <div class="ism-media ism-media--centred">
+            <div class="ism-media__figure">
+
+                <picture>
+                    <source type="image/webp" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-110.webp 110w,
+                                https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-66.webp 66w,
+                                https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-33.webp 33w" sizes="16px">
+                    <img src="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-33.png" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-110.png 110w,
+                            https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-66.png 66w,
+                            https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-33.png 33w" sizes="16px" alt="Arsenal" title="Arsenal" class="ism-shirt">
+                </picture>
+            </div>
+
+            <div class="ism-media__body ism-table--el__primary-text">
+                <a href="#" class="ism-table--el__name">Holding</a>
+                <span class="ism-table--el__strong"><abbr title="Arsenal">ARS</abbr></span>
+            </div>
+        </div>
+
+    </td>
+    <td class="ism-table--el__strong">£4.5</td>
+    <td class="ism-table--el__strong">0</td>
+</tr></tbody>
+        </table>
+    </div>
+</div><div>
+    <div class="table">
+        <table class="ism-table ism-table--el ism-table--el-list">
+            <thead>
+                <tr class="ism-table__divider ism-el-type ism-el-type--3">
+                    <th class="ism-table--el-list__status"></th>
+                    <th class="ism-table--el-list__name"><a href="#" class="ism-link--bold">Midfielders</a></th>
+                    <th class="ism-table--el-list__price"><abbr title="Price">£</abbr></th>
+                    <th class="ism-table--el-list__stat"><abbr title="Goals scored">GS</abbr></th>
+                </tr>
+            </thead>
+            <tbody>
+            <tr class="ismjs-menu ism-row-select">
+    <td class="ism-table--el__status">
+        
+            <a href="#" class="ismjs-info ism-table--el__status-link" title="View player information"><svg class="ism-icon--element ism-icon--info" aria-labelledby="ism-title-info" aria-describedby="ism-desc-info">
+                <title id="ism-title-info">View player information</title>
+                <desc id="ism-desc-info">Information about the player, their season history and upcoming fixtures</desc>
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ism-info"></use>
+            </svg></a>
+        
+    </td>
+    <td class="ism-table--el__primary">
+        <div class="ism-media ism-media--centred">
+            <div class="ism-media__figure">
+
+                <picture>
+                    <source type="image/webp" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-110.webp 110w,
+                                https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-66.webp 66w,
+                                https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-33.webp 33w" sizes="16px">
+                    <img src="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-33.png" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-110.png 110w,
+                            https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-66.png 66w,
+                            https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-33.png 33w" sizes="16px" alt="Arsenal" title="Arsenal" class="ism-shirt">
+                </picture>
+            </div>
+
+            <div class="ism-media__body ism-table--el__primary-text">
+                <a href="#" class="ism-table--el__name">Walcott</a>
+                <span class="ism-table--el__strong"><abbr title="Arsenal">ARS</abbr></span>
+            </div>
+        </div>
+
+    </td>
+    <td class="ism-table--el__strong">£7.5</td>
+    <td class="ism-table--el__strong">1</td>
+</tr><tr class="ismjs-menu ism-row-select">
+    <td class="ism-table--el__status">
+        
+            <a href="#" class="ismjs-info ism-table--el__status-link" title="View player information"><svg class="ism-icon--element ism-icon--info" aria-labelledby="ism-title-info" aria-describedby="ism-desc-info">
+                <title id="ism-title-info">View player information</title>
+                <desc id="ism-desc-info">Information about the player, their season history and upcoming fixtures</desc>
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ism-info"></use>
+            </svg></a>
+        
+    </td>
+    <td class="ism-table--el__primary">
+        <div class="ism-media ism-media--centred">
+            <div class="ism-media__figure">
+
+                <picture>
+                    <source type="image/webp" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-110.webp 110w,
+                                https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-66.webp 66w,
+                                https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-33.webp 33w" sizes="16px">
+                    <img src="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-33.png" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-110.png 110w,
+                            https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-66.png 66w,
+                            https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-33.png 33w" sizes="16px" alt="Arsenal" title="Arsenal" class="ism-shirt">
+                </picture>
+            </div>
+
+            <div class="ism-media__body ism-table--el__primary-text">
+                <a href="#" class="ism-table--el__name">Chamberlain</a>
+                <span class="ism-table--el__strong"><abbr title="Arsenal">ARS</abbr></span>
+            </div>
+        </div>
+
+    </td>
+    <td class="ism-table--el__strong">£6.0</td>
+    <td class="ism-table--el__strong">1</td>
+</tr>
+<tr class="ismjs-menu ism-row-select">
+    <td class="ism-table--el__status">
+        
+            <a href="#" class="ismjs-info ism-table--el__status-link" title="View player information"><svg class="ism-icon--element ism-icon--info" aria-labelledby="ism-title-info" aria-describedby="ism-desc-info">
+                <title id="ism-title-info">View player information</title>
+                <desc id="ism-desc-info">Information about the player, their season history and upcoming fixtures</desc>
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ism-info"></use>
+            </svg></a>
+        
+    </td>
+    <td class="ism-table--el__primary">
+        <div class="ism-media ism-media--centred">
+            <div class="ism-media__figure">
+
+                <picture>
+                    <source type="image/webp" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-110.webp 110w,
+                                https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-66.webp 66w,
+                                https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-33.webp 33w" sizes="16px">
+                    <img src="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-33.png" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-110.png 110w,
+                            https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-66.png 66w,
+                            https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-33.png 33w" sizes="16px" alt="Arsenal" title="Arsenal" class="ism-shirt">
+                </picture>
+            </div>
+
+            <div class="ism-media__body ism-table--el__primary-text">
+                <a href="#" class="ism-table--el__name">Xhaka</a>
+                <span class="ism-table--el__strong"><abbr title="Arsenal">ARS</abbr></span>
+            </div>
+        </div>
+
+    </td>
+    <td class="ism-table--el__strong">£5.5</td>
+    <td class="ism-table--el__strong">0</td>
+</tr></tbody>
+        </table>
+    </div>
+</div><div>
+    <div class="table">
+        <table class="ism-table ism-table--el ism-table--el-list">
+            <thead>
+                <tr class="ism-table__divider ism-el-type ism-el-type--4">
+                    <th class="ism-table--el-list__status"></th>
+                    <th class="ism-table--el-list__name"><a href="#" class="ism-link--bold">Forwards</a></th>
+                    <th class="ism-table--el-list__price"><abbr title="Price">£</abbr></th>
+                    <th class="ism-table--el-list__stat"><abbr title="Goals scored">GS</abbr></th>
+                </tr>
+            </thead>
+            <tbody>
+            <tr class="ismjs-menu ism-row-select ism-element-list__info--0">
+    <td class="ism-table--el__status">
+        
+            <a href="#" class="ismjs-info ism-table--el__status-link" title="75% chance of playing next match"><svg class="ism-icon--element ism-icon--status-75">
+                <title>75% chance of playing next match</title>
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ism-status"></use>
+            </svg></a>
+        
+    </td>
+    <td class="ism-table--el__primary">
+        <div class="ism-media ism-media--centred">
+            <div class="ism-media__figure">
+
+                <picture>
+                    <source type="image/webp" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-110.webp 110w,
+                                https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-66.webp 66w,
+                                https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-33.webp 33w" sizes="16px">
+                    <img src="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-33.png" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-110.png 110w,
+                            https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-66.png 66w,
+                            https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-33.png 33w" sizes="16px" alt="Arsenal" title="Arsenal" class="ism-shirt">
+                </picture>
+            </div>
+
+            <div class="ism-media__body ism-table--el__primary-text">
+                <a href="#" class="ism-table--el__name">Giroud</a>
+                <span class="ism-table--el__strong"><abbr title="Arsenal">ARS</abbr></span>
+            </div>
+        </div>
+
+    </td>
+    <td class="ism-table--el__strong">£9.0</td>
+    <td class="ism-table--el__strong">0</td>
+</tr><tr class="ismjs-menu ism-row-select ism-element-list__info--0">
+    <td class="ism-table--el__status">
+        
+            <a href="#" class="ismjs-info ism-table--el__status-link" title="Unlikely to play next match"><svg class="ism-icon--element ism-icon--status-0">
+                <title>Unlikely to play next match</title>
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ism-status"></use>
+            </svg></a>
+        
+    </td>
+    <td class="ism-table--el__primary">
+        <div class="ism-media ism-media--centred">
+            <div class="ism-media__figure">
+
+                <picture>
+                    <source type="image/webp" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-110.webp 110w,
+                                https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-66.webp 66w,
+                                https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-33.webp 33w" sizes="16px">
+                    <img src="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-33.png" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-110.png 110w,
+                            https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-66.png 66w,
+                            https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-33.png 33w" sizes="16px" alt="Arsenal" title="Arsenal" class="ism-shirt">
+                </picture>
+            </div>
+
+            <div class="ism-media__body ism-table--el__primary-text">
+                <a href="#" class="ism-table--el__name">Welbeck</a>
+                <span class="ism-table--el__strong"><abbr title="Arsenal">ARS</abbr></span>
+            </div>
+        </div>
+
+    </td>
+    <td class="ism-table--el__strong">£7.5</td>
+    <td class="ism-table--el__strong">0</td>
+</tr>
+<tr class="ismjs-menu ism-row-select">
+    <td class="ism-table--el__status">
+        
+            <a href="#" class="ismjs-info ism-table--el__status-link" title="View player information"><svg class="ism-icon--element ism-icon--info" aria-labelledby="ism-title-info" aria-describedby="ism-desc-info">
+                <title id="ism-title-info">View player information</title>
+                <desc id="ism-desc-info">Information about the player, their season history and upcoming fixtures</desc>
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ism-info"></use>
+            </svg></a>
+        
+    </td>
+    <td class="ism-table--el__primary">
+        <div class="ism-media ism-media--centred">
+            <div class="ism-media__figure">
+
+                <picture>
+                    <source type="image/webp" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-110.webp 110w,
+                                https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-66.webp 66w,
+                                https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-33.webp 33w" sizes="16px">
+                    <img src="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-33.png" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-110.png 110w,
+                            https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-66.png 66w,
+                            https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-33.png 33w" sizes="16px" alt="Arsenal" title="Arsenal" class="ism-shirt">
+                </picture>
+            </div>
+
+            <div class="ism-media__body ism-table--el__primary-text">
+                <a href="#" class="ism-table--el__name">Akpom</a>
+                <span class="ism-table--el__strong"><abbr title="Arsenal">ARS</abbr></span>
+            </div>
+        </div>
+
+    </td>
+    <td class="ism-table--el__strong">£5.5</td>
+    <td class="ism-table--el__strong">0</td>
+</tr></tbody>
+        </table>
+    </div>
+</div></div>
+
+    
+
+</div></div>
                 </section>
 
             </div>
