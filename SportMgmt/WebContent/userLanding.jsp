@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The12thman | Football</title>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 	<%@ taglib uri="WEB-INF/sportmgmt.tld" prefix="s" %>  
     <link rel="stylesheet" href="/SportMgmt/css/foundation.css">
     <link rel="stylesheet" href="/SportMgmt/css/app.css">
@@ -974,7 +975,7 @@
                     
                     <div id="ismr-elements-list"><div>
 
-    <p class="ism-elements-shown"><strong class="ism-elements-shown__num">30</strong> players shown</p>
+    <p class="ism-elements-shown"><strong class="ism-elements-shown__num">${fn:length(sessionScope.playerList)}</strong> players shown</p>
 
     <div id="ismjs-elements-list-tables"><div>
     <div class="table" id="Goalkeepers">
@@ -983,8 +984,8 @@
                 <tr class="ism-table__divider ism-el-type ism-el-type--1">
                     <th class="ism-table--el-list__status"></th>
                     <th class="ism-table--el-list__name"><a href="#" class="ism-link--bold">Goalkeepers</a></th>
-                    <th class="ism-table--el-list__price"><abbr title="Price">�</abbr></th>
-                    <th class="ism-table--el-list__stat"><abbr title="Goals scored">GS</abbr></th>
+                    <th class="ism-table--el-list__price"><abbr title="Price">$</abbr></th>
+                    <th class="ism-table--el-list__stat"><abbr title="Goals scored">TS</abbr></th>
                 </tr>
             </thead>
             <tbody>
@@ -1016,13 +1017,13 @@
 
             <div class="ism-media__body ism-table--el__primary-text">
                 <a href="#" class="ism-table--el__name">${playerMap.name}</a>
-                <span class="ism-table--el__strong"><abbr title="Arsenal">ARS</abbr></span>
+                <span class="ism-table--el__strong"><a href="javascript:void(0);"  title="Arsenal">Add Player</a></span>
             </div>
         </div>
 
     </td>
     <td class="ism-table--el__strong">${playerMap.price}</td>
-    <td class="ism-table--el__strong">0</td>
+    <td class="ism-table--el__strong">${playerMap.totalScore}</td>
 </tr>
 </c:if>
  </c:forEach>
@@ -1036,8 +1037,8 @@
                 <tr class="ism-table__divider ism-el-type ism-el-type--2">
                     <th class="ism-table--el-list__status"></th>
                     <th class="ism-table--el-list__name"><a href="#" class="ism-link--bold">Defenders</a></th>
-                    <th class="ism-table--el-list__price"><abbr title="Price">�</abbr></th>
-                    <th class="ism-table--el-list__stat"><abbr title="Goals scored">GS</abbr></th>
+                    <th class="ism-table--el-list__price"><abbr title="Price">$</abbr></th>
+                    <th class="ism-table--el-list__stat"><abbr title="Goals scored">TS</abbr></th>
                 </tr>
             </thead>
             <tbody>
@@ -1069,13 +1070,13 @@
 
             <div class="ism-media__body ism-table--el__primary-text">
                 <a href="#" class="ism-table--el__name">${playerMap.name}</a>
-                <span class="ism-table--el__strong"><abbr title="Arsenal">ARS</abbr></span>
+                <span class="ism-table--el__strong"><a href="javascript:void(0);"  title="Arsenal">Add Player</a></span>
             </div>
         </div>
 
     </td>
     <td class="ism-table--el__strong">${playerMap.price}</td>
-    <td class="ism-table--el__strong">1</td>
+    <td class="ism-table--el__strong">${playerMap.totalScore}</td>
 </tr>
 </c:if>
 </c:forEach>
@@ -1089,8 +1090,8 @@
                 <tr class="ism-table__divider ism-el-type ism-el-type--3">
                     <th class="ism-table--el-list__status"></th>
                     <th class="ism-table--el-list__name"><a href="#" class="ism-link--bold">Midfielders</a></th>
-                    <th class="ism-table--el-list__price"><abbr title="Price">�</abbr></th>
-                    <th class="ism-table--el-list__stat"><abbr title="Goals scored">GS</abbr></th>
+                    <th class="ism-table--el-list__price"><abbr title="Price">$</abbr></th>
+                    <th class="ism-table--el-list__stat"><abbr title="Goals scored">TS</abbr></th>
                 </tr>
             </thead>
             <tbody>
@@ -1122,13 +1123,13 @@
 
             <div class="ism-media__body ism-table--el__primary-text">
                 <a href="#" class="ism-table--el__name">${playerMap.name }</a>
-                <span class="ism-table--el__strong"><abbr title="Arsenal">ARS</abbr></span>
+                <span class="ism-table--el__strong"><a href="javascript:void(0);"  title="Arsenal">Add Player</a></span>
             </div>
         </div>
 
     </td>
     <td class="ism-table--el__strong">${playerMap.price}</td>
-    <td class="ism-table--el__strong">1</td>
+    <td class="ism-table--el__strong">${playerMap.totalScore}</td>
 </tr>
 </c:if>
 </c:forEach>
@@ -1174,13 +1175,13 @@
 
             <div class="ism-media__body ism-table--el__primary-text">
                 <a href="#" class="ism-table--el__name">${playerMap.name }</a>
-                <span class="ism-table--el__strong"><abbr title="Arsenal">ARS</abbr></span>
+                <span class="ism-table--el__strong"><a href="javascript:void(0);"  title="Arsenal">Add Player</a></span>
             </div>
         </div>
 
     </td>
     <td class="ism-table--el__strong">${playerMap.price }</td>
-    <td class="ism-table--el__strong">0</td>
+    <td class="ism-table--el__strong">${playerMap.totalScore}</td>
 </tr>
 </c:if>
 </c:forEach>
