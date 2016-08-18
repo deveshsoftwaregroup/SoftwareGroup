@@ -924,7 +924,7 @@
                                         <option value="Goalkeepers">Goalkeepers</option>
                                         <option value="Defenders">Defenders</option>
                                         <option value="Forwards">Forwards</option>
-                                        <option value="Midfielder">Midfielder</option>                                        
+                                        <option value="Midfielders">Midfielders</option>                                        
                                     </optgroup>
                                     <optgroup label="By Team">
                                     <c:forEach var="clubMap" items="${sessionScope.clubList}">
@@ -977,7 +977,7 @@
     <p class="ism-elements-shown"><strong class="ism-elements-shown__num">30</strong> players shown</p>
 
     <div id="ismjs-elements-list-tables"><div>
-    <div class="table">
+    <div class="table" id="Goalkeepers">
         <table class="ism-table ism-table--el ism-table--el-list">
             <thead>
                 <tr class="ism-table__divider ism-el-type ism-el-type--1">
@@ -988,7 +988,9 @@
                 </tr>
             </thead>
             <tbody>
-            <tr class="ismjs-menu ism-row-select">
+            <c:forEach var="playerMap" items="${sessionScope.playerList}">
+            <c:if test="${playerMap.type eq 'Goalkeeper'}">
+            <tr class="ismjs-menu ism-row-select" id="${playerMap.gameClubPlayerId}">
     <td class="ism-table--el__status">
         
             <a href="#" class="ismjs-info ism-table--el__status-link" title="View player information"><svg class="ism-icon--element ism-icon--info" aria-labelledby="ism-title-info" aria-describedby="ism-desc-info">
@@ -1013,52 +1015,22 @@
             </div>
 
             <div class="ism-media__body ism-table--el__primary-text">
-                <a href="#" class="ism-table--el__name">Ospina</a>
+                <a href="#" class="ism-table--el__name">${playerMap.name}</a>
                 <span class="ism-table--el__strong"><abbr title="Arsenal">ARS</abbr></span>
             </div>
         </div>
 
     </td>
-    <td class="ism-table--el__strong">�5.0</td>
+    <td class="ism-table--el__strong">${playerMap.price}</td>
     <td class="ism-table--el__strong">0</td>
-</tr><tr class="ismjs-menu ism-row-select">
-    <td class="ism-table--el__status">
-        
-            <a href="#" class="ismjs-info ism-table--el__status-link" title="View player information"><svg class="ism-icon--element ism-icon--info" aria-labelledby="ism-title-info" aria-describedby="ism-desc-info">
-                <title id="ism-title-info">View player information</title>
-                <desc id="ism-desc-info">Information about the player, their season history and upcoming fixtures</desc>
-                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ism-info"></use>
-            </svg></a>
-        
-    </td>
-    <td class="ism-table--el__primary">
-        <div class="ism-media ism-media--centred">
-            <div class="ism-media__figure">
-
-                <picture>
-                    <source type="image/webp" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3_1-110.webp 110w,
-                                https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3_1-66.webp 66w,
-                                https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3_1-33.webp 33w" sizes="16px">
-                    <img src="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3_1-33.png" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3_1-110.png 110w,
-                            https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3_1-66.png 66w,
-                            https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3_1-33.png 33w" sizes="16px" alt="Arsenal" title="Arsenal" class="ism-shirt">
-                </picture>
-            </div>
-
-            <div class="ism-media__body ism-table--el__primary-text">
-                <a href="#" class="ism-table--el__name">Cech</a>
-                <span class="ism-table--el__strong"><abbr title="Arsenal">ARS</abbr></span>
-            </div>
-        </div>
-
-    </td>
-    <td class="ism-table--el__strong">�5.5</td>
-    <td class="ism-table--el__strong">0</td>
-</tr></tbody>
+</tr>
+</c:if>
+ </c:forEach>
+</tbody>
         </table>
     </div>
 </div><div>
-    <div class="table">
+    <div class="table" id="Defenders">
         <table class="ism-table ism-table--el ism-table--el-list">
             <thead>
                 <tr class="ism-table__divider ism-el-type ism-el-type--2">
@@ -1069,7 +1041,9 @@
                 </tr>
             </thead>
             <tbody>
-            <tr class="ismjs-menu ism-row-select">
+            <c:forEach var="playerMap" items="${sessionScope.playerList}">
+            <c:if test="${playerMap.type eq 'Defender'}">
+            <tr class="ismjs-menu ism-row-select" id="${playerMap.gameClubPlayerId}">
     <td class="ism-table--el__status">
         
             <a href="#" class="ismjs-info ism-table--el__status-link" title="View player information"><svg class="ism-icon--element ism-icon--info" aria-labelledby="ism-title-info" aria-describedby="ism-desc-info">
@@ -1094,52 +1068,22 @@
             </div>
 
             <div class="ism-media__body ism-table--el__primary-text">
-                <a href="#" class="ism-table--el__name">Chambers</a>
+                <a href="#" class="ism-table--el__name">${playerMap.name}</a>
                 <span class="ism-table--el__strong"><abbr title="Arsenal">ARS</abbr></span>
             </div>
         </div>
 
     </td>
-    <td class="ism-table--el__strong">�4.5</td>
+    <td class="ism-table--el__strong">${playerMap.price}</td>
     <td class="ism-table--el__strong">1</td>
-</tr><tr class="ismjs-menu ism-row-select">
-    <td class="ism-table--el__status">
-        
-            <a href="#" class="ismjs-info ism-table--el__status-link" title="View player information"><svg class="ism-icon--element ism-icon--info" aria-labelledby="ism-title-info" aria-describedby="ism-desc-info">
-                <title id="ism-title-info">View player information</title>
-                <desc id="ism-desc-info">Information about the player, their season history and upcoming fixtures</desc>
-                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ism-info"></use>
-            </svg></a>
-        
-    </td>
-    <td class="ism-table--el__primary">
-        <div class="ism-media ism-media--centred">
-            <div class="ism-media__figure">
-
-                <picture>
-                    <source type="image/webp" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-110.webp 110w,
-                                https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-66.webp 66w,
-                                https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-33.webp 33w" sizes="16px">
-                    <img src="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-33.png" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-110.png 110w,
-                            https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-66.png 66w,
-                            https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-33.png 33w" sizes="16px" alt="Arsenal" title="Arsenal" class="ism-shirt">
-                </picture>
-            </div>
-
-            <div class="ism-media__body ism-table--el__primary-text">
-                <a href="#" class="ism-table--el__name">Holding</a>
-                <span class="ism-table--el__strong"><abbr title="Arsenal">ARS</abbr></span>
-            </div>
-        </div>
-
-    </td>
-    <td class="ism-table--el__strong">�4.5</td>
-    <td class="ism-table--el__strong">0</td>
-</tr></tbody>
+</tr>
+</c:if>
+</c:forEach>
+</tbody>
         </table>
     </div>
 </div><div>
-    <div class="table">
+    <div class="table" id="Midfielders">
         <table class="ism-table ism-table--el ism-table--el-list">
             <thead>
                 <tr class="ism-table__divider ism-el-type ism-el-type--3">
@@ -1150,7 +1094,9 @@
                 </tr>
             </thead>
             <tbody>
-            <tr class="ismjs-menu ism-row-select">
+            <c:forEach var="playerMap" items="${sessionScope.playerList}">
+            <c:if test="${playerMap.type eq 'Midfielder'}">
+            <tr class="ismjs-menu ism-row-select" id="${playerMap.gameClubPlayerId}">
     <td class="ism-table--el__status">
         
             <a href="#" class="ismjs-info ism-table--el__status-link" title="View player information"><svg class="ism-icon--element ism-icon--info" aria-labelledby="ism-title-info" aria-describedby="ism-desc-info">
@@ -1175,97 +1121,35 @@
             </div>
 
             <div class="ism-media__body ism-table--el__primary-text">
-                <a href="#" class="ism-table--el__name">Walcott</a>
+                <a href="#" class="ism-table--el__name">${playerMap.name }</a>
                 <span class="ism-table--el__strong"><abbr title="Arsenal">ARS</abbr></span>
             </div>
         </div>
 
     </td>
-    <td class="ism-table--el__strong">�7.5</td>
-    <td class="ism-table--el__strong">1</td>
-</tr><tr class="ismjs-menu ism-row-select">
-    <td class="ism-table--el__status">
-        
-            <a href="#" class="ismjs-info ism-table--el__status-link" title="View player information"><svg class="ism-icon--element ism-icon--info" aria-labelledby="ism-title-info" aria-describedby="ism-desc-info">
-                <title id="ism-title-info">View player information</title>
-                <desc id="ism-desc-info">Information about the player, their season history and upcoming fixtures</desc>
-                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ism-info"></use>
-            </svg></a>
-        
-    </td>
-    <td class="ism-table--el__primary">
-        <div class="ism-media ism-media--centred">
-            <div class="ism-media__figure">
-
-                <picture>
-                    <source type="image/webp" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-110.webp 110w,
-                                https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-66.webp 66w,
-                                https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-33.webp 33w" sizes="16px">
-                    <img src="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-33.png" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-110.png 110w,
-                            https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-66.png 66w,
-                            https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-33.png 33w" sizes="16px" alt="Arsenal" title="Arsenal" class="ism-shirt">
-                </picture>
-            </div>
-
-            <div class="ism-media__body ism-table--el__primary-text">
-                <a href="#" class="ism-table--el__name">Chamberlain</a>
-                <span class="ism-table--el__strong"><abbr title="Arsenal">ARS</abbr></span>
-            </div>
-        </div>
-
-    </td>
-    <td class="ism-table--el__strong">�6.0</td>
+    <td class="ism-table--el__strong">${playerMap.price}</td>
     <td class="ism-table--el__strong">1</td>
 </tr>
-<tr class="ismjs-menu ism-row-select">
-    <td class="ism-table--el__status">
-        
-            <a href="#" class="ismjs-info ism-table--el__status-link" title="View player information"><svg class="ism-icon--element ism-icon--info" aria-labelledby="ism-title-info" aria-describedby="ism-desc-info">
-                <title id="ism-title-info">View player information</title>
-                <desc id="ism-desc-info">Information about the player, their season history and upcoming fixtures</desc>
-                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ism-info"></use>
-            </svg></a>
-        
-    </td>
-    <td class="ism-table--el__primary">
-        <div class="ism-media ism-media--centred">
-            <div class="ism-media__figure">
-
-                <picture>
-                    <source type="image/webp" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-110.webp 110w,
-                                https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-66.webp 66w,
-                                https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-33.webp 33w" sizes="16px">
-                    <img src="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-33.png" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-110.png 110w,
-                            https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-66.png 66w,
-                            https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-33.png 33w" sizes="16px" alt="Arsenal" title="Arsenal" class="ism-shirt">
-                </picture>
-            </div>
-
-            <div class="ism-media__body ism-table--el__primary-text">
-                <a href="#" class="ism-table--el__name">Xhaka</a>
-                <span class="ism-table--el__strong"><abbr title="Arsenal">ARS</abbr></span>
-            </div>
-        </div>
-
-    </td>
-    <td class="ism-table--el__strong">�5.5</td>
-    <td class="ism-table--el__strong">0</td>
-</tr></tbody>
+</c:if>
+</c:forEach>
+</tbody>
         </table>
     </div>
 </div><div>
-    <div class="table">
+    <div class="table" id="Forwards">
         <table class="ism-table ism-table--el ism-table--el-list">
             <thead>
                 <tr class="ism-table__divider ism-el-type ism-el-type--4">
                     <th class="ism-table--el-list__status"></th>
                     <th class="ism-table--el-list__name"><a href="#" class="ism-link--bold">Forwards</a></th>
-                    <th class="ism-table--el-list__price"><abbr title="Price">�</abbr></th>
-                    <th class="ism-table--el-list__stat"><abbr title="Goals scored">GS</abbr></th>
+                    <th class="ism-table--el-list__price"><abbr title="Price">INR</abbr></th>
+                    <th class="ism-table--el-list__stat"><abbr title="Goals scored">TS</abbr></th>
                 </tr>
             </thead>
             <tbody>
-            <tr class="ismjs-menu ism-row-select ism-element-list__info--0">
+            <c:forEach var="playerMap" items="${sessionScope.playerList}">
+            <c:if test="${playerMap.type eq 'Midfielder'}">
+            <tr class="ismjs-menu ism-row-select ism-element-list__info--0" id="${playerMap.gameClubPlayerId}">
     <td class="ism-table--el__status">
         
             <a href="#" class="ismjs-info ism-table--el__status-link" title="75% chance of playing next match"><svg class="ism-icon--element ism-icon--status-75">
@@ -1289,81 +1173,18 @@
             </div>
 
             <div class="ism-media__body ism-table--el__primary-text">
-                <a href="#" class="ism-table--el__name">Giroud</a>
+                <a href="#" class="ism-table--el__name">${playerMap.name }</a>
                 <span class="ism-table--el__strong"><abbr title="Arsenal">ARS</abbr></span>
             </div>
         </div>
 
     </td>
-    <td class="ism-table--el__strong">�9.0</td>
-    <td class="ism-table--el__strong">0</td>
-</tr><tr class="ismjs-menu ism-row-select ism-element-list__info--0">
-    <td class="ism-table--el__status">
-        
-            <a href="#" class="ismjs-info ism-table--el__status-link" title="Unlikely to play next match"><svg class="ism-icon--element ism-icon--status-0">
-                <title>Unlikely to play next match</title>
-                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ism-status"></use>
-            </svg></a>
-        
-    </td>
-    <td class="ism-table--el__primary">
-        <div class="ism-media ism-media--centred">
-            <div class="ism-media__figure">
-
-                <picture>
-                    <source type="image/webp" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-110.webp 110w,
-                                https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-66.webp 66w,
-                                https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-33.webp 33w" sizes="16px">
-                    <img src="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-33.png" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-110.png 110w,
-                            https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-66.png 66w,
-                            https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-33.png 33w" sizes="16px" alt="Arsenal" title="Arsenal" class="ism-shirt">
-                </picture>
-            </div>
-
-            <div class="ism-media__body ism-table--el__primary-text">
-                <a href="#" class="ism-table--el__name">Welbeck</a>
-                <span class="ism-table--el__strong"><abbr title="Arsenal">ARS</abbr></span>
-            </div>
-        </div>
-
-    </td>
-    <td class="ism-table--el__strong">�7.5</td>
+    <td class="ism-table--el__strong">${playerMap.price }</td>
     <td class="ism-table--el__strong">0</td>
 </tr>
-<tr class="ismjs-menu ism-row-select">
-    <td class="ism-table--el__status">
-        
-            <a href="#" class="ismjs-info ism-table--el__status-link" title="View player information"><svg class="ism-icon--element ism-icon--info" aria-labelledby="ism-title-info" aria-describedby="ism-desc-info">
-                <title id="ism-title-info">View player information</title>
-                <desc id="ism-desc-info">Information about the player, their season history and upcoming fixtures</desc>
-                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ism-info"></use>
-            </svg></a>
-        
-    </td>
-    <td class="ism-table--el__primary">
-        <div class="ism-media ism-media--centred">
-            <div class="ism-media__figure">
-
-                <picture>
-                    <source type="image/webp" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-110.webp 110w,
-                                https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-66.webp 66w,
-                                https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-33.webp 33w" sizes="16px">
-                    <img src="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-33.png" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-110.png 110w,
-                            https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-66.png 66w,
-                            https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-33.png 33w" sizes="16px" alt="Arsenal" title="Arsenal" class="ism-shirt">
-                </picture>
-            </div>
-
-            <div class="ism-media__body ism-table--el__primary-text">
-                <a href="#" class="ism-table--el__name">Akpom</a>
-                <span class="ism-table--el__strong"><abbr title="Arsenal">ARS</abbr></span>
-            </div>
-        </div>
-
-    </td>
-    <td class="ism-table--el__strong">�5.5</td>
-    <td class="ism-table--el__strong">0</td>
-</tr></tbody>
+</c:if>
+</c:forEach>
+</tbody>
         </table>
     </div>
 </div></div>
@@ -1408,6 +1229,61 @@
      $('#ismjs-element-filter').change(function(){
 	  var selected = $(':selected',this); 
 	  console.debug(selected.closest('optgroup').attr('label'));
+	  $("tr.ismjs-menu.ism-row-select").each(function()
+		{
+			$(this).show();
+		});
+	  if(typeof selected.closest('optgroup').attr('label') != 'undefined' && selected.closest('optgroup').attr('label') == 'Global')
+		{
+		   $("div#ismjs-elements-list-tables").find("div.table").each(function(){
+			 // console.debug(" table Id: "+$(this).attr('id'));
+			 $(this).show();
+			})
+		}
+	  else if(typeof selected.closest('optgroup').attr('label') != 'undefined' && selected.closest('optgroup').attr('label') == 'By Position')
+		{
+		  var playerGroup = selected.attr("value");
+		  console.debug("--- Selected Position: "+playerGroup);
+		  $("div#ismjs-elements-list-tables").find("div.table").each(function(){
+			  console.debug(" table Id: "+$(this).attr('id'));
+			  if(typeof $(this).attr('id') != 'undefined' && $(this).attr('id')!== playerGroup)
+			  {
+				  $(this).hide();
+			  }
+		 })
+		}
+	  else if(typeof selected.closest('optgroup').attr('label') != 'undefined' && selected.closest('optgroup').attr('label') == 'By Team')
+		{
+		  var selectedClub = selected.attr("value");
+		  console.debug("--- Selected Club: "+selectedClub);
+		  $("div#ismjs-elements-list-tables").find("div.table").each(function(){
+				 // console.debug(" table Id: "+$(this).attr('id'));
+				 $(this).show();
+			})
+		 $("tr.ismjs-menu.ism-row-select").each(function()
+			{
+				var gameClubPlayerId = $(this).attr('id');
+				var selectedClub = selected.attr("value");
+				var playerClubId = "";
+				if(typeof playerListJson != 'undefined')
+				{
+					for(var playerListIndex = 0; playerListIndex < playerListJson.length; playerListIndex++)
+					{
+					  if(playerListJson[playerListIndex].gameClubPlayerId == gameClubPlayerId)
+						{
+						  playerClubId =   playerListJson[playerListIndex].clubId;
+						}
+						  
+					}
+				}
+				console.debug("--- gamePlayerId : "+gameClubPlayerId + "  , playerClubId "+playerClubId);
+				if(selectedClub.split('_')[1] !=playerClubId)
+				{
+					 $(this).hide();
+				}
+				
+			});
+		}
    });
    
    </script>
