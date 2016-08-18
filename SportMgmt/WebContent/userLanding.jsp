@@ -20,6 +20,19 @@
     
     /*  home  page */
 .ism-game-header h1 a{ color:#fff;}
+#ajaxloader {
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-top: 16px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
 </style>
 </head> 
  <body>
@@ -1017,7 +1030,7 @@
 
             <div class="ism-media__body ism-table--el__primary-text">
                 <a href="#" class="ism-table--el__name">${playerMap.name}</a>
-                <span class="ism-table--el__strong"><a href="javascript:void(0);"  title="Arsenal">Add Player</a></span>
+                <span class="ism-table--el__strong"><a href="javascript:void(0);"  onclick="addPlayer('${sessionScope.userId}','${playerMap.gameClubPlayerId}');" title="Add Player">Add Player</a></span>
             </div>
         </div>
 
@@ -1070,7 +1083,7 @@
 
             <div class="ism-media__body ism-table--el__primary-text">
                 <a href="#" class="ism-table--el__name">${playerMap.name}</a>
-                <span class="ism-table--el__strong"><a href="javascript:void(0);"  title="Arsenal">Add Player</a></span>
+                <span class="ism-table--el__strong"><a href="javascript:void(0);"  onclick="addPlayer('${sessionScope.userId}','${playerMap.gameClubPlayerId}');" title="Add Player">Add Player</a></span>
             </div>
         </div>
 
@@ -1123,7 +1136,7 @@
 
             <div class="ism-media__body ism-table--el__primary-text">
                 <a href="#" class="ism-table--el__name">${playerMap.name }</a>
-                <span class="ism-table--el__strong"><a href="javascript:void(0);"  title="Arsenal">Add Player</a></span>
+                <span class="ism-table--el__strong"><a href="javascript:void(0);"  onclick="addPlayer('${sessionScope.userId}','${playerMap.gameClubPlayerId}');" title="Add Player">Add Player</a></span>
             </div>
         </div>
 
@@ -1174,8 +1187,8 @@
             </div>
 
             <div class="ism-media__body ism-table--el__primary-text">
-                <a href="#" class="ism-table--el__name">${playerMap.name }</a>
-                <span class="ism-table--el__strong"><a href="javascript:void(0);"  title="Arsenal">Add Player</a></span>
+                <a href="#" class="ism-table--el__name">${playerMap.name}</a>
+                <span class="ism-table--el__strong"><a href="javascript:void(0);"  onclick="addPlayer('${sessionScope.userId}','${playerMap.gameClubPlayerId}');" title="Add Player">Add Player</a></span>
             </div>
         </div>
 
@@ -1218,16 +1231,40 @@
     <script src="/SportMgmt/js/jquery.animate-enhanced.min.js"></script>
     <script src="/SportMgmt/js/jquery.superslides.js" type="text/javascript" charset="utf-8"></script>
    <script type="text/javascript">
+   var gameDetailsJson = null;
+   var playerListJson = null;
+   var clubListJson = null;
+   var userGameJson = null;
+   </script>
    	<c:if test="${not empty sessionScope.gameDetailsJson}">
-   		var gameDetailsJson = ${sessionScope.gameDetailsJson};
+   	<script type="text/javascript">
+   		gameDetailsJson = ${sessionScope.gameDetailsJson};
+   	</script>
    	</c:if>
    	<c:if test="${not empty sessionScope.playerListJson}">
-  		var playerListJson = ${sessionScope.playerListJson};
+   		<script type="text/javascript">
+  		 playerListJson = ${sessionScope.playerListJson};
+  		</script>
 	</c:if>
   	<c:if test="${not empty sessionScope.clubListJson}">
-		var clubListJson = ${sessionScope.clubListJson};
+  	<script type="text/javascript">
+		clubListJson = ${sessionScope.clubListJson};
+		</script>
 	</c:if>
-     $('#ismjs-element-filter').change(function(){
+	<c:if test="${not empty sessionScope.userGameJson}">
+  	<script type="text/javascript">
+  		userGameJson = ${sessionScope.userGameJson};
+		</script>
+	</c:if>
+	<script type="text/javascript">
+	$(document).ajaxStart(function(){
+	    $("#ajaxloader").css("display", "block");
+	});
+
+	$(document).ajaxComplete(function(){
+	    $("#ajaxloader").css("display", "none");
+	});
+ $('#ismjs-element-filter').change(function(){
 	  var selected = $(':selected',this); 
 	  console.debug(selected.closest('optgroup').attr('label'));
 	  $("tr.ismjs-menu.ism-row-select").each(function()
@@ -1286,8 +1323,97 @@
 			});
 		}
    });
-   
+     function addPlayer(userId, gameClubPlayerId)
+     {
+     	
+    	 var playerType = '';
+			if(typeof playerListJson != 'undefined')
+			{
+				for(var playerListIndex = 0; playerListIndex < playerListJson.length; playerListIndex++)
+				{
+				  if(playerListJson[playerListIndex].gameClubPlayerId == gameClubPlayerId)
+					{
+					  playerType =   playerListJson[playerListIndex].type;
+					}
+					  
+				}
+			}
+		console.debug("--- Player Type "+playerType);
+		var ajaxCall = true;
+		if(playerType =='')
+		{
+			ajaxCall = false;
+		}
+		else if (playerType == 'Goalkeeper')
+		{
+			if(typeof userGameJson != null && typeof userGameJson != 'undefined' && typeof userGameJson['total'] !='undefined')
+			{
+				if(userGameJson['total']['Goalkeeper'] >=2)
+				{
+					ajaxCall = false;
+					alert("You can add maximum 2 GoalKeepers. Please Remove any one first ");
+				}
+			}
+		}
+		else if (playerType == 'Midfielder')
+		{
+			if(typeof userGameJson != null && typeof userGameJson != 'undefined' && typeof userGameJson['total'] !='undefined')
+			{
+				if(userGameJson['total']['Midfielder'] >=5)
+				{
+					ajaxCall = false;
+					alert("You can add maximum 5 Midfielders. Please Remove any one first ");
+				}
+			}
+		}
+		else if (playerType == 'Forward')
+		{
+			if(typeof userGameJson != null && typeof userGameJson != 'undefined' && typeof userGameJson['total'] !='undefined')
+			{
+				if(userGameJson['total']['Forward'] >=3)
+				{
+					ajaxCall = false;
+					alert("You can add maximum 5 Forwards. Please Remove any one first ");
+				}
+			}
+		}
+		else if (playerType == 'Defender')
+		{
+			if(typeof userGameJson != null && typeof userGameJson != 'undefined' && typeof userGameJson['total'] !='undefined')
+			{
+				if(userGameJson['total']['Defender'] >=5)
+				{
+					ajaxCall = false;
+					alert("You can add maximum 5 Defenders. Please Remove any one first ");
+				}
+			}
+		}
+		console.debug("--- Ajax Call: "+ajaxCall);
+		if(ajaxCall)
+		{
+			var url = "/SportMgmt/mvc/game/AddPlayer?userId="+userId+"&gameClubPlayerId="+gameClubPlayerId;
+	     	$.ajax({
+	     		  url: url,
+	     		  dataType: 'json',
+	     		  success: function( resp ) {
+	     			  if(resp.isSuccess)
+	     			  {
+	     				 userGameJson = resp.userGameJson;
+	     			  }
+	     			  else
+	    			  {
+	    				  	alert(resp.errorMessage);
+	    			  }
+	     		  },
+	     		  error: function( req, status, err ) {
+	     		    console.log( 'something went wrong', status, err );
+	     		  }
+	     		});
+
+		}
+     }
    </script>
+   <div id="ajaxloader"></div>
   </body>
 	
 </html>
