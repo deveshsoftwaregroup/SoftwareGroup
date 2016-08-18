@@ -675,7 +675,7 @@
                                                         <tr class="ism-table__divider ism-el-type ism-el-type--1">
                                                             <th class="ism-table--squad__status"></th>
                                                             <th class="ism-table--squad__name">Goalkeepers</th>
-                                                            <th class="ism-table--squad__price"><abbr title="Price">£</abbr></th>
+                                                            <th class="ism-table--squad__price"><abbr title="Price">Â£</abbr></th>
                                                             <th class="ism-table--squad__tsb"><abbr title="Teams selected by %">SB</abbr></th>
                                                             <th class="ism-table--squad__pts-tot"><abbr title="Total points">TP</abbr></th>
                                                             <th class="ism-table--squad__fixture"><abbr title="Fixture next Gameweek">FIX</abbr></th>
@@ -709,7 +709,7 @@
                                                         <tr class="ism-table__divider ism-el-type ism-el-type--2">
                                                             <th class="ism-table--squad__status"></th>
                                                             <th class="ism-table--squad__name">Defenders</th>
-                                                            <th class="ism-table--squad__price"><abbr title="Price">£</abbr></th>
+                                                            <th class="ism-table--squad__price"><abbr title="Price">Â£</abbr></th>
                                                             <th class="ism-table--squad__tsb"><abbr title="Teams selected by %">SB</abbr></th>
                                                             <th class="ism-table--squad__pts-tot"><abbr title="Total points">TP</abbr></th>
                                                             <th class="ism-table--squad__fixture"><abbr title="Fixture next Gameweek">FIX</abbr></th>
@@ -761,7 +761,7 @@
                                                         <tr class="ism-table__divider ism-el-type ism-el-type--3">
                                                             <th class="ism-table--squad__status"></th>
                                                             <th class="ism-table--squad__name">Midfielders</th>
-                                                            <th class="ism-table--squad__price"><abbr title="Price">£</abbr></th>
+                                                            <th class="ism-table--squad__price"><abbr title="Price">Â£</abbr></th>
                                                             <th class="ism-table--squad__tsb"><abbr title="Teams selected by %">SB</abbr></th>
                                                             <th class="ism-table--squad__pts-tot"><abbr title="Total points">TP</abbr></th>
                                                             <th class="ism-table--squad__fixture"><abbr title="Fixture next Gameweek">FIX</abbr></th>
@@ -819,7 +819,7 @@
                                                         <tr class="ism-table__divider ism-el-type ism-el-type--4">
                                                             <th class="ism-table--squad__status"></th>
                                                             <th class="ism-table--squad__name">Forwards</th>
-                                                            <th class="ism-table--squad__price"><abbr title="Price">£</abbr></th>
+                                                            <th class="ism-table--squad__price"><abbr title="Price">Â£</abbr></th>
                                                             <th class="ism-table--squad__tsb"><abbr title="Teams selected by %">SB</abbr></th>
                                                             <th class="ism-table--squad__pts-tot"><abbr title="Total points">TP</abbr></th>
                                                             <th class="ism-table--squad__fixture"><abbr title="Fixture next Gameweek">FIX</abbr></th>
@@ -905,7 +905,7 @@
                                 </div>
                                 <div class="ism-scoreboard__panel">
                                     <h4 class="ism-scoreboard__panel__heading">Money Remaining</h4>
-                                    <div class="ism-scoreboard__panel__value is-success">£100.0</div>
+                                    <div class="ism-scoreboard__panel__value is-success">Â£100.0</div>
                                 </div>
                             </div>
 
@@ -921,12 +921,15 @@
                                         <option value="all">All players</option>
                                     </optgroup>
                                     <optgroup label="By Position">
-                                        <option value="et_1">Goalkeepers</option>
-                                        <option value="et_2">Defenders</option>                                        
+                                        <option value="Goalkeepers">Goalkeepers</option>
+                                        <option value="Defenders">Defenders</option>
+                                        <option value="Forwards">Forwards</option>
+                                        <option value="Midfielder">Midfielder</option>                                        
                                     </optgroup>
                                     <optgroup label="By Team">
-                                        <option value="te_1">Arsenal</option>
-                                        <option value="te_2">Bournemouth</option>                                       
+                                    <c:forEach var="clubMap" items="${sessionScope.clubList}">
+                                    	<option value="club_${clubMap['clubId']}">${clubMap['name']}</option>
+                                    </c:forEach>
                                     </optgroup>
                                 </select>
                             </div>
@@ -947,8 +950,8 @@
                                 <div class="ism-form__select-wrap">
                                     <select id="ismjs-element-price" class="ism-form__select">
                                         <option value="">Unlimited</option>
-                                        <option value="130">£13.0</option>
-                                        <option value="125">£12.5</option>                                        
+                                        <option value="130">Â£13.0</option>
+                                        <option value="125">Â£12.5</option>                                        
                                     </select>
                                 </div>
                             </div>
@@ -980,7 +983,7 @@
                 <tr class="ism-table__divider ism-el-type ism-el-type--1">
                     <th class="ism-table--el-list__status"></th>
                     <th class="ism-table--el-list__name"><a href="#" class="ism-link--bold">Goalkeepers</a></th>
-                    <th class="ism-table--el-list__price"><abbr title="Price">£</abbr></th>
+                    <th class="ism-table--el-list__price"><abbr title="Price">ï¿½</abbr></th>
                     <th class="ism-table--el-list__stat"><abbr title="Goals scored">GS</abbr></th>
                 </tr>
             </thead>
@@ -1016,7 +1019,7 @@
         </div>
 
     </td>
-    <td class="ism-table--el__strong">£5.0</td>
+    <td class="ism-table--el__strong">ï¿½5.0</td>
     <td class="ism-table--el__strong">0</td>
 </tr><tr class="ismjs-menu ism-row-select">
     <td class="ism-table--el__status">
@@ -1049,7 +1052,7 @@
         </div>
 
     </td>
-    <td class="ism-table--el__strong">£5.5</td>
+    <td class="ism-table--el__strong">ï¿½5.5</td>
     <td class="ism-table--el__strong">0</td>
 </tr></tbody>
         </table>
@@ -1061,7 +1064,7 @@
                 <tr class="ism-table__divider ism-el-type ism-el-type--2">
                     <th class="ism-table--el-list__status"></th>
                     <th class="ism-table--el-list__name"><a href="#" class="ism-link--bold">Defenders</a></th>
-                    <th class="ism-table--el-list__price"><abbr title="Price">£</abbr></th>
+                    <th class="ism-table--el-list__price"><abbr title="Price">ï¿½</abbr></th>
                     <th class="ism-table--el-list__stat"><abbr title="Goals scored">GS</abbr></th>
                 </tr>
             </thead>
@@ -1097,7 +1100,7 @@
         </div>
 
     </td>
-    <td class="ism-table--el__strong">£4.5</td>
+    <td class="ism-table--el__strong">ï¿½4.5</td>
     <td class="ism-table--el__strong">1</td>
 </tr><tr class="ismjs-menu ism-row-select">
     <td class="ism-table--el__status">
@@ -1130,7 +1133,7 @@
         </div>
 
     </td>
-    <td class="ism-table--el__strong">£4.5</td>
+    <td class="ism-table--el__strong">ï¿½4.5</td>
     <td class="ism-table--el__strong">0</td>
 </tr></tbody>
         </table>
@@ -1142,7 +1145,7 @@
                 <tr class="ism-table__divider ism-el-type ism-el-type--3">
                     <th class="ism-table--el-list__status"></th>
                     <th class="ism-table--el-list__name"><a href="#" class="ism-link--bold">Midfielders</a></th>
-                    <th class="ism-table--el-list__price"><abbr title="Price">£</abbr></th>
+                    <th class="ism-table--el-list__price"><abbr title="Price">ï¿½</abbr></th>
                     <th class="ism-table--el-list__stat"><abbr title="Goals scored">GS</abbr></th>
                 </tr>
             </thead>
@@ -1178,7 +1181,7 @@
         </div>
 
     </td>
-    <td class="ism-table--el__strong">£7.5</td>
+    <td class="ism-table--el__strong">ï¿½7.5</td>
     <td class="ism-table--el__strong">1</td>
 </tr><tr class="ismjs-menu ism-row-select">
     <td class="ism-table--el__status">
@@ -1211,7 +1214,7 @@
         </div>
 
     </td>
-    <td class="ism-table--el__strong">£6.0</td>
+    <td class="ism-table--el__strong">ï¿½6.0</td>
     <td class="ism-table--el__strong">1</td>
 </tr>
 <tr class="ismjs-menu ism-row-select">
@@ -1245,7 +1248,7 @@
         </div>
 
     </td>
-    <td class="ism-table--el__strong">£5.5</td>
+    <td class="ism-table--el__strong">ï¿½5.5</td>
     <td class="ism-table--el__strong">0</td>
 </tr></tbody>
         </table>
@@ -1257,7 +1260,7 @@
                 <tr class="ism-table__divider ism-el-type ism-el-type--4">
                     <th class="ism-table--el-list__status"></th>
                     <th class="ism-table--el-list__name"><a href="#" class="ism-link--bold">Forwards</a></th>
-                    <th class="ism-table--el-list__price"><abbr title="Price">£</abbr></th>
+                    <th class="ism-table--el-list__price"><abbr title="Price">ï¿½</abbr></th>
                     <th class="ism-table--el-list__stat"><abbr title="Goals scored">GS</abbr></th>
                 </tr>
             </thead>
@@ -1292,7 +1295,7 @@
         </div>
 
     </td>
-    <td class="ism-table--el__strong">£9.0</td>
+    <td class="ism-table--el__strong">ï¿½9.0</td>
     <td class="ism-table--el__strong">0</td>
 </tr><tr class="ismjs-menu ism-row-select ism-element-list__info--0">
     <td class="ism-table--el__status">
@@ -1324,7 +1327,7 @@
         </div>
 
     </td>
-    <td class="ism-table--el__strong">£7.5</td>
+    <td class="ism-table--el__strong">ï¿½7.5</td>
     <td class="ism-table--el__strong">0</td>
 </tr>
 <tr class="ismjs-menu ism-row-select">
@@ -1358,7 +1361,7 @@
         </div>
 
     </td>
-    <td class="ism-table--el__strong">£5.5</td>
+    <td class="ism-table--el__strong">ï¿½5.5</td>
     <td class="ism-table--el__strong">0</td>
 </tr></tbody>
         </table>
@@ -1392,7 +1395,22 @@
     <script src="/SportMgmt/js/jquery.easing.1.3.js"></script>
     <script src="/SportMgmt/js/jquery.animate-enhanced.min.js"></script>
     <script src="/SportMgmt/js/jquery.superslides.js" type="text/javascript" charset="utf-8"></script>
+   <script type="text/javascript">
+   	<c:if test="${not empty sessionScope.gameDetailsJson}">
+   		var gameDetailsJson = ${sessionScope.gameDetailsJson};
+   	</c:if>
+   	<c:if test="${not empty sessionScope.playerListJson}">
+  		var playerListJson = ${sessionScope.playerListJson};
+	</c:if>
+  	<c:if test="${not empty sessionScope.clubListJson}">
+		var clubListJson = ${sessionScope.clubListJson};
+	</c:if>
+     $('#ismjs-element-filter').change(function(){
+	  var selected = $(':selected',this); 
+	  console.debug(selected.closest('optgroup').attr('label'));
+   });
    
+   </script>
   </body>
-
+	
 </html>
