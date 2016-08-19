@@ -22,5 +22,13 @@
     <name>playerType</name>  
     <required>true</required>  
 </attribute>  
+</tag>
+<tag>  
+<name>sportExt</name>  
+<tag-class>com.sportmgmt.utility.common.SportMgmtExtTag</tag-class>
+<attribute>  
+    <name>retrieve</name>  
+    <required>true</required>  
+</attribute>  
 </tag>  
 </taglib>

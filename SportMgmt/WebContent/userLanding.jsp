@@ -39,6 +39,7 @@
 </style>
 </head> 
  <body>
+ <s:sportExt retrieve="priceList" />
  <main id="mainContent" tabindex="0" class="ism">
     <div class="ism-header">
         <div class="wrapper">
@@ -951,7 +952,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div id="ismr-sort" class="ism-form__group">
+                        <%-- <div id="ismr-sort" class="ism-form__group">
                             <label for="ismjs-element-sort" class="ism-form__label">Sorted by</label>
                             <div class="ism-form__select-wrap">
                                 <select id="ismjs-element-sort" class="ism-form__select">
@@ -960,21 +961,22 @@
                                     <option value="now_cost">Price</option>
                                 </select>
                             </div>
-                        </div>
+                        </div> --%>
                         <div id="ismr-price" class="ism-form__group">
                             <div>
                                 <label for="ismjs-element-price" class="ism-form__label">With a maximum price of</label>
                                 <div class="ism-form__select-wrap">
                                     <select id="ismjs-element-price" class="ism-form__select">
-                                        <option value="">Unlimited</option>
-                                        <option value="130">£13.0</option>
-                                        <option value="125">£12.5</option>                                        
+                                        <option value="0">Unlimited</option>
+                                        <c:forEach var="price" items="${priceList}" >
+                                        <option value="${price}">${price}</option>
+                                        </c:forEach>
                                     </select>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="ism-search">
+                       <!--  <div class="ism-search">
                             <label for="ismjs-element-search" class="ism-form__label">Search Player List</label>
                             <div class="searchInputContainer ism-search">
                                 <input id="ismjs-element-search" class="searchInput ism-search__input" type="search" placeholder="Player name">
@@ -983,7 +985,7 @@
                                     <div class="icn search-sm"></div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
 
                     </form>
 
@@ -1269,19 +1271,56 @@
 	});
  $('#ismjs-element-filter').change(function(){
 	  var selected = $(':selected',this); 
-	  console.debug(selected.closest('optgroup').attr('label'));
+	  filterByView(selected);
+	  
+   });
+ $('#ismjs-element-price').change(function(){
+	 console.debug("---- filter by price");
+	  var filterByViewSelected = $(':selected',$('#ismjs-element-filter')); 
+	  filterByView(filterByViewSelected);
+	  var selected = $(':selected',this);
+	  var seletedPrice = selected.attr("value");
+	  console.debug("---- filter by price selected value: "+seletedPrice);
+	  if(seletedPrice != null && seletedPrice != 'undefined' && seletedPrice !='0')
+	  {
+		  $("tr.ismjs-menu.ism-row-select:visible").each(function()
+					{
+						var gameClubPlayerId = $(this).attr('id');
+						var playerPrice = 0;
+						if(typeof playerListJson != 'undefined')
+						{
+							for(var playerListIndex = 0; playerListIndex < playerListJson.length; playerListIndex++)
+							{
+							  if(playerListJson[playerListIndex].gameClubPlayerId == gameClubPlayerId)
+								{
+								  playerPrice =   playerListJson[playerListIndex].price;
+								}
+								  
+							}
+						}
+						if(parseInt(seletedPrice) !=playerPrice)
+						{
+							 $(this).hide();
+						}
+						
+					});
+	  }
+	$("p.ism-elements-shown strong.ism-elements-shown__num").text($("tr.ismjs-menu.ism-row-select:visible").length);
+  });
+
+ function filterByView(selected)
+ {
+	 console.debug("---- filter by View");	
+	 console.debug(selected.closest('optgroup').attr('label'));
 	  $("tr.ismjs-menu.ism-row-select").each(function()
 		{
 			$(this).show();
 		});
-	  if(typeof selected.closest('optgroup').attr('label') != 'undefined' && selected.closest('optgroup').attr('label') == 'Global')
-		{
-		   $("div#ismjs-elements-list-tables").find("div.table").each(function(){
+	  $("div#ismjs-elements-list-tables").find("div.table").each(function(){
 			 // console.debug(" table Id: "+$(this).attr('id'));
 			 $(this).show();
-			})
-		}
-	  else if(typeof selected.closest('optgroup').attr('label') != 'undefined' && selected.closest('optgroup').attr('label') == 'By Position')
+		})
+	  if(typeof selected.closest('optgroup').attr('label') != 'undefined' && selected.closest('optgroup').attr('label') == 'By Position')
 		{
 		  var playerGroup = selected.attr("value");
 		  console.debug("--- Selected Position: "+playerGroup);
@@ -1297,11 +1336,7 @@
 		{
 		  var selectedClub = selected.attr("value");
 		  console.debug("--- Selected Club: "+selectedClub);
-		  $("div#ismjs-elements-list-tables").find("div.table").each(function(){
-				 // console.debug(" table Id: "+$(this).attr('id'));
-				 $(this).show();
-			})
-		 $("tr.ismjs-menu.ism-row-select").each(function()
+		  $("tr.ismjs-menu.ism-row-select").each(function()
 			{
 				var gameClubPlayerId = $(this).attr('id');
 				var selectedClub = selected.attr("value");
@@ -1317,7 +1352,6 @@
 						  
 					}
 				}
-				console.debug("--- gamePlayerId : "+gameClubPlayerId + "  , playerClubId "+playerClubId);
 				if(selectedClub.split('_')[1] !=playerClubId)
 				{
 					 $(this).hide();
@@ -1325,7 +1359,8 @@
 				
 			});
 		}
-   });
+	  $("p.ism-elements-shown strong.ism-elements-shown__num").text($("tr.ismjs-menu.ism-row-select:visible").length);
+ }
      function addPlayer(userId, gameClubPlayerId)
      {
      	
