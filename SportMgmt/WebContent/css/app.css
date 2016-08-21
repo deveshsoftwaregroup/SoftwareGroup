@@ -18,6 +18,13 @@ main-banner .euro-headings p{font-family: 'Racing Sans One',cursive;}
 .euro-divider {
     width: 60%; margin:auto;
 }
+
+@font-face {
+  font-family: 'LOGOTOPFONT';
+  src: url(../fonts/Precious.ttf) format('truetype');
+}
+
+
 button.bigRegister {
     font-size: 16px;
     letter-spacing: 2px;
