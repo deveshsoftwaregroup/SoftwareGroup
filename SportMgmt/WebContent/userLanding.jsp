@@ -16,8 +16,14 @@
     <link rel="stylesheet" type="text/css" href="/SportMgmt/css/customMedia.css">
    <!-- <link rel="stylesheet" href="https://ismdj.scdn5.secure.raxcdn.com/static/CACHE/css/258578334140.css" type="text/css" />-->
     <link rel="stylesheet" type="text/css" href="/SportMgmt/css/258578334140.css">
+    <script src="https://use.fontawesome.com/d4e6d4c165.js"></script>
     <style>
-    
+    .addPlayer a{ color:#ed3a28; font-size: 18px; padding: 5px;}
+    .removePlayerIcon{ background: #de5e00;
+    color: #fff !important;
+    padding: 2px 5px;
+    font-size: 12px;
+    font-weight: bold;}
     /*  home  page */
 .ism-game-header h1 a{ color:#fff;}
 #ajaxloader {
@@ -109,7 +115,7 @@
                                         <a href="#ismr-summary" class="ism-toggle-tabs__tab" role="tab" tabindex="0" aria-controls="ismr-summary" aria-selected="true">Pitch View</a>
                                     </li>
                                     <li class="ism-toggle-tabs__item" role="presentation">
-                                        <a href="#ismr-detail" class="ism-toggle-tabs__tab" role="tab" tabindex="-1" aria-controls="ismr-detail">List View</a>
+                                        <a href="#ismr-detail" class="ism-toggle-tabs__tab" role="tab" tabindex="0" aria-controls="ismr-detail">List View</a>
                                     </li>
                                 </ul>
 
@@ -158,37 +164,26 @@
                                             <div id="ismr-pos2" class="ism-pitch__unit ism-pitch__unit--4">
                                                 <div>
                                                     <div class="ism-element" tabindex="0">
+                                                    	<div class="ismjs-select">
 
-                                                        <div class="ismjs-select">
-
-                                                            <picture>
-                                                                <source type="/SportMgmt/js/webp" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-110.webp 110w,
+                <picture>
+                    <source type="image/webp" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-110.webp 110w,
                                 https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-66.webp 66w,
                                 https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-33.webp 33w" sizes="(min-width: 1024px) 55px,
                                (min-width: 610px) 44px,
                                 33px">
-                                                                <img src="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-33.png" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-110.png 110w,
+                    <img src="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-33.png" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-110.png 110w,
                                 https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-66.png 66w,
                                 https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-33.png 33w" sizes="(min-width: 1024px) 55px,
                                (min-width: 610px) 44px,
                                 33px" alt="" title="Click to select a Goalkeeper" class="ism-shirt ism-element__shirt">
-                                                            </picture>
-															<s:sport position="2" playerType="Goalkeeper"/>
-                                                             <c:choose>
-                                                             <c:when test="${isPlayerAvail}">
-                                                             	<div class="ism-element__name ism-element__name--placeholder">
-                                                                ${playerName} <abbr title="Goalkeeper" class="ism-element__type"><span class="ism-element__type__short">${price}</span></abbr>
-                                                             </div>
-                                                             </c:when>
-                                                             <c:otherwise>
-                                                             <div class="ism-element__name ism-element__name--placeholder">
-                                                                Add <abbr title="Goalkeeper" class="ism-element__type"><span class="ism-element__type__short">GKP</span></abbr>
-                                                             </div>
-                                                             </c:otherwise>
-                                                             </c:choose>
-                                                            
-                                                          </div>
+                </picture>
 
+                <div class="ism-element__name ism-element__name--placeholder">
+                     Add <abbr title="Goalkeeper" class="ism-element__type"><span class="ism-element__type__short">GKP</span></abbr>
+                </div>
+            </div>                  
+                                                    
                                                     </div>
                                                 </div>
                                             </div>
@@ -685,7 +680,7 @@
                                     </div>
                                 </section>
                                 <section id="ismr-detail" class="ism-detail" role="tabpanel" aria-hidden="true">
-                                    <div tabindex="0">
+                                    <div tabindex="-1">
                                         <div>
                                             <div class="table">
                                                 <table class="ism-table ism-table--el ism-table--squad">
@@ -874,11 +869,184 @@
                                         </div>
                                     </div>
                                 </section>
+                                
+                                <section id="ismr-detail" class="ism-detail" role="tabpanel"><div tabindex="0"><div>
+    <div class="table">
+        <table class="ism-table ism-table--el ism-table--squad">
+            <thead>
+                <tr class="ism-table__divider ism-el-type ism-el-type--1">
+                    <th class="ism-table--squad__status"></th>
+                    <th class="ism-table--squad__name">Goalkeepers</th>
+                    <th class="ism-table--squad__price"><abbr title="Price">�</abbr></th>
+                    <th class="ism-table--squad__tsb"><abbr title="Teams selected by %">SB</abbr></th>
+                    <th class="ism-table--squad__pts-tot"><abbr title="Total points">TP</abbr></th>
+                    <th class="ism-table--squad__fixture"><abbr title="Fixture next Gameweek">FIX</abbr></th>
+                </tr>
+            </thead>
+            <tbody><tr>
+    
+        <td></td>
+        <td colspan="5" class="ism-table--el__placeholder">
+            <a href="#" class="ismjs-select">Select Goalkeeper</a>
+        </td>
+    
+</tr><tr>
+    
+        <td></td>
+        <td colspan="5" class="ism-table--el__placeholder">
+            <a href="#" class="ismjs-select">Select Goalkeeper</a>
+        </td>
+    
+</tr></tbody>
+        </table>
+    </div>
+</div><div>
+    <div class="table">
+        <table class="ism-table ism-table--el ism-table--squad">
+            <thead>
+                <tr class="ism-table__divider ism-el-type ism-el-type--2">
+                    <th class="ism-table--squad__status"></th>
+                    <th class="ism-table--squad__name">Defenders</th>
+                    <th class="ism-table--squad__price"><abbr title="Price">�</abbr></th>
+                    <th class="ism-table--squad__tsb"><abbr title="Teams selected by %">SB</abbr></th>
+                    <th class="ism-table--squad__pts-tot"><abbr title="Total points">TP</abbr></th>
+                    <th class="ism-table--squad__fixture"><abbr title="Fixture next Gameweek">FIX</abbr></th>
+                </tr>
+            </thead>
+            <tbody><tr>
+    
+        <td></td>
+        <td colspan="5" class="ism-table--el__placeholder">
+            <a href="#" class="ismjs-select">Select Defender</a>
+        </td>
+    
+</tr><tr>
+    
+        <td></td>
+        <td colspan="5" class="ism-table--el__placeholder">
+            <a href="#" class="ismjs-select">Select Defender</a>
+        </td>
+    
+</tr><tr>
+    
+        <td></td>
+        <td colspan="5" class="ism-table--el__placeholder">
+            <a href="#" class="ismjs-select">Select Defender</a>
+        </td>
+    
+</tr><tr>
+    
+        <td></td>
+        <td colspan="5" class="ism-table--el__placeholder">
+            <a href="#" class="ismjs-select">Select Defender</a>
+        </td>
+    
+</tr><tr>
+    
+        <td></td>
+        <td colspan="5" class="ism-table--el__placeholder">
+            <a href="#" class="ismjs-select">Select Defender</a>
+        </td>
+    
+</tr></tbody>
+        </table>
+    </div>
+</div><div>
+    <div class="table">
+        <table class="ism-table ism-table--el ism-table--squad">
+            <thead>
+                <tr class="ism-table__divider ism-el-type ism-el-type--3">
+                    <th class="ism-table--squad__status"></th>
+                    <th class="ism-table--squad__name">Midfielders</th>
+                    <th class="ism-table--squad__price"><abbr title="Price">�</abbr></th>
+                    <th class="ism-table--squad__tsb"><abbr title="Teams selected by %">SB</abbr></th>
+                    <th class="ism-table--squad__pts-tot"><abbr title="Total points">TP</abbr></th>
+                    <th class="ism-table--squad__fixture"><abbr title="Fixture next Gameweek">FIX</abbr></th>
+                </tr>
+            </thead>
+            <tbody><tr>
+    
+        <td></td>
+        <td colspan="5" class="ism-table--el__placeholder">
+            <a href="#" class="ismjs-select">Select Midfielder</a>
+        </td>
+    
+</tr><tr>
+    
+        <td></td>
+        <td colspan="5" class="ism-table--el__placeholder">
+            <a href="#" class="ismjs-select">Select Midfielder</a>
+        </td>
+    
+</tr><tr>
+    
+        <td></td>
+        <td colspan="5" class="ism-table--el__placeholder">
+            <a href="#" class="ismjs-select">Select Midfielder</a>
+        </td>
+    
+</tr><tr>
+    
+        <td></td>
+        <td colspan="5" class="ism-table--el__placeholder">
+            <a href="#" class="ismjs-select">Select Midfielder</a>
+        </td>
+    
+</tr><tr>
+    
+        <td></td>
+        <td colspan="5" class="ism-table--el__placeholder">
+            <a href="#" class="ismjs-select">Select Midfielder</a>
+        </td>
+    
+</tr></tbody>
+        </table>
+    </div>
+</div><div>
+    <div class="table">
+        <table class="ism-table ism-table--el ism-table--squad">
+            <thead>
+                <tr class="ism-table__divider ism-el-type ism-el-type--4">
+                    <th class="ism-table--squad__status"></th>
+                    <th class="ism-table--squad__name">Forwards</th>
+                    <th class="ism-table--squad__price"><abbr title="Price">�</abbr></th>
+                    <th class="ism-table--squad__tsb"><abbr title="Teams selected by %">SB</abbr></th>
+                    <th class="ism-table--squad__pts-tot"><abbr title="Total points">TP</abbr></th>
+                    <th class="ism-table--squad__fixture"><abbr title="Fixture next Gameweek">FIX</abbr></th>
+                </tr>
+            </thead>
+            <tbody><tr>
+    
+        <td></td>
+        <td colspan="5" class="ism-table--el__placeholder">
+            <a href="#" class="ismjs-select">Select Forward</a>
+        </td>
+    
+</tr><tr>
+    
+        <td></td>
+        <td colspan="5" class="ism-table--el__placeholder">
+            <a href="#" class="ismjs-select">Select Forward</a>
+        </td>
+    
+</tr><tr>
+    
+        <td></td>
+        <td colspan="5" class="ism-table--el__placeholder">
+            <a href="#" class="ismjs-select">Select Forward</a>
+        </td>
+    
+</tr></tbody>
+        </table>
+    </div>
+</div>
+	</div>
+</section>
+                                
+                                
                             </div>
 
-                            <div class="ism-alert--info">
-                                <p class="ism-alert__item"><strong>Please note:</strong> Some kit designs are mere placeholders. All home shirts will be faithfully reproduced here once kits are launched.</p>
-                            </div>
+                            
 
                         </div>
                         
@@ -1010,13 +1178,9 @@
             <c:forEach var="playerMap" items="${sessionScope.playerList}">
             <c:if test="${playerMap.type eq 'Goalkeeper'}">
             <tr class="ismjs-menu ism-row-select" id="${playerMap.gameClubPlayerId}">
-    <td class="ism-table--el__status">
+    <td class="ism-table--el__status text-center addPlayer">
         
-            <a href="#" class="ismjs-info ism-table--el__status-link" title="View player information"><svg class="ism-icon--element ism-icon--info" aria-labelledby="ism-title-info" aria-describedby="ism-desc-info">
-                <title id="ism-title-info">View player information</title>
-                <desc id="ism-desc-info">Information about the player, their season history and upcoming fixtures</desc>
-                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ism-info"></use>
-            </svg></a>
+            <a href="#"><i class="fa fa-plus" aria-hidden="true"></i></a>
         
     </td>
     <td class="ism-table--el__primary">
@@ -1040,7 +1204,7 @@
         </div>
 
     </td>
-    <td class="ism-table--el__strong">${playerMap.price}</td>
+    <td class="ism-table--el__strong playerPrice">${playerMap.price}</td>
     <td class="ism-table--el__strong">${playerMap.totalScore}</td>
 </tr>
 </c:if>
@@ -1048,7 +1212,8 @@
 </tbody>
         </table>
     </div>
-</div><div>
+	</div>
+<div>
     <div class="table" id="Defenders">
         <table class="ism-table ism-table--el ism-table--el-list">
             <thead>
@@ -1063,13 +1228,9 @@
             <c:forEach var="playerMap" items="${sessionScope.playerList}">
             <c:if test="${playerMap.type eq 'Defender'}">
             <tr class="ismjs-menu ism-row-select" id="${playerMap.gameClubPlayerId}">
-    <td class="ism-table--el__status">
+    <td class="ism-table--el__status text-center addPlayer">
         
-            <a href="#" class="ismjs-info ism-table--el__status-link" title="View player information"><svg class="ism-icon--element ism-icon--info" aria-labelledby="ism-title-info" aria-describedby="ism-desc-info">
-                <title id="ism-title-info">View player information</title>
-                <desc id="ism-desc-info">Information about the player, their season history and upcoming fixtures</desc>
-                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ism-info"></use>
-            </svg></a>
+            <a href="#"><i class="fa fa-plus" aria-hidden="true"></i></a>
         
     </td>
     <td class="ism-table--el__primary">
@@ -1093,7 +1254,7 @@
         </div>
 
     </td>
-    <td class="ism-table--el__strong">${playerMap.price}</td>
+    <td class="ism-table--el__strong playerPrice">${playerMap.price}</td>
     <td class="ism-table--el__strong">${playerMap.totalScore}</td>
 </tr>
 </c:if>
@@ -1101,7 +1262,8 @@
 </tbody>
         </table>
     </div>
-</div><div>
+</div>
+<div>
     <div class="table" id="Midfielders">
         <table class="ism-table ism-table--el ism-table--el-list">
             <thead>
@@ -1116,13 +1278,9 @@
             <c:forEach var="playerMap" items="${sessionScope.playerList}">
             <c:if test="${playerMap.type eq 'Midfielder'}">
             <tr class="ismjs-menu ism-row-select" id="${playerMap.gameClubPlayerId}">
-    <td class="ism-table--el__status">
+    <td class="ism-table--el__status text-center addPlayer">
         
-            <a href="#" class="ismjs-info ism-table--el__status-link" title="View player information"><svg class="ism-icon--element ism-icon--info" aria-labelledby="ism-title-info" aria-describedby="ism-desc-info">
-                <title id="ism-title-info">View player information</title>
-                <desc id="ism-desc-info">Information about the player, their season history and upcoming fixtures</desc>
-                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ism-info"></use>
-            </svg></a>
+            <a href="#"><i class="fa fa-plus" aria-hidden="true"></i></a>
         
     </td>
     <td class="ism-table--el__primary">
@@ -1146,7 +1304,7 @@
         </div>
 
     </td>
-    <td class="ism-table--el__strong">${playerMap.price}</td>
+    <td class="ism-table--el__strong playerPrice">${playerMap.price}</td>
     <td class="ism-table--el__strong">${playerMap.totalScore}</td>
 </tr>
 </c:if>
@@ -1154,7 +1312,8 @@
 </tbody>
         </table>
     </div>
-</div><div>
+</div>
+<div>
     <div class="table" id="Forwards">
         <table class="ism-table ism-table--el ism-table--el-list">
             <thead>
@@ -1169,12 +1328,9 @@
             <c:forEach var="playerMap" items="${sessionScope.playerList}">
             <c:if test="${playerMap.type eq 'Midfielder'}">
             <tr class="ismjs-menu ism-row-select ism-element-list__info--0" id="${playerMap.gameClubPlayerId}">
-    <td class="ism-table--el__status">
+    <td class="ism-table--el__status text-center addPlayer">
         
-            <a href="#" class="ismjs-info ism-table--el__status-link" title="75% chance of playing next match"><svg class="ism-icon--element ism-icon--status-75">
-                <title>75% chance of playing next match</title>
-                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ism-status"></use>
-            </svg></a>
+            <a href="#"><i class="fa fa-plus" aria-hidden="true"></i></a>
         
     </td>
     <td class="ism-table--el__primary">
@@ -1198,7 +1354,7 @@
         </div>
 
     </td>
-    <td class="ism-table--el__strong">${playerMap.price }</td>
+    <td class="ism-table--el__strong playerPrice">${playerMap.price }</td>
     <td class="ism-table--el__strong">${playerMap.totalScore}</td>
 </tr>
 </c:if>
@@ -1262,6 +1418,51 @@
 		</script>
 	</c:if>
 	<script type="text/javascript">
+function aa(){
+		
+	
+	$('.ismjs-remove').click(function () {
+		$(this).parents().find('.ismjs-menu').hide();
+		console.log($(this));
+	})
+			
+	};
+	
+	
+		
+	$(function () {
+		
+		
+	    
+		$('#Goalkeepers .addPlayer>a').click(function () {
+	        var elems = '<div class="ismjs-menu">'+
+	        '<picture>'+
+	        '<source type="image/webp" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_90_1-110.webp 110w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_90_1-66.webp 66w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_90_1-33.webp 33w" sizes="(min-width: 1024px) 55px, (min-width: 610px) 44px, 33px" >'+
+	        '<img src="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_90_1-33.png" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_90_1-110.png 110w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_90_1-66.png 66w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_90_1-33.png 33w" sizes="(min-width: 1024px) 55px,(min-width: 610px) 44px,33px" alt="Burnley" title="Burnley" class="ism-shirt ism-element__shirt">'+
+	        '</picture>'+
+	        '<div class="ism-element__name">'+$(this).parents('.ism-row-select').find('.ism-table--el__name').html()+'</div>'+
+	        '<div class="ism-element__data">'+$(this).parents('.ism-row-select').find('.playerPrice').html()+'</div>'+
+	        '<div class="ism-element__controls">'+
+	        '<div  class="ismjs-remove ism-element__control ism-element__control--primary"><a href="#" title="Remove player" class="ism-element__link removePlayerIcon rr">X</a></div></div>';
+	        
+	       
+	        $('.ism-element-row.ism-element-row--pitch:first-child').find('.ismjs-select').first().replaceWith( elems );
+	        
+	        return false;
+	    });	
+		
+		
+		$('.ismjs-remove').click(function () {
+			$(this).parents().find('.ismjs-menu').hide();
+			console.log($(this));
+		})
+
+	});
+	
+	
+	$(document).ready(function() {
+		   aa();
+		});
 	$(document).ajaxStart(function(){
 	    $("#ajaxloader").css("display", "block");
 	});
