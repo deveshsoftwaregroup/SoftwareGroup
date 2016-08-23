@@ -33,10 +33,19 @@
  	border-bottom: 16px solid red;
  	border-left: 16px solid pink;
     border-radius: 50%;
-    width: 120px;
-    height: 120px;
-    animation: spin 2s linear infinite;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    margin-left: -32px; 
+    margin-top: -32px;
+    z-index: 999;
+    display:none;
 }
+.mask{ background: #000; opacity: 0.5; position:fixed; top: 0; left: 0; width: 100%; height:100%;}
+
 
 @keyframes spin {
     0% { transform: rotate(0deg); }
@@ -1326,7 +1335,7 @@
             </thead>
             <tbody>
             <c:forEach var="playerMap" items="${sessionScope.playerList}">
-            <c:if test="${playerMap.type eq 'Midfielder'}">
+            <c:if test="${playerMap.type eq 'Forward'}">
             <tr class="ismjs-menu ism-row-select ism-element-list__info--0" id="${playerMap.gameClubPlayerId}">
     <td class="ism-table--el__status text-center addPlayer">
         
@@ -1463,14 +1472,7 @@ function aa(){
 	$(document).ready(function() {
 		   aa();
 		});
-	$(document).ajaxStart(function(){
-	    $("#ajaxloader").css("display", "block");
-	});
-
-	$(document).ajaxComplete(function(){
-	    $("#ajaxloader").css("display", "none");
-	});
- $('#ismjs-element-filter').change(function(){
+	 $('#ismjs-element-filter').change(function(){
 	  var selected = $(':selected',this); 
 	  filterByView(selected);
 	  
@@ -1651,8 +1653,20 @@ function aa(){
 
 		}
      }
+     $(document).ajaxStart(function(){
+ 		$("#ajaxloader").css("display", "block");
+ 		$('.mask').show();
+ 	});
+
+ 	$(document).ajaxComplete(function(){
+ 	    $("#ajaxloader").css("display", "none");
+ 	    $('.mask').hide();
+ 	});
+
    </script>
    <div id="ajaxloader"></div>
+   <div class="mask" style="display:none;"></div>
+   
   </body>
 	
 </html>
