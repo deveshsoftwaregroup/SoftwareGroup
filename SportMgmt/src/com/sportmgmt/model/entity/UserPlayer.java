@@ -25,6 +25,12 @@ public class UserPlayer {
 	
 	@Column(name="IS_PLAYING")
 	private String isPlaying;
+	
+	@Column(name="PLAYER_TYPE")
+	private String playerType;
+	
+	@Column(name="SEQ_NUM")
+	private Integer segNum;
 
 	public Integer getUserPlayerId() {
 		return userPlayerId;
@@ -57,4 +63,21 @@ public class UserPlayer {
 	public void setIsPlaying(String isPlaying) {
 		this.isPlaying = isPlaying;
 	}
+
+	public String getPlayerType() {
+		return playerType;
+	}
+
+	public void setPlayerType(String playerType) {
+		this.playerType = playerType;
+	}
+
+	public Integer getSegNum() {
+		return segNum;
+	}
+
+	public void setSegNum(Integer segNum) {
+		this.segNum = segNum;
+	}
+	
 }

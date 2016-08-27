@@ -12,6 +12,7 @@ import org.hibernate.Query;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 
 import com.sportmgmt.model.entity.Club;
@@ -24,7 +25,7 @@ import com.sportmgmt.utility.constrant.QueryConstrant;
 import com.sportmgmt.utility.constrant.SportConstrant;
 
 public class GameManager {
-	private static Logger logger = Logger.getLogger(UserManager.class);
+	private static Logger logger = Logger.getLogger(GameManager.class);
 	private static String errorCode;
 	private static String errorMessage;
 	public static String getErrorCode() {
@@ -685,9 +686,9 @@ public class GameManager {
 		
 		return isRemoved;
 	}
-	public static boolean updatePlayeOfEventFromUserAccount(String userId,String gameClubPlayerId,String isPlaying)
+	public static boolean updatePlayeOfEventFromUserAccount(String userId,String gameClubPlayerId,String isPlaying,String playerType,String seqNum)
 	{
-		boolean isRemoved =  false;
+		boolean isUpdated =  false;
 		setErrorMessage("");
 		SessionFactory factory = HibernateSessionFactory.getSessionFacotry();
 		logger.debug("--------------- updatePlayeOfEventFromUserAccount ------------> userId:  "+userId+" gameClubPlayerId: "+gameClubPlayerId);
@@ -716,10 +717,15 @@ public class GameManager {
 					else
 					{
 						UserPlayer userPlayer = (UserPlayer)results.get(0);
+						if(isPlaying != null && !isPlaying.equals(""))
 						userPlayer.setIsPlaying(isPlaying);
-						session.save(userPlayer);
+						if(playerType != null && !playerType.equals(""))
+						userPlayer.setPlayerType(playerType);
+						if(seqNum !=null && !seqNum.equals(""))
+						userPlayer.setSegNum(Integer.valueOf(seqNum));
+						//session.save(userPlayer);
 						session.beginTransaction().commit();
-						isRemoved = true;
+						isUpdated = true;
 					}
 				}
 				catch(Exception ex)
@@ -740,7 +746,58 @@ public class GameManager {
 			}
 		}
 		
-		return isRemoved;
+		return isUpdated;
+	}
+	public static List<Integer> fetchUserPlayerOfEventByType(String userId,String playerType)
+	{
+		List<Integer> results = null;
+		setErrorMessage("");
+		SessionFactory factory = HibernateSessionFactory.getSessionFacotry();
+		logger.debug("--------------- fetchUserPlayerOfEventByType ------------> userId:  "+userId+" playerType: "+playerType);
+		if(factory == null)
+		{
+			setErrorCode(ErrorConstrant.SESS_FACT_NULL);
+			setErrorMessage("Technical Error");
+		}
+		else
+		{
+			Session session = factory.openSession();
+			if(session != null)
+			{
+				try
+				{
+					Criteria cr = session.createCriteria(UserPlayer.class);
+					cr.add(Restrictions.eq("playerType", playerType));
+					cr.add(Restrictions.eq("userId", new Integer(userId)));
+					cr.setProjection(Projections.property("gameClubPlayerId"));
+					results= cr.list();
+					if(results == null || results.size() ==0)
+					{
+						logger.debug(" ------- Player is not found  ");
+						setErrorMessage("Player not found");
+						setErrorCode(ErrorConstrant.RECORD_NOT_FOUND);
+					}
+					
+				}
+				catch(Exception ex)
+				{
+					logger.error("Exception fetch Player: "+ex.getMessage());
+					setErrorMessage("Technical Error");
+					setErrorCode(ErrorConstrant.TRANSACTION_ERROR);
+				}
+				finally
+				{
+					session.close();
+				}
+			}
+			else
+			{
+				setErrorCode(ErrorConstrant.SESS_NULL);
+				setErrorMessage("Technical Error");
+			}
+		}
+		
+		return results;
 	}
 
 }

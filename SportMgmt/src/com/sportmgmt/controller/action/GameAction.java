@@ -24,7 +24,7 @@ import com.sportmgmt.utility.constrant.SportConstrant;
 @Controller
 @RequestMapping("/game")
 public class GameAction {
-	private Logger logger = Logger.getLogger(UserAction.class);
+	private Logger logger = Logger.getLogger(GameAction.class);
 	@Autowired
 	MailUtility mailUtility;
 	public MailUtility getMailUtility() {
@@ -181,15 +181,45 @@ public class GameAction {
 	public @ResponseBody Map activatePlayer(@RequestParam("userId") String userId, @RequestParam("gameClubPlayerId") String gameClubPlayerId,HttpServletRequest request)
 	{
 		logger.debug("------------ activate Player :-- calling update player");
-		return updatePlayer(userId,gameClubPlayerId,SportConstrant.YES,request);
+		return updatePlayer(userId,gameClubPlayerId,SportConstrant.YES,null,null,request);
 	}
 	@RequestMapping(value = "DeActivatePlayer", method = RequestMethod.GET)
 	public @ResponseBody Map deActivatePlayer(@RequestParam("userId") String userId, @RequestParam("gameClubPlayerId") String gameClubPlayerId,HttpServletRequest request)
 	{
 		logger.debug("------------ de-activate Player :-- calling update player");
-		return updatePlayer(userId,gameClubPlayerId,SportConstrant.NO,request);
+		return updatePlayer(userId,gameClubPlayerId,SportConstrant.NO,null,null,request);
 	}
-	public Map updatePlayer(String userId, String gameClubPlayerId,String isPlaying, HttpServletRequest request)
+	@RequestMapping(value = "MakeCaptain", method = RequestMethod.GET)
+	public @ResponseBody Map makeCaptain(@RequestParam("userId") String userId, @RequestParam("gameClubPlayerId") String gameClubPlayerId,HttpServletRequest request)
+	{
+		logger.debug("------------ MakeCaptain  :-- calling update player");
+		List<Integer> playerList =GameManager.fetchUserPlayerOfEventByType(userId, SportConstrant.PLAYER_TYPE_CAPTAIN);
+		Map updateMap = null;
+		if(playerList != null && playerList.size() ==1)
+		{
+			updateMap= updatePlayer(userId,playerList.get(0).toString(),null,SportConstrant.PLAYER_TYPE_NORMAL,null,request);
+		}
+		if(updateMap == null || (Boolean)updateMap.get("isSuccess"))
+		return updatePlayer(userId,gameClubPlayerId,null,SportConstrant.PLAYER_TYPE_CAPTAIN,null,request);
+		else
+		return updateMap;
+	}
+	@RequestMapping(value = "MakeViceCaptain", method = RequestMethod.GET)
+	public @ResponseBody Map makeViceCaptain(@RequestParam("userId") String userId, @RequestParam("gameClubPlayerId") String gameClubPlayerId,HttpServletRequest request)
+	{
+		logger.debug("------------ MakeViceCaptain  :-- calling update player");
+		List<Integer> playerList =GameManager.fetchUserPlayerOfEventByType(userId, SportConstrant.PLAYER_TYPE_VICE_CAPTAIN);
+		Map updateMap = null;
+		if(playerList != null && playerList.size() ==1)
+		{
+			updateMap= updatePlayer(userId,playerList.get(0).toString(),null,SportConstrant.PLAYER_TYPE_NORMAL,null,request);
+		}
+		if(updateMap == null || (Boolean)updateMap.get("isSuccess"))
+		return updatePlayer(userId,gameClubPlayerId,null,SportConstrant.PLAYER_TYPE_VICE_CAPTAIN,null,request);
+		else
+		return updateMap;
+	}
+	public Map updatePlayer(String userId, String gameClubPlayerId,String isPlaying, String playerType,String seqNum,HttpServletRequest request)
 	{
 		Map resultMap = new HashMap();
 		boolean isSuccess = false;
@@ -204,7 +234,7 @@ public class GameAction {
 		}
 		else
 		{
-			isSuccess = GameManager.updatePlayeOfEventFromUserAccount(userId, gameClubPlayerId,isPlaying);
+			isSuccess = GameManager.updatePlayeOfEventFromUserAccount(userId, gameClubPlayerId,isPlaying,playerType,seqNum);
 			logger.debug("------------ update Player Call isSuccess: "+isSuccess);
 			if(isSuccess)
 			{
