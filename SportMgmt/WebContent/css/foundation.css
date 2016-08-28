@@ -376,7 +376,7 @@ html {
 body {
   padding: 0;
   margin: 0;
-  font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+  font-family: OpenSans-reg, Helvetica, Arial, sans-serif;
   font-weight: normal;
   line-height: 1.5;
   color: #0a0a0a;
@@ -1209,7 +1209,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+  font-family: OpenSans-Semibold, Helvetica, Arial, sans-serif;
   font-weight: normal;
   font-style: normal;
   color: inherit;
@@ -1469,8 +1469,8 @@ kbd {
   [data-whatinput='mouse'] .button {
     outline: 0; }
   .button:hover, .button:focus {
-    background-color: #1583cc;
-    color: #fefefe; }
+    background-color: #045d98;
+    color: fff; }
   .button.tiny {
     font-size: 0.6rem; }
   .button.small {
@@ -2794,7 +2794,10 @@ body.is-reveal-open {
   top: 100px;
   margin-left: auto;
   margin-right: auto;
-  overflow-y: auto; }
+  overflow-y: auto;
+  width: 100%;
+  max-width: 400px;
+ }
   [data-whatinput='mouse'] .reveal {
     outline: 0; }
   @media screen and (min-width: 40em) {
@@ -2805,10 +2808,7 @@ body.is-reveal-open {
     min-width: 0; }
   .reveal > :last-child {
     margin-bottom: 0; }
-  @media screen and (min-width: 40em) {
-    .reveal {
-      width: 600px;
-      max-width: 75rem; } }
+
   @media screen and (min-width: 40em) {
     .reveal .reveal {
       left: auto;
@@ -4104,3 +4104,10 @@ table.hover tr:nth-of-type(even):hover {
 .long-delay {
   -webkit-animation-delay: 700ms !important;
           animation-delay: 700ms !important; }
+
+          
+/*---new customize css--*/  
+#logo img {
+    height: 54px;
+    margin-top: 5px;
+}        
