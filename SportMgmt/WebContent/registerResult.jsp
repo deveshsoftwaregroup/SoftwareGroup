@@ -99,7 +99,7 @@
                 	The <span>12th Man</span> League
                	</p>
                	<p class="smtxt">
-                 	Play and win <span class="highlight"> Cash!</span>
+                 	Play and win <span class="highlight"> Prizes!</span>
                  </p>
             </div>
             <div class="banner-info">
