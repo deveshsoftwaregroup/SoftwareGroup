@@ -75,6 +75,9 @@
                         <li class="ism-nav__list__item">
                             <a href="#" class="ism-nav__tab">Sign Out</a>
                         </li>
+                        <li class="ism-nav__list__item">
+                            <a href="#" class="ism-nav__tab">FAQ</a>
+                        </li>
 
                     </ul>
                     <span class="ism-nav__dropdown-wrapper priority-nav__wrapper" aria-haspopup="false"><button aria-controls="menu" type="button" class="ism-nav__dropdown-toggle priority-nav__dropdown-toggle priority-nav-is-hidden">More</button><ul aria-hidden="true" class="ism-nav__dropdown priority-nav__dropdown"></ul></span>
