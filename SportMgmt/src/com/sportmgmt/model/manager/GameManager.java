@@ -19,6 +19,7 @@ import com.sportmgmt.model.entity.Club;
 import com.sportmgmt.model.entity.Game;
 import com.sportmgmt.model.entity.GameClubPlayer;
 import com.sportmgmt.model.entity.Player;
+import com.sportmgmt.model.entity.UserGame;
 import com.sportmgmt.model.entity.UserPlayer;
 import com.sportmgmt.utility.constrant.ErrorConstrant;
 import com.sportmgmt.utility.constrant.QueryConstrant;
@@ -418,6 +419,53 @@ public class GameManager {
 		return totalPlayerByPisitionList;
 	}
 	
+	public static List<Object[]> fetchTotalPayingPlayerByPostion(Integer userId, Integer gameId)
+	{
+		List<Object[]> totalPlayerByPisitionList = null;
+		setErrorMessage("");
+		SessionFactory factory = HibernateSessionFactory.getSessionFacotry();
+		logger.debug("--------------- fetchTotalPayingPlayerByPostion ------------> userId:  "+userId+" gameId: "+gameId);
+		if(factory == null)
+		{
+			setErrorCode(ErrorConstrant.SESS_FACT_NULL);
+			setErrorMessage("Technical Error");
+		}
+		else
+		{
+			Session session = factory.openSession();
+			if(session != null)
+			{
+				try
+				{
+					
+					//SQLQuery query = session.createSQLQuery("select gcp.game_club_player_id from game_club_player gcp, user_player up where gcp.game_club_player_id = up.game_club_player_id and up.user_id =20 and gcp.game_id =1");
+					SQLQuery query = session.createSQLQuery(QueryConstrant.SELECT_TOTAL_PLAYING_PLAYER_BY_POSITION);
+					query.setParameter("userId", userId);
+					query.setParameter("gameId", gameId);
+					query.setParameter("isPlaying", SportConstrant.YES);
+					totalPlayerByPisitionList =query.list();
+				}
+				catch(Exception ex)
+				{
+					logger.error("Exception fetch fetchTotalPayingPlayerByPostion: "+ex.getMessage());
+					setErrorMessage("Technical Error");
+					setErrorCode(ErrorConstrant.TRANSACTION_ERROR);
+				}
+				finally
+				{
+					session.close();
+				}
+			}
+			else
+			{
+				setErrorCode(ErrorConstrant.SESS_NULL);
+				setErrorMessage("Technical Error");
+			}
+		}
+		logger.info("--------------- Returning user fetchTotalPayingPlayerByPostion: -------------"+totalPlayerByPisitionList);
+		return totalPlayerByPisitionList;
+	}
+	
 	public static int totalPlayersOfUserByGame(Integer userId, Integer gameId)
 	{
 		int totalPlayers = 0;
@@ -467,6 +515,57 @@ public class GameManager {
 			totalPlayers = ((java.math.BigInteger)totalPlayerFetchList.get(0)).intValue();
 		}
 		return totalPlayers;
+	}
+	public static int totalPlayingPlayersOfUserByGame(Integer userId, Integer gameId)
+	{
+		int totalPlyingPlayers = 0;
+		List<Object> totalPlayingPlayerFetchList = null;
+		setErrorMessage("");
+		SessionFactory factory = HibernateSessionFactory.getSessionFacotry();
+		logger.debug("--------------- totalPlayingPlayersOfUserByGame ------------> userId:  "+userId+" gameId: "+gameId);
+		if(factory == null)
+		{
+			setErrorCode(ErrorConstrant.SESS_FACT_NULL);
+			setErrorMessage("Technical Error");
+		}
+		else
+		{
+			Session session = factory.openSession();
+			if(session != null)
+			{
+				try
+				{
+					
+					//SQLQuery query = session.createSQLQuery("select gcp.game_club_player_id from game_club_player gcp, user_player up where gcp.game_club_player_id = up.game_club_player_id and up.user_id =20 and gcp.game_id =1");
+					SQLQuery query = session.createSQLQuery(QueryConstrant.SELECT_USER_TOTAL_ACTIVE_PLAYER);
+					query.setParameter("userId", userId);
+					query.setParameter("gameId", gameId);
+					query.setParameter("isPlaying", SportConstrant.YES);
+					totalPlayingPlayerFetchList =query.list();
+				}
+				catch(Exception ex)
+				{
+					logger.error("Exception fetch totalPlayersOfUserByEvent: "+ex.getMessage());
+					setErrorMessage("Technical Error");
+					setErrorCode(ErrorConstrant.TRANSACTION_ERROR);
+				}
+				finally
+				{
+					session.close();
+				}
+			}
+			else
+			{
+				setErrorCode(ErrorConstrant.SESS_NULL);
+				setErrorMessage("Technical Error");
+			}
+		}
+		logger.info("--------------- Returning user totalPlayingPlayerFetchList: -------------"+totalPlayingPlayerFetchList);
+		if(totalPlayingPlayerFetchList !=null && totalPlayingPlayerFetchList.size() >=0 && totalPlayingPlayerFetchList.get(0) !=null)
+		{
+			totalPlyingPlayers = ((java.math.BigInteger)totalPlayingPlayerFetchList.get(0)).intValue();
+		}
+		return totalPlyingPlayers;
 	}
 	public static double totalPlayersPriceOfUserByGame(Integer userId, Integer gameId)
 	{
@@ -546,6 +645,29 @@ public class GameManager {
 		}
 		
 	}
+	public static void updateTotalPlayingPlayerByPostion(Integer userId, Integer gameId,Map totalPlayingMap)
+	{
+		logger.debug("---------- Inside updateTotalPlayingPlayerByPostion: ");
+		List<Object[]> totalPlayerByPisitionList = fetchTotalPayingPlayerByPostion(userId,gameId);
+		totalPlayingMap.put(SportConstrant.MID_PLAYER, 0);
+		totalPlayingMap.put(SportConstrant.FORE_PLAYER, 0);
+		totalPlayingMap.put(SportConstrant.DEFENDER, 0);
+		totalPlayingMap.put(SportConstrant.GOAL_KEEPER, 0);
+		if(totalPlayerByPisitionList != null && totalPlayerByPisitionList.size() >0)
+		{
+			logger.debug("---------- Started updating totalMap -------- ");
+			for(Object[] row:totalPlayerByPisitionList)
+			{
+				totalPlayingMap.put(row[0], row[1]);
+			}
+		}
+		else
+		{
+			logger.debug("------------ no update found due to updateTotalPlayingPlayerByPostion is empty ");
+			
+		}
+		
+	}
 	public static List<Map<String,String>> userPlayerDetailsList(Integer userId, Integer gameId)
 	{
 		logger.debug("---------- Inside userPlayerDetailsList userId: "+userId+" , gameId: "+gameId);
@@ -560,6 +682,8 @@ public class GameManager {
 				userPlayerDetail.put("gameClubPlayerId", row[0].toString());
 				userPlayerDetail.put("playerType", row[1].toString());
 				userPlayerDetail.put("isPlaying", row[2].toString());
+				userPlayerDetail.put("playerCategory", row[4].toString());
+				userPlayerDetail.put("playerSeqNum", row[5].toString());
 				userPlayDetailsList.add(userPlayerDetail);
 			}
 		}
@@ -597,6 +721,8 @@ public class GameManager {
 						userPlayer.setGameClubPlayerId(new Integer(gameClubPlayerId)); 
 						userPlayer.setUserId(new Integer(userId));
 						userPlayer.setIsPlaying(SportConstrant.NO);
+						userPlayer.setPlayerCategory(SportConstrant.PLAYER_TYPE_NORMAL);
+						userPlayer.setSegNum(0);
 						session.save(userPlayer);
 						session.beginTransaction().commit();
 						isAdded = true;
@@ -686,7 +812,7 @@ public class GameManager {
 		
 		return isRemoved;
 	}
-	public static boolean updatePlayeOfEventFromUserAccount(String userId,String gameClubPlayerId,String isPlaying,String playerType,String seqNum)
+	public static boolean updatePlayeOfEventFromUserAccount(String userId,String gameClubPlayerId,String isPlaying,String playerCategory,String seqNum)
 	{
 		boolean isUpdated =  false;
 		setErrorMessage("");
@@ -719,8 +845,8 @@ public class GameManager {
 						UserPlayer userPlayer = (UserPlayer)results.get(0);
 						if(isPlaying != null && !isPlaying.equals(""))
 						userPlayer.setIsPlaying(isPlaying);
-						if(playerType != null && !playerType.equals(""))
-						userPlayer.setPlayerType(playerType);
+						if(playerCategory != null && !playerCategory.equals(""))
+						userPlayer.setPlayerCategory(playerCategory);
 						if(seqNum !=null && !seqNum.equals(""))
 						userPlayer.setSegNum(Integer.valueOf(seqNum));
 						//session.save(userPlayer);
@@ -799,5 +925,129 @@ public class GameManager {
 		
 		return results;
 	}
-
+	public static boolean checkAndIsertUserGameStatus(String userId,String gameId)
+	{
+		boolean isSuccess =  true;
+		setErrorMessage("");
+		SessionFactory factory = HibernateSessionFactory.getSessionFacotry();
+		logger.debug("--------------- checkAndIsertUserGameStatus ------------> userId:  "+userId+" gameId: "+gameId);
+		if(factory == null)
+		{
+			setErrorCode(ErrorConstrant.SESS_FACT_NULL);
+			setErrorMessage("Technical Error");
+			isSuccess =false;
+		}
+		else
+		{
+			Session session = factory.openSession();
+			if(session != null)
+			{
+				try
+				{
+					Criteria cr = session.createCriteria(UserGame.class);
+					cr.add(Restrictions.eq("gameId", new Integer(gameId)));
+					cr.add(Restrictions.eq("userId", new Integer(userId)));
+					List results = cr.list();
+					if(results == null || results.size() ==0)
+					{
+						logger.debug(" ------- Enty not found in UserGameStatus");
+						logger.debug(" ------- Making new Entry in USER_GAME_STATUS table for user and game");
+						UserGame userGame = new UserGame();
+						userGame.setUserId(new Integer(userId));
+						userGame.setGameId(new Integer(gameId));
+						userGame.setTotalPoint(0);
+						userGame.setAddedPlayerCount(0);
+						session.save(userGame);
+						session.beginTransaction().commit();
+					}
+					else
+					{
+						logger.debug(" ------- Enty found in USER_GAME_STATUS table ");
+					}
+									}
+				catch(Exception ex)
+				{
+					logger.error("Exception fetch checkAndIsertUserGameStatus: "+ex.getMessage());
+					setErrorMessage("Technical Error");
+					setErrorCode(ErrorConstrant.TRANSACTION_ERROR);
+					isSuccess = false;
+				}
+				finally
+				{
+					session.close();
+				}
+			}
+			else
+			{
+				setErrorCode(ErrorConstrant.SESS_NULL);
+				setErrorMessage("Technical Error");
+				isSuccess = false;
+			}
+		}
+		
+		return isSuccess;
+	}
+	
+	public static boolean increaseAddedPlayerCountToUserGame(String userId,String gameId)
+	{
+		boolean isSuccess =  true;
+		setErrorMessage("");
+		SessionFactory factory = HibernateSessionFactory.getSessionFacotry();
+		logger.debug("--------------- increaseAddedPlayerCountToUserGame ------------> userId:  "+userId+" gameId: "+gameId);
+		if(factory == null)
+		{
+			setErrorCode(ErrorConstrant.SESS_FACT_NULL);
+			setErrorMessage("Technical Error");
+			isSuccess =false;
+		}
+		else
+		{
+			Session session = factory.openSession();
+			if(session != null)
+			{
+				try
+				{
+					Criteria cr = session.createCriteria(UserGame.class);
+					cr.add(Restrictions.eq("gameId", new Integer(gameId)));
+					cr.add(Restrictions.eq("userId", new Integer(userId)));
+					List results = cr.list();
+					if(results == null || results.size() ==0)
+					{
+						logger.debug(" ------- Enty not found in UserGameStatus");
+						logger.debug("-- User Team is still not completed---");
+					}
+					else
+					{
+						logger.debug(" ------- Enty found in USER_GAME_STATUS table ");
+						UserGame userGame = (UserGame)results.get(1);
+						if(userGame == null)
+						userGame.setAddedPlayerCount(0);
+						else
+						userGame.setAddedPlayerCount(userGame.getAddedPlayerCount()+1);	
+						//session.save(userGame);
+						session.beginTransaction().commit();
+						logger.debug(" ------- Increasing Added Player Count is done ");
+					}
+									}
+				catch(Exception ex)
+				{
+					logger.error("Exception fetch increaseAddedPlayerCountToUserGame: "+ex.getMessage());
+					setErrorMessage("Technical Error");
+					setErrorCode(ErrorConstrant.TRANSACTION_ERROR);
+					isSuccess = false;
+				}
+				finally
+				{
+					session.close();
+				}
+			}
+			else
+			{
+				setErrorCode(ErrorConstrant.SESS_NULL);
+				setErrorMessage("Technical Error");
+				isSuccess = false;
+			}
+		}
+		return isSuccess;
+	}
 }

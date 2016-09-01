@@ -349,6 +349,51 @@ public class UserManager {
 		logger.debug("----- Returning User Object ----"+user);
 		return user;
 	}
+	public static com.sportmgmt.model.entity.User getUserModel(String userId)
+	{
+		setErrorMessage(SportConstrant.NULL);
+		setErrorCode(SportConstrant.NULL);
+		setUserId(SportConstrant.NULL);
+		SessionFactory factory = HibernateSessionFactory.getSessionFacotry();
+		com.sportmgmt.model.entity.User modelUser = null;
+		if(factory == null)
+		{
+			setErrorCode(ErrorConstrant.SESS_FACT_NULL);
+			setErrorMessage("Technical Error");
+			logger.debug("----- Factory Object is null----");
+		}
+		else
+		{
+			Session session = factory.openSession();
+			if(session != null)
+			{
+				try
+				{
+					logger.debug("----- Loading for user----: "+userId);
+				
+					 modelUser = (com.sportmgmt.model.entity.User) session.get(com.sportmgmt.model.entity.User.class,Integer.valueOf(userId));
+				}
+				catch(Exception ex)
+				{
+					logger.error("Exception in load user: "+ex);
+					setErrorMessage("Technical Error");
+					setErrorCode(ErrorConstrant.TRANSACTION_ERROR);
+				}
+				finally
+				{
+					session.close();
+				}
+			}
+			else
+			{
+				setErrorCode(ErrorConstrant.SESS_NULL);
+				setErrorMessage("Technical Error");
+				logger.debug("----- Session Object is null----");
+			}
+		}
+		logger.debug("----- Returning User Modle ----"+modelUser);
+		return modelUser;
+	}
 	public static String getPasswordByEmail(String emailId)
 	{
 		logger.debug("----- Indie getPasswordByEmail ----"+emailId);

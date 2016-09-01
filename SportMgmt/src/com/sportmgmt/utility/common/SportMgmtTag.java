@@ -57,6 +57,12 @@ public class SportMgmtTag extends TagSupport{
 								{
 									isPlayerAvail = true;
 									gameClubPlayerId = (String)userPlayerMap.get("gameClubPlayerId");
+									if(userPlayerMap.get("isPlaying") != null && !userPlayerMap.get("isPlaying").equals(""))
+									pageContext.setAttribute("isPlaying", userPlayerMap.get("isPlaying"));
+									if(userPlayerMap.get("playerType") != null && !userPlayerMap.get("playerType").equals(""))
+									pageContext.setAttribute("playerType", userPlayerMap.get("playerType"));
+									if(userPlayerMap.get("playerCategory") != null && !userPlayerMap.get("playerCategory").equals(""))
+									pageContext.setAttribute("playerCategory", userPlayerMap.get("playerCategory"));
 								}
 								break;
 							}
@@ -91,6 +97,9 @@ public class SportMgmtTag extends TagSupport{
 	    		pageContext.setAttribute("gameClubPlayerId", gameClubPlayerId);
 	    		pageContext.setAttribute("playerName", "");
 	    		pageContext.setAttribute("price", 0);
+	    		pageContext.setAttribute("isPlaying", "");
+	    		pageContext.setAttribute("playerType", "");
+	    		pageContext.setAttribute("playerCategory", "");
 	    	}
 	    	position = null;
 	    	playerType = null;

@@ -10,12 +10,17 @@ import javax.servlet.http.HttpSession;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.sportmgmt.controller.bean.User;
 import com.sportmgmt.model.manager.GameManager;
+import com.sportmgmt.model.manager.PlanManager;
 import com.sportmgmt.utility.common.MailUtility;
 import com.sportmgmt.utility.common.PropertyFileUtility;
 import com.sportmgmt.utility.constrant.ErrorConstrant;
@@ -57,52 +62,127 @@ public class GameAction {
 		}
 		else
 		{
-			isSuccess = GameManager.addPlayeOfEventToUserAccount(userId, gameClubPlayerId);
-			logger.debug("------------ Add Player Call isSuccess: "+isSuccess);
-			if(isSuccess)
+			HttpSession session = request.getSession();
+			User user = (User)session.getAttribute("user");
+			if(user != null)
 			{
-				logger.debug("------------ Updating session and json value");
-				try
+				boolean hasActivePlan = user.isHasActivePlan();
+				if(hasActivePlan)
 				{
-					HttpSession session = request.getSession();
-					Map userGameMap = (Map)session.getAttribute("userGameDetails");
-					String gameId = (String)((Map)session.getAttribute("gameDetails")).get("gameId");
-					List<Map<String,String>> userPlayersList = (List<Map<String,String>>)userGameMap.get("playerList");
-					Map<String,String> playerDetails = new HashMap<String,String>();
-					playerDetails.put("gameClubPlayerId", gameClubPlayerId);
-					playerDetails.put("isPlaying", SportConstrant.NO);
-					playerDetails.put("playerType", SportConstrant.NULL);
-					List playersList = (List)session.getAttribute("playerList");
-					if(playersList.size()>0)
+					isSuccess = GameManager.addPlayeOfEventToUserAccount(userId, gameClubPlayerId);
+					Integer price = null;
+					logger.debug("------------ Add Player Call isSuccess: "+isSuccess);
+					if(isSuccess)
 					{
-						for(Object playerDetailObj :playersList)
+						
+						logger.debug("------------ Updating session and json value");
+						try
 						{
-							Map playerDetailMap = (Map)playerDetailObj;
-							if(playerDetailMap.get("gameClubPlayerId") !=null && playerDetailMap.get("gameClubPlayerId").equals(gameClubPlayerId))
+							
+							Map userGameMap = (Map)session.getAttribute("userGameDetails");
+							String gameId = (String)((Map)session.getAttribute("gameDetails")).get("gameId");
+							List<Map<String,String>> userPlayersList = (List<Map<String,String>>)userGameMap.get("playerList");
+							Map<String,String> playerDetails = new HashMap<String,String>();
+							playerDetails.put("gameClubPlayerId", gameClubPlayerId);
+							playerDetails.put("isPlaying", SportConstrant.NO);
+							playerDetails.put("playerType", SportConstrant.NULL);
+							playerDetails.put("playerType", SportConstrant.NULL);
+							playerDetails.put("playerCategory", SportConstrant.PLAYER_TYPE_NORMAL);
+							playerDetails.put("playerSeqNum", "0");
+							List playersList = (List)session.getAttribute("playerList");
+							if(playersList.size()>0)
 							{
-								playerDetails.put("playerType", (String)playerDetailMap.get("type"));
+								for(Object playerDetailObj :playersList)
+								{
+									Map playerDetailMap = (Map)playerDetailObj;
+									if(playerDetailMap.get("gameClubPlayerId") !=null && playerDetailMap.get("gameClubPlayerId").equals(gameClubPlayerId))
+									{
+										playerDetails.put("playerType", (String)playerDetailMap.get("type"));
+										price = (Integer)playerDetailMap.get("price");
+									}
+								}
+							}
+							userPlayersList.add(playerDetails);
+							Map totalMap = (Map)userGameMap.get("total");
+							totalMap.put("player", (Integer)totalMap.get("player")+1);
+							totalMap.put("price", GameManager.totalPlayersPriceOfUserByGame(Integer.valueOf(userId),Integer.valueOf(gameId)));
+							GameManager.updateTotalPlayerByPostion(Integer.valueOf(userId),Integer.valueOf(gameId),totalMap);
+							session.setAttribute("userGameDetails", userGameMap);
+							ObjectMapper mapperObj = new ObjectMapper();
+							 try
+							 {
+								 
+								 String userGameJson = mapperObj.writeValueAsString(userGameMap);
+								 logger.debug("--------  : userGameJson: "+userGameJson);
+								 session.setAttribute("userGameJson", userGameJson);
+								 
+							 }
+							 catch(Exception ex)
+							 {
+								 logger.error("---------- Entry in parsing map to json: "+ex);
+							 }
+
+
+							resultMap.put("userGameJson", userGameMap);
+							GameManager.increaseAddedPlayerCountToUserGame(userId,gameId);
+							if((Integer)totalMap.get("player") ==15)
+							{
+								GameManager.checkAndIsertUserGameStatus(userId,gameId);
+							}
+							logger.debug("--------  : Starting deducting point: "+price);
+							if(price != null && user.getActivePlan() != null && user.getActivePlan().getPlanTypeVal() == 0)
+							{
+								logger.debug("--------  : plan typ vlaue: "+user.getActivePlan().getPlanTypeVal());
+								try
+								{
+									double balance = PlanManager.deductPointFromUserPlan(user.getActivePlan().getUserPlanId(), price.doubleValue());
+									user.getActivePlan().setBalance(balance);
+									resultMap.put("activePlanBalance", balance);
+									logger.info("--------  : Now balance is: "+balance);
+									if(balance <=0)
+									{
+										if(PlanManager.deActivateUserPlan(user.getActivePlan().getUserPlanId()))
+										{
+											logger.info("--------  :User Plan Deactivated ");
+											user.setHasActivePlan(false);
+										}
+										else
+										{
+											logger.info("--------  :Failed to deactivate plan ");
+										}
+									}
+								}
+								catch(Exception ex)
+								{
+									logger.error("--------- Error in deducting point "+ex.getMessage());
+								}
+								
 							}
 						}
+						catch(Exception ex)
+						{
+							logger.error("error to creating userGameJson: "+ex.getMessage());
+							ex.printStackTrace();
+						}
+						
 					}
-					userPlayersList.add(playerDetails);
-					Map totalMap = (Map)userGameMap.get("total");
-					totalMap.put("player", (Integer)totalMap.get("player")+1);
-					totalMap.put("price", GameManager.totalPlayersPriceOfUserByGame(Integer.valueOf(userId),Integer.valueOf(gameId)));
-					GameManager.updateTotalPlayerByPostion(Integer.valueOf(userId),Integer.valueOf(gameId),totalMap);
-					session.setAttribute("userGameDetails", userGameMap);
-					resultMap.put("userGameJson", userGameMap);
+					else
+					{
+						errorMessage = GameManager.getErrorMessage();
+						errorCode = GameManager.getErrorCode();
+					}
+
 				}
-				catch(Exception ex)
+				else
 				{
-					logger.error("error to creating userGameJson: "+ex.getMessage());
-					ex.printStackTrace();
+					errorMessage = "No Plan is active to add the player";
+					errorCode = "NO_PLAN_ACTIVE";
 				}
-				
 			}
 			else
 			{
-				errorMessage = GameManager.getErrorMessage();
-				errorCode = GameManager.getErrorCode();
+				errorMessage = "Invalid Sesison";
+				errorCode = "ERROR_INVALID_SESSION";
 			}
 		}
 		resultMap.put("isSuccess", isSuccess);
@@ -156,6 +236,21 @@ public class GameAction {
 					totalMap.put("price", GameManager.totalPlayersPriceOfUserByGame(Integer.valueOf(userId),Integer.valueOf(gameId)));
 					GameManager.updateTotalPlayerByPostion(Integer.valueOf(userId),Integer.valueOf(gameId),totalMap);
 					session.setAttribute("userGameDetails", userGameMap);
+					ObjectMapper mapperObj = new ObjectMapper();
+					 try
+					 {
+						 
+						 String userGameJson = mapperObj.writeValueAsString(userGameMap);
+						 logger.debug("--------  : userGameJson: "+userGameJson);
+						 session.setAttribute("userGameJson", userGameJson);
+						 
+					 }
+					 catch(Exception ex)
+					 {
+						 logger.error("---------- Entry in parsing map to json: "+ex);
+					 }
+
+
 					resultMap.put("userGameJson", userGameMap);
 				}
 				catch(Exception ex)
@@ -219,7 +314,7 @@ public class GameAction {
 		else
 		return updateMap;
 	}
-	public Map updatePlayer(String userId, String gameClubPlayerId,String isPlaying, String playerType,String seqNum,HttpServletRequest request)
+	public Map updatePlayer(String userId, String gameClubPlayerId,String isPlaying, String playerCategory,String seqNum,HttpServletRequest request)
 	{
 		Map resultMap = new HashMap();
 		boolean isSuccess = false;
@@ -234,7 +329,7 @@ public class GameAction {
 		}
 		else
 		{
-			isSuccess = GameManager.updatePlayeOfEventFromUserAccount(userId, gameClubPlayerId,isPlaying,playerType,seqNum);
+			isSuccess = GameManager.updatePlayeOfEventFromUserAccount(userId, gameClubPlayerId,isPlaying,playerCategory,seqNum);
 			logger.debug("------------ update Player Call isSuccess: "+isSuccess);
 			if(isSuccess)
 			{
@@ -250,16 +345,47 @@ public class GameAction {
 						Map<String,String> userPlayerMap = (Map<String,String>)userPlayerObj;
 						if(userPlayerMap.get("gameClubPlayerId") !=null && userPlayerMap.get("gameClubPlayerId").equals(gameClubPlayerId))
 						{
+							if(isPlaying != null && !isPlaying.equals(""))
 							userPlayerMap.put("isPlaying", isPlaying);
+							if(playerCategory != null && !playerCategory.equals(""))
+							{
+								userPlayerMap.put("playerCategory",playerCategory);
+							}
+							if(seqNum != null && !seqNum.equals(""))
+							{
+								userPlayerMap.put("playerSeqNum",seqNum);
+							}
 						}
 					}
 					
-					/*Map totalMap = (Map)userGameMap.get("total");
-					totalMap.put("player", (Integer)totalMap.get("player")-1);
+					if(isPlaying != null && !isPlaying.equals(""))
+					{
+						 HashMap totalPlayingMap= new HashMap(); 
+						 int player = GameManager.totalPlayingPlayersOfUserByGame(Integer.valueOf(userId),Integer.valueOf(gameId));
+						 totalPlayingMap.put("player", player);
+						 GameManager.updateTotalPlayingPlayerByPostion(Integer.valueOf(userId),Integer.valueOf(gameId),totalPlayingMap);
+						 resultMap.put("totalPlayingJson", totalPlayingMap);;
+					}
+					
+					/*totalMap.put("player", (Integer)totalMap.get("player")-1);
 					totalMap.put("price", GameManager.totalPlayersPriceOfUserByGame(Integer.valueOf(userId),Integer.valueOf(gameId)));
 					GameManager.updateTotalPlayerByPostion(Integer.valueOf(userId),Integer.valueOf(gameId),totalMap);*/
 					session.setAttribute("userGameDetails", userGameMap);
-					//resultMap.put("userGameJson", userGameMap);
+					ObjectMapper mapperObj = new ObjectMapper();
+					 try
+					 {
+						 
+						 String userGameJson = mapperObj.writeValueAsString(userGameMap);
+						 logger.debug("--------  : userGameJson: "+userGameJson);
+						 session.setAttribute("userGameJson", userGameJson);
+						 
+					 }
+					 catch(Exception ex)
+					 {
+						 logger.error("---------- Entry in parsing map to json: "+ex);
+					 }
+
+					resultMap.put("userGameJson", userGameMap);
 				}
 				catch(Exception ex)
 				{
@@ -279,5 +405,31 @@ public class GameAction {
 		resultMap.put("errorCode", errorCode);
 		logger.debug("Returning action: with reuslt-- : "+resultMap);
 		return resultMap;
+	}
+	@RequestMapping(value = "MyTeamView/{userId}/{gameId}", method = RequestMethod.GET)
+	public  String changePasswordView(ModelMap modeMap,HttpServletRequest request,@PathVariable String userId,@PathVariable String gameId)
+	{
+		logger.debug("---------- IN MyTeamView to : ");
+		 int player = GameManager.totalPlayingPlayersOfUserByGame(Integer.valueOf(userId),Integer.valueOf(gameId));
+		 HashMap totalPlayingMap= new HashMap();
+		 totalPlayingMap.put("player", player);
+		 GameManager.updateTotalPlayingPlayerByPostion(Integer.valueOf(userId),Integer.valueOf(gameId),totalPlayingMap);
+		 String totalPlayingJson = "";
+		 modeMap.put("totalPlayingMap", totalPlayingMap);
+		 logger.debug("-------- MyTeamView : totalPlayingMap: "+totalPlayingMap);
+		 ObjectMapper mapperObj = new ObjectMapper();
+		 try
+		 {
+			 
+			 totalPlayingJson = mapperObj.writeValueAsString(totalPlayingMap);
+			 logger.debug("-------- MyTeamView : totalPlayingJson: "+totalPlayingJson);
+			 
+		 }
+		 catch(Exception ex)
+		 {
+			 logger.error("---------- Entry in parsing map to json: "+ex);
+		 }
+		 modeMap.put("totalPlayingJson", totalPlayingJson);
+		 return SportConstrant.MY_TEAM_PAGE;
 	}
 }

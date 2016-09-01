@@ -62,6 +62,10 @@ public class User {
 		
 		private String address2;
 		
+		private boolean hasActivePlan;
+		
+		private ActivePlan activePlan;
+		
 		public Integer getUserId() {
 			return userId;
 		}
@@ -295,5 +299,20 @@ public class User {
 		public void setDisplayName(String displayName) {
 			this.displayName = displayName;
 		}
-		
+
+		public boolean isHasActivePlan() {
+			return hasActivePlan;
+		}
+
+		public void setHasActivePlan(boolean hasActivePlan) {
+			this.hasActivePlan = hasActivePlan;
+		}
+
+		public ActivePlan getActivePlan() {
+			return activePlan;
+		}
+
+		public void setActivePlan(ActivePlan activePlan) {
+			this.activePlan = activePlan;
+		}
 }

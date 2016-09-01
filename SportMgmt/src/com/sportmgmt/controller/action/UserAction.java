@@ -20,8 +20,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ravij.crypto.EncodeDecoder;
+import com.sportmgmt.controller.bean.ActivePlan;
 import com.sportmgmt.controller.bean.User;
 import com.sportmgmt.model.manager.GameManager;
+import com.sportmgmt.model.manager.PlanManager;
 import com.sportmgmt.model.manager.UserManager;
 import com.sportmgmt.utility.common.MailUtility;
 import com.sportmgmt.utility.common.PropertyFileUtility;
@@ -231,6 +233,20 @@ public class UserAction {
 		 if(user != null)
 		 {
 			 modeMap.put("isLogined", true);
+			 logger.debug("---------- Fetching Active Plan");
+			 ActivePlan activePlan = PlanManager.getActivePlans(String.valueOf(user.getUserId()));
+			 if(activePlan == null)
+			 {
+				 logger.debug("---------- Setting User has not active Plan");
+				 user.setHasActivePlan(false);
+			 }
+			 else
+			 {
+				 logger.debug("---------- Setting User has active Plan");
+				 user.setHasActivePlan(true);
+				 user.setActivePlan(activePlan);
+				 logger.debug(activePlan);
+			 }
 			 logger.debug("---------- Getting HTTP Session: "+user);
 			 HttpSession session = request.getSession();
 			 logger.debug("---------- Setting User to Sesison: "+user);
