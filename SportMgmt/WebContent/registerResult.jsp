@@ -88,7 +88,7 @@
                         <p align="center" class="button btnSubmit" style="background:none; color:rgba(0,0,102,1); font-size:22px;" >
                         <span class="thanksMsg">Thanks</span>
                         <span class="topThanksMsg">You are registered successfully!</span>
-                        <span class="s2">Launching on 5th August 2016</span>
+                        <span class="s2">Launching very soon</span>
                         <span class="s3">The12thMan Fantasy League !</span>
                         <span class="bottomMsg"> <BR>Till then<BR>Visit our blog at <a href="http://the12thman.in/">THE TWELFTH MAN TIMES</a></span></p>
                     </div>
