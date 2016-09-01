@@ -191,9 +191,20 @@
                                 33px" alt="" title="Click to select a Goalkeeper" class="ism-shirt ism-element__shirt">
                 </picture>
 
-                <div class="ism-element__name ism-element__name--placeholder">
-                     Add <abbr title="Goalkeeper" class="ism-element__type"><span class="ism-element__type__short">GKP</span></abbr>
-                </div>
+                											<s:sport position="2" playerType="Goalkeeper"/>
+                                                             <c:choose>
+                                                             <c:when test="${isPlayerAvail}">
+                                                             	<div class="ism-element__name ism-element__name--placeholder">
+                                                                ${playerName} <abbr title="Goalkeeper" class="ism-element__type"><span class="ism-element__type__short">${price}</span></abbr>
+                                                             </div>
+                                                             </c:when>
+                                                             <c:otherwise>
+                                                             <div class="ism-element__name ism-element__name--placeholder">
+                                                                Add <abbr title="Goalkeeper" class="ism-element__type"><span class="ism-element__type__short">GKP</span></abbr>
+                                                             </div>
+                                                             </c:otherwise>
+                                                             </c:choose>
+
             </div>                  
                                                     
                                                     </div>
