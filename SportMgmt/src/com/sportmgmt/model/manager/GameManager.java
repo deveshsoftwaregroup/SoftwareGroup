@@ -988,9 +988,10 @@ public class GameManager {
 		return isSuccess;
 	}
 	
-	public static boolean increaseAddedPlayerCountToUserGame(String userId,String gameId)
+	public static int increaseAddedPlayerCountToUserGame(String userId,String gameId)
 	{
 		boolean isSuccess =  true;
+		int addedPlayerCount = 0;
 		setErrorMessage("");
 		SessionFactory factory = HibernateSessionFactory.getSessionFacotry();
 		logger.debug("--------------- increaseAddedPlayerCountToUserGame ------------> userId:  "+userId+" gameId: "+gameId);
@@ -1020,10 +1021,8 @@ public class GameManager {
 					{
 						logger.debug(" ------- Enty found in USER_GAME_STATUS table ");
 						UserGame userGame = (UserGame)results.get(1);
-						if(userGame == null)
-						userGame.setAddedPlayerCount(0);
-						else
 						userGame.setAddedPlayerCount(userGame.getAddedPlayerCount()+1);	
+						addedPlayerCount = userGame.getAddedPlayerCount();
 						//session.save(userGame);
 						session.beginTransaction().commit();
 						logger.debug(" ------- Increasing Added Player Count is done ");
@@ -1048,6 +1047,6 @@ public class GameManager {
 				isSuccess = false;
 			}
 		}
-		return isSuccess;
+		return addedPlayerCount;
 	}
 }
