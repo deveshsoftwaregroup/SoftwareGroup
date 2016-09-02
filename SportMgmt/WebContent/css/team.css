@@ -985,3 +985,176 @@ button.close {
     color: #333;
     margin-left: 10px;
 }
+
+/*----fuxtures css----*/
+.fixtures-head {
+    padding: 10px 0;
+    text-align: center;
+}
+.head-main {
+    padding: 10px;
+    display: inline-block;
+    width: 100%;
+}
+.fixtures-logo {
+    float: left;
+    color: #ff1048;
+    text-transform: uppercase;
+    font-family: opensans-bold;
+    font-size: 18px;
+}
+.fixtures-pegination {
+    float: right;
+}
+.fixtures-pegination a.peg-lnk {
+    padding: 0 2rem;
+    text-decoration: none;
+    background: #00dcdc;
+    color: #fff;
+    display: inline-block;
+    -webkit-transition: all .2s;
+    transition: all .2s;
+    position: relative;
+    font-size: 1.2rem;
+    cursor: pointer;
+    line-height: 3.5rem;
+    border-radius: 2px;
+}
+.fixtures-pegination a.peg-lnk:hover { background: #00c1c1;}
+.peg-lnk i.fa {
+    margin: 0 5px;
+}
+.fixtures-logo span {
+    font-size: 15px;
+    text-transform: none;
+    color: #666;
+    font-family: opensans-reg;
+}
+.team-row {
+border-top: 1px solid #E8E8E8;
+    padding: 5px 10px 5px 10px;
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    font-size: 1.6rem;
+    line-height: 3rem;
+    font-family: opensans-semibold;
+}
+.team-row:hover {
+    background: #00dcdc;
+}
+.row-lft {
+    width: 50%;
+    position: relative;
+    text-align: right;
+    padding-right: 7.5rem;
+    float: left;
+}
+.row-rgt {
+    width: 50%;
+    padding-left: 7.5rem;
+    position: relative;
+    float: right;
+}
+.row-mid {
+    background: #8e8e8e;
+    color: #fff;
+    font-size: 1.1rem;
+    width: 6rem;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -3rem;
+    margin-top: -1.5rem;
+    line-height: 3rem;
+    transition: .2s;
+    border-radius: 2px;
+}
+.team-row.date {
+    text-align: center;
+    font-size: 14px;
+    font-family: opensans-reg;
+}
+.badge-25 {
+    background-image: url('../images/badges-25-sprite.png');
+    background-repeat: no-repeat;
+    width: 25px;
+    height: 25px;
+    display: block;
+    background-position: -175px -75px;
+}
+.team-row .badge-25 {
+    position: absolute;
+    top: 50%;
+    margin-top: -12.5px;
+}
+.row-lft span.badge-25 {
+    right: 4rem;
+}
+.row-rgt span.badge-25 {
+    left: 4rem;
+}
+.badge-25.MUN {
+    background-position: 0 -125px;
+}
+.badge-25.MCI {
+    background-position: -125px -50px;
+}
+.badge-25.ARS {
+    background-position: -25px 0;
+}
+.badge-25.SOU {
+    background-position: -150px -100px;
+}
+.badge-25.BOU {
+    background-position: -50px -50px;
+}
+.badge-25.WBA {
+    background-position: -125px -150px;
+}
+.badge-25.BUR {
+    background-position: 0 -75px;
+}
+.badge-25.STK {
+    background-position: -150px -125px;
+}
+.badge-25.TOT {
+    background-position: -75px -150px;
+}
+.badge-25.WHU {
+    background-position: -150px -150px;
+}
+.badge-25.WAT {
+    background-position: -100px -150px;
+}
+.badge-25.SWA {
+    background-position: -25px -150px;
+}
+.badge-25.SUN {
+    background-position: 0 -150px;
+}
+.badge-25.BRI{background-position:-75px -50px}
+.badge-25.BRN{background-position:0 -75px}
+.badge-25.CAR{background-position:-25px -75px}
+.badge-25.CHA{background-position:-50px -75px}
+.badge-25.CHE{background-position:-75px -75px}
+.badge-25.COV{background-position:-100px 0}
+.badge-25.CRY{background-position:-100px -25px}
+.badge-25.DER-new{background-position:-100px -50px}
+.badge-25.DER{background-position:-100px -75px}
+.badge-25.EVE{background-position:0 -100px}
+.badge-25.FUL{background-position:-25px -100px}
+.badge-25.HUL{background-position:-50px -100px}
+.badge-25.IPS{background-position:-75px -100px}
+.badge-25.LEE{background-position:-100px -100px}
+.badge-25.LEI{background-position:-125px 0}
+.badge-25.LIV{background-position:0 0}
+.badge-25.MCI{background-position:-125px -50px}
+.badge-25.MID{background-position:-125px -75px}
+.badge-25.MKD{background-position:-125px -100px}
+.badge-25.MUN{background-position:0 -125px}
+.badge-25.NEW{background-position:-25px -125px}
+.badge-25.NFO{background-position:-50px -125px}
+.badge-25.NOR{background-position:-75px -125px}
+.badge-25.OLD{background-position:-100px -125px}
