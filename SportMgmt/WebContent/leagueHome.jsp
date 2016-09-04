@@ -316,6 +316,7 @@
         		return false;
         	}
         	regForm.submit();
+     }
 function doLogin()
         {
         	var loginForm = document.forms['LoginForm'];
@@ -352,8 +353,8 @@ function doLogin()
         		    console.log( 'something went wrong', status, err );
         		  }
         		});
+        }
 
-        }        }
         $(document).ajaxStart(function(){
     		$("#ajaxloader").css("display", "block");
     		$('.mask').show();
