@@ -9,28 +9,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The12thman | League</title>
     <link rel="stylesheet" href="/SportMgmt/css/foundation.css">
-    <link rel="stylesheet" href="/SportMgmt/css/app.css">
+    <link rel="stylesheet" href="/SportMgmt/css/app1.css">
     <link rel="stylesheet" href="/SportMgmt/css/superslides.css">
-    <style>
-    /*body{background-color:#1b75bc;}*/
-	#mainMenu a{ color:#fff; font-size:16px; text-transform:uppercase; position:relative; }
-	#mainMenu a:hover{ color:#D4CCCC; text-align:center; border-bottom:2px solid #f0e809; padding-bottom:16px; position:relative; }
-	#mainMenu li:last-child a{ border-bottom:none !important;}
-	ul#mainMenu{ list-style:none; position:relative; top:25%; margin:auto; text-align:right;}
-	
-	ul#mainMenu li{ list-style:none; text-decoration:none; display:inline-block; text-align:center; text-transform:uppercase; padding:8px 10px; margin:5px auto; }
-	#mainMenu a.logo{ font-size:34px; color:#fff; border-bottom:none;}
-	.menuOverlay{ width:100%; height:80px; z-index:9; background:#1b75bc; position:absolute; opacity:.8; }
-	#logo{top:20%; position:relative;}
-	#logo a{ color:#fff; font-size:30px; }
+    <link rel="stylesheet" href="/SportMgmt/css/customMedia.css">
+     <style>
+#name{background-image:url(images/user-silhouette.png)}
+#email{background-image:url(images/email-filled-closed-envelope.png)}
+#password,#password2{background-image:url(images/key.png)}
+.register-button:focus{outline:0}
+.register-switch{height:37px;margin-bottom:0;padding:0;background:#d7d7d7;border-radius:0}
+.register-switch-input{display:none}
+.register-switch-label{float:left;width:50%;line-height:30px;color:#585858;text-align:center;cursor:pointer; border: solid 1px #d7d7d7;}
+.register-switch-input:checked + .register-switch-label{font-weight:400;color:#585858;border-radius:0; border: solid 1px #ec5840;}
+[type='radio'] + label{padding:3px;margin-left:0;margin-right:0;margin-bottom:0;vertical-align:baseline}
+   
     
+	@keyframes colorChange {
+	0% {
+        background: rgba(27, 117, 188, .8);   
+		border-color:rgba(27, 117, 188, .8);
+    }
+    20% {
+        background: rgba(14, 117, 112, .8);
+		border-color: rgba(14, 117, 112, .8);
+    }
+    40% {
+        background: rgba(101, 17, 111, .8);
+		border-color: rgba(101, 17, 111, .8);
+    }
+    60% {
+        background: rgba(27, 117, 188, .8);   
+		border-color:rgba(27, 117, 188, .8);
+    }
+    80% {
+        background: rgba(14, 117, 112, .8);
+		border-color: rgba(14, 117, 112, .8);   
+    }
+    100% {
+        background: rgba(101, 17, 111, .8);
+		border-color: rgba(101, 17, 111, .8); 
+    }
+}
+	
+	/* .topHeaderText {
+  display: inline-block;
+  animation: scale 7s infinite;
+  transform: scale(0);
+  animation-direction: alternate;
+  opacity: .7;
+} */
 
-	#exampleModal1{ padding: 80px 20px 60px;     box-shadow: 0px 0px 27px #369dc4;
-    border: 2px solid #3f81c4; background:#fff;}
-	input[type="text"], input[type="email"], input[type="password"], select{ height:34px; border:1px solid #999; }
-	#exampleModal1 input{ margin-bottom:25px; }
-	select option:first-child{ color:#ccc;}
-	.btnSubmit{ display: block; width: 100%; margin: 20px 0px; background: rgba(27, 117, 188, .85); font-size: 16px; padding: 14px 20px;}
+@keyframes scale {
+  0% {
+    transform: scale(.9);
+    opacity: .5;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
 	#ajaxloader {
     border: 16px solid #f3f3f3; /* Light grey */
     border-top: 16px solid blue;
@@ -59,33 +97,73 @@
     </style>
 </head>
 <body>
-<header class="menuOverlay">
-        <div id="logo" class="large-4 columns">
-    	<a href="http://the12thman.in/">The12thman</a>
-        </div>
-        <nav class="large-8 columns">
-               <ul id="mainMenu">
+<div id="menuOpenOverlay"></div>
+
+    <header class="menuOverlay">
+            <div id="logo" class="large-4 columns">
+            	<img src="/SportMgmt/images/logo.png" alt="logo"> 
+            </div>
+            <nav class="large-8 columns">
+                <ul class="d-menu" >
                     <li><a href="http://the12thman.in/"> Home </a></li>
-                    <li><a href="javascript:void(0);" data-open="exampleModal2"> Log in </a></li>
-              </ul>
-        </nav>
-    </header>
+                    <li><a href="javascript:void(0);" data-open="exampleModal2"> Log in </a></li>                  
+                </ul>
+                
+              
+                <!-- mobile menu start -->
+                <div id="rightMenu" class="rightMenu">
+                    
+                    <a href='#' class="menuicon" id="menuicon">
+                        <div class="menuText">Menu</div>
+                        <div class="menuLine"><span></span><span></span></div>
+                    </a>
+                    
+                    <div id="mmenu" class="mmenu">	<!-- Main nav links start -->
+                        <ul class="clearfix nav" id="mobileMenu">
+                            <div id="scrollBox" style="position:relative;">
+                                <li><a href="http://the12thman.in/"> Home </a></li>
+                    <li><a href="javascript:void(0);" data-open="exampleModal1"> Sign Up </a></li>              
+                            </div>
+                        </ul>
+                    </div>
+                            
+                </div>
+                <!-- mobile menu end -->
+                
+                
+            </nav>
+    	</header>
     <div id="slides">
         <div class="slides-container">
-        	<img src="/SportMgmt/images/1.jpg">
-        	<img src="/SportMgmt/images/mzhnah28se4o5ykw.jpg">
-            <img src="/SportMgmt/images/6922364-football-stadium-wallpaper.jpg">
-            <img src="/SportMgmt/images/1.jpg">
-            <img src="/SportMgmt/images/3.jpg">
-            <img src="/SportMgmt/images/4.jpg">
-            <img src="/SportMgmt/images/5.jpg">
-            <img src="/SportMgmt/images/6.jpg">           
-            <img src="/SportMgmt/images/8.jpg">           
-            <img src="/SportMgmt/images/10.jpg">
-            <img src="/SportMgmt/images/11.jpg">
-            </div>
+            <img src="/SportMgmt/images/img-2.jpg">
+            <img src="/SportMgmt/images/img-1.jpg">
+        </div>
+        <!-- <div class="shade"></div> -->
         <div id="main-content">
-            <div class="row clearfix main-banner">
+            <div class="banner-wrapper clearfix">
+            	<p class="topHeaderText">
+                	The <span>12th Man</span> League
+               	</p>
+               	<p class="smtxt">
+                 	Play and win <span class="highlight"> Prizes!</span>
+                 </p>
+            </div>
+            <div class="banner-info">
+            <img alt="info" src="/SportMgmt/images/football-1.png">
+             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+             <span class="s1">
+             	Bad performance<br/>&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;in game week 1,2,3 ?? 
+             </span>
+             <BR>&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
+             <span class="s2">
+             	Don't Worry ! 
+             </span>
+             <BR>
+             <span class="s3">
+             	Grab golden chance to kick up your performance from <BR>GAME WEEK 4. </span>
+           <BR><span class="s4"> Play and explore exciting prizes and new features.</span>
+            </div>
+           <!--  <div class="row clearfix main-banner">
                 <div class="large-12 column logo">
                     <div class="logo-container wow zoomIn" data-wow-duration=".8s" data-wow-delay="0.5s"
                         style="visibility: visible; animation-duration: 0.8s; animation-delay: 0.5s;
@@ -93,29 +171,33 @@
                     </div>
                 </div>
                 <div class="large-12 column euro-headings">
-                    <p>
-                        The 12th Man League</p>
                     <div class="euro-divider">
-                        <hr style="border-top: 5px solid #fff">
+                        <hr>
                     </div>
-                    <p>
-                        Play and win  <span class="highlight"> Cash!<span></span></span></p>
-                </div>
-            </div>
+                </div> 
+            </div>-->
             <div class="row clearfix big-register">
                 <div class="large-12 column text-center">
-                    <button class="btn btn-default bigRegister" data-open="exampleModal1">
-                        Play Now</button>
+                    <button class="btn btn-default bigRegister" data-open="exampleModal1"><span>Play Now</span></button>
+                   
                 </div>
             </div>
+            
+            <div class="fbox" id="fbox2">
+                It's <span class="tag-bold">FREE</span> to play !
+            </div>
+            <div class="fbox" id="fbox1">
+                win great <span class="tag-bold">prizes</span> <span class="and">&</span> <span class="tag-bold">cash</span>             
+            </div>
+            
         </div>
     </div>
     
     
     <nav class="slides-navigation">
-          <a href="#" class="next"></a>
-          <a href="#" class="prev"></a>
-        </nav>
+      <a href="#" class="next"></a>
+      <a href="#" class="prev"></a>
+    </nav>
    
     
     <!-- pop-up container -->
@@ -125,40 +207,38 @@
   
   
   <form name="RegisterForm" action="mvc/user/register" method="post">
+  <h3>Sign Up</h3>
+  <div class="large-12 columns">
+            <input type="text" name="displayName" placeholder="Name" required id="name" />
+        </div>
         <div class="large-12 columns">
-          <label>Name*
-            <input type="text" name="displayName" placeholder="Name" required />
-          </label>
+            <input type="email" name="emailId" placeholder="Email / Login ID" required id="email" />
         </div>
-            <!-- <div class="large-12 columns">
-          <label>last name*
-            <input type="text" name="lastname" placeholder="last name" required />
-          </label>
-        </div>
- -->            <div class="large-12 columns">
-          <label>Email Address/Login ID*
-            <input type="email" name="emailId" placeholder="email" required />
-          </label>
-        </div>
-           <!--  <div class="large-12 columns">
-          <label>confirm email*
-            <input type="email" name="emailconfirm" placeholder="email" required />
-          </label>
-        </div>
- -->        <div class="large-12 columns">
-            <label>Password*</label>
-            <input type="password" name="logonPassword" placeholder="password" required />       
-            
-             </div>
         <div class="large-12 columns">
-            <label>Confirm Password*</label>
-              <input type="password" name="logonPasswordConfirm" placeholder="confirm password" required />
-            
+            <input type="password" name="logonPassword" placeholder="Password" required id="password" />
+        </div>
+        <div class="large-12 columns">
+            <input type="password" name="logonPasswordConfirm" placeholder="Confirm Password" required
+                id="password2" />
+        </div>
+        <div class="large-12 columns">
+            <div class="register-switch">
+                <input type="radio" name="sex" value="F" id="sex_f" class="register-switch-input"
+                    checked="">
+                <label for="sex_f" class="register-switch-label">
+                    Female</label>
+                <input type="radio" name="sex" value="M" id="sex_m" class="register-switch-input">
+                <label for="sex_m" class="register-switch-label">
+                    Male</label>
             </div>
+        </div>
+  
+  
+  
             <div class="large-12 columns">
             
                 <div align="right">
-                    <a href="javascript:void(0);" class="button-lrg" ></a><input type="submit" class="button btnSubmit" value="REGISTER"></a>
+                    <a href="javascript:void(0);" class="button-lrg" onclick="submitForm();"><input type="button" class="button btnSubmit" value="REGISTER"></a>
                      </div>
             </div>
     </form>
@@ -187,8 +267,7 @@
   <button class="close-button" data-close aria-label="Close modal" type="button">
     <span aria-hidden="true">&times;</span>
   </button>
-</div>
-    
+</div>    
     <script src="/SportMgmt/js/vendor/jquery.js"></script>
     <script src="/SportMgmt/js/vendor/what-input.js"></script>
     <script src="/SportMgmt/js/vendor/foundation.js"></script>
@@ -196,7 +275,9 @@
     <script src="/SportMgmt/js/jquery.easing.1.3.js"></script>
     <script src="/SportMgmt/js/jquery.animate-enhanced.min.js"></script>
     <script src="/SportMgmt/js/jquery.superslides.js" type="text/javascript" charset="utf-8"></script>
-    <script>
+    <script type="text/javascript">	
+	
+	
         $(function () {
         	$('#slides').superslides({
                 pagination:false,
@@ -205,7 +286,37 @@
         	animation_speed: 3000,
             });
         });
-        function doLogin()
+        function submitForm()
+        {
+        	var regForm = document.forms['RegisterForm'];
+        	if(typeof regForm['displayName'] == 'undefined' || regForm['displayName'].value=='')
+        	{
+        		alert("Please input your Name");
+        		return false;
+        	}
+        	if(typeof regForm['emailId'] == 'undefined' || regForm['emailId'].value=='')
+        	{
+        		alert("Please input Email ID");
+        		return false;
+        	}
+        	var isEmailValid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(regForm['emailId'].value);
+        	if(!isEmailValid)
+       		{
+        		alert("Email ID is not valid");
+        		return false;
+       		}
+        	if(typeof regForm['logonPassword'] == 'undefined' || regForm['logonPassword'].value =='')
+        	{
+        		alert("Please input password");
+        		return false;
+        	}
+        	if(typeof regForm['logonPasswordConfirm'] == 'undefined' || regForm['logonPasswordConfirm'].value !=regForm['logonPassword'].value)
+        	{
+        		alert("Password and confirm password should match");
+        		return false;
+        	}
+        	regForm.submit();
+function doLogin()
         {
         	var loginForm = document.forms['LoginForm'];
         	if(typeof loginForm['emailId'] == 'undefined' || loginForm['emailId'].value=='')
@@ -242,7 +353,7 @@
         		  }
         		});
 
-        }
+        }        }
         $(document).ajaxStart(function(){
     		$("#ajaxloader").css("display", "block");
     		$('.mask').show();
@@ -253,7 +364,82 @@
     	    $('.mask').hide();
     	});
 
-    </script>
+    </script>    
+    <script>
+$(document).ready(function() {
+	//not working. will check again
+	//setbackground();
+		  $('.more-menu').click(function(){
+			$(this).children('ul').slideToggle('fast');
+			})
+		  	 
+		  $('#menuicon').on('click', function(event){
+			  event.preventDefault();
+			  $('body').toggleClass('rightMenuOpen');
+			});
+		});		
+		$(function() {
+		$(window).scroll(function() {
+			var scroll = $(window).scrollTop();
+
+			if (scroll >= 40) {
+				$('#topLayer').addClass('fixed');
+				$('#menuicon').addClass('movetop');
+				
+				$('#logoMain #dlogo').hide(300, function(){$('#logoMain #mlogo').show(300)});
+				$('#logoMain').addClass('mobileLogo');				
+				
+			} else {
+				$('#topLayer').removeClass('fixed');
+				$('#menuicon').removeClass('movetop');
+				
+				$('#logoMain #mlogo').hide(300, function(){$('#logoMain #dlogo').show(300)});
+				
+				$('#logoMain').removeClass('mobileLogo');
+				
+				
+			}
+		});
+	});
+	
+	function aa() {
+		$('.euro-divider hr').css('width', '100%');
+		}
+	$(window).bind("load", function () {
+		aa();
+		$('#fbox1').animate({ left: '0' }, 4000);
+		$('#fbox2').animate({ right: '-350px' }, 2000);
+	});
+	
+	
+</script>
+ <script>
+                    	/*-- button background change  --*/
+	
+						/*document.getElementById("ivaue5-reveal").style.setProperty("-webkit-transition", "2s");
+						
+						function setbackground()
+						{
+						window.setTimeout( "setbackground()", 2000); // 
+						
+						var index = Math.round(Math.random() * 3);
+						
+						var ColorValue = "rgba(27, 117, 188, .8)"; // default color 
+						
+						if(index == 1)
+						ColorValue = "rgba(27, 117, 188, .8)"; 
+						if(index == 2)
+						ColorValue = "rgba(14, 117, 112, .8)"; 
+						if(index == 3)
+						ColorValue = "rgba(101, 17, 111, .8)"; 
+						
+						
+						document.getElementById("ivaue5-reveal").style.backgroundColor = ColorValue;
+						
+						}*/
+                    </script>
+
+   
     <div id="ajaxloader"></div>
    <div class="mask" style="display:none;"></div>
   </body>
