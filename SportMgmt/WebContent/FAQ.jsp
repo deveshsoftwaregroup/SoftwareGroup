@@ -46,34 +46,9 @@
 </head> 
  <body>
  <s:sportExt retrieve="priceList" />
+  <%@ include file="header.jsp" %>
  <main id="mainContent" tabindex="0" class="ism">
-    <div class="ism-header">
-        <div class="wrapper">
-            <div class="ism-game-header-wrap">
-                <div class="ism-game-header">
-                    <h1>
-                    	<a href="/a/">THE 12TH MAN LEAGUE</a>
-                    </h1>                    
-                </div>
-                <nav role="navigation" class="ism-nav ismjs-priority-nav ismjs-nav priority-nav" instance="0">
-
-                    <ul class="ism-nav__list ismjs-main-nav">                        
-
-                        <li class="ism-nav__list__item">
-                            <a href="/a/squad/selection" class="ism-nav__tab is-active" data-nav-tab="squad">Squad Selection</a>
-                        </li>
-
-                        <li class="ism-nav__list__item">
-                            <a href="#" class="ism-nav__tab">Sign Out</a>
-                        </li>
-
-                    </ul>
-                    <span class="ism-nav__dropdown-wrapper priority-nav__wrapper" aria-haspopup="false"><button aria-controls="menu" type="button" class="ism-nav__dropdown-toggle priority-nav__dropdown-toggle priority-nav-is-hidden">More</button><ul aria-hidden="true" class="ism-nav__dropdown priority-nav__dropdown"></ul></span>
-
-                </nav>
-            </div>
-        </div>
-    </div>
+   
     <div class="ism-container">
         <div class="ism-pusher ismjs-page-transition">
             <!-- Primary content -->

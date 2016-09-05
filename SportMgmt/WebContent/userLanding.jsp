@@ -25,18 +25,6 @@
     font-size: 12px;
     font-weight: bold;}
     /*  home  page */
-    .ism .ism-element__name--placeholder {
-    background-color: rgba(255, 235, 0, 0.59);
-}
-.ism .ism-element__name {
-    font-family: inherit;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    
-    color: #f1f1f1;
-    font-weight: 600;
-}
 .ism-game-header h1 a{ color:#fff;}
 #ajaxloader {
     border: 16px solid #f3f3f3; /* Light grey */
@@ -68,47 +56,9 @@
  <body>
  <s:sportExt retrieve="priceList" />
  <main id="mainContent" tabindex="0" class="ism">
-    <div class="ism-header">
-        <div class="wrapper">
-            <div class="ism-game-header-wrap">
-                <div class="ism-game-header">
-                    <h1>
-                    	<a href="/a/">THE 12TH MAN LEAGUE</a>
-                    </h1>                    
-                </div>
-                <nav role="navigation" class="ism-nav ismjs-priority-nav ismjs-nav priority-nav" instance="0">
-
-                    <ul class="ism-nav__list ismjs-main-nav">                        
-
-                        <li class="ism-nav__list__item">
-                            <a href="/a/squad/selection" class="ism-nav__tab is-active" data-nav-tab="squad">Transfers</a>
-                        </li> 
-                        <li class="ism-nav__list__item">
-                            <a href="/a/squad/selection" class="ism-nav__tab is-active" data-nav-tab="squad">My Team</a>
-                        </li> 
-                        <li class="ism-nav__list__item">
-                            <a href="/a/squad/selection" class="ism-nav__tab is-active" data-nav-tab="squad">Fixtures</a>
-                        </li>                        
-                        <li class="ism-nav__list__item">
-                            <a href="/SportMgmt/prizes.jsp" class="ism-nav__tab is-active">Prizes</a>
-                        </li>                        
-                        <li class="ism-nav__list__item">
-                            <a href="/SportMgmt/rules.jsp" class="ism-nav__tab is-active">Rules</a>
-                        </li>
-                        <li class="ism-nav__list__item">
-                            <a href="/SportMgmt/FAQ.jsp" class="ism-nav__tab is-active">FAQ</a>
-                        </li>                       
-                        <li class="ism-nav__list__item">
-                            <a href="#" class="ism-nav__tab is-active">Sign Out</a>
-                        </li>
-
-                    </ul>
-                    <span class="ism-nav__dropdown-wrapper priority-nav__wrapper" aria-haspopup="false"><button aria-controls="menu" type="button" class="ism-nav__dropdown-toggle priority-nav__dropdown-toggle priority-nav-is-hidden">More</button><ul aria-hidden="true" class="ism-nav__dropdown priority-nav__dropdown"></ul></span>
-
-                </nav>
-            </div>
-        </div>
-    </div>
+    
+        <%@ include file="header.jsp" %>
+    
     <div class="ism-container">
         <div class="ism-pusher ismjs-page-transition">
             <!-- Primary content -->
@@ -118,7 +68,7 @@
                     <div id="ismr-scoreboard">
                         <div>
                         <div class="ism-copy">
-                                <p>Select a maximum of 3 players from a single team or 'Auto Pick' if you're short of time.</p>
+                                <p>Select a maximum of 3 players from a single team</p>
                          </div>
 
                             <!-- Scoreboard -->
@@ -145,7 +95,14 @@
                         </div>
                         <div class="ism-squad-wrapper">
                             <div class="ismjs-a11y-tabs ism-tabs">
-                                
+                                <ul class="ism-toggle-tabs__list ism-toggle-tabs__list--light-b" role="tablist">
+                                    <li class="ism-toggle-tabs__item" role="presentation">
+                                        <a href="#ismr-summary" class="ism-toggle-tabs__tab" role="tab" tabindex="0" aria-controls="ismr-summary" aria-selected="true">Pitch View</a>
+                                    </li>
+                                    <li class="ism-toggle-tabs__item" role="presentation">
+                                        <a href="#ismr-detail" class="ism-toggle-tabs__tab" role="tab" tabindex="0" aria-controls="ismr-detail">List View</a>
+                                    </li>
+                                </ul>
 
                                 <section id="ismr-summary" class="ism-pitch" role="tabpanel">
                                     <div tabindex="0">
@@ -718,7 +675,196 @@
 
                                     </div>
                                 </section>
-                                
+                                <section id="ismr-detail" class="ism-detail" role="tabpanel" aria-hidden="true">
+                                    <div tabindex="-1">
+                                        <div>
+                                            <div class="table">
+                                                <table class="ism-table ism-table--el ism-table--squad">
+                                                    <thead>
+                                                        <tr class="ism-table__divider ism-el-type ism-el-type--1">
+                                                            <th class="ism-table--squad__status"></th>
+                                                            <th class="ism-table--squad__name">Goalkeepers</th>
+                                                            <th class="ism-table--squad__price"><abbr title="Price">£</abbr></th>
+                                                            <th class="ism-table--squad__tsb"><abbr title="Teams selected by %">SB</abbr></th>
+                                                            <th class="ism-table--squad__pts-tot"><abbr title="Total points">TP</abbr></th>
+                                                            <th class="ism-table--squad__fixture"><abbr title="Fixture next Gameweek">FIX</abbr></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+
+                                                            <td></td>
+                                                            <td colspan="5" class="ism-table--el__placeholder">
+                                                                <a href="#" class="ismjs-select">Select Goalkeeper</a>
+                                                            </td>
+
+                                                        </tr>
+                                                        <tr>
+
+                                                            <td></td>
+                                                            <td colspan="5" class="ism-table--el__placeholder">
+                                                                <a href="#" class="ismjs-select">Select Goalkeeper</a>
+                                                            </td>
+
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="table">
+                                                <table class="ism-table ism-table--el ism-table--squad">
+                                                    <thead>
+                                                        <tr class="ism-table__divider ism-el-type ism-el-type--2">
+                                                            <th class="ism-table--squad__status"></th>
+                                                            <th class="ism-table--squad__name">Defenders</th>
+                                                            <th class="ism-table--squad__price"><abbr title="Price">£</abbr></th>
+                                                            <th class="ism-table--squad__tsb"><abbr title="Teams selected by %">SB</abbr></th>
+                                                            <th class="ism-table--squad__pts-tot"><abbr title="Total points">TP</abbr></th>
+                                                            <th class="ism-table--squad__fixture"><abbr title="Fixture next Gameweek">FIX</abbr></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td colspan="5" class="ism-table--el__placeholder">
+                                                                <a href="#" class="ismjs-select">Select Defender</a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td colspan="5" class="ism-table--el__placeholder">
+                                                                <a href="#" class="ismjs-select">Select Defender</a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td colspan="5" class="ism-table--el__placeholder">
+                                                                <a href="#" class="ismjs-select">Select Defender</a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+
+                                                            <td></td>
+                                                            <td colspan="5" class="ism-table--el__placeholder">
+                                                                <a href="#" class="ismjs-select">Select Defender</a>
+                                                            </td>
+
+                                                        </tr>
+                                                        <tr>
+
+                                                            <td></td>
+                                                            <td colspan="5" class="ism-table--el__placeholder">
+                                                                <a href="#" class="ismjs-select">Select Defender</a>
+                                                            </td>
+
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="table">
+                                                <table class="ism-table ism-table--el ism-table--squad">
+                                                    <thead>
+                                                        <tr class="ism-table__divider ism-el-type ism-el-type--3">
+                                                            <th class="ism-table--squad__status"></th>
+                                                            <th class="ism-table--squad__name">Midfielders</th>
+                                                            <th class="ism-table--squad__price"><abbr title="Price">£</abbr></th>
+                                                            <th class="ism-table--squad__tsb"><abbr title="Teams selected by %">SB</abbr></th>
+                                                            <th class="ism-table--squad__pts-tot"><abbr title="Total points">TP</abbr></th>
+                                                            <th class="ism-table--squad__fixture"><abbr title="Fixture next Gameweek">FIX</abbr></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+
+                                                            <td></td>
+                                                            <td colspan="5" class="ism-table--el__placeholder">
+                                                                <a href="#" class="ismjs-select">Select Midfielder</a>
+                                                            </td>
+
+                                                        </tr>
+                                                        <tr>
+
+                                                            <td></td>
+                                                            <td colspan="5" class="ism-table--el__placeholder">
+                                                                <a href="#" class="ismjs-select">Select Midfielder</a>
+                                                            </td>
+
+                                                        </tr>
+                                                        <tr>
+
+                                                            <td></td>
+                                                            <td colspan="5" class="ism-table--el__placeholder">
+                                                                <a href="#" class="ismjs-select">Select Midfielder</a>
+                                                            </td>
+
+                                                        </tr>
+                                                        <tr>
+
+                                                            <td></td>
+                                                            <td colspan="5" class="ism-table--el__placeholder">
+                                                                <a href="#" class="ismjs-select">Select Midfielder</a>
+                                                            </td>
+
+                                                        </tr>
+                                                        <tr>
+
+                                                            <td></td>
+                                                            <td colspan="5" class="ism-table--el__placeholder">
+                                                                <a href="#" class="ismjs-select">Select Midfielder</a>
+                                                            </td>
+
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="table">
+                                                <table class="ism-table ism-table--el ism-table--squad">
+                                                    <thead>
+                                                        <tr class="ism-table__divider ism-el-type ism-el-type--4">
+                                                            <th class="ism-table--squad__status"></th>
+                                                            <th class="ism-table--squad__name">Forwards</th>
+                                                            <th class="ism-table--squad__price"><abbr title="Price">£</abbr></th>
+                                                            <th class="ism-table--squad__tsb"><abbr title="Teams selected by %">SB</abbr></th>
+                                                            <th class="ism-table--squad__pts-tot"><abbr title="Total points">TP</abbr></th>
+                                                            <th class="ism-table--squad__fixture"><abbr title="Fixture next Gameweek">FIX</abbr></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+
+                                                            <td></td>
+                                                            <td colspan="5" class="ism-table--el__placeholder">
+                                                                <a href="#" class="ismjs-select">Select Forward</a>
+                                                            </td>
+
+                                                        </tr>
+                                                        <tr>
+
+                                                            <td></td>
+                                                            <td colspan="5" class="ism-table--el__placeholder">
+                                                                <a href="#" class="ismjs-select">Select Forward</a>
+                                                            </td>
+
+                                                        </tr>
+                                                        <tr>
+
+                                                            <td></td>
+                                                            <td colspan="5" class="ism-table--el__placeholder">
+                                                                <a href="#" class="ismjs-select">Select Forward</a>
+                                                            </td>
+
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
                                 
                                 <section id="ismr-detail" class="ism-detail" role="tabpanel"><div tabindex="0"><div>
     <div class="table">
@@ -1268,36 +1414,24 @@
 		</script>
 	</c:if>
 	<script type="text/javascript">
-	
 function aa(){
+		
 	
-	 var elems2 = '<div class="ismjs-select">'+
-     '<picture>'+
-     '<source type="/SportMgmt/js/webp" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-110.webp 110w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-66.webp 66w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-33.webp 33w" sizes="(min-width: 1024px) 55px,(min-width: 610px) 44px,33px">'+
-     '<img src="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-33.png" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-110.png 110w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-66.png 66w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-33.png 33w" sizes="(min-width: 1024px) 55px,(min-width: 610px) 44px,33px" alt="" title="Click to select a Goalkeeper" class="ism-shirt ism-element__shirt">'+
-     '</picture>'+
-     '<div class="ism-element__name ism-element__name--placeholder">Add <abbr title="Goalkeeper" class="ism-element__type"><span class="ism-element__type__short">GKP</span></abbr></div>';
-     
-      
-     
-     
-	$('.ism-element-row.ism-element-row--pitch:first-child .ismjs-remove').click(function () {		
-		$(this).parents('.ism-element').find('.ismjs-menu').replaceWith( elems2 );;
-		return false;
-		})	
+	$('.ismjs-remove').click(function () {
+		$(this).parents().find('.ismjs-menu').hide();
+		console.log($(this));
+	})
+			
 	};
 	
+	
 		
-	$(function () {	
+	$(function () {
+		
+		
 	    
 		$('#Goalkeepers .addPlayer>a').click(function () {
-	       
-			var from = jQuery('select[name=select_from]');
-
-			$('#Goalkeepers .addPlayer>a').closest('tr').attr('disabled', 'disabled');
-
-			
-			var elems = '<div class="ismjs-menu">'+
+	        var elems = '<div class="ismjs-menu">'+
 	        '<picture>'+
 	        '<source type="image/webp" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_90_1-110.webp 110w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_90_1-66.webp 66w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_90_1-33.webp 33w" sizes="(min-width: 1024px) 55px, (min-width: 610px) 44px, 33px" >'+
 	        '<img src="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_90_1-33.png" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_90_1-110.png 110w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_90_1-66.png 66w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_90_1-33.png 33w" sizes="(min-width: 1024px) 55px,(min-width: 610px) 44px,33px" alt="Burnley" title="Burnley" class="ism-shirt ism-element__shirt">'+
@@ -1312,25 +1446,19 @@ function aa(){
 	        
 	        return false;
 	    });	
-		//click(function(){
-		$('.ism-element').mousemove(function(){
-			//alert('hello');
-			aa();			
+		
+		
+		$('.ismjs-remove').click(function () {
+			$(this).parents().find('.ismjs-menu').hide();
+			console.log($(this));
 		})
-
 
 	});
 	
 	
 	$(document).ready(function() {
-		  
-	});	
-	
-	
-	
-	
-	
-	
+		   aa();
+		});
 	 $('#ismjs-element-filter').change(function(){
 	  var selected = $(':selected',this); 
 	  filterByView(selected);
@@ -1410,12 +1538,15 @@ function aa(){
 					  if(playerListJson[playerListIndex].gameClubPlayerId == gameClubPlayerId)
 						{
 						  playerClubId =   playerListJson[playerListIndex].clubId;
-						}						  
+						}
+						  
 					}
 				}
-				if(selectedClub.split('_')[1] !=playerClubId){
+				if(selectedClub.split('_')[1] !=playerClubId)
+				{
 					 $(this).hide();
-				}				
+				}
+				
 			});
 		}
 	  $("p.ism-elements-shown strong.ism-elements-shown__num").text($("tr.ismjs-menu.ism-row-select:visible").length);
@@ -1431,7 +1562,8 @@ function aa(){
 				  if(playerListJson[playerListIndex].gameClubPlayerId == gameClubPlayerId)
 					{
 					  playerType =   playerListJson[playerListIndex].type;
-					}					  
+					}
+					  
 				}
 			}
 		console.debug("--- Player Type "+playerType);

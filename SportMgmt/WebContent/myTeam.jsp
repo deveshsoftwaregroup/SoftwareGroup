@@ -42,6 +42,7 @@
 </head>
 <body>
 <main id="mainContent" tabindex="0" class="league">
+<%@ include file="header.jsp" %>
         <div class="league-container">
             <div class="league-pusher leaguejs-page-transition">
                 <!-- Primary content -->
@@ -55,7 +56,7 @@
 								</div>
 
 								<div class="league-copy">
-									<p>Select a maximum of 3 players from a single team or 'Auto Pick' if you're short of time.</p>
+									
 								</div>
 
 								<!-- Deadline Bar -->
