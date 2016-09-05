@@ -1,0 +1,119 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The12thman | League</title>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+	<%@ taglib uri="WEB-INF/sportmgmt.tld" prefix="s" %>  
+    <link rel="stylesheet" href="/SportMgmt/css/foundation.css">
+    <link rel="stylesheet" href="/SportMgmt/css/app.css">
+    <link rel="stylesheet" href="/SportMgmt/css/superslides.css">
+    <link rel="stylesheet" type="text/css" href="/SportMgmt/css/customMedia.css">
+   <!-- <link rel="stylesheet" href="https://ismdj.scdn5.secure.raxcdn.com/static/CACHE/css/258578334140.css" type="text/css" />-->
+    <link rel="stylesheet" type="text/css" href="/SportMgmt/css/258578334140.css">
+    <script src="https://use.fontawesome.com/d4e6d4c165.js"></script>
+    <style>
+    
+.ism .ism-element__name {
+    font-family: inherit;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    
+    color: #f1f1f1;
+    font-weight: 600;
+}
+.ism-game-header h1 a{ color:#fff;}
+#ajaxloader {
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-top: 16px solid blue;
+ 	border-right: 16px solid green;
+ 	border-bottom: 16px solid red;
+ 	border-left: 16px solid pink;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    margin-left: -32px; 
+    margin-top: -32px;
+    z-index: 999;
+    display:none;
+}
+.mask{ background: #000; opacity: 0.5; position:fixed; top: 0; left: 0; width: 100%; height:100%;}
+
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+</style>
+</head> 
+ <body>
+ <s:sportExt retrieve="priceList" />
+ <main id="mainContent" tabindex="0" class="ism">
+    <div class="ism-header">
+        <div class="wrapper">
+            <div class="ism-game-header-wrap">
+                <div class="ism-game-header">
+                    <h1>
+                    	<a href="/a/">THE 12TH MAN LEAGUE</a>
+                    </h1>                    
+                </div>
+                <nav role="navigation" class="ism-nav ismjs-priority-nav ismjs-nav priority-nav" instance="0">
+
+                    <ul class="ism-nav__list ismjs-main-nav">                        
+
+                        <li class="ism-nav__list__item">
+                            <a href="/a/squad/selection" class="ism-nav__tab is-active" data-nav-tab="squad">Transfers</a>
+                        </li> 
+                        <li class="ism-nav__list__item">
+                            <a href="/a/squad/selection" class="ism-nav__tab is-active" data-nav-tab="squad">My Team</a>
+                        </li> 
+                        <li class="ism-nav__list__item">
+                            <a href="/a/squad/selection" class="ism-nav__tab is-active" data-nav-tab="squad">Fixtures</a>
+                        </li>                        
+                        <li class="ism-nav__list__item">
+                            <a href="/SportMgmt/prizes.jsp" class="ism-nav__tab is-active">Prizes</a>
+                        </li>                        
+                        <li class="ism-nav__list__item">
+                            <a href="/SportMgmt/rules.jsp" class="ism-nav__tab is-active">Rules</a>
+                        </li>
+                        <li class="ism-nav__list__item">
+                            <a href="/SportMgmt/FAQ.jsp" class="ism-nav__tab is-active">FAQ</a>
+                        </li>                       
+                        <li class="ism-nav__list__item">
+                            <a href="#" class="ism-nav__tab is-active">Sign Out</a>
+                        </li>
+
+                    </ul>
+                  
+                </nav>
+            </div>
+        </div>
+    </div>  
+   
+</main>
+    
+ 
+    
+    <script src="/SportMgmt/js/vendor/jquery.js"></script>
+    <script src="/SportMgmt/js/vendor/what-input.js"></script>
+    <script src="/SportMgmt/js/vendor/foundation.js"></script>
+    <script src="/SportMgmt/js/app.js"></script>
+    <script src="/SportMgmt/js/jquery.easing.1.3.js"></script>
+    <script src="/SportMgmt/js/jquery.animate-enhanced.min.js"></script>
+    <script src="/SportMgmt/js/jquery.superslides.js" type="text/javascript" charset="utf-8"></script>
+  
+
+   
+  </body>
+	
+</html>
