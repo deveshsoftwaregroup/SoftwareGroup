@@ -68,8 +68,8 @@
                     <div id="ismr-scoreboard">
                         <div>
                         <div class="ism-copy">
-                                <p>Select a maximum of 3 players from a single team</p>
-                         </div>
+                                <p style="color: #0061a0; font-weight: bold;"><i class="fa fa-angle-double-right" style="color: #f00;"></i> Select a maximum of 3 players from a single team</p>
+                         </div> 
 
                             <!-- Scoreboard -->
                             <div class="ism-scoreboard">
@@ -859,178 +859,7 @@
                                     </div>
                                 </section>
                                 
-                                <section id="ismr-detail" class="ism-detail" role="tabpanel"><div tabindex="0"><div>
-    <div class="table">
-        <table class="ism-table ism-table--el ism-table--squad">
-            <thead>
-                <tr class="ism-table__divider ism-el-type ism-el-type--1">
-                    <th class="ism-table--squad__status"></th>
-                    <th class="ism-table--squad__name">Goalkeepers</th>
-                    <th class="ism-table--squad__price"><abbr title="Price">�</abbr></th>
-                    <th class="ism-table--squad__tsb"><abbr title="Teams selected by %">SB</abbr></th>
-                    <th class="ism-table--squad__pts-tot"><abbr title="Total points">TP</abbr></th>
-                    <th class="ism-table--squad__fixture"><abbr title="Fixture next Gameweek">FIX</abbr></th>
-                </tr>
-            </thead>
-            <tbody><tr>
-    
-        <td></td>
-        <td colspan="5" class="ism-table--el__placeholder">
-            <a href="#" class="ismjs-select">Select Goalkeeper</a>
-        </td>
-    
-</tr><tr>
-    
-        <td></td>
-        <td colspan="5" class="ism-table--el__placeholder">
-            <a href="#" class="ismjs-select">Select Goalkeeper</a>
-        </td>
-    
-</tr></tbody>
-        </table>
-    </div>
-</div><div>
-    <div class="table">
-        <table class="ism-table ism-table--el ism-table--squad">
-            <thead>
-                <tr class="ism-table__divider ism-el-type ism-el-type--2">
-                    <th class="ism-table--squad__status"></th>
-                    <th class="ism-table--squad__name">Defenders</th>
-                    <th class="ism-table--squad__price"><abbr title="Price">�</abbr></th>
-                    <th class="ism-table--squad__tsb"><abbr title="Teams selected by %">SB</abbr></th>
-                    <th class="ism-table--squad__pts-tot"><abbr title="Total points">TP</abbr></th>
-                    <th class="ism-table--squad__fixture"><abbr title="Fixture next Gameweek">FIX</abbr></th>
-                </tr>
-            </thead>
-            <tbody><tr>
-    
-        <td></td>
-        <td colspan="5" class="ism-table--el__placeholder">
-            <a href="#" class="ismjs-select">Select Defender</a>
-        </td>
-    
-</tr><tr>
-    
-        <td></td>
-        <td colspan="5" class="ism-table--el__placeholder">
-            <a href="#" class="ismjs-select">Select Defender</a>
-        </td>
-    
-</tr><tr>
-    
-        <td></td>
-        <td colspan="5" class="ism-table--el__placeholder">
-            <a href="#" class="ismjs-select">Select Defender</a>
-        </td>
-    
-</tr><tr>
-    
-        <td></td>
-        <td colspan="5" class="ism-table--el__placeholder">
-            <a href="#" class="ismjs-select">Select Defender</a>
-        </td>
-    
-</tr><tr>
-    
-        <td></td>
-        <td colspan="5" class="ism-table--el__placeholder">
-            <a href="#" class="ismjs-select">Select Defender</a>
-        </td>
-    
-</tr></tbody>
-        </table>
-    </div>
-</div><div>
-    <div class="table">
-        <table class="ism-table ism-table--el ism-table--squad">
-            <thead>
-                <tr class="ism-table__divider ism-el-type ism-el-type--3">
-                    <th class="ism-table--squad__status"></th>
-                    <th class="ism-table--squad__name">Midfielders</th>
-                    <th class="ism-table--squad__price"><abbr title="Price">�</abbr></th>
-                    <th class="ism-table--squad__tsb"><abbr title="Teams selected by %">SB</abbr></th>
-                    <th class="ism-table--squad__pts-tot"><abbr title="Total points">TP</abbr></th>
-                    <th class="ism-table--squad__fixture"><abbr title="Fixture next Gameweek">FIX</abbr></th>
-                </tr>
-            </thead>
-            <tbody><tr>
-    
-        <td></td>
-        <td colspan="5" class="ism-table--el__placeholder">
-            <a href="#" class="ismjs-select">Select Midfielder</a>
-        </td>
-    
-</tr><tr>
-    
-        <td></td>
-        <td colspan="5" class="ism-table--el__placeholder">
-            <a href="#" class="ismjs-select">Select Midfielder</a>
-        </td>
-    
-</tr><tr>
-    
-        <td></td>
-        <td colspan="5" class="ism-table--el__placeholder">
-            <a href="#" class="ismjs-select">Select Midfielder</a>
-        </td>
-    
-</tr><tr>
-    
-        <td></td>
-        <td colspan="5" class="ism-table--el__placeholder">
-            <a href="#" class="ismjs-select">Select Midfielder</a>
-        </td>
-    
-</tr><tr>
-    
-        <td></td>
-        <td colspan="5" class="ism-table--el__placeholder">
-            <a href="#" class="ismjs-select">Select Midfielder</a>
-        </td>
-    
-</tr></tbody>
-        </table>
-    </div>
-</div><div>
-    <div class="table">
-        <table class="ism-table ism-table--el ism-table--squad">
-            <thead>
-                <tr class="ism-table__divider ism-el-type ism-el-type--4">
-                    <th class="ism-table--squad__status"></th>
-                    <th class="ism-table--squad__name">Forwards</th>
-                    <th class="ism-table--squad__price"><abbr title="Price">�</abbr></th>
-                    <th class="ism-table--squad__tsb"><abbr title="Teams selected by %">SB</abbr></th>
-                    <th class="ism-table--squad__pts-tot"><abbr title="Total points">TP</abbr></th>
-                    <th class="ism-table--squad__fixture"><abbr title="Fixture next Gameweek">FIX</abbr></th>
-                </tr>
-            </thead>
-            <tbody><tr>
-    
-        <td></td>
-        <td colspan="5" class="ism-table--el__placeholder">
-            <a href="#" class="ismjs-select">Select Forward</a>
-        </td>
-    
-</tr><tr>
-    
-        <td></td>
-        <td colspan="5" class="ism-table--el__placeholder">
-            <a href="#" class="ismjs-select">Select Forward</a>
-        </td>
-    
-</tr><tr>
-    
-        <td></td>
-        <td colspan="5" class="ism-table--el__placeholder">
-            <a href="#" class="ismjs-select">Select Forward</a>
-        </td>
-    
-</tr></tbody>
-        </table>
-    </div>
-</div>
-	</div>
-</section>
+            
                                 
                                 
                             </div>
@@ -1153,7 +982,7 @@
     <p class="ism-elements-shown"><strong class="ism-elements-shown__num">${fn:length(sessionScope.playerList)}</strong> players shown</p>
 
     <div id="ismjs-elements-list-tables"><div>
-    <div class="table" id="Goalkeepers">
+    <div class="table scroll-tbl" id="Goalkeepers" >
         <table class="ism-table ism-table--el ism-table--el-list">
             <thead>
                 <tr class="ism-table__divider ism-el-type ism-el-type--1">
@@ -1203,7 +1032,7 @@
     </div>
 	</div>
 <div>
-    <div class="table" id="Defenders">
+    <div class="table scroll-tbl" id="Defenders">
         <table class="ism-table ism-table--el ism-table--el-list">
             <thead>
                 <tr class="ism-table__divider ism-el-type ism-el-type--2">
@@ -1253,7 +1082,7 @@
     </div>
 </div>
 <div>
-    <div class="table" id="Midfielders">
+    <div class="table scroll-tbl" id="Midfielders">
         <table class="ism-table ism-table--el ism-table--el-list">
             <thead>
                 <tr class="ism-table__divider ism-el-type ism-el-type--3">
@@ -1303,9 +1132,9 @@
     </div>
 </div>
 <div>
-    <div class="table" id="Forwards">
+    <div class="table scroll-tbl" id="Forwards">
         <table class="ism-table ism-table--el ism-table--el-list">
-            <thead>
+            <thead> 
                 <tr class="ism-table__divider ism-el-type ism-el-type--4">
                     <th class="ism-table--el-list__status"></th>
                     <th class="ism-table--el-list__name"><a href="#" class="ism-link--bold">Forwards</a></th>

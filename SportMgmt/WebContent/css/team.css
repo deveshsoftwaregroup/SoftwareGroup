@@ -296,6 +296,10 @@ html {
     padding-top: 2rem;
     background-color: #2f2f2f;
     overflow: auto;
+        background: -webkit-gradient(radial, center center, 0, center center, 460, from(#ff0), to(#2b2200));
+    background: -webkit-radial-gradient(circle, #ff0, #2b2200);
+    background: -moz-radial-gradient(circle, #ff0, #2b2200);
+    background: -ms-radial-gradient(circle, #ff0, #2b2200);
 }
 @media(min-width:64em) {
     .league .league-squad-wrapper {

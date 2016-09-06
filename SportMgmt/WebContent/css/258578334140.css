@@ -9201,11 +9201,15 @@ padding-right:1rem
 
 .ism .ism-form__label {
 display:block;
-margin-bottom:1rem;
+margin-bottom:0;
 cursor:pointer;
 font-size:12px;
 }
-
+.ism-sidebar .subHeader {
+    font-size: 1.8rem;
+    margin-bottom: 0rem;
+    position: relative;
+}
 .ism .ism-form__label--bold {
 font-family:"PremierSans-Bold",Arial,"Helvetica Neue",Helvetica,sans-serif
 }
@@ -9226,7 +9230,7 @@ margin-bottom:1rem
 }
 
 .ism .ism-form__group {
-margin-bottom:2rem
+margin-bottom:1rem
 }
 
 .ism .ism-form__text {
@@ -9913,7 +9917,7 @@ margin-right:.5rem
 position:relative;
 background-color:#0a0a0a;
 color:#cecece;
-    border: 1px solid #848484;
+    border: 1px solid #dcdcdc;
     border-bottom: 0px;
 }
 
@@ -9924,6 +9928,7 @@ background-color:#f1f1f1;
 .ism .ism-nav__list .ism-nav__list__item>.ism-nav__tab.is-active, .ism .ism-nav__list .ism-nav__list__item>.ism-nav__tab:hover {
     background-color: #a4e800;
 	color:#000;
+	border-color:#fff;
 }
 
 .ism .ism-nav__list .ism-nav__list__item>.ism-nav__tab[aria-selected='true']:focus {
@@ -11310,7 +11315,7 @@ color:#242424
 }
 
 .ism .ism-element__name--placeholder {
-background-color:rgba(0,150,74,0.9)
+background-color:#3adb76;
 }
 
 .ism .ism-element__type {
@@ -11934,7 +11939,7 @@ margin-bottom:2rem
 
 .ism .ism-pitch {
 min-height:330px;
-background-image:url(https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/pitch-516.png?27848e1b7541);
+background-image:url('../images/pitch-516.png');
 background-repeat:no-repeat;
 background-position:center 0
 }
@@ -11994,7 +11999,7 @@ background-color:red
 @media(min-width:610px) {
 .ism .ism-pitch {
 min-height:524px;
-background-image:url(https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/pitch-820.png?27848e1b7541)
+background-image:url('../images/pitch-820.png')
 }
 }
 
@@ -12014,7 +12019,7 @@ min-height:96px
 @media(min-width:64em) {
 .ism .ism-pitch {
 min-height:690px;
-background-image:url(https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/pitch-1080.png?27848e1b7541)
+background-image:url('../images/pitch-1080.png')
 }
 }
 
@@ -12568,7 +12573,7 @@ font-size:1.1rem
 }
 
 .ism .ism-el-type--1 {
-background-color:#EAFF04
+background-color:#91ff00
 }
 
 .ism .ism-el-type--2 {
@@ -12999,7 +13004,11 @@ color:#fff
 margin-bottom:1rem;
 padding-top:2rem;
 background-color:#0c0a70;
-overflow:auto
+overflow:auto;
+    background: -webkit-gradient(radial, center center, 0, center center, 460, from(#ff0), to(#2b2200));
+    background: -webkit-radial-gradient(circle, #ff0, #2b2200);
+    background: -moz-radial-gradient(circle, #ff0, #2b2200);
+    background: -ms-radial-gradient(circle, #ff0, #2b2200);
 }
 
 .ism .ism-detail {
@@ -13549,4 +13558,16 @@ background-image:url(data:image/gif;base64,R0lGODlhFAAUAPcAAAAAAJmZmZ2dnZ6enqKio
 }
 .ism-game-header h1 {
     margin-left: 85px;
+}
+.ism-element .ismjs-select {
+    background: rgba(0,0,0,0.3);
+    padding: 5px;
+    border-radius: 60px;
+}
+.ism-element .ismjs-select:hover {
+    background: rgba(133, 255, 0, 0.75);
+}
+.scroll-tbl {overflow-y:auto; height: 237px;}
+.table .ism-table td, .table th {
+    padding: 0.1rem 1rem;
 }

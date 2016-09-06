@@ -73,7 +73,7 @@
                     <ul class="ism-nav__list ismjs-main-nav">                        
 
                         <li class="ism-nav__list__item">
-                            <a href="/a/squad/selection" class="ism-nav__tab" data-nav-tab="squad">Transfers</a>
+                            <a href="/SportMgmt/mvc/user/login/${sessionScope.userId}" class="ism-nav__tab" data-nav-tab="squad">Transfers</a>
                         </li> 
                         <li class="ism-nav__list__item">
                             <a href="/SportMgmt/mvc/game/MyTeamView/${sessionScope.userId}/${sessionScope.gameDetails.gameId}" class="ism-nav__tab " data-nav-tab="squad">My Team</a>
