@@ -9777,9 +9777,17 @@ width:25%
 
 .ism .ism-header {
 /*background:#00FF87 url(https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/header-bg-226.png?630a32dd36b1) no-repeat right -50px bottom*/
-    background: rgba(14, 39, 176, 0.8) none repeat scroll 0% 0%;
+        background: url(../images/foot-head-1.png), url(../images/foot-head.png);
+    background-repeat: no-repeat, no-repeat;
+    background-position: left bottom, right top;
+    /* background-color: #528400; */
 }
-
+.league_header {
+	background: -webkit-gradient(radial, center center, 0, center center, 460, from(#a0d400), to(#406700));
+    background: -webkit-radial-gradient(circle, #a0d400, #406700);
+     background: -moz-radial-gradient(circle, #a0d400, #406700);
+  background: -ms-radial-gradient(circle, #a0d400, #406700);
+}
 @media only screen and (-webkit-min-device-pixel-ratio:2),only screen and (min--moz-device-pixel-ratio:2),only screen and (min-resolution:192dpi),only screen and (min-resolution:2dppx) {
 /*.ism .ism-header {
 background-image:url(https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/header-bg-452.png?630a32dd36b1);
@@ -9829,11 +9837,7 @@ padding:1rem 0
 }
 }
 
-@media(min-width:25em) {
-.ism .ism-header {
-background-position:right bottom
-}
-}
+
 
 @media(min-width:56.25em) {
 /*.ism .ism-header {
@@ -9867,11 +9871,6 @@ width:auto
 }
 }
 
-@media(min-width:87.5em) {
-.ism .ism-header {
-background-position:right top
-}
-}
 
 .ism .ism-nav {
 padding-left:1rem;
@@ -9902,7 +9901,7 @@ padding-left:3rem
 .ism .ism-nav__list {
 display:inline-block;
 font-size:0;
-margin-left:0px;
+margin-left:60px;
 }
 
 .ism .ism-nav__list .ism-nav__list__item {
@@ -9912,19 +9911,19 @@ margin-right:.5rem
 
 .ism .ism-nav__list .ism-nav__list__item>.ism-nav__tab {
 position:relative;
-background-color:#fff;
-color:#000
+background-color:#0a0a0a;
+color:#cecece;
+    border: 1px solid #848484;
+    border-bottom: 0px;
 }
 
 .ism .ism-nav__list .ism-nav__list__item>.ism-nav__tab:hover,.ism .ism-nav__list .ism-nav__list__item>.ism-nav__tab:focus {
 background-color:#f1f1f1;
 }
 
-.ism .ism-nav__list .ism-nav__list__item>.ism-nav__tab.is-active {
-    background-color: #1226b5;
-    color: #ffffff;
-    border: 1px solid #1a73f9;;
-    border-bottom: 0px;
+.ism .ism-nav__list .ism-nav__list__item>.ism-nav__tab.is-active, .ism .ism-nav__list .ism-nav__list__item>.ism-nav__tab:hover {
+    background-color: #a4e800;
+	color:#000;
 }
 
 .ism .ism-nav__list .ism-nav__list__item>.ism-nav__tab[aria-selected='true']:focus {
@@ -13547,4 +13546,7 @@ background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAA
 background-repeat:no-repeat;
 background-position:center;
 background-image:url(data:image/gif;base64,R0lGODlhFAAUAPcAAAAAAJmZmZ2dnZ6enqKioqOjo6SkpKWlpaampqenp6ioqKmpqaqqqqurq/Hx8fLy8vT09PX19ff39/j4+Pn5+fr6+vv7+wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAEAAP8ALAAAAAAUABQAAAihAP9FoPCvoMGDBy08+EdhQAIJCCMybCDAAYUEARBAlFiQQoMABQhKUJBxY0SPICEYHBnggEmDKAuoPMjS5cGYMxHW3IiT478JJA8M/CjTZ0GgLRekNGpwAsYABHIypcAgQMsITDtWJYBR6NSqMico9cqR6tKfY7GeBCuVwlipDNmefAtTrkSzB1RaIAoXodsABiZAEFB06gIBWC1mLVgBa0AAOw==)
+}
+.ism-game-header h1 {
+    margin-left: 85px;
 }
