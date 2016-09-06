@@ -59,6 +59,7 @@
  <body>
  <s:sportExt retrieve="priceList" />
  <main id="mainContent" tabindex="0" class="ism">
+ <div class="league_header">
     <div class="ism-header">
         <div class="wrapper">
             <div class="ism-game-header-wrap">
@@ -72,25 +73,25 @@
                     <ul class="ism-nav__list ismjs-main-nav">                        
 
                         <li class="ism-nav__list__item">
-                            <a href="/a/squad/selection" class="ism-nav__tab is-active" data-nav-tab="squad">Transfers</a>
+                            <a href="/a/squad/selection" class="ism-nav__tab" data-nav-tab="squad">Transfers</a>
                         </li> 
                         <li class="ism-nav__list__item">
-                            <a href="/a/squad/selection" class="ism-nav__tab is-active" data-nav-tab="squad">My Team</a>
+                            <a href="/SportMgmt/mvc/game/MyTeamView/${sessionScope.userId}/${sessionScope.gameDetails.gameId}" class="ism-nav__tab " data-nav-tab="squad">My Team</a>
                         </li> 
                         <li class="ism-nav__list__item">
-                            <a href="/a/squad/selection" class="ism-nav__tab is-active" data-nav-tab="squad">Fixtures</a>
+                            <a href="/a/squad/selection" class="ism-nav__tab " data-nav-tab="squad">Fixtures</a>
                         </li>                        
                         <li class="ism-nav__list__item">
-                            <a href="/SportMgmt/prizes.jsp" class="ism-nav__tab is-active">Prizes</a>
+                            <a href="/SportMgmt/prizes.jsp" class="ism-nav__tab ">Prizes</a>
                         </li>                        
                         <li class="ism-nav__list__item">
-                            <a href="/SportMgmt/rules.jsp" class="ism-nav__tab is-active">Rules</a>
+                            <a href="/SportMgmt/rules.jsp" class="ism-nav__tab ">Rules</a>
                         </li>
                         <li class="ism-nav__list__item">
-                            <a href="/SportMgmt/FAQ.jsp" class="ism-nav__tab is-active">FAQ</a>
+                            <a href="/SportMgmt/FAQ.jsp" class="ism-nav__tab ">FAQ</a>
                         </li>                       
                         <li class="ism-nav__list__item">
-                            <a href="#" class="ism-nav__tab is-active">Sign Out</a>
+                            <a href="#" class="ism-nav__tab ">Sign Out</a>
                         </li>
 
                     </ul>
@@ -99,7 +100,7 @@
             </div>
         </div>
     </div>  
-   
+   </div>  
 </main>
     
  

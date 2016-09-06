@@ -95,14 +95,7 @@
                         </div>
                         <div class="ism-squad-wrapper">
                             <div class="ismjs-a11y-tabs ism-tabs">
-                                <ul class="ism-toggle-tabs__list ism-toggle-tabs__list--light-b" role="tablist">
-                                    <li class="ism-toggle-tabs__item" role="presentation">
-                                        <a href="#ismr-summary" class="ism-toggle-tabs__tab" role="tab" tabindex="0" aria-controls="ismr-summary" aria-selected="true">Pitch View</a>
-                                    </li>
-                                    <li class="ism-toggle-tabs__item" role="presentation">
-                                        <a href="#ismr-detail" class="ism-toggle-tabs__tab" role="tab" tabindex="0" aria-controls="ismr-detail">List View</a>
-                                    </li>
-                                </ul>
+                               
 
                                 <section id="ismr-summary" class="ism-pitch" role="tabpanel">
                                     <div tabindex="0">
@@ -1414,24 +1407,81 @@
 		</script>
 	</c:if>
 	<script type="text/javascript">
-function aa(){
-		
 	
-	$('.ismjs-remove').click(function () {
-		$(this).parents().find('.ismjs-menu').hide();
-		console.log($(this));
-	})
-			
+	function aa(){
+		var elems2 = '<div class="ismjs-select">'+
+	     '<picture>'+
+	     '<source type="/SportMgmt/js/webp" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-110.webp 110w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-66.webp 66w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-33.webp 33w" sizes="(min-width: 1024px) 55px,(min-width: 610px) 44px,33px">'+
+	     '<img src="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-33.png" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-110.png 110w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-66.png 66w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-33.png 33w" sizes="(min-width: 1024px) 55px,(min-width: 610px) 44px,33px" alt="" title="Click to select a Goalkeeper" class="ism-shirt ism-element__shirt">'+
+	     '</picture>'+
+	     '<div class="ism-element__name ism-element__name--placeholder">Add <abbr title="Goalkeeper" class="ism-element__type"><span class="ism-element__type__short">GKP</span></abbr></div>';
+	     
+	     $('.ism-element-row.ism-element-row--pitch:first-child .ismjs-remove').click(function () {
+	    	 $(this).parents('.ism-element').find('.ismjs-menu').replaceWith( elems2 );
+	    	 return false;
+	    })
 	};
 	
 	
-		
-	$(function () {
-		
-		
+	function defenderRemove(){
+		var def2 = '<div class="ismjs-select">'+
+	     '<picture>'+
+	     '<source type="/SportMgmt/js/webp" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-110.webp 110w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-66.webp 66w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-33.webp 33w" sizes="(min-width: 1024px) 55px,(min-width: 610px) 44px,33px">'+
+	     '<img src="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-33.png" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-110.png 110w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-66.png 66w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-33.png 33w" sizes="(min-width: 1024px) 55px,(min-width: 610px) 44px,33px" alt="" title="Click to select a Defender" class="ism-shirt ism-element__shirt">'+
+	     '</picture>'+
+	     '<div class="ism-element__name ism-element__name--placeholder">Add <abbr title="Defender" class="ism-element__type"><span class="ism-element__type__short">DEF</span></abbr></div>';
+	     
+	     
+	     
+	     $('.ism-element-row.ism-element-row--pitch:nth-child(2) .ismjs-remove').click(function () {
+	    	 $(this).parents('.ism-element').find('.ismjs-menu').replaceWith( def2 );
+	    	 return false;
+	    })
+	};
+	
+	
+	function midfielderRemove(){
+		var midd2 = '<div class="ismjs-select">'+
+	     '<picture>'+
+	     '<source type="/SportMgmt/js/webp" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-110.webp 110w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-66.webp 66w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-33.webp 33w" sizes="(min-width: 1024px) 55px,(min-width: 610px) 44px,33px">'+
+	     '<img src="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-33.png" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-110.png 110w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-66.png 66w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-33.png 33w" sizes="(min-width: 1024px) 55px,(min-width: 610px) 44px,33px" alt="" title="Click to select a Defender" class="ism-shirt ism-element__shirt">'+
+	     '</picture>'+
+	     '<div class="ism-element__name ism-element__name--placeholder">Add <abbr title="Midfielder" class="ism-element__type"><span class="ism-element__type__short">MID</span></abbr></div>';
 	    
-		$('#Goalkeepers .addPlayer>a').click(function () {
-	        var elems = '<div class="ismjs-menu">'+
+	     
+	     
+	     $('.ism-element-row.ism-element-row--pitch:nth-child(3) .ismjs-remove').click(function () {
+	    	 $(this).parents('.ism-element').find('.ismjs-menu').replaceWith( midd2 );
+	    	 return false;
+	    })
+	};
+	
+	function forwardRemove(){
+		var for2 = '<div class="ismjs-select">'+
+	     '<picture>'+
+	     '<source type="/SportMgmt/js/webp" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-110.webp 110w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-66.webp 66w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-33.webp 33w" sizes="(min-width: 1024px) 55px,(min-width: 610px) 44px,33px">'+
+	     '<img src="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-33.png" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-110.png 110w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-66.png 66w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-33.png 33w" sizes="(min-width: 1024px) 55px,(min-width: 610px) 44px,33px" alt="" title="Click to select a Defender" class="ism-shirt ism-element__shirt">'+
+	     '</picture>'+
+	     '<div class="ism-element__name ism-element__name--placeholder">Add <abbr title="Forward" class="ism-element__type"><span class="ism-element__type__short">FWD</span></abbr></div>';
+	    
+	     
+	     
+	     $('.ism-element-row.ism-element-row--pitch:nth-child(4) .ismjs-remove').click(function () {
+	    	 $(this).parents('.ism-element').find('.ismjs-menu').replaceWith( for2 );
+	    	 return false;
+	    })
+	};
+	
+		
+	$(function () {	
+	    
+		$('#Goalkeepers .addPlayer>a').click(function () {       
+			
+
+			$(this).closest('tr').attr('disabled', 'disabled');
+
+			
+			var elems = '<div class="ismjs-menu">'+
 	        '<picture>'+
 	        '<source type="image/webp" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_90_1-110.webp 110w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_90_1-66.webp 66w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_90_1-33.webp 33w" sizes="(min-width: 1024px) 55px, (min-width: 610px) 44px, 33px" >'+
 	        '<img src="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_90_1-33.png" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_90_1-110.png 110w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_90_1-66.png 66w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_90_1-33.png 33w" sizes="(min-width: 1024px) 55px,(min-width: 610px) 44px,33px" alt="Burnley" title="Burnley" class="ism-shirt ism-element__shirt">'+
@@ -1448,16 +1498,88 @@ function aa(){
 	    });	
 		
 		
-		$('.ismjs-remove').click(function () {
-			$(this).parents().find('.ismjs-menu').hide();
-			console.log($(this));
+		$('#Defenders .addPlayer>a').click(function(){
+			
+			$(this).closest('tr').attr('disabled', 'disabled');
+			
+			var defender = '<div class="ismjs-menu">'+
+	        '<picture>'+
+	        '<source type="image/webp" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_56-110.webp 110w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_56-66.webp 66w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_56-33.webp 33w" sizes="(min-width: 1024px) 55px,min-width: 610px) 44px,33px" >'+
+	        '<img src="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_56-33.png" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_56-110.png 110w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_56-66.png 66w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_56-33.png 33w" sizes="(min-width: 1024px) 55px,(min-width: 610px) 44px,33px" alt="Sunderland" title="Sunderland" class="ism-shirt ism-element__shirt">'+
+	        '</picture>'+
+	        '<div class="ism-element__name">'+$(this).parents('.ism-row-select').find('.ism-table--el__name').html()+'</div>'+
+	        '<div class="ism-element__data">'+$(this).parents('.ism-row-select').find('.playerPrice').html()+'</div>'+
+	        '<div class="ism-element__controls">'+
+	        '<div  class="ismjs-remove ism-element__control ism-element__control--primary"><a href="#" title="Remove player" class="ism-element__link removePlayerIcon rr">X</a></div></div>';
+	        
+	        $('.ism-element-row.ism-element-row--pitch:nth-child(2)').find('.ismjs-select').first().replaceWith( defender );
+	        
+	        return false;
+
+		});
+		
+		$('#Midfielders .addPlayer>a').click(function(){
+			
+			$(this).closest('tr').attr('disabled', 'disabled');
+			
+			var midfielder = '<div class="ismjs-menu">'+
+	        '<picture>'+
+	        '<source type="image/webp" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_57-110.webp 110w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_57-66.webp 66w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_57-33.webp 33w" sizes="(min-width: 1024px) 55px,(min-width: 610px) 44px,33px">'+
+	        '<img src="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_57-33.png" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_57-110.webp 110w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_57-66.webp 66w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_57-33.webp 33w" sizes="(min-width: 1024px) 55px,(min-width: 610px) 44px,33px" alt="Sunderland" title="Sunderland" class="ism-shirt ism-element__shirt">'+
+	        '</picture>'+
+	        '<div class="ism-element__name">'+$(this).parents('.ism-row-select').find('.ism-table--el__name').html()+'</div>'+
+	        '<div class="ism-element__data">'+$(this).parents('.ism-row-select').find('.playerPrice').html()+'</div>'+
+	        '<div class="ism-element__controls">'+
+	        '<div  class="ismjs-remove ism-element__control ism-element__control--primary"><a href="#" title="Remove player" class="ism-element__link removePlayerIcon rr">X</a></div></div>';
+	        
+	       
+	        
+	        
+	        $('.ism-element-row.ism-element-row--pitch:nth-child(3)').find('.ismjs-select').first().replaceWith( midfielder );
+	        
+	        return false;
+
+		});
+		
+		
+$('#Forwards .addPlayer>a').click(function(){
+	
+	$(this).closest('tr').attr('disabled', 'disabled');
+			
+			var forward = '<div class="ismjs-menu">'+
+	        '<picture>'+
+	        '<source type="image/webp" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_1-110.webp 110w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_1-66.webp 66w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_1-33.webp 33w" sizes="(min-width: 1024px) 55px,(min-width: 610px) 44px,33px">'+
+	        '<img src="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_1-33.png" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_1-110.png 110w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_1-66.png 66w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_1-33.png 33w" sizes="(min-width: 1024px) 55px,(min-width: 610px) 44px,33px" alt="Man Utd" title="Man Utd" class="ism-shirt ism-element__shirt">'+
+	        '</picture>'+
+	        '<div class="ism-element__name">'+$(this).parents('.ism-row-select').find('.ism-table--el__name').html()+'</div>'+
+	        '<div class="ism-element__data">'+$(this).parents('.ism-row-select').find('.playerPrice').html()+'</div>'+
+	        '<div class="ism-element__controls">'+
+	        '<div  class="ismjs-remove ism-element__control ism-element__control--primary"><a href="#" title="Remove player" class="ism-element__link removePlayerIcon rr">X</a></div></div>';
+	        
+	       	        
+	        $('.ism-element-row.ism-element-row--pitch:nth-child(4)').find('.ismjs-select').first().replaceWith( forward );
+	        
+	        return false;
+
+		});
+		
+		
+		
+		$('.ism-element').mousemove(function(){
+			
+			aa();		
+			defenderRemove();
+			midfielderRemove();
+			forwardRemove();
 		})
+
 
 	});
 	
 	
+	
 	$(document).ready(function() {
-		   aa();
+		 
 		});
 	 $('#ismjs-element-filter').change(function(){
 	  var selected = $(':selected',this); 
