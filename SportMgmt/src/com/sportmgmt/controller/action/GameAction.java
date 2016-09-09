@@ -1,8 +1,11 @@
 package com.sportmgmt.controller.action;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeSet;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -18,8 +21,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.sportmgmt.controller.bean.GameWeek;
+import com.sportmgmt.controller.bean.MatchDetails;
 import com.sportmgmt.controller.bean.User;
+import com.sportmgmt.model.entity.Match;
 import com.sportmgmt.model.manager.GameManager;
+import com.sportmgmt.model.manager.MatchManager;
 import com.sportmgmt.model.manager.PlanManager;
 import com.sportmgmt.utility.common.MailUtility;
 import com.sportmgmt.utility.common.PropertyFileUtility;
@@ -464,27 +471,72 @@ public class GameAction {
 	@RequestMapping(value = "MatchView/{gameId}", method = RequestMethod.GET)
 	public  String matchView(ModelMap modeMap,HttpServletRequest request,@PathVariable String gameId)
 	{
-		logger.debug("---------- IN matchView to : ");
-		 /*int player = GameManager.totalPlayingPlayersOfUserByGame(Integer.valueOf(userId),Integer.valueOf(gameId));
-		 HashMap totalPlayingMap= new HashMap();
-		 totalPlayingMap.put("player", player);
-		 GameManager.updateTotalPlayingPlayerByPostion(Integer.valueOf(userId),Integer.valueOf(gameId),totalPlayingMap);
-		 String totalPlayingJson = "";
-		 modeMap.put("totalPlayingMap", totalPlayingMap);
-		 logger.debug("-------- MyTeamView : totalPlayingMap: "+totalPlayingMap);
+		logger.debug("---------- IN matchView to : "+gameId);
+		TreeSet<GameWeek> gameWeekList = new TreeSet<GameWeek>();
+		List<Match> matchList = MatchManager.getMatchesByGame(gameId);
+		if(matchList != null && matchList.size() >=1)
+		{
+			for(Object matchObj : matchList)
+			{
+				Match match = (Match)matchObj;
+				MatchDetails matchDetails = new MatchDetails();
+				matchDetails.setEndTime(match.getEndTime());
+				matchDetails.setFirstClubName(match.getFirstClub().getClubName());
+				matchDetails.setSecondClubName(match.getSecondClub().getClubName());
+				matchDetails.setStartTime(match.getStartTime());
+				SimpleDateFormat sdf = new SimpleDateFormat("EEEE");
+				String date = sdf.format(match.getStartTime());
+				boolean gameWeekFound = false;
+				GameWeek gameWeek = null;
+				for(Object gameWeekObj:gameWeekList)
+				{
+					GameWeek gameWeekTemp = (GameWeek)gameWeekObj;
+					if(gameWeekTemp.equals(match.getGameWeek().getStartDate()))
+					{
+						gameWeek = gameWeekTemp;
+						break;
+					}
+				}
+				if(gameWeek == null)
+				{
+					gameWeek = new GameWeek();
+					gameWeek.setStartDate(match.getGameWeek().getStartDate());
+					gameWeek.setEndDate(match.getGameWeek().getEndDate());
+				}
+				if(gameWeek.getMatchMap().containsKey(date))
+				{
+					gameWeek.getMatchMap().get(date).add(matchDetails);
+				}
+				else
+				{
+					TreeSet<MatchDetails> matchDetailList = new TreeSet<MatchDetails>();
+					matchDetailList.add(matchDetails);
+					gameWeek.getMatchMap().put(date, matchDetailList);
+				}
+				gameWeekList.add(gameWeek);
+			}
+		}
+		logger.debug("----------- Game Week List: "+gameWeekList);
+		 modeMap.put("gameWeekList", gameWeekList);
+		 Map<String,Object> matchesMap = new HashMap<String,Object>();
+		 matchesMap.put("currentGameWeek", 1);
+		 matchesMap.put("totalGameWeek", gameWeekList.size());
+		 matchesMap.put("gameWeekList", gameWeekList);
+		logger.debug("----------- matchesMap: "+matchesMap);
 		 ObjectMapper mapperObj = new ObjectMapper();
 		 try
 		 {
 			 
-			 totalPlayingJson = mapperObj.writeValueAsString(totalPlayingMap);
-			 logger.debug("-------- MyTeamView : totalPlayingJson: "+totalPlayingJson);
+			 String matchesMapJson = mapperObj.writeValueAsString(matchesMap);
+			 logger.debug("-------- matchView : matchesMapJson: "+matchesMapJson);
+			 modeMap.put("totalPlayingJson", matchesMapJson);
 			 
 		 }
 		 catch(Exception ex)
 		 {
 			 logger.error("---------- Entry in parsing map to json: "+ex);
 		 }
-		 modeMap.put("totalPlayingJson", totalPlayingJson);*/
+		 
 		 return SportConstrant.MATCH_PAGE;
 	}
 
