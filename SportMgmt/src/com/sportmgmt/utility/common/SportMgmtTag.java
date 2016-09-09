@@ -86,6 +86,7 @@ public class SportMgmtTag extends TagSupport{
 									pageContext.setAttribute("playerName", playerMap.get("name"));
 									if(playerMap.get("price") != null)
 									pageContext.setAttribute("price", playerMap.get("price"));
+									pageContext.setAttribute("clubId", playerMap.get("clubId"));
 							}
 						}
 					}
@@ -100,6 +101,7 @@ public class SportMgmtTag extends TagSupport{
 	    		pageContext.setAttribute("isPlaying", "");
 	    		pageContext.setAttribute("playerType", "");
 	    		pageContext.setAttribute("playerCategory", "");
+	    		pageContext.setAttribute("clubId", "");
 	    	}
 	    	position = null;
 	    	playerType = null;
