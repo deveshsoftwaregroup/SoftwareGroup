@@ -41,7 +41,7 @@
 }
 </style>
 </head>
-<body>
+<body class="inner_page">
 <main id="mainContent" tabindex="0" class="league">
 <%@ include file="header.jsp" %>
         <div class="league-container">

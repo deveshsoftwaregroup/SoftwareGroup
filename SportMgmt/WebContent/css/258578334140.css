@@ -9653,7 +9653,8 @@ margin-bottom:3rem
 max-width:1220px;
 margin-left:auto;
 margin-right:auto;
-overflow:hidden
+overflow:hidden;
+background:#fff;
 }
 
 .ism .ism-container:after {

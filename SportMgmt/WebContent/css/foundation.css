@@ -4111,3 +4111,8 @@ table.hover tr:nth-of-type(even):hover {
     height: 54px;
     margin-top: 5px;
 }        
+.inner_page {
+    background: url('../images/inner_bg.jpg') no-repeat;
+    background-attachment: fixed;
+    /* background-size: contain; */
+}

@@ -176,6 +176,7 @@ html {
     margin-left: auto;
     margin-right: auto;
     overflow: hidden;
+    background: #fff;
 }
 .league .league-container:after {
     content: " ";
