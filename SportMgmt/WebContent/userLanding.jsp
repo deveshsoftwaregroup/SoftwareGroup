@@ -54,7 +54,7 @@
 }
 </style>
 </head> 
- <body>
+ <body class="inner_page">
  <s:sportExt retrieve="priceList" />
  <main id="mainContent" tabindex="0" class="ism">
     
