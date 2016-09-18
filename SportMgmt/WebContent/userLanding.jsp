@@ -103,11 +103,12 @@
 
                                         <div class="ism-element-row ism-element-row--pitch">
                                             <div class="ism-pitch__unit ism-pitch__unit--4"></div>
-                                            <div id="ismr-pos1" class="ism-pitch__unit ism-pitch__unit--4">
+                                            <div id="ismr-pos1"  class="ism-pitch__unit ism-pitch__unit--4">
                                                 <div>
+                                                <s:sport position="1" playerType="Goalkeeper"/>
                                                     <div class="ism-element" tabindex="0">
 
-                                                        <div class="ismjs-select">
+                                                        <div <c:choose><c:when test='${isPlayerAvail}'>class="ismjs-select added-player-css" id="${gameClubPlayerId}"</c:when><c:otherwise>class="ismjs-select"</c:otherwise></c:choose>>
 
                                                             <picture>
                                                                 <source type="/SportMgmt/js/webp" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-110.webp 110w,
@@ -115,13 +116,14 @@
                                 https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-33.webp 33w" sizes="(min-width: 1024px) 55px,
                                (min-width: 610px) 44px,
                                 33px">
+                                                                
                                                                 <img src="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-33.png" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-110.png 110w,
                                 https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-66.png 66w,
                                 https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-33.png 33w" sizes="(min-width: 1024px) 55px,
                                (min-width: 610px) 44px,
                                 33px" alt="" title="Click to select a Goalkeeper" class="ism-shirt ism-element__shirt">
                                                             </picture>
-															<s:sport position="1" playerType="Goalkeeper"/>
+															
                                                              <c:choose>
                                                              <c:when test="${isPlayerAvail}">
                                                              	<div class="ism-element__name ism-element__name--placeholder">
@@ -142,8 +144,9 @@
                                             </div>
                                             <div id="ismr-pos2" class="ism-pitch__unit ism-pitch__unit--4">
                                                 <div>
+                                                <s:sport position="2" playerType="Goalkeeper"/>
                                                     <div class="ism-element" tabindex="0">
-                                                    	<div class="ismjs-select">
+                                                    	<div <c:choose><c:when test='${isPlayerAvail}'>class="ismjs-select added-player-css" id="${gameClubPlayerId}"</c:when><c:otherwise>class="ismjs-select"</c:otherwise></c:choose>>
 
                 <picture>
                     <source type="image/webp" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-110.webp 110w,
@@ -158,7 +161,7 @@
                                 33px" alt="" title="Click to select a Goalkeeper" class="ism-shirt ism-element__shirt">
                 </picture>
 
-                											<s:sport position="2" playerType="Goalkeeper"/>
+                											
                                                              <c:choose>
                                                              <c:when test="${isPlayerAvail}">
                                                              	<div class="ism-element__name ism-element__name--placeholder">
@@ -183,9 +186,10 @@
                                         <div class="ism-element-row ism-element-row--pitch">
                                             <div id="ismr-pos3" class="ism-pitch__unit ism-pitch__unit--5">
                                                 <div>
+                                                <s:sport position="1" playerType="Defender"/>
                                                     <div class="ism-element" tabindex="0">
 
-                                                        <div class="ismjs-select">
+                                                        <div <c:choose><c:when test='${isPlayerAvail}'>class="ismjs-select added-player-css" id="${gameClubPlayerId}"</c:when><c:otherwise>class="ismjs-select"</c:otherwise></c:choose>>
 
                                                             <picture>
                                                                 <source type="/SportMgmt/js/webp" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0-110.webp 110w,
@@ -199,7 +203,7 @@
                                (min-width: 610px) 44px,
                                 33px" alt="" title="Click to select a Defender" class="ism-shirt ism-element__shirt">
                                                             </picture>
-															<s:sport position="1" playerType="Defender"/>
+															
                                                              <c:choose>
                                                              <c:when test="${isPlayerAvail}">
                                                              	<div class="ism-element__name ism-element__name--placeholder">
@@ -220,9 +224,10 @@
                                             </div>
                                             <div id="ismr-pos4" class="ism-pitch__unit ism-pitch__unit--5">
                                                 <div>
+                                                 <s:sport position="2" playerType="Defender"/>
                                                     <div class="ism-element" tabindex="0">
 
-                                                        <div class="ismjs-select">
+                                                        <div <c:choose><c:when test='${isPlayerAvail}'>class="ismjs-select added-player-css" id="${gameClubPlayerId}"</c:when><c:otherwise>class="ismjs-select"</c:otherwise></c:choose>>
 
                                                             <picture>
                                                                 <source type="/SportMgmt/js/webp" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0-110.webp 110w,
@@ -237,7 +242,7 @@
                                 33px" alt="" title="Click to select a Defender" class="ism-shirt ism-element__shirt">
                                                             </picture>
 
-                                                            <s:sport position="2" playerType="Defender"/>
+                                                           
                                                              <c:choose>
                                                              <c:when test="${isPlayerAvail}">
                                                              	<div class="ism-element__name ism-element__name--placeholder">
@@ -257,9 +262,10 @@
                                             </div>
                                             <div id="ismr-pos5" class="ism-pitch__unit ism-pitch__unit--5">
                                                 <div>
+                                                 <s:sport position="3" playerType="Defender"/>
                                                     <div class="ism-element" tabindex="0">
 
-                                                        <div class="ismjs-select">
+                                                        <div <c:choose><c:when test='${isPlayerAvail}'>class="ismjs-select added-player-css" id="${gameClubPlayerId}"</c:when><c:otherwise>class="ismjs-select"</c:otherwise></c:choose>>
 
                                                             <picture>
                                                                 <source type="/SportMgmt/js/webp" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0-110.webp 110w,
@@ -274,7 +280,7 @@
                                 33px" alt="" title="Click to select a Defender" class="ism-shirt ism-element__shirt">
                                                             </picture>
 
-                                                            <s:sport position="3" playerType="Defender"/>
+                                                           
                                                              <c:choose>
                                                              <c:when test="${isPlayerAvail}">
                                                              	<div class="ism-element__name ism-element__name--placeholder">
@@ -294,9 +300,10 @@
                                             </div>
                                             <div id="ismr-pos6" class="ism-pitch__unit ism-pitch__unit--5">
                                                 <div>
+                                                 <s:sport position="4" playerType="Defender"/>
                                                     <div class="ism-element" tabindex="0">
 
-                                                        <div class="ismjs-select">
+                                                        <div <c:choose><c:when test='${isPlayerAvail}'>class="ismjs-select added-player-css" id="${gameClubPlayerId}"</c:when><c:otherwise>class="ismjs-select"</c:otherwise></c:choose>>
 
                                                             <picture>
                                                                 <source type="/SportMgmt/js/webp" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0-110.webp 110w,
@@ -311,7 +318,7 @@
                                 33px" alt="" title="Click to select a Defender" class="ism-shirt ism-element__shirt">
                                                             </picture>
 
-                                                            <s:sport position="4" playerType="Defender"/>
+                                                           
                                                              <c:choose>
                                                              <c:when test="${isPlayerAvail}">
                                                              	<div class="ism-element__name ism-element__name--placeholder">
@@ -331,9 +338,10 @@
                                             </div>
                                             <div id="ismr-pos7" class="ism-pitch__unit ism-pitch__unit--5">
                                                 <div>
+                                                 <s:sport position="5" playerType="Defender"/>
                                                     <div class="ism-element" tabindex="0">
 
-                                                        <div class="ismjs-select">
+                                                        <div <c:choose><c:when test='${isPlayerAvail}'>class="ismjs-select added-player-css" id="${gameClubPlayerId}"</c:when><c:otherwise>class="ismjs-select"</c:otherwise></c:choose>>
 
                                                             <picture>
                                                                 <source type="/SportMgmt/js/webp" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0-110.webp 110w,
@@ -348,7 +356,7 @@
                                 33px" alt="" title="Click to select a Defender" class="ism-shirt ism-element__shirt">
                                                             </picture>
 
-                                                            <s:sport position="5" playerType="Defender"/>
+                                                           
                                                              <c:choose>
                                                              <c:when test="${isPlayerAvail}">
                                                              	<div class="ism-element__name ism-element__name--placeholder">
@@ -371,8 +379,9 @@
                                         <div class="ism-element-row ism-element-row--pitch">
                                             <div id="ismr-pos8" class="ism-pitch__unit ism-pitch__unit--5">
                                                 <div>
+                                                <s:sport position="1" playerType="Midfielder"/>
                                                     <div class="ism-element" tabindex="0">
-                                                        <div class="ismjs-select">
+                                                        <div <c:choose><c:when test='${isPlayerAvail}'>class="ismjs-select added-player-css" id="${gameClubPlayerId}"</c:when><c:otherwise>class="ismjs-select"</c:otherwise></c:choose>>
 
                                                             <picture>
                                                                 <source type="/SportMgmt/js/webp" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0-110.webp 110w,
@@ -386,7 +395,7 @@
                                (min-width: 610px) 44px,
                                 33px" alt="" title="Click to select a Midfielder" class="ism-shirt ism-element__shirt">
                                                             </picture>
-															<s:sport position="1" playerType="Midfielder"/>
+															
                                                              <c:choose>
                                                              <c:when test="${isPlayerAvail}">
                                                              	<div class="ism-element__name ism-element__name--placeholder">
@@ -405,9 +414,10 @@
                                             </div>
                                             <div id="ismr-pos9" class="ism-pitch__unit ism-pitch__unit--5">
                                                 <div>
+                                                 <s:sport position="2" playerType="Midfielder"/>
                                                     <div class="ism-element" tabindex="0">
 
-                                                        <div class="ismjs-select">
+                                                        <div <c:choose><c:when test='${isPlayerAvail}'>class="ismjs-select added-player-css" id="${gameClubPlayerId}"</c:when><c:otherwise>class="ismjs-select"</c:otherwise></c:choose>>
 
                                                             <picture>
                                                                 <source type="/SportMgmt/js/webp" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0-110.webp 110w,
@@ -422,7 +432,7 @@
                                 33px" alt="" title="Click to select a Midfielder" class="ism-shirt ism-element__shirt">
                                                             </picture>
 
-                                                            <s:sport position="2" playerType="Midfielder"/>
+                                                           
                                                              <c:choose>
                                                              <c:when test="${isPlayerAvail}">
                                                              	<div class="ism-element__name ism-element__name--placeholder">
@@ -442,9 +452,10 @@
                                             </div>
                                             <div id="ismr-pos10" class="ism-pitch__unit ism-pitch__unit--5">
                                                 <div>
+                                                 <s:sport position="3" playerType="Midfielder"/>
                                                     <div class="ism-element" tabindex="0">
 
-                                                        <div class="ismjs-select">
+                                                        <div <c:choose><c:when test='${isPlayerAvail}'>class="ismjs-select added-player-css" id="${gameClubPlayerId}"</c:when><c:otherwise>class="ismjs-select"</c:otherwise></c:choose>>
 
                                                             <picture>
                                                                 <source type="/SportMgmt/js/webp" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0-110.webp 110w,
@@ -459,7 +470,7 @@
                                 33px" alt="" title="Click to select a Midfielder" class="ism-shirt ism-element__shirt">
                                                             </picture>
 
-                                                            <s:sport position="3" playerType="Midfielder"/>
+                                                           
                                                              <c:choose>
                                                              <c:when test="${isPlayerAvail}">
                                                              	<div class="ism-element__name ism-element__name--placeholder">
@@ -479,9 +490,10 @@
                                             </div>
                                             <div id="ismr-pos11" class="ism-pitch__unit ism-pitch__unit--5">
                                                 <div>
+                                                <s:sport position="4" playerType="Midfielder"/>
                                                     <div class="ism-element" tabindex="0">
 
-                                                        <div class="ismjs-select">
+                                                        <div <c:choose><c:when test='${isPlayerAvail}'>class="ismjs-select added-player-css" id="${gameClubPlayerId}"</c:when><c:otherwise>class="ismjs-select"</c:otherwise></c:choose>>
 
                                                             <picture>
                                                                 <source type="/SportMgmt/js/webp" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0-110.webp 110w,
@@ -496,7 +508,7 @@
                                 33px" alt="" title="Click to select a Midfielder" class="ism-shirt ism-element__shirt">
                                                             </picture>
 
-                                                            <s:sport position="4" playerType="Midfielder"/>
+                                                            
                                                              <c:choose>
                                                              <c:when test="${isPlayerAvail}">
                                                              	<div class="ism-element__name ism-element__name--placeholder">
@@ -516,9 +528,10 @@
                                             </div>
                                             <div id="ismr-pos12" class="ism-pitch__unit ism-pitch__unit--5">
                                                 <div>
+                                                <s:sport position="5" playerType="Midfielder"/>
                                                     <div class="ism-element" tabindex="0">
 
-                                                        <div class="ismjs-select">
+                                                        <div <c:choose><c:when test='${isPlayerAvail}'>class="ismjs-select added-player-css" id="${gameClubPlayerId}"</c:when><c:otherwise>class="ismjs-select"</c:otherwise></c:choose>>
 
                                                             <picture>
                                                                 <source type="/SportMgmt/js/webp" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0-110.webp 110w,
@@ -533,7 +546,7 @@
                                 33px" alt="" title="Click to select a Midfielder" class="ism-shirt ism-element__shirt">
                                                             </picture>
 
-                                                            <s:sport position="5" playerType="Midfielder"/>
+                                                            
                                                              <c:choose>
                                                              <c:when test="${isPlayerAvail}">
                                                              	<div class="ism-element__name ism-element__name--placeholder">
@@ -556,9 +569,10 @@
                                         <div class="ism-element-row ism-element-row--pitch">
                                             <div id="ismr-pos13" class="ism-pitch__unit ism-pitch__unit--3">
                                                 <div>
+                                                <s:sport position="1" playerType="Forward"/>
                                                     <div class="ism-element" tabindex="0">
 
-                                                        <div class="ismjs-select">
+                                                        <div <c:choose><c:when test='${isPlayerAvail}'>class="ismjs-select added-player-css" id="${gameClubPlayerId}"</c:when><c:otherwise>class="ismjs-select"</c:otherwise></c:choose>>
 
                                                             <picture>
                                                                 <source type="/SportMgmt/js/webp" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0-110.webp 110w,
@@ -572,7 +586,7 @@
                                (min-width: 610px) 44px,
                                 33px" alt="" title="Click to select a Forward" class="ism-shirt ism-element__shirt">
                                                             </picture>
-															<s:sport position="1" playerType="Forward"/>
+															
                                                              <c:choose>
                                                              <c:when test="${isPlayerAvail}">
                                                              	<div class="ism-element__name ism-element__name--placeholder">
@@ -592,9 +606,10 @@
                                             </div>
                                             <div id="ismr-pos14" class="ism-pitch__unit ism-pitch__unit--3">
                                                 <div>
+                                                <s:sport position="2" playerType="Forward"/>
                                                     <div class="ism-element" tabindex="0">
 
-                                                        <div class="ismjs-select">
+                                                        <div <c:choose><c:when test='${isPlayerAvail}'>class="ismjs-select added-player-css" id="${gameClubPlayerId}"</c:when><c:otherwise>class="ismjs-select"</c:otherwise></c:choose>>
 
                                                             <picture>
                                                                 <source type="/SportMgmt/js/webp" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0-110.webp 110w,
@@ -609,7 +624,7 @@
                                 33px" alt="" title="Click to select a Forward" class="ism-shirt ism-element__shirt">
                                                             </picture>
 
-                                                            <s:sport position="2" playerType="Forward"/>
+                                                            
                                                              <c:choose>
                                                              <c:when test="${isPlayerAvail}">
                                                              	<div class="ism-element__name ism-element__name--placeholder">
@@ -630,9 +645,10 @@
                                             </div>
                                             <div id="ismr-pos15" class="ism-pitch__unit ism-pitch__unit--3">
                                                 <div>
+                                                 <s:sport position="3" playerType="Forward"/>
                                                     <div class="ism-element" tabindex="0">
 
-                                                        <div class="ismjs-select">
+                                                        <div <c:choose><c:when test='${isPlayerAvail}'>class="ismjs-select added-player-css" id="${gameClubPlayerId}"</c:when><c:otherwise>class="ismjs-select"</c:otherwise></c:choose>>
 
                                                             <picture>
                                                                 <source type="/SportMgmt/js/webp" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0-110.webp 110w,
@@ -647,7 +663,7 @@
                                 33px" alt="" title="Click to select a Forward" class="ism-shirt ism-element__shirt">
                                                             </picture>
 
-                                                            <s:sport position="3" playerType="Forward"/>
+                                                           
                                                              <c:choose>
                                                              <c:when test="${isPlayerAvail}">
                                                              	<div class="ism-element__name ism-element__name--placeholder">
@@ -1341,8 +1357,123 @@
 	
 	
 	$(document).ready(function() {
-		 
+		$("div.ismjs-select.added-player-css").each(function(){
+			var gameClubPlayerId = $(this).attr('id');
+			console.debug('gameClubPlayerId: '+gameClubPlayerId);
+			var playerClubId = "";
+			var playerType = "";
+			var playerPrice = "";
+			var playerName = "";
+			var userId = "${sessionScope.userId}";
+			if(typeof playerListJson != 'undefined')
+			{
+				for(var playerListIndex = 0; playerListIndex < playerListJson.length; playerListIndex++)
+				{
+				  if(playerListJson[playerListIndex].gameClubPlayerId == gameClubPlayerId)
+					{
+					  playerClubId =   playerListJson[playerListIndex].clubId;
+					  playerType =   playerListJson[playerListIndex].type;
+					  playerPrice =   playerListJson[playerListIndex].price;
+					  playerName =   playerListJson[playerListIndex].name;
+					}
+					  
+				}
+			}
+			console.debug('playerClubId--: '+playerClubId);
+			var clubImage = clubIdImageMap[playerClubId];
+			console.debug('clubImage--: '+clubImage);
+			/*if(typeof clubImage != 'undefined' && clubImage !='')
+			{
+				$(this).find('picture img').attr('src','/SportMgmt/images/'+clubImage);
+			}
+			*/
+			if(playerType == 'Goalkeeper')
+			 {
+				$("#Goalkeepers .addPlayer>a").closest('tr').attr('disabled', 'disabled');
+
+				var elems = '<div class="ismjs-menu" id="'+userId+'_'+gameClubPlayerId+'">'+
+		        /*'<picture>'+
+		        '<source type="image/webp" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_90_1-110.webp 110w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_90_1-66.webp 66w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_90_1-33.webp 33w" sizes="(min-width: 1024px) 55px, (min-width: 610px) 44px, 33px" >'+
+		        '<img src="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_90_1-33.png" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_90_1-110.png 110w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_90_1-66.png 66w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_90_1-33.png 33w" sizes="(min-width: 1024px) 55px,(min-width: 610px) 44px,33px" alt="Burnley" title="Burnley" class="ism-shirt ism-element__shirt">'+
+		        '</picture>'+*/
+		       '<picture>'+
+		        '<source type="image/webp" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_90_1-110.webp 110w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_90_1-66.webp 66w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_90_1-33.webp 33w" sizes="(min-width: 1024px) 55px, (min-width: 610px) 44px, 33px" >'+
+		        '<img src="/SportMgmt/images/'+clubImage+'" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_90_1-110.png 110w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_90_1-66.png 66w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_90_1-33.png 33w" sizes="(min-width: 1024px) 55px,(min-width: 610px) 44px,33px" alt="Burnley" title="Burnley" class="ism-shirt ism-element__shirt">'+
+		        '</picture>'+
+		        '<div class="ism-element__name">'+playerName+'</div>'+
+		        '<div class="ism-element__data">'+playerPrice+'</div>'+
+		        '<div class="ism-element__controls">'+
+		        '<div  class="ismjs-remove ism-element__control ism-element__control--primary"><a href="#" title="Remove player" class="ism-element__link removePlayerIcon rr">X</a></div></div>';
+		        
+		       
+		        $('.ism-element-row.ism-element-row--pitch:first-child').find('.ismjs-select').first().replaceWith( elems ); 
+			 }
+			 if(playerType == 'Midfielder')
+			 {
+				$('#Midfielders .addPlayer>a').closest('tr').attr('disabled', 'disabled');
+				
+				var midfielder = '<div class="ismjs-menu" id="'+userId+'_'+gameClubPlayerId+'">'+
+		        /*'<picture>'+
+		        '<source type="image/webp" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_57-110.webp 110w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_57-66.webp 66w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_57-33.webp 33w" sizes="(min-width: 1024px) 55px,(min-width: 610px) 44px,33px">'+
+		        '<img src="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_57-33.png" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_57-110.webp 110w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_57-66.webp 66w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_57-33.webp 33w" sizes="(min-width: 1024px) 55px,(min-width: 610px) 44px,33px" alt="Sunderland" title="Sunderland" class="ism-shirt ism-element__shirt">'+
+		        '</picture>'+*/
+		       '<picture>'+
+		        '<source type="image/webp" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_57-110.webp 110w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_57-66.webp 66w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_57-33.webp 33w" sizes="(min-width: 1024px) 55px,(min-width: 610px) 44px,33px">'+
+		        '<img src="/SportMgmt/images/'+clubImage+'" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_57-110.webp 110w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_57-66.webp 66w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_57-33.webp 33w" sizes="(min-width: 1024px) 55px,(min-width: 610px) 44px,33px" alt="Sunderland" title="Sunderland" class="ism-shirt ism-element__shirt">'+
+		        '</picture>'+
+		       
+		        '<div class="ism-element__name">'+playerName+'</div>'+
+		        '<div class="ism-element__data">'+playerPrice+'</div>'+
+		        '<div class="ism-element__controls">'+
+		        '<div  class="ismjs-remove ism-element__control ism-element__control--primary"><a href="#" title="Remove player" class="ism-element__link removePlayerIcon rr">X</a></div></div>';
+		        
+		        $('.ism-element-row.ism-element-row--pitch:nth-child(3)').find('.ismjs-select').first().replaceWith( midfielder );
+			 }
+			 if(playerType == 'Defender')
+			 {
+				$('#Defenders .addPlayer>a').closest('tr').attr('disabled', 'disabled');
+				
+				var defender = '<div class="ismjs-menu" id="'+userId+'_'+gameClubPlayerId+'">'+
+		        /*'<picture>'+
+		        '<source type="image/webp" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_56-110.webp 110w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_56-66.webp 66w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_56-33.webp 33w" sizes="(min-width: 1024px) 55px,min-width: 610px) 44px,33px" >'+
+		        '<img src="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_56-33.png" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_56-110.png 110w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_56-66.png 66w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_56-33.png 33w" sizes="(min-width: 1024px) 55px,(min-width: 610px) 44px,33px" alt="Sunderland" title="Sunderland" class="ism-shirt ism-element__shirt">'+
+		        '</picture>'+*/
+		       '<picture>'+
+		        '<source type="image/webp" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_56-110.webp 110w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_56-66.webp 66w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_56-33.webp 33w" sizes="(min-width: 1024px) 55px,min-width: 610px) 44px,33px" >'+
+		        '<img src="/SportMgmt/images/'+clubImage+'" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_56-110.png 110w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_56-66.png 66w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_56-33.png 33w" sizes="(min-width: 1024px) 55px,(min-width: 610px) 44px,33px" alt="Sunderland" title="Sunderland" class="ism-shirt ism-element__shirt">'+
+		        '</picture>'+
+		        '<div class="ism-element__name">'+playerName+'</div>'+
+		        '<div class="ism-element__data">'+playerPrice+'</div>'+
+		        '<div class="ism-element__controls">'+
+		        '<div  class="ismjs-remove ism-element__control ism-element__control--primary"><a href="#" title="Remove player" class="ism-element__link removePlayerIcon rr">X</a></div></div>';
+		        
+		        $('.ism-element-row.ism-element-row--pitch:nth-child(2)').find('.ismjs-select').first().replaceWith( defender );
+		       
+			 }
+			 if(playerType == 'Forward')
+			 {
+				$('#Forwards .addPlayer>a').closest('tr').attr('disabled', 'disabled');
+				
+				var forward = '<div class="ismjs-menu" id="'+userId+'_'+gameClubPlayerId+'">'+
+		       /* '<picture>'+
+		        '<source type="image/webp" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_1-110.webp 110w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_1-66.webp 66w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_1-33.webp 33w" sizes="(min-width: 1024px) 55px,(min-width: 610px) 44px,33px">'+
+		        '<img src="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_1-33.png" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_1-110.png 110w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_1-66.png 66w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_1-33.png 33w" sizes="(min-width: 1024px) 55px,(min-width: 610px) 44px,33px" alt="Man Utd" title="Man Utd" class="ism-shirt ism-element__shirt">'+
+		        '</picture>'+*/
+		       '<picture>'+
+		        '<source type="image/webp" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_1-110.webp 110w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_1-66.webp 66w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_1-33.webp 33w" sizes="(min-width: 1024px) 55px,(min-width: 610px) 44px,33px">'+
+		        '<img src="/SportMgmt/images/'+clubImage+'" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_1-110.png 110w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_1-66.png 66w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_1-33.png 33w" sizes="(min-width: 1024px) 55px,(min-width: 610px) 44px,33px" alt="Man Utd" title="Man Utd" class="ism-shirt ism-element__shirt">'+
+		        '</picture>'+
+		        '<div class="ism-element__name">'+playerName+'</div>'+
+		        '<div class="ism-element__data">'+playerPrice+'</div>'+
+		        '<div class="ism-element__controls">'+
+		        '<div  class="ismjs-remove ism-element__control ism-element__control--primary"><a href="#" title="Remove player" class="ism-element__link removePlayerIcon rr">X</a></div></div>';
+		       
+		       	        
+		        $('.ism-element-row.ism-element-row--pitch:nth-child(4)').find('.ismjs-select').first().replaceWith( forward );
+			 }
+
 		});
+	});
 	 $('#ismjs-element-filter').change(function(){
 	  var selected = $(':selected',this); 
 	  filterByView(selected);
