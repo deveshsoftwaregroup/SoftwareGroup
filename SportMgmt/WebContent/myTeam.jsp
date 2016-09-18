@@ -513,7 +513,7 @@
 				</div>
 
                 <!-- Secondary content -->
-                <div id="leaguer-side" class="league-sidebar league-sidebar--squad">
+                <div id="leaguer-side" class="league-sidebar">
 					<div>
 						<section>
 							<h2 class="subHeader league-sub-header">devesh doot</h2>

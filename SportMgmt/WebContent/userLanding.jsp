@@ -898,7 +898,7 @@
         </div>
 
         <!-- Secondary content -->
-        <div id="ismr-side" class="ism-sidebar ism-sidebar--squad">
+        <div id="ismr-side" class="ism-sidebar">
             <div>
                 <section class="ism-bordered ism-bordered--primary">
 

@@ -58,7 +58,6 @@
 </head> 
  <body>
  <s:sportExt retrieve="priceList" />
- <main id="mainContent" tabindex="0" class="ism">
  <div class="league_header">
     <div class="ism-header">
         <div class="wrapper">
@@ -95,13 +94,16 @@
                         </li>
 
                     </ul>
-                  
+                  <span class="ism-nav__dropdown-wrapper priority-nav__wrapper" aria-haspopup="false">
+					<button aria-controls="menu" type="button" class="ism-nav__dropdown-toggle priority-nav__dropdown-toggle priority-nav-is-hidden">More</button>
+					<ul aria-hidden="true" class="ism-nav__dropdown priority-nav__dropdown"></ul>
+					</span>
                 </nav>
             </div>
         </div>
     </div>  
    </div>  
-</main>
+
     
  
     
@@ -112,7 +114,7 @@
     <script src="/SportMgmt/js/jquery.easing.1.3.js"></script>
     <script src="/SportMgmt/js/jquery.animate-enhanced.min.js"></script>
     <script src="/SportMgmt/js/jquery.superslides.js" type="text/javascript" charset="utf-8"></script>
-  
+  <script type="text/javascript" src="/SportMgmt/js/69e9bb26ef46.js"></script>
 
    
   </body>
