@@ -3,6 +3,7 @@ package com.sportmgmt.model.entity;
 import static javax.persistence.GenerationType.IDENTITY;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -31,10 +32,10 @@ public class Match {
 	private String desc;
 	
 	@Column(name="START_TIME")
-	private Date startTime;
+	private Timestamp startTime;
 	
 	@Column(name="END_TIME")
-	private Date endTime;
+	private Timestamp endTime;
 
 	@OneToOne(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
 	@JoinColumn(name="BEST_PLAYER_ID",insertable=true, updatable=true,nullable=true,unique=true)
@@ -92,19 +93,19 @@ public class Match {
 		this.desc = desc;
 	}
 
-	public Date getStartTime() {
+	public Timestamp getStartTime() {
 		return startTime;
 	}
 
-	public void setStartTime(Date startTime) {
+	public void setStartTime(Timestamp startTime) {
 		this.startTime = startTime;
 	}
 
-	public Date getEndTime() {
+	public Timestamp getEndTime() {
 		return endTime;
 	}
 
-	public void setEndTime(Date endTime) {
+	public void setEndTime(Timestamp endTime) {
 		this.endTime = endTime;
 	}
 

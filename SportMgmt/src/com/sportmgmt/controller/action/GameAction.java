@@ -1,6 +1,7 @@
 package com.sportmgmt.controller.action;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -480,12 +481,42 @@ public class GameAction {
 			{
 				Match match = (Match)matchObj;
 				MatchDetails matchDetails = new MatchDetails();
-				matchDetails.setEndTime(match.getEndTime());
+				SimpleDateFormat sdfTime = new SimpleDateFormat("dd-mm-yyyy hh:mm:ss");
+				//String startDateStr = sdfTime.format(match.getStartTime());
+				logger.debug("Date: "+match.getStartTime());
+				//String endDateStr = sdfTime.format(match.getEndTime());
+				try
+				{
+					//matchDetails.setEndTime(sdfTime.parse(endDateStr));
+					matchDetails.setEndTime(match.getEndTime());
+					//Date dateObj = new Date(match.getStartTime().getYear(), match.getStartTime().getMonth(), match.getStartTime().getDay(), match.getStartTime().getHours(), match.getStartTime().getMinutes(), match.getStartTime().getSeconds());
+					//matchDetails.setStartTime(dateObj);
+					matchDetails.setStartHour(match.getStartTime().getHours());
+					matchDetails.setStartMinute(match.getStartTime().getMinutes());
+					matchDetails.setEndHours(match.getEndTime().getHours());
+					matchDetails.setEndMinute(match.getEndTime().getMinutes());
+					matchDetails.setStartTime(match.getStartTime());
+					SimpleDateFormat sdfStart = new SimpleDateFormat("EEE, dd MMM yyyy");
+					String startDateStr = sdfStart.format(match.getStartTime());
+					matchDetails.setFormatedDate(startDateStr);
+					sdfStart = new SimpleDateFormat("EEEE dd MMMM");
+					startDateStr = sdfStart.format(match.getStartTime());
+					matchDetails.setFormatedDate1(startDateStr);
+					sdfStart = new SimpleDateFormat("dd MMM");
+					startDateStr = sdfStart.format(match.getStartTime());
+					matchDetails.setFormatedDate2(startDateStr);
+					
+					
+				}
+				catch(Exception ex)
+				{
+					logger.error("------------- Error to parsing date: "+ex);
+				}
+				
 				matchDetails.setFirstClubName(match.getFirstClub().getClubName());
 				matchDetails.setSecondClubName(match.getSecondClub().getClubName());
-				matchDetails.setStartTime(match.getStartTime());
-				SimpleDateFormat sdf = new SimpleDateFormat("EEEE");
-				String date = sdf.format(match.getStartTime());
+				matchDetails.setFirstClubId(match.getFirstClub().getClubID().toString());
+				matchDetails.setSecondClubId(match.getSecondClub().getClubID().toString());
 				boolean gameWeekFound = false;
 				GameWeek gameWeek = null;
 				for(Object gameWeekObj:gameWeekList)
@@ -503,33 +534,34 @@ public class GameAction {
 					gameWeek.setStartDate(match.getGameWeek().getStartDate());
 					gameWeek.setEndDate(match.getGameWeek().getEndDate());
 				}
-				if(gameWeek.getMatchMap().containsKey(date))
+				if(gameWeek.getMatchMap().containsKey(match.getStartTime().getDay()))
 				{
-					gameWeek.getMatchMap().get(date).add(matchDetails);
+					gameWeek.getMatchMap().get(match.getStartTime().getDay()).add(matchDetails);
 				}
 				else
 				{
 					TreeSet<MatchDetails> matchDetailList = new TreeSet<MatchDetails>();
+					//List<MatchDetails> matchDetailList = new ArrayList<MatchDetails>();
 					matchDetailList.add(matchDetails);
-					gameWeek.getMatchMap().put(date, matchDetailList);
+					gameWeek.getMatchMap().put(match.getStartTime().getDay(), matchDetailList);
 				}
 				gameWeekList.add(gameWeek);
 			}
 		}
 		logger.debug("----------- Game Week List: "+gameWeekList);
-		 modeMap.put("gameWeekList", gameWeekList);
 		 Map<String,Object> matchesMap = new HashMap<String,Object>();
-		 matchesMap.put("currentGameWeek", 1);
+		 matchesMap.put("currentGameWeek", 0);
 		 matchesMap.put("totalGameWeek", gameWeekList.size());
 		 matchesMap.put("gameWeekList", gameWeekList);
 		logger.debug("----------- matchesMap: "+matchesMap);
+		modeMap.put("matchesMap", matchesMap);
 		 ObjectMapper mapperObj = new ObjectMapper();
 		 try
 		 {
 			 
 			 String matchesMapJson = mapperObj.writeValueAsString(matchesMap);
 			 logger.debug("-------- matchView : matchesMapJson: "+matchesMapJson);
-			 modeMap.put("totalPlayingJson", matchesMapJson);
+			 modeMap.put("matchesMapJson", matchesMapJson);
 			 
 		 }
 		 catch(Exception ex)

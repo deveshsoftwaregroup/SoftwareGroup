@@ -8,7 +8,7 @@ import java.util.TreeSet;
 public class GameWeek implements Comparable{
 private Date startDate;
 private Date endDate;
-private TreeMap<String,TreeSet<MatchDetails>> matchMap = new TreeMap<String,TreeSet<MatchDetails>>();
+private TreeMap<Integer,TreeSet<MatchDetails>> matchMap = new TreeMap<Integer,TreeSet<MatchDetails>>();
 
 public Date getStartDate() {
 	return startDate;
@@ -26,11 +26,11 @@ public void setEndDate(Date endDate) {
 	this.endDate = endDate;
 }
 
-public TreeMap<String, TreeSet<MatchDetails>> getMatchMap() {
+public TreeMap<Integer, TreeSet<MatchDetails>> getMatchMap() {
 	return matchMap;
 }
 
-public void setMatchMap(TreeMap<String, TreeSet<MatchDetails>> matchMap) {
+public void setMatchMap(TreeMap<Integer, TreeSet<MatchDetails>> matchMap) {
 	this.matchMap = matchMap;
 }
 
@@ -48,7 +48,16 @@ public int compareTo(Object arg0) {
 @Override
 	public boolean equals(Object obj) {
 		// TODO Auto-generated method stub
-		GameWeek gameWeek = (GameWeek)obj;
-		return this.startDate.equals(gameWeek.getStartDate());
+		if(obj instanceof GameWeek)
+		{
+			GameWeek gameWeek = (GameWeek)obj;
+			return this.startDate.equals(gameWeek.getStartDate());
+		}
+		else //if (obj instanceof java.sql.Date || obj instanceof java.util.Date)
+		{
+			java.util.Date startDate = (java.util.Date)obj;
+			return this.startDate.equals(startDate);
+		}
+		
 	}
 }
