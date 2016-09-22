@@ -78,7 +78,7 @@
                             <a href="/SportMgmt/mvc/game/MyTeamView/${sessionScope.userId}/${sessionScope.gameDetails.gameId}" class="ism-nav__tab " data-nav-tab="squad">My Team</a>
                         </li> 
                         <li class="ism-nav__list__item">
-                            <a href="/a/squad/selection" class="ism-nav__tab " data-nav-tab="squad">Fixtures</a>
+                            <a href="javascript:void(0);" class="ism-nav__tab" onclick="uploadMatchView('${sessionScope.gameDetails.gameId}');" data-nav-tab="squad">Fixtures</a>
                         </li>                        
                         <li class="ism-nav__list__item">
                             <a href="/SportMgmt/prizes.jsp" class="ism-nav__tab ">Prizes</a>
@@ -114,9 +114,26 @@
     <script src="/SportMgmt/js/jquery.easing.1.3.js"></script>
     <script src="/SportMgmt/js/jquery.animate-enhanced.min.js"></script>
     <script src="/SportMgmt/js/jquery.superslides.js" type="text/javascript" charset="utf-8"></script>
-  <script type="text/javascript" src="/SportMgmt/js/69e9bb26ef46.js"></script>
-
-   
+ 	<script type="text/javascript" src="/SportMgmt/js/69e9bb26ef46.js"></script>
+	<script type="text/javascript">
+		function uploadMatchView(gameId)
+		{
+			if(typeof gameId != 'undefined' && gameId != '')
+			{
+				url ="/SportMgmt/mvc/game/MatchView/"+gameId;
+				$.ajax({
+		     		  url: url,
+		     		  dataType: 'html',
+		     		  success: function( resp ) {
+		     			 //console.log(resp); 
+		     			 $('.ism-container').html(resp);
+		     		  },
+		     		  error: function( req, status, err ) {
+		     		    console.log( 'something went wrong', status, err );
+		     		  }
+		     		});	
+			}
+		}
+  </script>
   </body>
-	
 </html>

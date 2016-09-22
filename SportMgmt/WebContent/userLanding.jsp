@@ -1262,7 +1262,6 @@
     	clubIdImageMap["${clubMap['clubId']}"] = "${imageSrc}";
     </script>
     </c:forEach>
-   
    	</c:if>
 	<script type="text/javascript">
 	
