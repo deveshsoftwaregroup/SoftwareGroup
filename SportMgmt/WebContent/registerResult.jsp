@@ -106,7 +106,7 @@
             <img alt="info" src="/SportMgmt/images/football-1.png">
              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
              <span class="s1">
-             	Bad performance<br/>&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;in game week 1,2,3 ?? 
+             	Bad performance<br/>&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;in previous game weeks ? 
              </span>
              <BR>&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
              <span class="s2">
@@ -114,7 +114,7 @@
              </span>
              <BR>
              <span class="s3">
-             	Grab golden chance to kick up your performance from <BR>GAME WEEK 4. </span>
+             	Play Now and grab golden chance to kick up your performance. </span>
            <BR><span class="s4"> Play and explore exciting prizes and new features.</span>
             </div>
            <!--  <div class="row clearfix main-banner">

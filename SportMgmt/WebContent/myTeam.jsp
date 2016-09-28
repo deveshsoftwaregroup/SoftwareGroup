@@ -42,7 +42,7 @@
 </style>
 </head>
 <body class="inner_page">
-<main id="mainContent" tabindex="0" class="league">
+<main id="mainContent" tabindex="0" class="ism league">
 <%@ include file="header.jsp" %>
         <div class="league-container">
             <div class="league-pusher leaguejs-page-transition">

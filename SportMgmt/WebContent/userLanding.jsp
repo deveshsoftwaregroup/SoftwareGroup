@@ -69,7 +69,7 @@
                     <div id="ismr-scoreboard">
                         <div>
                         <div class="ism-copy">
-                                <p style="color: #0061a0; font-weight: bold;"><i class="fa fa-angle-double-right" style="color: #f00;"></i> Select a maximum of 3 players from a single team</p>
+                                <p style="color: #ffcc00; font-weight: bold;"><i class="fa fa-angle-double-right" style="color: #f00;"></i> Select a maximum of 3 players from a single team</p>
                          </div> 
 
                             <!-- Scoreboard -->
