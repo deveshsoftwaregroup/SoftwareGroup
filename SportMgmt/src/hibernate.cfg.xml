@@ -40,5 +40,7 @@
         <mapping class="com.sportmgmt.model.entity.PlanDiscount"/>
         <mapping class="com.sportmgmt.model.entity.UserPayment"/>
         <mapping class="com.sportmgmt.model.entity.UserPlan"/>
+        <mapping class="com.sportmgmt.model.entity.GameWeek"/>
+        <mapping class="com.sportmgmt.model.entity.Match"/>
    </session-factory>
 </hibernate-configuration>
