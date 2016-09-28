@@ -206,7 +206,7 @@
 <div class="reveal medium" id="exampleModal1" data-reveal>
   
   
-  <form name="RegisterForm" action="mvc/user/register" method="post">
+  <form name="RegisterForm" action="user/register" method="post">
   <h3>Sign Up</h3>
   <div class="large-12 columns">
             <input type="text" name="displayName" placeholder="Name" required id="name" />
