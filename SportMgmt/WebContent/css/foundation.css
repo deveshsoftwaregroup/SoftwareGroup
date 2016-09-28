@@ -4112,7 +4112,7 @@ table.hover tr:nth-of-type(even):hover {
     margin-top: 5px;
 }        
 .inner_page {
-    background: url('../images/inner_bg.jpg') no-repeat;
+    background: url('../images/inner-bg-main.jpg') no-repeat;
     background-attachment: fixed;
     /* background-size: contain; */
 }
