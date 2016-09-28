@@ -62,8 +62,8 @@
 
 								<!-- Deadline Bar -->
 								<div class="league-deadline-bar">
-									<h4 class="league-deadline-bar__heading">Gameweek 3 Deadline:</h4>
-									<time datetime="2016-08-27T10:30:00Z" class="league-deadline-bar__deadline">27 Aug 11:30</time>
+									<h4 class="league-deadline-bar__heading">Gameweek 8 Deadline:</h4>
+									<time datetime="2016-08-27T10:30:00Z" class="league-deadline-bar__deadline">07 Oct 11:30</time>
 								</div>
 
 							</div>
