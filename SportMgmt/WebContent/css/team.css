@@ -176,7 +176,8 @@ html {
     margin-left: auto;
     margin-right: auto;
     overflow: hidden;
-    background: #fff;
+    background: rgba(0,0,0,0.8);
+    border-top: solid 5px #a4e800;
 }
 .league .league-container:after {
     content: " ";
@@ -195,8 +196,8 @@ html {
     .league .league-main {
         width: 66.66667%;
         float: left;
-        padding-left: 1rem;
-        padding-right: 1rem
+        padding-left: 2rem;
+        padding-right: 2rem
     }
     .league .league-sidebar {
         width: 33.33333%;
@@ -240,7 +241,8 @@ html {
 }
 @media(min-width:43.75em) {
     .league {}.league .league-section-title {
-        font-size: 2.2rem
+        font-size: 2.2rem;
+            color: #ffcc00;
     }
     .league .league-sub-header {
         font-size: 1.8rem
@@ -295,12 +297,13 @@ html {
 .league .league-squad-wrapper {
     margin-bottom: 1rem;
     padding-top: 2rem;
-    background-color: #2f2f2f;
+        background: rgba(180, 255, 0, 0.64) !important;
+    border: solid 5px #8ace05;
     overflow: auto;
-        background: -webkit-gradient(radial, center center, 0, center center, 460, from(#ff0), to(#2b2200));
+      /*   background: -webkit-gradient(radial, center center, 0, center center, 460, from(#ff0), to(#2b2200));
     background: -webkit-radial-gradient(circle, #ff0, #2b2200);
     background: -moz-radial-gradient(circle, #ff0, #2b2200);
-    background: -ms-radial-gradient(circle, #ff0, #2b2200);
+    background: -ms-radial-gradient(circle, #ff0, #2b2200); */
 }
 @media(min-width:64em) {
     .league .league-squad-wrapper {
@@ -765,7 +768,9 @@ button.close {
 .league .league-sub-header {
     padding-right: 1rem;
     padding-left: 1rem;
-    font-size: 1.6rem
+    font-size: 1.6rem;
+    color:#fff;
+        margin-top: 1.5rem;
 }
 .league .league-bordered {
     position: relative;
@@ -820,7 +825,7 @@ button.close {
 	font-family: Opensans-semibold, "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 .league .league-panel {
-    margin-bottom: 1rem;
+    margin-bottom: 0;
     overflow: auto;
 }
 .league .league-panel--guttered {
@@ -828,15 +833,17 @@ button.close {
     padding-left: 1rem;
 }
 .league .league-panel__heading {
-    margin-top: 2rem;
+    margin-top: 1rem;
     margin-bottom: 1rem;
     font-size: 1.4rem;
+    color:#ffcc00;
 }
 .league .league-data-list {
     background-color: #fafafa
 }
 .league .league-data-list--bordered {
-    border: 1px solid #ebebeb
+        border: 1px solid #ebebeb;
+    margin: 0;
 }
 .league .league-data-list__item {
     display: -webkit-box;
@@ -934,12 +941,15 @@ button.close {
     text-align: left;
 }
 .league .league-link {
-    color: #2cb900;
+    color: #272725;
     text-decoration: none;
 }
 .league .league-panel__footer--guttered {
     padding-right: 1rem;
     padding-left: 1rem;
+}
+.league .league-panel__footer .league-link {
+    color: #4adc02;
 }
 .league .league-panel__body>p {
     margin-top: 1rem;

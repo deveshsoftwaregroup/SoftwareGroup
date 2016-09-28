@@ -9199,10 +9199,12 @@ margin-bottom:0;
 cursor:pointer;
 font-size:12px;
 }
+.ism label {color: #fff;}
 .ism-sidebar .subHeader {
     font-size: 1.8rem;
     margin-bottom: 0rem;
     position: relative;
+    color: #ffcc00;
 }
 .ism .ism-form__label--bold {
 font-family:"PremierSans-Bold",Arial,"Helvetica Neue",Helvetica,sans-serif
@@ -9648,7 +9650,8 @@ max-width:1220px;
 margin-left:auto;
 margin-right:auto;
 overflow:hidden;
-background:#fff;
+background:rgba(0,0,0,0.8);
+border-top: solid 5px #a4e800;
 }
 
 .ism .ism-container:after {
@@ -9691,8 +9694,8 @@ transform:translate3d(-100%,0,0)
 .ism .ism-main {
 width:66.66667%;
 float:left;
-padding-left:1rem;
-padding-right:1rem
+padding-left:2rem;
+padding-right:2rem
 }
 
 .ism .ism-sidebar {
@@ -9775,28 +9778,29 @@ width:25%
 }
 
 .ism .ism-header {
-    background: url(../images/foot-head.png);
+    /* background: url(../images/foot-head.png); */
+    background:rgba(0, 0, 0, 0.5);
     background-repeat: no-repeat;
     background-position: right top;
 }
 @media (min-width:768px){
 .ism .ism-header {
-        background: url(../images/foot-head-1.png), url(../images/foot-head.png);
+   /*  background: url(../images/foot-head-1.png), url(../images/foot-head.png);
     background-repeat: no-repeat, no-repeat;
-    background-position: left bottom, right top;
+    background-position: left bottom, right top; */
     /* background-color: #528400; */
 }
 }
 .league_header {
-	background:#548601;
+	/* background:#548601; */
 }
 @media (min-width:1024px){
-	.league_header {
+	/* .league_header {
 		background: -webkit-gradient(radial, center center, 0, center center, 460, from(#a0d400), to(#406700));
 	    background: -webkit-radial-gradient(circle, #a0d400, #406700);
 	     background: -moz-radial-gradient(circle, #a0d400, #406700);
 	  background: -ms-radial-gradient(circle, #a0d400, #406700);
-	}
+	} */
 }
 @media only screen and (-webkit-min-device-pixel-ratio:2),only screen and (min--moz-device-pixel-ratio:2),only screen and (min-resolution:192dpi),only screen and (min-resolution:2dppx) {
 /*.ism .ism-header {
@@ -10205,7 +10209,7 @@ content:''
 }
 
 .ism .ism-bordered--primary::after {
-background-color:#4a70c3;
+background-color:#ffcc00;
 }
 
 .ism .ism-bordered--highlight::after {
@@ -11291,8 +11295,16 @@ cursor:pointer
 padding-bottom:.6rem;
 background:url(https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirt-shadow-167.png?cd9b007201fe) no-repeat center bottom;
 background-size:33px 6px
+-webkit-transition: -webkit-transform .8s ease-in-out;
+    -ms-transition: -ms-transform .8s ease-in-out;
+    transition: transform .8s ease-in-out;
 }
 
+.ism .ismjs-select:hover .ism-element__shirt {
+transform:rotate(360deg);
+    -ms-transform:rotate(360deg);
+    -webkit-transform:rotate(360deg);
+    }
 .ism .ism-element__name {
 font-family:"PremierSans-Bold",Arial,"Helvetica Neue",Helvetica,sans-serif;
 overflow:hidden;
@@ -11563,7 +11575,7 @@ font-size:1.2rem
 color:currentColor;
 line-height:1.5
 }
-
+.ism-bordered p {color:#fff;}
 .ism .ism-elements-shown {
 margin-bottom:.5rem;
 text-align:center
@@ -13015,7 +13027,8 @@ color:#fff
 .ism .ism-squad-wrapper {
 margin-bottom:1rem;
 padding-top:2rem;
-background-color:#0c0a70;
+background:rgba(180, 255, 0, 0.64) !important;
+border: solid 5px #8ace05;
 overflow:auto;
     background: -webkit-gradient(radial, center center, 0, center center, 460, from(#ff0), to(#2b2200));
     background: -webkit-radial-gradient(circle, #ff0, #2b2200);
