@@ -43,7 +43,7 @@
             <nav class="large-8 columns">
                 <ul class="d-menu" >
                     <li><a href="http://the12thman.in/"> Home </a></li>
-                    <li><a href="javascript:void(0);" data-open="exampleModal1"> Sign Up </a></li>                  
+                    <li><a href="javascript:void(0);" data-open="exampleModal2"> Log in </a></li>                  
                 </ul>
                 
                 

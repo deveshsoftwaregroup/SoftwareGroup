@@ -516,7 +516,7 @@
                 <div id="leaguer-side" class="league-sidebar">
 					<div>
 						<section>
-							<h2 class="subHeader league-sub-header">devesh doot</h2>
+							<h2 class="subHeader league-sub-header">Devesh</h2>
 
 							<div class="league-bordered league-bordered--primary">
 
@@ -527,7 +527,7 @@
 											<img alt="India" src="/SportMgmt/images/IN.gif" class="leagueRHSNat">
 										</div>
 										<div class="league-media__body">
-											<div class="league-entry-bar__name">teamB</div>
+											<div class="league-entry-bar__name"></div>
 										</div>
 									</div>
 								</div>
@@ -578,9 +578,9 @@
 													 </a>
 												</div>
 											</div>
-											<div class="league-panel__footer">
+											<%-- <div class="league-panel__footer">
 												<a href="#" class="leaguejs-link league-link league-link--more">View Arsenal Fan League<span class="fa fa-angle-double-right"></span></a>
-											</div>
+											</div> --%>
 										</div>
 
 									</div>
@@ -605,7 +605,7 @@
 												<tr>
 													<td><img src="/SportMgmt/images/new.png" alt="new" title="new"></td>
 													<td>-</td>
-													<td class="league-word-break"><a href="#" class="leaguejs-link league-link">Gameweek 3</a></td>
+													<td class="league-word-break"><a href="#" class="leaguejs-link league-link">Gameweek 7</a></td>
 												</tr>
 												<tr>
 													<td><img src="/SportMgmt/images/new.png" alt="new" title="new"></td>
@@ -621,7 +621,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="league-panel__footer league-panel__footer--guttered">
+				<%-- <div class="league-panel__footer league-panel__footer--guttered">
 					<a href="#" class="leaguejs-link btn btn-secondary league-button league-button--full">Create and join leagues<span class="fa fa-caret-right"></span></a>
 				</div>
 				<div class="league-panel league-panel--dark">
@@ -634,7 +634,7 @@
                     <div class="league-panel__footer league-panel__footer--guttered">
                         <a href="#" class="leaguejs-link league-link league-link--more">View cup history<span class="fa fa-angle-double-right"></span></a>
                     </div>
-                </div>
+                </div> --%>
 							</div>
 						</section>
 						<div id="leaguer-elements-menu"></div>
