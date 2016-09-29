@@ -8,6 +8,7 @@ import java.util.Map;
 import org.apache.log4j.Logger;
 import org.hibernate.Criteria;
 import org.hibernate.Query;
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
@@ -443,6 +444,57 @@ public class PlanManager {
 		return balance;
 	}
 	
+	public static boolean addDefaultPlanToUser(String userId)
+	{
+		double balance =0;
+		setErrorMessage("");
+		SessionFactory factory = HibernateSessionFactory.getSessionFacotry();
+		logger.debug("--------------- addDefaultPlanToUser ------------> userId:  "+userId);
+		if(factory == null)
+		{
+			setErrorCode(ErrorConstrant.SESS_FACT_NULL);
+			setErrorMessage("Technical Error");
+			logger.error("Session Facoty is null");
+			return false;
+		}
+		else
+		{
+			Session session = factory.openSession();
+			if(session != null)
+			{
+				try
+				{
+					
+					logger.debug("----- Trying to insert defaul plan for user");
+					SQLQuery query = session.createSQLQuery(QueryConstrant.INSERT_DEFAULT_USER_PLAN);
+					query.setParameter("userId", new Integer(userId));
+					query.executeUpdate();
+					session.beginTransaction().commit();
+				}
+				catch(Exception ex)
+				{
+					logger.error("---- Getting error to inser defualt plan to user: "+ex);
+					setErrorCode(ErrorConstrant.TRANSACTION_ERROR);
+					setErrorMessage("Technical Error");
+					return false;
+				}
+				finally
+				{
+					session.close();
+					
+				}
+			}
+			else
+			{
+				setErrorCode(ErrorConstrant.SESS_NULL);
+				setErrorMessage("Technical Error");
+				logger.error("Session  is null");
+				return false;
+			}
+		}
+		logger.debug("--------------- Defualt Plan for user is added  ");
+		return true;
+	}
 	public static double addPointToUserPlan(Integer userPlanId,double point) throws Exception
 	{
 		double balance =0;

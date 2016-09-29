@@ -103,6 +103,7 @@ public class UserAction {
 			if(isRegistered)
 			{
 				modeMap.put("message","You are registered");
+				PlanManager.addDefaultPlanToUser(UserManager.getUserId());
 				logger.debug("----------- start to send mail------");
 				try
 				{
