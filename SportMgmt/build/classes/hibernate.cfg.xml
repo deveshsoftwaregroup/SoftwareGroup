@@ -5,9 +5,12 @@
  
         <!-- Database connection settings -->
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="connection.url">jdbc:mysql://localhost:3306/sportmgmt</property>
-        <property name="connection.username">root</property>
-        <property name="connection.password">root</property>
+          <!--<property name="connection.url">jdbc:mysql://43.225.52.247:3306/john_league</property>
+        <property name="connection.username">john_league</property>
+        <property name="connection.password">Software@123</property>-->
+       <property name="connection.url">jdbc:mysql://137.74.73.149:3306/john_league_test</property>
+        <property name="connection.username">john_league_test</property>
+        <property name="connection.password">Software@123</property> 
  
         <!-- JDBC connection pool (use the built-in) -->
         <property name="connection.pool_size">4</property>
@@ -28,5 +31,16 @@
         <!-- <mapping class="com.event.tracker.model.entity.Address"/> -->	
         <mapping class="com.sportmgmt.model.entity.User"/>
         <mapping class="com.sportmgmt.model.entity.CountryStateCity"/>
+        <mapping class="com.sportmgmt.model.entity.Game"/>
+        <mapping class="com.sportmgmt.model.entity.Club"/>
+        <mapping class="com.sportmgmt.model.entity.Player"/>
+        <mapping class="com.sportmgmt.model.entity.GameClubPlayer"/>
+        <mapping class="com.sportmgmt.model.entity.UserPlayer"/>
+        <mapping class="com.sportmgmt.model.entity.LeaguePlan"/>
+        <mapping class="com.sportmgmt.model.entity.PlanDiscount"/>
+        <mapping class="com.sportmgmt.model.entity.UserPayment"/>
+        <mapping class="com.sportmgmt.model.entity.UserPlan"/>
+        <mapping class="com.sportmgmt.model.entity.GameWeek"/>
+        <mapping class="com.sportmgmt.model.entity.Match"/>
    </session-factory>
 </hibernate-configuration>
