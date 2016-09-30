@@ -77,7 +77,9 @@
                     <ul class="ism-nav__list ismjs-main-nav">                        
 
                         <li class="ism-nav__list__item">
-                            <a href="/SportMgmt/mvc/user/login/${sessionScope.userId}" class="ism-nav__tab" data-nav-tab="squad">Transfers</a>
+                           
+                            <%-- <a href="/SportMgmt/mvc/user/login/${sessionScope.userId}" class="ism-nav__tab" data-nav-tab="squad">Transfers</a> --%>
+                        	<a href="javascript:void(0);" class="ism-nav__tab" onclick="uploadTransferView();" data-nav-tab="squad">Transfers</a>
                         </li> 
                         <li class="ism-nav__list__item">
                             <a href="/SportMgmt/mvc/game/MyTeamView/${sessionScope.userId}/${sessionScope.gameDetails.gameId}" class="ism-nav__tab " data-nav-tab="squad">My Team</a>
@@ -141,6 +143,21 @@
 		     		  }
 		     		});	
 			}
+		}
+		function uploadTransferView()
+		{
+			url ="/SportMgmt/transfer.jsp";
+				$.ajax({
+		     		  url: url,
+		     		  dataType: 'html',
+		     		  success: function( resp ) {
+		     			 //console.log(resp); 
+		     			 $('.ism-container').html(resp);
+		     		  },
+		     		  error: function( req, status, err ) {
+		     		    console.log( 'something went wrong', status, err );
+		     		  }
+		     		});	
 		}
   </script>
   </body>
