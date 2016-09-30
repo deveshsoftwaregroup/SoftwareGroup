@@ -3340,7 +3340,7 @@ margin-bottom:1rem
 }
 
 .wrapper {
-max-width:1240px;
+max-width:1000px;
 margin-left:auto;
 margin-right:auto;
 padding-left:1rem;
@@ -9646,12 +9646,13 @@ margin-bottom:3rem
 }
 
 .ism .ism-container {
-max-width:1220px;
+max-width:980px;
 margin-left:auto;
 margin-right:auto;
-overflow:hidden;
+overflow:visible;
 background:rgba(0,0,0,0.8);
 border-top: solid 5px #a4e800;
+position: relative;
 }
 
 .ism .ism-container:after {
@@ -9694,8 +9695,8 @@ transform:translate3d(-100%,0,0)
 .ism .ism-main {
 width:66.66667%;
 float:left;
-padding-left:2rem;
-padding-right:2rem
+padding-left:1rem;
+padding-right:1rem
 }
 
 .ism .ism-sidebar {
@@ -9720,11 +9721,11 @@ transform:none
 
 @media(min-width:64em) {
 .ism .ism-main {
-width:75%
+width:70%
 }
 
 .ism .ism-sidebar {
-width:25%
+width:30%
 }
 
 .ism .ism-sidebar--squad {
@@ -9812,7 +9813,7 @@ background-size:226px 186px
 .ism .ism-game-header {
 display:-webkit-box;
 display:-ms-flexbox;
-display:flex;
+display:block;
 padding:1rem;
 -webkit-box-align:center;
 -ms-flex-align:center;
@@ -9869,7 +9870,7 @@ background-size:795px 130px
 
 @media(min-width:56.25em) {
 .ism .ism-game-header {
-padding-top:25px;
+padding-top:15px;
 padding-bottom:1.3rem
 }
 }
@@ -9889,7 +9890,7 @@ width:auto
 .ism .ism-nav {
 padding-left:1rem;
 padding-right:1rem;
-margin-top:20px;
+margin-top:0;
 }
 
 .ism .ism-nav__tab {
@@ -9907,8 +9908,8 @@ display:block
 
 @media(min-width:43.75em) {
 .ism .ism-nav__tab {
-padding-right:3rem;
-padding-left:3rem
+padding-right:1rem;
+padding-left:1rem
 }
 }
 
@@ -11298,6 +11299,7 @@ background-size:33px 6px
 -webkit-transition: -webkit-transform .8s ease-in-out;
     -ms-transition: -ms-transform .8s ease-in-out;
     transition: transform .8s ease-in-out;
+        max-width: 40px;
 }
 
 .ism .ismjs-select:hover .ism-element__shirt {
@@ -11466,7 +11468,7 @@ right:1rem
 
 @media(min-width:64em) {
 .ism .ism-element {
-width:14rem;
+width:12rem;
 padding-right:1rem;
 padding-left:1rem
 }
@@ -11539,7 +11541,7 @@ max-width:895px
 }
 
 .ism .ism-element-row--pitch {
-padding-bottom:4.9rem
+padding-bottom:2rem
 }
 }
 
@@ -12040,12 +12042,12 @@ min-height:96px
 }
 }
 
-@media(min-width:64em) {
+/* @media(min-width:64em) {
 .ism .ism-pitch {
 min-height:690px;
 background-image:url('../images/pitch-1080.png')
 }
-}
+} */
 
 @media only screen and (min-width:64em) and (-webkit-min-device-pixel-ratio:2),only screen and (min-width:64em) and (min--moz-device-pixel-ratio:2),only screen and (min-width:64em) and (min-resolution:192dpi),only screen and (min-width:64em) and (min-resolution:2dppx) {
 .ism .ism-pitch {
@@ -13026,14 +13028,11 @@ color:#fff
 
 .ism .ism-squad-wrapper {
 margin-bottom:1rem;
-padding-top:2rem;
-background:rgba(180, 255, 0, 0.64) !important;
-border: solid 5px #8ace05;
+padding-top:0;
+/* background:rgba(180, 255, 0, 0.64) !important;
+border: solid 5px #8ace05; */
 overflow:auto;
-    background: -webkit-gradient(radial, center center, 0, center center, 460, from(#ff0), to(#2b2200));
-    background: -webkit-radial-gradient(circle, #ff0, #2b2200);
-    background: -moz-radial-gradient(circle, #ff0, #2b2200);
-    background: -ms-radial-gradient(circle, #ff0, #2b2200);
+
 }
 
 .ism .ism-detail {
@@ -13582,7 +13581,7 @@ background-position:center;
 background-image:url(data:image/gif;base64,R0lGODlhFAAUAPcAAAAAAJmZmZ2dnZ6enqKioqOjo6SkpKWlpaampqenp6ioqKmpqaqqqqurq/Hx8fLy8vT09PX19ff39/j4+Pn5+fr6+vv7+wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAEAAP8ALAAAAAAUABQAAAihAP9FoPCvoMGDBy08+EdhQAIJCCMybCDAAYUEARBAlFiQQoMABQhKUJBxY0SPICEYHBnggEmDKAuoPMjS5cGYMxHW3IiT478JJA8M/CjTZ0GgLRekNGpwAsYABHIypcAgQMsITDtWJYBR6NSqMico9cqR6tKfY7GeBCuVwlipDNmefAtTrkSzB1RaIAoXodsABiZAEFB06gIBWC1mLVgBa0AAOw==)
 }
 .ism-game-header h1 {
-    margin-left: 85px;
+    margin-left: 57px;
 }
 @media (max-width:480px){
 .ism-game-header h1 {
@@ -13603,4 +13602,27 @@ background-image:url(data:image/gif;base64,R0lGODlhFAAUAPcAAAAAAJmZmZ2dnZ6enqKio
 .scroll-tbl {overflow-y:auto; height: 237px;}
 .table .ism-table td, .table th {
     padding: 0.1rem 1rem;
+}
+.addsbanner-lft {
+    position: absolute;
+    left: -130px;
+    color: #fff;
+    z-index: 9;
+    width: 120px;
+}
+.addsbanner-rgt {
+    position: absolute;
+    right: -130px;
+    color: #fff;
+    z-index: 9;
+    width: 120px;
+}
+.top-ads {
+    width: 25%;
+    float:left;
+}
+.top-banner {
+    width: 100%;
+    display: inline-block;
+    color:#fff;
 }

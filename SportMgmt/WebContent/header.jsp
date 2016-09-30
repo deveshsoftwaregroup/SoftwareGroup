@@ -63,6 +63,11 @@
         <div class="wrapper">
             <div class="ism-game-header-wrap">
                 <div class="ism-game-header">
+                    <div class="top-banner">
+						<div class="top-ads"></div>
+						<div class="top-ads"></div>
+						<div class="top-ads"></div>
+					</div>
                     <h1>
                     	<a href="/a/">THE 12TH MAN LEAGUE</a>
                     </h1>                    
@@ -81,8 +86,11 @@
                             <a href="javascript:void(0);" class="ism-nav__tab" onclick="uploadMatchView('${sessionScope.gameDetails.gameId}');" data-nav-tab="squad">Fixtures</a>
                         </li>                        
                         <li class="ism-nav__list__item">
-                            <a href="/SportMgmt/prizes.jsp" class="ism-nav__tab ">Prizes</a>
-                        </li>                        
+                            <a href="/SportMgmt/prizes.jsp" class="ism-nav__tab ">Scout</a>
+                        </li>   
+                        <li class="ism-nav__list__item">
+                            <a href="/SportMgmt/prizes.jsp" class="ism-nav__tab ">Point Table</a>
+                        </li>                      
                         <li class="ism-nav__list__item">
                             <a href="/SportMgmt/rules.jsp" class="ism-nav__tab ">Rules</a>
                         </li>

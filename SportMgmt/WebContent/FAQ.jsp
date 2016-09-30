@@ -43,17 +43,116 @@
     100% { transform: rotate(360deg); }
 }
 </style>
+<style>
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css");
+.static_container{
+	font-family: Opensans-reg, "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #fff;
+        padding: 10px 20px;min-height: 540px;
+}
+.panel-heading > a > .panel-title:before{
+    float: right !important;
+    font-family: FontAwesome;
+    content:"\f067";
+    padding-right: 5px;
+}
+.panel-heading > a.collapsed > .panel-title:before {
+    float: right !important;
+    content:"\f068";
+}
+a > .panel-title:hover, 
+a > .panel-title:active, 
+a > .panel-title:focus  {
+    text-decoration:none;
+	color:#fff;
+}
+.panel-heading > a { color: inherit; text-decoration:none; display:block;border-top-left-radius: 3px; 
+border-top-right-radius: 3px; color: #fff; border: solid 1px #2dbb62; padding: 8px 15px; background: #3adb64;}
+.panel-heading > a.collapsed {
+    color: #c1c1c1;
+    background-color: #000;
+    border-color: transparent;
+}
+.panel-heading > a:hover{color:#fff;}
+.panel-heading > a.collapsed:hover {
+    background: #3adb64;
+    border: solid 1px #2dbb62;
+	color: #fff;
+}
+.panel {
+    margin-bottom: 12px;
+    background-color: rgba(58, 58, 58, 0.7);
+    border: 1px solid transparent;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+}
+.panel-default {
+    border-color: #565656;
+}
+.panel-heading {
+
+}
+.panel-title {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 15px;
+    color: inherit;
+	font-weight: normal;
+}
+.collapse {
+    display: none;
+}
+.collapse.in {
+    display: block;
+}
+.panel-body {
+    padding: 15px;
+}
+.panel-default > .panel-heading + .panel-collapse > .panel-body {
+    border-top: solid 1px #ddd;
+}
+.panel-body:before{
+	display: table;
+    content: " ";
+}
+.panel-body:after{
+	display: table;
+    content: " ";
+	clear:both;
+}
+.collapsing {
+    position: relative;
+    height: 0;
+    overflow: hidden;
+    -webkit-transition-timing-function: ease;
+    -o-transition-timing-function: ease;
+    transition-timing-function: ease;
+    -webkit-transition-duration: .35s;
+    -o-transition-duration: .35s;
+    transition-duration: .35s;
+    -webkit-transition-property: height, visibility;
+    -o-transition-property: height, visibility;
+    transition-property: height, visibility;
+}
+h2.head {margin: 15px 0 20px 0; font-size: 17px;}
+.panel-body ol.list {
+    margin: 0 0 0 20px;
+    padding: 0;
+}
+.static_container p {margin:5px 0; color:#fff;}
+</style>
+
 </head> 
- <body>
+ <body class="inner_page">
  <s:sportExt retrieve="priceList" />
-  <%@ include file="header.jsp" %>
+
  <main id="mainContent" tabindex="0" class="ism">
-   
+   <%@ include file="header.jsp" %>
     <div class="ism-container">
-        <div class="ism-pusher ismjs-page-transition">
-            <!-- Primary content -->
-            <div id="ismr-main" class="ism-main">
-                <div class="static_container">
+        <div class="static_container">
 			        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 			            <h2 class="head">How Can We Help?<br/> Your premierleague.com account</h2>
 			            <div class="panel panel-default">
@@ -134,8 +233,6 @@
 			            </div>
 			        </div>
 			    </div>
-            </div>
-        </div>
 
         <!-- Secondary content -->
 
