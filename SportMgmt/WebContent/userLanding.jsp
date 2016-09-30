@@ -898,6 +898,9 @@
         </div>
 
         <!-- Secondary content -->
+        <c:if test="${sessionScope.user.hasActivePlan}">
+        <div id="planBalanceDiv" style="color:aliceblue;">${sessionScope.user.activePlan.balance}</div>
+        </c:if>
         <div id="ismr-side" class="ism-sidebar">
             <div>
                 <section class="ism-bordered ism-bordered--primary">
@@ -1405,7 +1408,7 @@
 		        '<div  class="ismjs-remove ism-element__control ism-element__control--primary"><a href="#" title="Remove player" class="ism-element__link removePlayerIcon rr">X</a></div></div>';
 		        
 		       
-		        $('.ism-element-row.ism-element-row--pitch:first-child').find('.ismjs-select').first().replaceWith( elems ); 
+		        $('.ism-element-row.ism-element-row--pitch:first-child').find('.ismjs-select').first().replaceWith(elems); 
 			 }
 			 if(playerType == 'Midfielder')
 			 {
@@ -1648,6 +1651,10 @@
 	     			  {
 	     				 userGameJson = resp.userGameJson; 
 	     				 var clubImage = clubIdImageMap[clubId];
+	     				 if(typeof $('#planBalanceDiv') != 'undefined')
+	     			 	 {
+	     					$('#planBalanceDiv').html(resp.activePlanBalance); 
+	     				 }
 	     				 if(playerType == 'Goalkeeper')
 	     				 {
 	     					$("#Goalkeepers .addPlayer>a").closest('tr').attr('disabled', 'disabled');
@@ -1756,6 +1763,10 @@
 	     			  if(resp.isSuccess)
 	     			  {
 	     				 userGameJson = resp.userGameJson;
+	     				if(typeof $('#planBalanceDiv') != 'undefined')
+	     			 	 {
+	     					$('#planBalanceDiv').html(resp.activePlanBalance); 
+	     				 }
 	     				$(elems1).parents('.ism-element').find('.ismjs-menu').replaceWith( elems2 );
 	     			  }
 	     			  else
