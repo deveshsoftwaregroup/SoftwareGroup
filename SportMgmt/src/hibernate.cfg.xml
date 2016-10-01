@@ -8,9 +8,13 @@
           <!--<property name="connection.url">jdbc:mysql://43.225.52.247:3306/john_league</property>
         <property name="connection.username">john_league</property>
         <property name="connection.password">Software@123</property>-->
-       <property name="connection.url">jdbc:mysql://137.74.73.149:3306/john_league_test</property>
+      <!-- <property name="connection.url">jdbc:mysql://137.74.73.149:3306/john_league_test</property>
         <property name="connection.username">john_league_test</property>
-        <property name="connection.password">Software@123</property> 
+        <property name="connection.password">Software@123</property> -->
+        
+         <property name="connection.url">jdbc:mysql://137.74.73.148:3306/fantasyl_league</property>
+        <property name="connection.username">fantasyl_league</property>
+        <property name="connection.password">v!k}fMW0c9iv</property> 
  
         <!-- JDBC connection pool (use the built-in) -->
         <property name="connection.pool_size">4</property>
