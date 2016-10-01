@@ -1718,10 +1718,22 @@
      function removePlayer(userId, gameClubPlayerId,elems1,elems2)
      {
     	
-		var url = "/SportMgmt/mvc/game/RemovePlayer?userId="+userId+"&gameClubPlayerId="+gameClubPlayerId;
+		var isPlayerPlaying = false;
+		for(var i=0;i<userGameJson.playerList.length ;i++)
+		{
+			if(userGameJson.playerList[i].gameClubPlayerId == gameClubPlayerId)
+			{
+				isPlayerPlaying = true;
+				break;
+			}
+		}
+    	if(isPlayerPlaying)
+   		{
+    		var url = "/SportMgmt/mvc/game/RemovePlayer?userId="+userId+"&gameClubPlayerId="+gameClubPlayerId;
 	     	$.ajax({
 	     		  url: url,
 	     		  dataType: 'json',
+	     		  async: false,
 	     		  success: function( resp ) {
 	     			  if(resp.isSuccess)
 	     			  {
@@ -1741,6 +1753,8 @@
 	     		    console.log( 'something went wrong', status, err );
 	     		  }
 	     		});
+   		}
+		
      }
      $(document).ajaxStart(function(){
   		$("#ajaxloader").css("display", "block");
