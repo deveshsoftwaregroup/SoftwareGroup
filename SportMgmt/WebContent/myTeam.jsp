@@ -1,12 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>My Team</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/SportMgmt/css/font-awesome.css" type="text/css">
 	<link rel="stylesheet" href="/SportMgmt/css/team.css" type="text/css">
 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -40,13 +33,10 @@
     100% { transform: rotate(360deg); }
 }
 </style>
-</head>
-<body class="inner_page">
+
 <main id="mainContent" tabindex="0" class="ism league">
-<%@ include file="header.jsp" %>
-		<c:choose>
-		<c:when test="${sessionScope.userGameDetails.total.player eq 15}">
-        <div class="league-container">
+		<%-- <c:choose>
+		<c:when test="${sessionScope.userGameDetails.total.player eq 15}"> --%>
             <div class="league-pusher leaguejs-page-transition">
                 <!-- Primary content -->
                 <div id="leaguer-main" class="league-main">
@@ -512,7 +502,6 @@
 							</div>
 						</section>   
 					</div>
-				</div>
 
                 <!-- Secondary content -->
                 <div id="leaguer-side" class="league-sidebar">
@@ -644,11 +633,11 @@
 				</div>
 			</div>
 		</div>
-		</c:when>
+		<%-- </c:when>
 		<c:otherwise>
 		Please complete team first
 		</c:otherwise>
-		</c:choose>
+		</c:choose> --%>
 	</main>
 
  <script src="/SportMgmt/js/jquery.js"></script> 
@@ -797,7 +786,5 @@
  	    $('.mask').hide();
  	});
 </script>
-<div id="ajaxloader"></div>
-<div class="mask" style="display:none;"></div>
-</body>
-</html>
+
+

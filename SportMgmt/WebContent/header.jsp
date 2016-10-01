@@ -82,7 +82,8 @@
                         	<a href="javascript:void(0);" class="ism-nav__tab" onclick="uploadTransferView();" data-nav-tab="squad">Transfers</a>
                         </li> 
                         <li class="ism-nav__list__item">
-                            <a href="/SportMgmt/mvc/game/MyTeamView/${sessionScope.userId}/${sessionScope.gameDetails.gameId}" class="ism-nav__tab " data-nav-tab="squad">My Team</a>
+                            <%-- <a href="/SportMgmt/mvc/game/MyTeamView/${sessionScope.userId}/${sessionScope.gameDetails.gameId}" class="ism-nav__tab " data-nav-tab="squad">My Team</a> --%>
+                        <a href="javascript:void(0);" class="ism-nav__tab" onclick="uploadTeamView('${sessionScope.userId}','${sessionScope.gameDetails.gameId}');" data-nav-tab="squad">My Team</a>		
                         </li> 
                         <li class="ism-nav__list__item">
                             <a href="javascript:void(0);" class="ism-nav__tab" onclick="uploadMatchView('${sessionScope.gameDetails.gameId}');" data-nav-tab="squad">Fixtures</a>
@@ -158,6 +159,24 @@
 		     		    console.log( 'something went wrong', status, err );
 		     		  }
 		     		});	
+		}
+		function uploadTeamView(userId,gameId)
+		{
+			if(typeof userId != 'undefined' && userId != '' && typeof gameId != 'undefined' && gameId != '')
+			{
+				url ="/SportMgmt/mvc/game/MyTeamView/"+userId+"/"+gameId;
+				$.ajax({
+		     		  url: url,
+		     		  dataType: 'html',
+		     		  success: function( resp ) {
+		     			 //console.log(resp); 
+		     			 $('.ism-container').html(resp);
+		     		  },
+		     		  error: function( req, status, err ) {
+		     		    console.log( 'something went wrong', status, err );
+		     		  }
+		     		});	
+			}
 		}
   </script>
   </body>
