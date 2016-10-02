@@ -56,7 +56,7 @@
                     <div id="ismr-scoreboard">
                         <div>
                         <div class="ism-copy">
-                                <p style="color: #ffcc00; font-weight: bold;"><i class="fa fa-angle-double-right" style="color: #f00;"></i> Select a maximum of 3 players from a single team</p>
+                                <p style="color: #ffcc00; font-weight: bold;"><i class="fa fa-angle-double-right" style="color: #f00;"></i> Select maximum of 3 players from a single team</p>
                          </div> 
 
                             <!-- Scoreboard -->
@@ -108,7 +108,7 @@
                                 https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-66.png 66w,
                                 https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-33.png 33w" sizes="(min-width: 1024px) 55px,
                                (min-width: 610px) 44px,
-                                33px" alt="" title="Click to select a Goalkeeper" class="ism-shirt ism-element__shirt">
+                                33px" alt="" title="Select a Goalkeeper" class="ism-shirt ism-element__shirt">
                                                             </picture>
 															
                                                              <c:choose>
@@ -119,7 +119,7 @@
                                                              </c:when>
                                                              <c:otherwise>
                                                              <div class="ism-element__name ism-element__name--placeholder">
-                                                                Add <abbr title="Goalkeeper" class="ism-element__type"><span class="ism-element__type__short">GKP</span></abbr>
+                                                                <abbr title="Goalkeeper" class="ism-element__type"><span class="ism-element__type__short">GKP</span></abbr>
                                                              </div>
                                                              </c:otherwise>
                                                              </c:choose>
@@ -145,7 +145,7 @@
                                 https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-66.png 66w,
                                 https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-33.png 33w" sizes="(min-width: 1024px) 55px,
                                (min-width: 610px) 44px,
-                                33px" alt="" title="Click to select a Goalkeeper" class="ism-shirt ism-element__shirt">
+                                33px" alt="" title="Select a Goalkeeper" class="ism-shirt ism-element__shirt">
                 </picture>
 
                 											
@@ -157,7 +157,7 @@
                                                              </c:when>
                                                              <c:otherwise>
                                                              <div class="ism-element__name ism-element__name--placeholder">
-                                                                Add <abbr title="Goalkeeper" class="ism-element__type"><span class="ism-element__type__short">GKP</span></abbr>
+                                                                 <abbr title="Goalkeeper" class="ism-element__type"><span class="ism-element__type__short">GKP</span></abbr>
                                                              </div>
                                                              </c:otherwise>
                                                              </c:choose>
@@ -188,7 +188,7 @@
                                 https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0-66.png 66w,
                                 https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0-33.png 33w" sizes="(min-width: 1024px) 55px,
                                (min-width: 610px) 44px,
-                                33px" alt="" title="Click to select a Defender" class="ism-shirt ism-element__shirt">
+                                33px" alt="" title="Select a Defender" class="ism-shirt ism-element__shirt">
                                                             </picture>
 															
                                                              <c:choose>
@@ -199,7 +199,7 @@
                                                              </c:when>
                                                              <c:otherwise>
                                                              <div class="ism-element__name ism-element__name--placeholder">
-                                                                Add <abbr title="Defender" class="ism-element__type"><span class="ism-element__type__short">DEF</span></abbr>
+                                                                 <abbr title="Defender" class="ism-element__type"><span class="ism-element__type__short">DEF</span></abbr>
                                                              </div>
                                                              </c:otherwise>
                                                              </c:choose>
@@ -226,7 +226,7 @@
                                 https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0-66.png 66w,
                                 https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0-33.png 33w" sizes="(min-width: 1024px) 55px,
                                (min-width: 610px) 44px,
-                                33px" alt="" title="Click to select a Defender" class="ism-shirt ism-element__shirt">
+                                33px" alt="" title="Select a Defender" class="ism-shirt ism-element__shirt">
                                                             </picture>
 
                                                            
@@ -238,7 +238,7 @@
                                                              </c:when>
                                                              <c:otherwise>
                                                              <div class="ism-element__name ism-element__name--placeholder">
-                                                                Add <abbr title="Defender" class="ism-element__type"><span class="ism-element__type__short">DEF</span></abbr>
+                                                                 <abbr title="Defender" class="ism-element__type"><span class="ism-element__type__short">DEF</span></abbr>
                                                              </div>
                                                              </c:otherwise>
                                                              </c:choose>
@@ -264,7 +264,7 @@
                                 https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0-66.png 66w,
                                 https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0-33.png 33w" sizes="(min-width: 1024px) 55px,
                                (min-width: 610px) 44px,
-                                33px" alt="" title="Click to select a Defender" class="ism-shirt ism-element__shirt">
+                                33px" alt="" title="Select a Defender" class="ism-shirt ism-element__shirt">
                                                             </picture>
 
                                                            
@@ -276,7 +276,7 @@
                                                              </c:when>
                                                              <c:otherwise>
                                                              <div class="ism-element__name ism-element__name--placeholder">
-                                                                Add <abbr title="Defender" class="ism-element__type"><span class="ism-element__type__short">DEF</span></abbr>
+                                                                 <abbr title="Defender" class="ism-element__type"><span class="ism-element__type__short">DEF</span></abbr>
                                                              </div>
                                                              </c:otherwise>
                                                              </c:choose>
@@ -302,7 +302,7 @@
                                 https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0-66.png 66w,
                                 https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0-33.png 33w" sizes="(min-width: 1024px) 55px,
                                (min-width: 610px) 44px,
-                                33px" alt="" title="Click to select a Defender" class="ism-shirt ism-element__shirt">
+                                33px" alt="" title="Select a Defender" class="ism-shirt ism-element__shirt">
                                                             </picture>
 
                                                            
@@ -314,7 +314,7 @@
                                                              </c:when>
                                                              <c:otherwise>
                                                              <div class="ism-element__name ism-element__name--placeholder">
-                                                                Add <abbr title="Defender" class="ism-element__type"><span class="ism-element__type__short">DEF</span></abbr>
+                                                                 <abbr title="Defender" class="ism-element__type"><span class="ism-element__type__short">DEF</span></abbr>
                                                              </div>
                                                              </c:otherwise>
                                                              </c:choose>
@@ -340,7 +340,7 @@
                                 https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0-66.png 66w,
                                 https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0-33.png 33w" sizes="(min-width: 1024px) 55px,
                                (min-width: 610px) 44px,
-                                33px" alt="" title="Click to select a Defender" class="ism-shirt ism-element__shirt">
+                                33px" alt="" title="Select a Defender" class="ism-shirt ism-element__shirt">
                                                             </picture>
 
                                                            
@@ -352,7 +352,7 @@
                                                              </c:when>
                                                              <c:otherwise>
                                                              <div class="ism-element__name ism-element__name--placeholder">
-                                                                Add <abbr title="Defender" class="ism-element__type"><span class="ism-element__type__short">DEF</span></abbr>
+                                                                 <abbr title="Defender" class="ism-element__type"><span class="ism-element__type__short">DEF</span></abbr>
                                                              </div>
                                                              </c:otherwise>
                                                              </c:choose>
@@ -380,7 +380,7 @@
                                 https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0-66.png 66w,
                                 https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0-33.png 33w" sizes="(min-width: 1024px) 55px,
                                (min-width: 610px) 44px,
-                                33px" alt="" title="Click to select a Midfielder" class="ism-shirt ism-element__shirt">
+                                33px" alt="" title="Select a Midfielder" class="ism-shirt ism-element__shirt">
                                                             </picture>
 															
                                                              <c:choose>
@@ -391,7 +391,7 @@
                                                              </c:when>
                                                              <c:otherwise>
                                                              <div class="ism-element__name ism-element__name--placeholder">
-                                                                Add <abbr title="Midfielder" class="ism-element__type"><span class="ism-element__type__short">MID</span></abbr>
+                                                                <abbr title="Midfielder" class="ism-element__type"><span class="ism-element__type__short">MID</span></abbr>
                                                              </div>
                                                              </c:otherwise>
                                                              </c:choose>
@@ -416,7 +416,7 @@
                                 https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0-66.png 66w,
                                 https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0-33.png 33w" sizes="(min-width: 1024px) 55px,
                                (min-width: 610px) 44px,
-                                33px" alt="" title="Click to select a Midfielder" class="ism-shirt ism-element__shirt">
+                                33px" alt="" title="Select a Midfielder" class="ism-shirt ism-element__shirt">
                                                             </picture>
 
                                                            
@@ -428,7 +428,7 @@
                                                              </c:when>
                                                              <c:otherwise>
                                                              <div class="ism-element__name ism-element__name--placeholder">
-                                                                Add <abbr title="Midfielder" class="ism-element__type"><span class="ism-element__type__short">MID</span></abbr>
+                                                                <abbr title="Midfielder" class="ism-element__type"><span class="ism-element__type__short">MID</span></abbr>
                                                              </div>
                                                              </c:otherwise>
                                                              </c:choose>
@@ -454,7 +454,7 @@
                                 https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0-66.png 66w,
                                 https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0-33.png 33w" sizes="(min-width: 1024px) 55px,
                                (min-width: 610px) 44px,
-                                33px" alt="" title="Click to select a Midfielder" class="ism-shirt ism-element__shirt">
+                                33px" alt="" title="Select a Midfielder" class="ism-shirt ism-element__shirt">
                                                             </picture>
 
                                                            
@@ -466,7 +466,7 @@
                                                              </c:when>
                                                              <c:otherwise>
                                                              <div class="ism-element__name ism-element__name--placeholder">
-                                                                Add <abbr title="Midfielder" class="ism-element__type"><span class="ism-element__type__short">MID</span></abbr>
+                                                                <abbr title="Midfielder" class="ism-element__type"><span class="ism-element__type__short">MID</span></abbr>
                                                              </div>
                                                              </c:otherwise>
                                                              </c:choose>
@@ -492,7 +492,7 @@
                                 https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0-66.png 66w,
                                 https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0-33.png 33w" sizes="(min-width: 1024px) 55px,
                                (min-width: 610px) 44px,
-                                33px" alt="" title="Click to select a Midfielder" class="ism-shirt ism-element__shirt">
+                                33px" alt="" title="Select a Midfielder" class="ism-shirt ism-element__shirt">
                                                             </picture>
 
                                                             
@@ -504,7 +504,7 @@
                                                              </c:when>
                                                              <c:otherwise>
                                                              <div class="ism-element__name ism-element__name--placeholder">
-                                                                Add <abbr title="Midfielder" class="ism-element__type"><span class="ism-element__type__short">MID</span></abbr>
+                                                                 <abbr title="Midfielder" class="ism-element__type"><span class="ism-element__type__short">MID</span></abbr>
                                                              </div>
                                                              </c:otherwise>
                                                              </c:choose>
@@ -530,7 +530,7 @@
                                 https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0-66.png 66w,
                                 https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0-33.png 33w" sizes="(min-width: 1024px) 55px,
                                (min-width: 610px) 44px,
-                                33px" alt="" title="Click to select a Midfielder" class="ism-shirt ism-element__shirt">
+                                33px" alt="" title="Select a Midfielder" class="ism-shirt ism-element__shirt">
                                                             </picture>
 
                                                             
@@ -542,7 +542,7 @@
                                                              </c:when>
                                                              <c:otherwise>
                                                              <div class="ism-element__name ism-element__name--placeholder">
-                                                                Add <abbr title="Midfielder" class="ism-element__type"><span class="ism-element__type__short">MID</span></abbr>
+                                                                 <abbr title="Midfielder" class="ism-element__type"><span class="ism-element__type__short">MID</span></abbr>
                                                              </div>
                                                              </c:otherwise>
                                                              </c:choose>
@@ -571,7 +571,7 @@
                                 https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0-66.png 66w,
                                 https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0-33.png 33w" sizes="(min-width: 1024px) 55px,
                                (min-width: 610px) 44px,
-                                33px" alt="" title="Click to select a Forward" class="ism-shirt ism-element__shirt">
+                                33px" alt="" title="Select a Forward" class="ism-shirt ism-element__shirt">
                                                             </picture>
 															
                                                              <c:choose>
@@ -582,7 +582,7 @@
                                                              </c:when>
                                                              <c:otherwise>
                                                              <div class="ism-element__name ism-element__name--placeholder">
-                                                                Add <abbr title="Forward" class="ism-element__type"><span class="ism-element__type__short">FWD</span></abbr>
+                                                                 <abbr title="Forward" class="ism-element__type"><span class="ism-element__type__short">FWD</span></abbr>
                                                              </div>
                                                              </c:otherwise>
                                                              </c:choose>
@@ -608,7 +608,7 @@
                                 https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0-66.png 66w,
                                 https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0-33.png 33w" sizes="(min-width: 1024px) 55px,
                                (min-width: 610px) 44px,
-                                33px" alt="" title="Click to select a Forward" class="ism-shirt ism-element__shirt">
+                                33px" alt="" title="Select a Forward" class="ism-shirt ism-element__shirt">
                                                             </picture>
 
                                                             
@@ -620,7 +620,7 @@
                                                              </c:when>
                                                              <c:otherwise>
                                                              <div class="ism-element__name ism-element__name--placeholder">
-                                                                Add <abbr title="Forward" class="ism-element__type"><span class="ism-element__type__short">FWD</span></abbr>
+                                                                <abbr title="Forward" class="ism-element__type"><span class="ism-element__type__short">FWD</span></abbr>
                                                              </div>
                                                              </c:otherwise>
                                                              </c:choose>
@@ -647,7 +647,7 @@
                                 https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0-66.png 66w,
                                 https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0-33.png 33w" sizes="(min-width: 1024px) 55px,
                                (min-width: 610px) 44px,
-                                33px" alt="" title="Click to select a Forward" class="ism-shirt ism-element__shirt">
+                                33px" alt="" title="Select a Forward" class="ism-shirt ism-element__shirt">
                                                             </picture>
 
                                                            
@@ -659,7 +659,7 @@
                                                              </c:when>
                                                              <c:otherwise>
                                                              <div class="ism-element__name ism-element__name--placeholder">
-                                                                Add <abbr title="Forward" class="ism-element__type"><span class="ism-element__type__short">FWD</span></abbr>
+                                                                <abbr title="Forward" class="ism-element__type"><span class="ism-element__type__short">FWD</span></abbr>
                                                              </div>
                                                              </c:otherwise>
                                                              </c:choose>
@@ -1024,7 +1024,7 @@
 
             <div class="ism-media__body ism-table--el__primary-text">
                 <a href="#" class="ism-table--el__name">${playerMap.name}</a>
-                <span class="ism-table--el__strong"><a href="javascript:void(0);"   title="Add Player">Add Player</a></span>
+                <span class="ism-table--el__strong"><a href="javascript:void(0);"   title="Add Player"></a></span>
             </div>
         </div>
 
@@ -1074,7 +1074,7 @@
 
             <div class="ism-media__body ism-table--el__primary-text">
                 <a href="#" class="ism-table--el__name">${playerMap.name}</a>
-                <span class="ism-table--el__strong"><a href="javascript:void(0);"  title="Add Player">Add Player</a></span>
+                <span class="ism-table--el__strong"><a href="javascript:void(0);"  title="Add Player"></a></span>
             </div>
         </div>
 
@@ -1124,7 +1124,7 @@
 
             <div class="ism-media__body ism-table--el__primary-text">
                 <a href="#" class="ism-table--el__name">${playerMap.name }</a>
-                <span class="ism-table--el__strong"><a href="javascript:void(0);"  title="Add Player">Add Player</a></span>
+                <span class="ism-table--el__strong"><a href="javascript:void(0);"  title="Add Player"></a></span>
             </div>
         </div>
 
@@ -1174,7 +1174,7 @@
 
             <div class="ism-media__body ism-table--el__primary-text">
                 <a href="#" class="ism-table--el__name">${playerMap.name}</a>
-                <span class="ism-table--el__strong"><a href="javascript:void(0);"   title="Add Player">Add Player</a></span>
+                <span class="ism-table--el__strong"><a href="javascript:void(0);"   title="Add Player"></a></span>
             </div>
         </div>
 
@@ -1235,7 +1235,7 @@
 		var elems2 = '<div class="ismjs-select">'+
 	     '<picture>'+
 	     '<source type="/SportMgmt/js/webp" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-110.webp 110w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-66.webp 66w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-33.webp 33w" sizes="(min-width: 1024px) 55px,(min-width: 610px) 44px,33px">'+
-	     '<img src="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-33.png" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-110.png 110w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-66.png 66w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-33.png 33w" sizes="(min-width: 1024px) 55px,(min-width: 610px) 44px,33px" alt="" title="Click to select a Goalkeeper" class="ism-shirt ism-element__shirt">'+
+	     '<img src="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-33.png" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-110.png 110w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-66.png 66w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-33.png 33w" sizes="(min-width: 1024px) 55px,(min-width: 610px) 44px,33px" alt="" title="Select a Goalkeeper" class="ism-shirt ism-element__shirt">'+
 	     '</picture>'+
 	     '<div class="ism-element__name ism-element__name--placeholder">Add <abbr title="Goalkeeper" class="ism-element__type"><span class="ism-element__type__short">GKP</span></abbr></div>';
 	     
@@ -1252,7 +1252,7 @@
 		var def2 = '<div class="ismjs-select">'+
 	     '<picture>'+
 	     '<source type="/SportMgmt/js/webp" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-110.webp 110w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-66.webp 66w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-33.webp 33w" sizes="(min-width: 1024px) 55px,(min-width: 610px) 44px,33px">'+
-	     '<img src="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-33.png" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-110.png 110w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-66.png 66w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-33.png 33w" sizes="(min-width: 1024px) 55px,(min-width: 610px) 44px,33px" alt="" title="Click to select a Defender" class="ism-shirt ism-element__shirt">'+
+	     '<img src="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-33.png" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-110.png 110w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-66.png 66w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-33.png 33w" sizes="(min-width: 1024px) 55px,(min-width: 610px) 44px,33px" alt="" title="Select a Defender" class="ism-shirt ism-element__shirt">'+
 	     '</picture>'+
 	     '<div class="ism-element__name ism-element__name--placeholder">Add <abbr title="Defender" class="ism-element__type"><span class="ism-element__type__short">DEF</span></abbr></div>';
 	     
@@ -1271,7 +1271,7 @@
 		var midd2 = '<div class="ismjs-select">'+
 	     '<picture>'+
 	     '<source type="/SportMgmt/js/webp" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-110.webp 110w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-66.webp 66w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-33.webp 33w" sizes="(min-width: 1024px) 55px,(min-width: 610px) 44px,33px">'+
-	     '<img src="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-33.png" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-110.png 110w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-66.png 66w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-33.png 33w" sizes="(min-width: 1024px) 55px,(min-width: 610px) 44px,33px" alt="" title="Click to select a Defender" class="ism-shirt ism-element__shirt">'+
+	     '<img src="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-33.png" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-110.png 110w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-66.png 66w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-33.png 33w" sizes="(min-width: 1024px) 55px,(min-width: 610px) 44px,33px" alt="" title="Select a Defender" class="ism-shirt ism-element__shirt">'+
 	     '</picture>'+
 	     '<div class="ism-element__name ism-element__name--placeholder">Add <abbr title="Midfielder" class="ism-element__type"><span class="ism-element__type__short">MID</span></abbr></div>';
 	    
@@ -1289,7 +1289,7 @@
 		var for2 = '<div class="ismjs-select">'+
 	     '<picture>'+
 	     '<source type="/SportMgmt/js/webp" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-110.webp 110w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-66.webp 66w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-33.webp 33w" sizes="(min-width: 1024px) 55px,(min-width: 610px) 44px,33px">'+
-	     '<img src="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-33.png" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-110.png 110w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-66.png 66w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-33.png 33w" sizes="(min-width: 1024px) 55px,(min-width: 610px) 44px,33px" alt="" title="Click to select a Defender" class="ism-shirt ism-element__shirt">'+
+	     '<img src="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-33.png" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-110.png 110w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-66.png 66w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-33.png 33w" sizes="(min-width: 1024px) 55px,(min-width: 610px) 44px,33px" alt="" title="Select a Defender" class="ism-shirt ism-element__shirt">'+
 	     '</picture>'+
 	     '<div class="ism-element__name ism-element__name--placeholder">Add <abbr title="Forward" class="ism-element__type"><span class="ism-element__type__short">FWD</span></abbr></div>';
 	    

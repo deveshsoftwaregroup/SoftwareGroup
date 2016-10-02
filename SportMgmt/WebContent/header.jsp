@@ -87,15 +87,19 @@
                         </li> 
                         <li class="ism-nav__list__item">
                             <a href="javascript:void(0);" class="ism-nav__tab" onclick="uploadMatchView('${sessionScope.gameDetails.gameId}');" data-nav-tab="squad">Fixtures</a>
-                        </li>                        
-                        <li class="ism-nav__list__item">
-                            <a href="/SportMgmt/prizes.jsp" class="ism-nav__tab ">Scout</a>
-                        </li>   
-                        <li class="ism-nav__list__item">
-                            <a href="/SportMgmt/prizes.jsp" class="ism-nav__tab ">Point Table</a>
                         </li>                      
+                           
                         <li class="ism-nav__list__item">
-                            <a href="/SportMgmt/rules.jsp" class="ism-nav__tab ">Rules</a>
+                            <a href="#" class="ism-nav__tab ">Point Table</a>
+                        </li>  
+                        <li class="ism-nav__list__item">
+                            <a href="#" class="ism-nav__tab ">Rankings</a>
+                        </li>             
+                        <li class="ism-nav__list__item">
+                            <a href="#" class="ism-nav__tab ">Scout</a>
+                        </li>       
+                        <li class="ism-nav__list__item">
+                            <a href="#" class="ism-nav__tab ">Rules</a>
                         </li>
                         <li class="ism-nav__list__item">
                             <a href="/SportMgmt/FAQ.jsp" class="ism-nav__tab ">FAQ</a>
