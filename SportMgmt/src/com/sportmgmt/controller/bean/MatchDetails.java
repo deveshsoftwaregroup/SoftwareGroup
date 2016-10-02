@@ -102,6 +102,14 @@ public void setSecondClubId(String secondClubId) {
 public int compareTo(Object arg0) {
 	// TODO Auto-generated method stub
 	MatchDetails matchDetail = (MatchDetails)arg0;
+	if(this.startTime.compareTo(matchDetail.getStartTime())==0)
+	{
+		if(this.getFirstClubName().compareTo(matchDetail.getFirstClubName())== 0)
+		{
+			return this.getSecondClubName().compareTo(matchDetail.getSecondClubName());
+		}
+		return this.getFirstClubName().compareTo(matchDetail.getFirstClubName());
+	}
 	return this.startTime.compareTo(matchDetail.getStartTime());
 }
 }
