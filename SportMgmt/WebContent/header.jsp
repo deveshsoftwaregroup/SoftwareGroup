@@ -90,10 +90,10 @@
                         </li>                      
                            
                         <li class="ism-nav__list__item">
-                            <a href="#" class="ism-nav__tab ">Point Table</a>
+                            <a href="javascript:void(0);" class="ism-nav__tab" onclick="uploadPointTableView('${sessionScope.gameDetails.gameId}');">Point Table</a>
                         </li>  
                         <li class="ism-nav__list__item">
-                            <a href="#" class="ism-nav__tab ">Rankings</a>
+                            <a href="javascript:void(0);" class="ism-nav__tab" onclick="uploadRankingView('${sessionScope.gameDetails.gameId}');">Rankings</a>
                         </li>             
                         <li class="ism-nav__list__item">
                             <a href="#" class="ism-nav__tab ">Scout</a>
@@ -169,6 +169,42 @@
 			if(typeof userId != 'undefined' && userId != '' && typeof gameId != 'undefined' && gameId != '')
 			{
 				url ="/SportMgmt/mvc/game/MyTeamView/"+userId+"/"+gameId;
+				$.ajax({
+		     		  url: url,
+		     		  dataType: 'html',
+		     		  success: function( resp ) {
+		     			 //console.log(resp); 
+		     			 $('.ism-container').html(resp);
+		     		  },
+		     		  error: function( req, status, err ) {
+		     		    console.log( 'something went wrong', status, err );
+		     		  }
+		     		});	
+			}
+		}
+		function uploadRankingView(gameId)
+		{
+			if(typeof gameId != 'undefined' && gameId != '')
+			{
+				url ="/SportMgmt/mvc/game/RankingView/"+gameId;
+				$.ajax({
+		     		  url: url,
+		     		  dataType: 'html',
+		     		  success: function( resp ) {
+		     			 //console.log(resp); 
+		     			 $('.ism-container').html(resp);
+		     		  },
+		     		  error: function( req, status, err ) {
+		     		    console.log( 'something went wrong', status, err );
+		     		  }
+		     		});	
+			}
+		}
+		function uploadPointTableView(gameId)
+		{
+			if(typeof gameId != 'undefined' && gameId != '')
+			{
+				url ="/SportMgmt/mvc/game/PointTableView/"+gameId;
 				$.ajax({
 		     		  url: url,
 		     		  dataType: 'html',
