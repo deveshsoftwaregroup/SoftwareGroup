@@ -166,21 +166,29 @@
 		}
 		function uploadTeamView(userId,gameId)
 		{
-			if(typeof userId != 'undefined' && userId != '' && typeof gameId != 'undefined' && gameId != '')
+			if(typeof userGameJson != 'undefined' && userGameJson.playerList.length >= 15)
 			{
-				url ="/SportMgmt/mvc/game/MyTeamView/"+userId+"/"+gameId;
-				$.ajax({
-		     		  url: url,
-		     		  dataType: 'html',
-		     		  success: function( resp ) {
-		     			 //console.log(resp); 
-		     			 $('.ism-container').html(resp);
-		     		  },
-		     		  error: function( req, status, err ) {
-		     		    console.log( 'something went wrong', status, err );
-		     		  }
-		     		});	
+				if(typeof userId != 'undefined' && userId != '' && typeof gameId != 'undefined' && gameId != '')
+				{
+					url ="/SportMgmt/mvc/game/MyTeamView/"+userId+"/"+gameId;
+					$.ajax({
+			     		  url: url,
+			     		  dataType: 'html',
+			     		  success: function( resp ) {
+			     			 //console.log(resp); 
+			     			 $('.ism-container').html(resp);
+			     		  },
+			     		  error: function( req, status, err ) {
+			     		    console.log( 'something went wrong', status, err );
+			     		  }
+			     		});	
+				}
 			}
+			else
+			{
+				alert ("Please complete the team of 15 players");
+			}
+			
 		}
 		function uploadRankingView(gameId)
 		{
