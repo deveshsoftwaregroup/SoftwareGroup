@@ -4,6 +4,7 @@ public class QueryConstrant {
 public static final String FROM_COUNTRY_STATE_CITY = "FROM CountryStateCity";
 public static final String SELECT_ACTIVE_GAME = "FROM Game G WHERE G.isActive =:isActive";
 public static final String SELECT_MATCH_BY_GAME = "FROM Match M WHERE M.game =:game";
+public static final String SELECT_POINT_BY_GAME = "FROM Point P WHERE P.gameId =:gameId";
 public static final String SELECT_PLAYERS_CLUBD_OF_EVENT = "select * from GAME_CLUB_PLAYER where GAME_ID=:gameId";
 public static final String SELECT_USER_PLAYER_LIST = "select gcp.game_club_player_id from GAME_CLUB_PLAYER gcp, USER_PLAYER up where gcp.game_club_player_id = up.game_club_player_id and up.user_id =:userId" 
 														+" and gcp.game_id =:gameId";
