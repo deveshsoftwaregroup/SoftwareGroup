@@ -1,49 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The12thman | Football</title>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 	<%@ taglib uri="WEB-INF/sportmgmt.tld" prefix="s" %>  
-    <link rel="stylesheet" href="/SportMgmt/css/foundation.css">
-    <link rel="stylesheet" href="/SportMgmt/css/app.css">
-    <link rel="stylesheet" href="/SportMgmt/css/superslides.css">
-    <link rel="stylesheet" type="text/css" href="/SportMgmt/css/customMedia.css">
-   <!-- <link rel="stylesheet" href="https://ismdj.scdn5.secure.raxcdn.com/static/CACHE/css/258578334140.css" type="text/css" />-->
-    <link rel="stylesheet" type="text/css" href="/SportMgmt/css/258578334140.css">
-    <script src="https://use.fontawesome.com/d4e6d4c165.js"></script>
-    <style>
-    .addPlayer a{ color:#ed3a28; font-size: 18px; padding: 5px;}
-    .removePlayerIcon{ background: #de5e00;
-    color: #fff !important;
-    padding: 2px 5px;
-    font-size: 12px;
-    font-weight: bold;}
-    /*  home  page */
-.ism-game-header h1 a{ color:#fff;}
-#ajaxloader {
-    border: 16px solid #f3f3f3; /* Light grey */
-    border-top: 16px solid blue;
- 	border-right: 16px solid green;
- 	border-bottom: 16px solid red;
- 	border-left: 16px solid pink;
-    border-radius: 50%;
-    width: 120px;
-    height: 120px;
-    animation: spin 2s linear infinite;
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-</style>
-<style>
+ <style>
 @import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css");
 .static_container{
 	font-family: Opensans-reg, "Helvetica Neue",Helvetica,Arial,sans-serif;
@@ -145,13 +105,7 @@ h2.head {margin: 15px 0 20px 0; font-size: 17px;}
 .static_container p {margin:5px 0; color:#fff;}
 </style>
 
-</head> 
- <body class="inner_page">
- <s:sportExt retrieve="priceList" />
-
  <main id="mainContent" tabindex="0" class="ism">
-   <%@ include file="header.jsp" %>
-    <div class="ism-container">
         <div class="static_container">
 			        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 			            <h2 class="head">How Can We Help?<br/> Your premierleague.com account</h2>
@@ -236,14 +190,8 @@ h2.head {margin: 15px 0 20px 0; font-size: 17px;}
 
         <!-- Secondary content -->
 
-    </div>
-    <!--</div>-->
-    
     <div id="ismr-elements-menu"></div>
-    <!--</div>
-    </div>
-    </div>
-    </div>-->
+ 
 </main>
     
  
@@ -255,36 +203,4 @@ h2.head {margin: 15px 0 20px 0; font-size: 17px;}
     <script src="/SportMgmt/js/jquery.easing.1.3.js"></script>
     <script src="/SportMgmt/js/jquery.animate-enhanced.min.js"></script>
     <script src="/SportMgmt/js/jquery.superslides.js" type="text/javascript" charset="utf-8"></script>
-   <script type="text/javascript">
-   var gameDetailsJson = null;
-   var playerListJson = null;
-   var clubListJson = null;
-   var userGameJson = null;
-   </script>
-   	<c:if test="${not empty sessionScope.gameDetailsJson}">
-   	<script type="text/javascript">
-   		gameDetailsJson = ${sessionScope.gameDetailsJson};
-   	</script>
-   	</c:if>
-   	<c:if test="${not empty sessionScope.playerListJson}">
-   		<script type="text/javascript">
-  		 playerListJson = ${sessionScope.playerListJson};
-  		</script>
-	</c:if>
-  	<c:if test="${not empty sessionScope.clubListJson}">
-  	<script type="text/javascript">
-		clubListJson = ${sessionScope.clubListJson};
-		</script>
-	</c:if>
-	<c:if test="${not empty sessionScope.userGameJson}">
-  	<script type="text/javascript">
-  		userGameJson = ${sessionScope.userGameJson};
-		</script>
-	</c:if>
-	
-   <div id="ajaxloader"></div>
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-   
-  </body>
-	
-</html>

@@ -102,7 +102,8 @@
                             <a href="#" class="ism-nav__tab ">Rules</a>
                         </li>
                         <li class="ism-nav__list__item">
-                            <a href="/SportMgmt/FAQ.jsp" class="ism-nav__tab ">FAQ</a>
+                            <!-- <a href="/SportMgmt/FAQ.jsp" class="ism-nav__tab ">FAQ</a> -->
+                            <a href="javascript:void(0);" class="ism-nav__tab" onclick="uploadFAQView();">FAQ</a>
                         </li>                       
                         <li class="ism-nav__list__item">
                             <a href="#" class="ism-nav__tab ">Sign Out</a>
@@ -225,6 +226,21 @@
 		     		  }
 		     		});	
 			}
+		}
+		function uploadFAQView()
+		{
+			
+				$.ajax({
+		     		  url: "/SportMgmt/mvc/FAQView",
+		     		  dataType: 'html',
+		     		  success: function( resp ) {
+		     			 //console.log(resp); 
+		     			 $('.ism-container').html(resp);
+		     		  },
+		     		  error: function( req, status, err ) {
+		     		    console.log( 'something went wrong', status, err );
+		     		  }
+		     		});	
 		}
   </script>
   </body>
