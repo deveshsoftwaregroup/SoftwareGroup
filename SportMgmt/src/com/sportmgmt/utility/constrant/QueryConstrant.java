@@ -30,4 +30,9 @@ public static final String INSERT_DEFAULT_USER_PLAN = "INSERT INTO USER_PLAN(USE
 		" (:userId,(SELECT PLAN_ID FROM LEAGUE_PLANS WHERE PLAN_NAME = 'DEFAULT' AND IS_ACTIVE = 'Y'),'Free plan on registration','Y',(SELECT PLAN_AMOUNT FROM LEAGUE_PLANS WHERE"+ 
 		" PLAN_NAME = 'DEFAULT' AND IS_ACTIVE = 'Y'),(SELECT PLAN_CURRENCY FROM LEAGUE_PLANS WHERE PLAN_NAME = 'DEFAULT' AND IS_ACTIVE = 'Y'))";
 
+public static final String FETCH_CURRENT_GAME_WEEK = "select game_week_id,start_date from GAME_WEEK where start_date <= :date and end_date >= :date and game_id = :gameId";
+public static final String FETCH_START_GAME_WEEK = "select game_week_id,start_date from GAME_WEEK where start_date = (select min(start_date) from GAME_WEEK) and game_id = :gameId";
+public static final String FETCH_START_MATCH_TIME_OF_GAME_WEEK = "select start_time from MATCH_DETAIL where start_time = (select min(start_time) from MATCH_DETAIL where game_week_id = :gameWeekId)";
+public static final String FETCH_SORTED_GAME_WEEK = "select game_week_id from GAME_WEEK order by start_date";
+
 }

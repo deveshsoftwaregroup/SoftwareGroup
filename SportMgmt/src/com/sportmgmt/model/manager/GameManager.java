@@ -1,5 +1,7 @@
 package com.sportmgmt.model.manager;
 
+import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -1049,4 +1051,195 @@ public class GameManager {
 		}
 		return addedPlayerCount;
 	}
+	public static List<Object[]> fetchCurrenGametWeek(Integer gameId)
+	{
+		List<Object[]> currentGameWeek = null;
+		setErrorMessage("");
+		SessionFactory factory = HibernateSessionFactory.getSessionFacotry();
+		logger.debug("--------------- fetchCurrenGametWeek ------------> gameId: "+gameId);
+		if(factory == null)
+		{
+			setErrorCode(ErrorConstrant.SESS_FACT_NULL);
+			setErrorMessage("Technical Error");
+		}
+		else
+		{
+			Session session = factory.openSession();
+			if(session != null)
+			{
+				try
+				{
+					
+					//SQLQuery query = session.createSQLQuery("select gcp.game_club_player_id from game_club_player gcp, user_player up where gcp.game_club_player_id = up.game_club_player_id and up.user_id =20 and gcp.game_id =1");
+					SQLQuery query = session.createSQLQuery(QueryConstrant.FETCH_CURRENT_GAME_WEEK);
+					query.setParameter("gameId", gameId);
+					query.setParameter("date", new Date(System.currentTimeMillis()));
+					currentGameWeek =query.list();
+				}
+				catch(Exception ex)
+				{
+					logger.error("Exception fetch CurrenGametWeek: "+ex.getMessage());
+					setErrorMessage("Technical Error");
+					setErrorCode(ErrorConstrant.TRANSACTION_ERROR);
+				}
+				finally
+				{
+					session.close();
+				}
+			}
+			else
+			{
+				setErrorCode(ErrorConstrant.SESS_NULL);
+				setErrorMessage("Technical Error");
+			}
+		}
+		logger.info("--------------- Returning currentGameWeek: -------------"+currentGameWeek);
+		return currentGameWeek;
+	}
+	public static List<Object[]> fetchStartGametWeek(Integer gameId)
+	{
+		List<Object[]> startGameWeek = null;
+		setErrorMessage("");
+		SessionFactory factory = HibernateSessionFactory.getSessionFacotry();
+		logger.debug("--------------- fetchStartGametWeek ------------> gameId: "+gameId);
+		if(factory == null)
+		{
+			setErrorCode(ErrorConstrant.SESS_FACT_NULL);
+			setErrorMessage("Technical Error");
+		}
+		else
+		{
+			Session session = factory.openSession();
+			if(session != null)
+			{
+				try
+				{
+					
+					//SQLQuery query = session.createSQLQuery("select gcp.game_club_player_id from game_club_player gcp, user_player up where gcp.game_club_player_id = up.game_club_player_id and up.user_id =20 and gcp.game_id =1");
+					SQLQuery query = session.createSQLQuery(QueryConstrant.FETCH_START_GAME_WEEK);
+					query.setParameter("gameId", gameId);
+					startGameWeek =query.list();
+				}
+				catch(Exception ex)
+				{
+					logger.error("Exception fetch startGameWeek: "+ex.getMessage());
+					setErrorMessage("Technical Error");
+					setErrorCode(ErrorConstrant.TRANSACTION_ERROR);
+				}
+				finally
+				{
+					session.close();
+				}
+			}
+			else
+			{
+				setErrorCode(ErrorConstrant.SESS_NULL);
+				setErrorMessage("Technical Error");
+			}
+		}
+		logger.info("--------------- Returning startGameWeek: -------------"+startGameWeek);
+		return startGameWeek;
+	}
+	public static List<Timestamp> fetchFirstMatchOfGameWeek(Integer gameWeekId)
+	{
+		List<Timestamp> firstMatchOfGameWeek = null;
+		setErrorMessage("");
+		SessionFactory factory = HibernateSessionFactory.getSessionFacotry();
+		logger.debug("--------------- fetchFirstMatchOfGameWeek ------------> gameWeekId: "+gameWeekId);
+		if(factory == null)
+		{
+			setErrorCode(ErrorConstrant.SESS_FACT_NULL);
+			setErrorMessage("Technical Error");
+		}
+		else
+		{
+			Session session = factory.openSession();
+			if(session != null)
+			{
+				try
+				{
+					
+					//SQLQuery query = session.createSQLQuery("select gcp.game_club_player_id from game_club_player gcp, user_player up where gcp.game_club_player_id = up.game_club_player_id and up.user_id =20 and gcp.game_id =1");
+					SQLQuery query = session.createSQLQuery(QueryConstrant.FETCH_START_MATCH_TIME_OF_GAME_WEEK);
+					query.setParameter("gameWeekId", gameWeekId);
+					firstMatchOfGameWeek =query.list();
+				}
+				catch(Exception ex)
+				{
+					logger.error("Exception fetch firstMatchOfGameWeek: "+ex.getMessage());
+					setErrorMessage("Technical Error");
+					setErrorCode(ErrorConstrant.TRANSACTION_ERROR);
+				}
+				finally
+				{
+					session.close();
+				}
+			}
+			else
+			{
+				setErrorCode(ErrorConstrant.SESS_NULL);
+				setErrorMessage("Technical Error");
+			}
+		}
+		logger.info("--------------- Returning firstMatchOfGameWeek: -------------"+firstMatchOfGameWeek);
+		return firstMatchOfGameWeek;
+	}
+	public static int getGameWeekNumber(Integer gameWeekId)
+	{
+		List<Integer> gameWeekList = null;
+		int gameWeekNumber = 0;
+		setErrorMessage("");
+		SessionFactory factory = HibernateSessionFactory.getSessionFacotry();
+		logger.debug("--------------- getGameWeekNumber ------------> gameWeekId: "+gameWeekId);
+		if(factory == null)
+		{
+			setErrorCode(ErrorConstrant.SESS_FACT_NULL);
+			setErrorMessage("Technical Error");
+		}
+		else
+		{
+			Session session = factory.openSession();
+			if(session != null)
+			{
+				try
+				{
+					
+					//SQLQuery query = session.createSQLQuery("select gcp.game_club_player_id from game_club_player gcp, user_player up where gcp.game_club_player_id = up.game_club_player_id and up.user_id =20 and gcp.game_id =1");
+					SQLQuery query = session.createSQLQuery(QueryConstrant.FETCH_SORTED_GAME_WEEK);
+					//query.setParameter("gameWeekId", gameWeekId);
+					gameWeekList =query.list();
+					if(gameWeekList != null && gameWeekList.size() > 0)
+					{
+						int count = 1;
+						for(Integer tempGameWeekId:gameWeekList)
+						{
+							if(tempGameWeekId == gameWeekId)
+							{
+								gameWeekNumber = count;
+							}
+							count++;
+						}
+					}
+				}
+				catch(Exception ex)
+				{
+					logger.error("Exception fetch getGameWeekNumber: "+ex.getMessage());
+					setErrorMessage("Technical Error");
+					setErrorCode(ErrorConstrant.TRANSACTION_ERROR);
+				}
+				finally
+				{
+					session.close();
+				}
+			}
+			else
+			{
+				setErrorCode(ErrorConstrant.SESS_NULL);
+				setErrorMessage("Technical Error");
+			}
+		}
+		logger.info("--------------- Returning gameWeekNumber: -------------"+gameWeekNumber);
+		return gameWeekNumber;
+	}
+
 }
