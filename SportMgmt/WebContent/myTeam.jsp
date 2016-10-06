@@ -37,6 +37,8 @@
 <main id="mainContent" tabindex="0" class="ism league">
 		<%-- <c:choose>
 		<c:when test="${sessionScope.userGameDetails.total.player eq 15}"> --%>
+            <div class="addsbanner-lft"></div>
+			<div class="addsbanner-rgt"></div>
             <div class="league-pusher leaguejs-page-transition">
                 <!-- Primary content -->
                 <div id="leaguer-main" class="league-main">
