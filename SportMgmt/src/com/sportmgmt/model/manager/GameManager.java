@@ -1118,6 +1118,7 @@ public class GameManager {
 					//SQLQuery query = session.createSQLQuery("select gcp.game_club_player_id from game_club_player gcp, user_player up where gcp.game_club_player_id = up.game_club_player_id and up.user_id =20 and gcp.game_id =1");
 					SQLQuery query = session.createSQLQuery(QueryConstrant.FETCH_START_GAME_WEEK);
 					query.setParameter("gameId", gameId);
+					query.setParameter("date", new Date(System.currentTimeMillis()));
 					startGameWeek =query.list();
 				}
 				catch(Exception ex)
