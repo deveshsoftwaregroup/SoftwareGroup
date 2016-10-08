@@ -108,7 +108,7 @@ h2.head {margin: 15px 0 20px 0; font-size: 17px;}
  <main id="mainContent" tabindex="0" class="ism">
         <div class="static_container">
 			        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-			            <h2 class="head">How Can We Help?<br/> Your premierleague.com account</h2>
+			            <h2 class="head">How Can We Help?<br/></h2>
 			            <div class="panel panel-default">
 			                <div class="panel-heading" role="tab" id="headingOne">
 			                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne" class="collapsed">
@@ -123,7 +123,7 @@ h2.head {margin: 15px 0 20px 0; font-size: 17px;}
 			                        <li>Open your Outlook mailbox.</li>
 			                        <li>Select Options from the top right (next to the question mark).</li>
 			                        <li>Select More options > Safe and blocked senders (under Preventing junk email) > Safe senders.</li>
-			                        <li>In the space provided, enter the address - noreply@mailout.users.premierleague.com</li>
+			                        <li>In the space provided, enter the address - noreply@the12thman.in</li>
 			                        <li>Select Add to list.</li>
 			                        <li>Ensure the safe mailing lists box has the address you entered, and select OK.</li>
 			                        </ol>
