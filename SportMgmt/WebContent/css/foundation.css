@@ -4117,13 +4117,52 @@ table.hover tr:nth-of-type(even):hover {
     background-position: center;
     /* background-size: contain; */
 }
+@-webkit-keyframes move {
+  100% {
+    background-position: 92% 0;
+  }
+  /* my texture isn't perfect */
+}
+@keyframes move {
+  100% {
+    background-position: 92% 0;
+  }
+  /* my texture isn't perfect */
+}
 #ajaxloader{
-	background: url('../images/soccer-loader.gif') no-repeat !important;
+	/* background: url('../images/soccer-loader.gif') no-repeat !important;
     border-radius: 0 !important;
     border: none !important;
     width: 150px !important;
     height: 200px !important;
-    animation: none !important;
-    margin-left: -75px !important;
-    margin-top: -100px !important;
+    animation: none !important; */
+    margin-left: -50px !important;
+    margin-top: -50px !important;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    background: url('../images/football-texture.png') 0 0 no-repeat !important;
+    background-size: auto 100%;
+    box-shadow: -10px -30px 40px -20px inset, 10px 10px 10px white inset, 0 8px 10px -10px, 0 1px 1px 0px #CCC inset;
+    width: 100px !important;
+    height: 100px !important;
+    overflow: hidden;
+    border: none !important;
+    border-radius: 100% !important;
+    -webkit-animation: 2s move infinite linear !important;
+    animation: 2s move infinite linear !important;
+}
+#ajaxloader : before {box-shadow: 0 0 50px 20px #000;}
+#ajaxloader :: before {
+  content: "";
+  height: 25px;
+  width: 40px;
+  position: absolute;
+  left: 30px;
+  bottom: -13px;
+  background: #555;
+  border-radius: 100%;
+  box-shadow: 0 0 50px 20px #000;
+  -webkit-transform: rotateX(80deg);
+          transform: rotateX(80deg);
 }

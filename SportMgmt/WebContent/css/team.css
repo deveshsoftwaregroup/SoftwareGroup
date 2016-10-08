@@ -1027,7 +1027,7 @@ button.close {
 .fixtures-pegination a.peg-lnk {
     padding: 0 2rem;
     text-decoration: none;
-    background: #00dcdc;
+    background: #3adb76;
     color: #fff;
     display: inline-block;
     -webkit-transition: all .2s;
@@ -1038,14 +1038,14 @@ button.close {
     line-height: 3.5rem;
     border-radius: 2px;
 }
-.fixtures-pegination a.peg-lnk:hover { background: #00c1c1;}
+.fixtures-pegination a.peg-lnk:hover { background: #17af50;}
 .peg-lnk i.fa {
     margin: 0 5px;
 }
 .fixtures-logo span {
     font-size: 15px;
     text-transform: none;
-    color: #666;
+    color: #d8d8d8;
     font-family: opensans-reg;
 }
 .team-row {
@@ -1059,7 +1059,8 @@ border-top: 1px solid #E8E8E8;
     font-family: opensans-semibold;
 }
 .team-row:hover {
-    background: #00dcdc;
+    background: #3adb76;
+    color: #fff;
 }
 .row-lft {
     width: 50%;
@@ -1093,6 +1094,11 @@ border-top: 1px solid #E8E8E8;
     text-align: center;
     font-size: 14px;
     font-family: opensans-reg;
+    color: #3adb76;
+}
+.team-row.date:hover {
+    background: none;
+    color: #fff;
 }
 .badge-25 {
     background-image: url('../images/badges-25-sprite.png');
@@ -1176,3 +1182,8 @@ border-top: 1px solid #E8E8E8;
 .badge-25.NFO{background-position:-50px -125px}
 .badge-25.NOR{background-position:-75px -125px}
 .badge-25.OLD{background-position:-100px -125px}
+
+.fixtures {
+    color: #c7c7c7;
+    min-height: 450px;
+}

@@ -27,8 +27,8 @@
     font-weight: bold;}
     /*  home  page */
 .ism-game-header h1 a{ color:#fff;}
-#ajaxloader {
-    border: 16px solid #f3f3f3; /* Light grey */
+ /*  #ajaxloader {
+    border: 16px solid #f3f3f3; 
     border-top: 16px solid blue;
  	border-right: 16px solid green;
  	border-bottom: 16px solid red;
@@ -44,7 +44,7 @@
     margin-top: -32px;
     z-index: 999;
     display:none;
-}
+} */
 .mask{ background: #000; opacity: 0.5; position:fixed; top: 0; left: 0; width: 100%; height:100%;}
 
 
