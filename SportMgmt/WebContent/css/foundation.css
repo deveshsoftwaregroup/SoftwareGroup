@@ -4114,5 +4114,16 @@ table.hover tr:nth-of-type(even):hover {
 .inner_page {
     background: url('../images/inner-bg-main.jpg') no-repeat;
     background-attachment: fixed;
+    background-position: center;
     /* background-size: contain; */
+}
+#ajaxloader{
+	background: url('../images/soccer-loader.gif') no-repeat !important;
+    border-radius: 0 !important;
+    border: none !important;
+    width: 150px !important;
+    height: 200px !important;
+    animation: none !important;
+    margin-left: -75px !important;
+    margin-top: -100px !important;
 }

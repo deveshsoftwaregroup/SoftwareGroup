@@ -103,7 +103,7 @@
     </script>
     </c:forEach>
    	</c:if>
-   <div id="ajaxloader"></div>
+   		<div id="ajaxloader"></div>
    <div class="mask" style="display:none;"></div>
    
   </body>
