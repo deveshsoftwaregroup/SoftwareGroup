@@ -33,7 +33,7 @@
     100% { transform: rotate(360deg); }
 }
 </style>
-
+<s:sportExt retrieve="deadLine" />
 <main id="mainContent" tabindex="0" class="ism league">
 		<%-- <c:choose>
 		<c:when test="${sessionScope.userGameDetails.total.player eq 15}"> --%>

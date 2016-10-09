@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeSet;
+import java.util.concurrent.TimeUnit;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -451,33 +452,6 @@ public class GameAction {
 		 HashMap totalPlayingMap= new HashMap();
 		 totalPlayingMap.put("player", player);
 		 GameManager.updateTotalPlayingPlayerByPostion(Integer.valueOf(userId),Integer.valueOf(gameId),totalPlayingMap);
-		 List<Object[]> currentGameWeek = GameManager.fetchCurrenGametWeek(new Integer(gameId));
-		 if(currentGameWeek == null || currentGameWeek.size() ==0)
-		 {
-			 currentGameWeek = GameManager.fetchStartGametWeek(new Integer(gameId));
-		 }
-		 logger.debug("Current Game Week: "+currentGameWeek);
-		 if(currentGameWeek != null && currentGameWeek.size() > 0)
-		 {
-			 logger.debug("--------------- currentGameWeek: Game week ID: "+currentGameWeek.get(0)[0]+"  , Date: "+currentGameWeek.get(0)[1]);
-			 List<Timestamp> firstMatchOfGameWeek = GameManager.fetchFirstMatchOfGameWeek((Integer)currentGameWeek.get(0)[0]);
-			 logger.debug("First Match of  Game Week: "+firstMatchOfGameWeek);
-			 int gameWeekNumber = GameManager.getGameWeekNumber((Integer)currentGameWeek.get(0)[0]);
-			 logger.debug(" Game Week Number : "+gameWeekNumber);
-			 modeMap.put("gameWeekNumber", gameWeekNumber);
-			 if(firstMatchOfGameWeek != null && firstMatchOfGameWeek.size() >=0)
-			 {
-				 logger.debug("First Match of  Game Week:  "+firstMatchOfGameWeek.get(0));
-				 Timestamp startTime = firstMatchOfGameWeek.get(0);
-				 int startHour = startTime.getHours();
-				 int startMin = startTime.getMinutes();
-				 SimpleDateFormat sdfStart = new SimpleDateFormat("dd MMM");
-				 String formatedStartTime = sdfStart.format(startTime);
-				 String deadline = formatedStartTime +" "+ (startHour-1) + ":"+startMin;
-				 logger.info("--------- Game Week: deadline  -- :"+deadline);
-				 modeMap.put("deadline", deadline);
-			 }
-		 }
 		 String totalPlayingJson = "";
 		 modeMap.put("totalPlayingMap", totalPlayingMap);
 		 logger.debug("-------- MyTeamView : totalPlayingMap: "+totalPlayingMap);
@@ -494,6 +468,7 @@ public class GameAction {
 			 logger.error("---------- Entry in parsing map to json: "+ex);
 		 }
 		 modeMap.put("totalPlayingJson", totalPlayingJson);
+			
 		 return SportConstrant.MY_TEAM_PAGE;
 	}
 	

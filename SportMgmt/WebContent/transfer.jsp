@@ -46,6 +46,7 @@
 }
 </style>
 <s:sportExt retrieve="priceList" />
+<s:sportExt retrieve="deadLine" />
 <div class="addsbanner-lft"></div>
 <div class="addsbanner-rgt"></div>
 <div class="ism-pusher ismjs-page-transition">
@@ -61,7 +62,10 @@
 
                             <!-- Scoreboard -->
                             <div class="ism-scoreboard">
-
+							<div class="league-deadline-bar">
+									<h4 class="league-deadline-bar__heading">Gameweek ${gameWeekNumber} Deadline:</h4>
+									<time datetime="2016-08-27T10:30:00Z" class="league-deadline-bar__deadline">${deadline}</time>
+								</div>
                             </div>
 
                         </div>
@@ -1303,12 +1307,8 @@
 	    })
 	};
 	
-		
-	$(function () {	
-	    
-				
-		
-		$('.ism-element').mousemove(function(){
+	<c:if test="${!isUnderDeadline}">
+			$('.ism-element').mousemove(function(){
 			
 			aa();		
 			defenderRemove();
@@ -1316,10 +1316,7 @@
 			forwardRemove();
 		})
 
-
-	});
-	
-	
+	</c:if>
 	
 	$(document).ready(function() {
 		$("div.ismjs-select.added-player-css").each(function(){
@@ -1533,6 +1530,11 @@
  }
      function addPlayer(userId, gameClubPlayerId)
      {
+     	<c:choose>
+     	<c:when test="${isUnderDeadline}">
+     	alert("You r under deadline");
+     	</c:when>
+     	<c:otherwise>
      	
     	 var playerType = '';
     	 var playerName = '';
@@ -1714,6 +1716,8 @@
 	     		});
 
 		}
+		</c:otherwise>
+		</c:choose>
      }
      function removePlayer(userId, gameClubPlayerId,elems1,elems2)
      {
