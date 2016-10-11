@@ -6,7 +6,7 @@
 <div style="color: green;font-size: 20px; font-weight: bold;"> ${message}
 <br/><br/>
 <c:forEach var="pointMap" items="${pointList}">
-  <c:out value="${pointMap['pointName']}"/>  <c:out value="${pointMap['pointToAdd']}"/>  <c:out value="${pointMap['pointToDedduct']}"/> 
+  <c:out value="${pointMap['pointName']}"/>  <c:out value="${pointMap['pointToAdd']}"/>  <c:out value="${pointMap['pointToDeduct']}"/> 
   <br>  
 </c:forEach>
 </div>
