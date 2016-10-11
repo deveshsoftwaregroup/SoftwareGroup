@@ -99,7 +99,7 @@
                             <a href="#" class="ism-nav__tab ">Scout</a>
                         </li>       
                         <li class="ism-nav__list__item">
-                            <a href="#" class="ism-nav__tab ">Rules</a>
+                            <a href="javascript:void(0)" class="ism-nav__tab " onclick="uploadRulesView();">Rules</a>
                         </li>
                         <li class="ism-nav__list__item">
                             <!-- <a href="/SportMgmt/FAQ.jsp" class="ism-nav__tab ">FAQ</a> -->
@@ -232,6 +232,21 @@
 			
 				$.ajax({
 		     		  url: "/SportMgmt/mvc/FAQView",
+		     		  dataType: 'html',
+		     		  success: function( resp ) {
+		     			 //console.log(resp); 
+		     			 $('.ism-container').html(resp);
+		     		  },
+		     		  error: function( req, status, err ) {
+		     		    console.log( 'something went wrong', status, err );
+		     		  }
+		     		});	
+		}
+		function uploadRulesView()
+		{
+			
+				$.ajax({
+		     		  url: "/SportMgmt/mvc/RulesView",
 		     		  dataType: 'html',
 		     		  success: function( resp ) {
 		     			 //console.log(resp); 

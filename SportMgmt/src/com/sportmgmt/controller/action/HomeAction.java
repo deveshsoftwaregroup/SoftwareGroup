@@ -42,4 +42,10 @@ public class HomeAction {
 		logger.debug("---------- IN FAQView to : ");
 		return SportConstrant.FAQ_PAGE;
 	}
+	@RequestMapping(value = "RulesView", method = RequestMethod.GET)
+	public  String rulesView(ModelMap modeMap)
+	{
+		logger.debug("IN RulesView ");
+		return SportConstrant.RULES_PAGE;
+	}
 }
