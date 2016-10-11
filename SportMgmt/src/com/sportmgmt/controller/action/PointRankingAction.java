@@ -29,7 +29,7 @@ public class PointRankingAction {
 	public  String rankingView(ModelMap modeMap,HttpServletRequest request,@PathVariable String gameId)
 	{
 		logger.debug("---------- IN RankingView to : "+gameId);
-		modeMap.put("message", "Mazze Karo-------------");
+		modeMap.put("message", "No data found...");
 		return SportConstrant.RANKING_PAGE;
 	}
 	@RequestMapping(value = "PointTableView/{gameId}", method = RequestMethod.GET)
@@ -54,13 +54,15 @@ public class PointRankingAction {
 				if(point.getPointDesc() != null)
 				map.put("pointDesc", point.getPointDesc());
 				if(point.getPointToAdd() !=null)
+					System.out.println("pointToAdd="+point.getPointToAdd().toString());
 				map.put("pointToAdd", point.getPointToAdd().toString());
 				if(point.getPointToDeduct() != null)
 				map.put("pointToDeduct", point.getPointToDeduct().toString());
+				System.out.println("pointToDeduct="+point.getPointToDeduct().toString());
 				pointList.add(map);
 			}
 		}
-		modeMap.put("message", "Just Chill Pagla-------------");
+		modeMap.put("message", "");
 		modeMap.put("pointList", pointList);
 		logger.info("------------- Point Info ----------> "+pointList);
 		return SportConstrant.POINT_TABLE_PAGE;
