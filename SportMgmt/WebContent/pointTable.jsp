@@ -3,9 +3,10 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<div style="color: green;font-size: 20px; font-weight: bold;">Message For You: ${message}
+<div style="color: green;font-size: 20px; font-weight: bold;"> ${message}
 <br/><br/>
 <c:forEach var="pointMap" items="${pointList}">
-  <c:out value="${pointMap['pointName']}"/>  <c:out value="${pointMap['pointToAdd']}"/>  <c:out value="${pointMap['pointToDedduct']}"/>   
+  <c:out value="${pointMap['pointName']}"/>  <c:out value="${pointMap['pointToAdd']}"/>  <c:out value="${pointMap['pointToDedduct']}"/> 
+  <br>  
 </c:forEach>
 </div>
