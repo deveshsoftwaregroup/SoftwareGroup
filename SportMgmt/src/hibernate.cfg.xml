@@ -43,5 +43,6 @@
         <mapping class="com.sportmgmt.model.entity.UserPlan"/>
         <mapping class="com.sportmgmt.model.entity.GameWeek"/>
         <mapping class="com.sportmgmt.model.entity.Match"/>
+        <mapping class="com.sportmgmt.model.entity.Point"/>
    </session-factory>
 </hibernate-configuration>
