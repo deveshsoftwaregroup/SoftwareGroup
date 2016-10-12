@@ -509,7 +509,7 @@
                 <div id="leaguer-side" class="league-sidebar">
 					<div>
 						<section>
-							<h2 class="subHeader league-sub-header">Devesh</h2>
+							<h2 class="subHeader league-sub-header">User Name</h2>
 
 							<div class="league-bordered league-bordered--primary">
 
@@ -517,7 +517,7 @@
 								<div class="league-entry-bar">
 									<div class="league-media league-media--centred league-media--reversed">
 										<div class="league-media__figure">
-											<img alt="India" src="/SportMgmt/images/IN.gif" class="leagueRHSNat">
+											User Country Name
 										</div>
 										<div class="league-media__body">
 											<div class="league-entry-bar__name"></div>
@@ -552,62 +552,18 @@
 											</li>
 										</ul>
 									</div>
-									<div class="league-panel__footer">
-										<a href="#" class="leaguejs-link league-link league-link--more">View Gameweek history <span class="fa fa-angle-double-right"></span></a>
-									</div>
+									
 								</div>
 
 								<!-- LEAGUES -->
 								<div class="league-panel">
 									<div class="league-panel__body">
-										<div id="leaguer-fan-league"><div>
-
-										<div class="league-panel league-panel--dark league-panel--guttered">
-											<h3 class="league-panel__heading">Fan League</h3>
-											<div class="league-panel__body league-panel--dark__body">
-												<div class="league-panel__centre league-panel__badge">
-													<a href="#" class="league-panel__badge__link">
-														 <img src="/SportMgmt/images/ARS.png" title="Arsenal" alt="Arsenal" class="league-panel__badge__img">
-													 </a>
-												</div>
-											</div>
-											<%-- <div class="league-panel__footer">
-												<a href="#" class="leaguejs-link league-link league-link--more">View Arsenal Fan League<span class="fa fa-angle-double-right"></span></a>
-											</div> --%>
-										</div>
-
-									</div>
-								</div>
+										
 
 								<div class="league-panel league-panel--dark">
-									<h3 class="league-panel__heading league-panel__heading--guttered">Global Leagues</h3>
+									
 									<div class="league-panel__body">
-										<div class="table">
-											<table class="league-table league-table--league">
-												<tbody>
-												<tr>
-													<td><img src="/SportMgmt/images/new.png" alt="new" title="new"></td>
-													<td>-</td>
-													<td class="league-word-break"><a href="#" class="leaguejs-link league-link">Arsenal</a></td>
-												</tr>
-												<tr>
-													<td><img src="/SportMgmt/images/new.png" alt="new" title="new"></td>
-													<td>-</td>
-													<td class="league-word-break"><a href="#" class="leaguejs-link league-link">India</a></td>
-												</tr>
-												<tr>
-													<td><img src="/SportMgmt/images/new.png" alt="new" title="new"></td>
-													<td>-</td>
-													<td class="league-word-break"><a href="#" class="leaguejs-link league-link">Gameweek 7</a></td>
-												</tr>
-												<tr>
-													<td><img src="/SportMgmt/images/new.png" alt="new" title="new"></td>
-													<td>-</td>
-													<td class="league-word-break"><a href="#" class="leaguejs-link league-link">Overall</a></td>
-												</tr>
-												</tbody>
-											</table>
-										</div>
+									
 									</div>
 								</div>
 							</div>
