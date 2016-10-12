@@ -509,7 +509,7 @@
                 <div id="leaguer-side" class="league-sidebar">
 					<div>
 						<section>
-							<h2 class="subHeader league-sub-header">User Name</h2>
+							<h2 class="subHeader league-sub-header">${sessionScope.user.displayName}</h2>
 
 							<div class="league-bordered league-bordered--primary">
 
@@ -517,7 +517,7 @@
 								<div class="league-entry-bar">
 									<div class="league-media league-media--centred league-media--reversed">
 										<div class="league-media__figure">
-											User Country Name
+											${sessionScope.user.country}
 										</div>
 										<div class="league-media__body">
 											<div class="league-entry-bar__name"></div>

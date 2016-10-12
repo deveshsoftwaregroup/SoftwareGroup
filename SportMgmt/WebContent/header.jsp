@@ -106,7 +106,7 @@
                             <a href="javascript:void(0);" class="ism-nav__tab" onclick="uploadFAQView();">FAQ</a>
                         </li>                       
                         <li class="ism-nav__list__item">
-                            <a href="#" class="ism-nav__tab ">Sign Out</a>
+                            <a href="/SportMgmt/mvc/user/Logout" class="ism-nav__tab ">Sign Out</a>
                         </li>
 
                     </ul>
