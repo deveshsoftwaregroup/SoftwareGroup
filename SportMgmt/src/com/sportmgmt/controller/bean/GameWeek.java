@@ -8,6 +8,8 @@ import java.util.TreeSet;
 public class GameWeek implements Comparable{
 private Date startDate;
 private Date endDate;
+private String gameWeekName;
+
 private TreeMap<Integer,TreeSet<MatchDetails>> matchMap = new TreeMap<Integer,TreeSet<MatchDetails>>();
 
 public Date getStartDate() {
@@ -24,6 +26,14 @@ public Date getEndDate() {
 
 public void setEndDate(Date endDate) {
 	this.endDate = endDate;
+}
+
+public String getGameWeekName() {
+	return gameWeekName;
+}
+
+public void setGameWeekName(String gameWeekName) {
+	this.gameWeekName = gameWeekName;
 }
 
 public TreeMap<Integer, TreeSet<MatchDetails>> getMatchMap() {

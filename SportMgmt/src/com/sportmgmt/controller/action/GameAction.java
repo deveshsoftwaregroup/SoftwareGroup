@@ -478,6 +478,7 @@ public class GameAction {
 		logger.debug("---------- IN matchView to : "+gameId);
 		TreeSet<GameWeek> gameWeekList = new TreeSet<GameWeek>();
 		List<Match> matchList = MatchManager.getMatchesByGame(gameId);
+		SimpleDateFormat sdfStart;
 		if(matchList != null && matchList.size() >=1)
 		{
 			for(Object matchObj : matchList)
@@ -499,7 +500,7 @@ public class GameAction {
 					matchDetails.setEndHours(match.getEndTime().getHours());
 					matchDetails.setEndMinute(match.getEndTime().getMinutes());
 					matchDetails.setStartTime(match.getStartTime());
-					SimpleDateFormat sdfStart = new SimpleDateFormat("EEE, dd MMM yyyy");
+					sdfStart = new SimpleDateFormat("EEE, dd MMM yyyy");
 					String startDateStr = sdfStart.format(match.getStartTime());
 					matchDetails.setFormatedDate(startDateStr);
 					sdfStart = new SimpleDateFormat("EEEE dd MMMM");
@@ -536,17 +537,22 @@ public class GameAction {
 					gameWeek = new GameWeek();
 					gameWeek.setStartDate(match.getGameWeek().getStartDate());
 					gameWeek.setEndDate(match.getGameWeek().getEndDate());
+					gameWeek.setGameWeekName(match.getGameWeek().getWeekName());
 				}
-				if(gameWeek.getMatchMap().containsKey(match.getStartTime().getDay()))
+				sdfStart = new SimpleDateFormat("yyMMdd");
+				String startDateStr = sdfStart.format(match.getStartTime());
+				logger.debug("------------ Start date Key: "+startDateStr);
+				Integer startDayInt = Integer.parseInt(startDateStr);
+				if(gameWeek.getMatchMap().containsKey(startDayInt))
 				{
-					gameWeek.getMatchMap().get(match.getStartTime().getDay()).add(matchDetails);
+					gameWeek.getMatchMap().get(startDayInt).add(matchDetails);
 				}
 				else
 				{
 					TreeSet<MatchDetails> matchDetailList = new TreeSet<MatchDetails>();
 					//List<MatchDetails> matchDetailList = new ArrayList<MatchDetails>();
 					matchDetailList.add(matchDetails);
-					gameWeek.getMatchMap().put(match.getStartTime().getDay(), matchDetailList);
+					gameWeek.getMatchMap().put(startDayInt, matchDetailList);
 				}
 				gameWeekList.add(gameWeek);
 			}

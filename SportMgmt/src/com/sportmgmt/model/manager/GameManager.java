@@ -953,7 +953,7 @@ public class GameManager {
 					if(results == null || results.size() ==0)
 					{
 						logger.debug(" ------- Enty not found in UserGameStatus");
-						logger.debug(" ------- Making new Entry in USER_GAME_STATUS table for user and game");
+						logger.debug(" ------- Making new Entry in USER_GAME table for user and game");
 						UserGame userGame = new UserGame();
 						userGame.setUserId(new Integer(userId));
 						userGame.setGameId(new Integer(gameId));

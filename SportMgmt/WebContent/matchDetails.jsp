@@ -71,7 +71,6 @@
 	function updateMatchDetails(isNext)
 	{
 		var html='';
-		var headHtml = 'Gameweek';
 		if(isNext)
 		{
 			
@@ -89,7 +88,7 @@
 		{
 			matchesMapJson.currentGameWeek = 1;
 		}
-		headHtml += ' '+matchesMapJson.currentGameWeek+' - ';
+		var headHtml = matchesMapJson.gameWeekList[matchesMapJson.currentGameWeek-1].gameWeekName+' - ';
 		var daycounter = 0;
 		for (var key in matchesMapJson.gameWeekList[matchesMapJson.currentGameWeek-1].matchMap) {
 			
