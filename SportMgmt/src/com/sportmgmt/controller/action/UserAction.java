@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ravij.crypto.EncodeDecoder;
@@ -527,7 +528,16 @@ public class UserAction {
 	@RequestMapping(value = "UserLanding", method = RequestMethod.GET)
 	public  String userLanding(ModelMap modeMap,HttpServletRequest request)
 	{
-		logger.debug("---------- Forwardng to : "+SportConstrant.USER_LANDING_PAGE);;
+		logger.debug("---------- Forwardng to : "+SportConstrant.USER_LANDING_PAGE);
 		 return SportConstrant.USER_LANDING_PAGE;
+	}
+	@RequestMapping(value = "Logout", method = RequestMethod.GET)
+	public  ModelAndView logout(ModelMap modeMap,HttpServletRequest request)
+	{
+		
+		HttpSession session = request.getSession();
+		session.invalidate();
+		logger.debug("---------- Redirecting to : LeagueHome");
+		return new ModelAndView("redirect:/mvc/LeagueHome");
 	}
 }
