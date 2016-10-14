@@ -157,6 +157,7 @@ public class PaymentAction {
 				try
 				{
 					String SALT = propFileUtility.getEnvProperty().getString(SportConstrant.PAYMENT_SALT);
+					logger.info("----- SALT: "+SALT);
 					String shaKey = propFileUtility.getEnvProperty().getString(SportConstrant.SHA_KEY_FOR_PAYMENT);
 					String data= merchantId+"|"+transactionId+"|"+amount+"|"+productInfo+"|"+firstName+"|"+email+"|"+udf1+"|"+udf2+"|"+udf3+"|"+udf4+"|"+udf5+"||||||"+SALT;
 					String hash = GenerateHashCode.generate(data, shaKey);
