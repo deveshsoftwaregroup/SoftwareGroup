@@ -130,7 +130,7 @@
 																	<img src="/SportMgmt/images/${imageSrc}"  alt="West Brom" title="West Brom" class="league-shirt league-element__shirt">
 																</picture>
 																<div class="league-element__name">${playerName}</div>
-																<div class="league-element__data">£${price}</div>
+																<div class="league-element__data">${price}</div>
 																<div class="league-element__controls">
 																	<div class="leaguejs-remove league-element__control league-element__control--primary">
 																		<input class="2-box" type="checkbox" name="boxes" value="check_2" <c:if test="${isPlaying eq 'Y'}">checked</c:if> onclick="activatePlayer('${sessionScope.userId}','${gameClubPlayerId}',this);">
@@ -670,7 +670,9 @@
 					if(playerListJson[i].gameClubPlayerId == gameClubPlayerId)
 					{
 						playerType = playerListJson[i];
+						//document.getElementById("leaguer-pos" +i).className ="enable";
 					}
+					
 				}
 				if(totalPlayingJson[playerType] >= playerLimits["max"][playerType])
 				{

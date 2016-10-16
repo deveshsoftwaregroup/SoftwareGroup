@@ -69,7 +69,7 @@
 						<div class="top-ads"></div>
 					</div>
                     <h1>
-                    	<a href="/a/">THE 12TH MAN LEAGUE</a>
+                    	<a href="/a/">THE 12TH MAN FANTASY LEAGUE</a>
                     </h1>                    
                 </div>
                 <nav role="navigation" class="ism-nav ismjs-priority-nav ismjs-nav priority-nav" instance="0">

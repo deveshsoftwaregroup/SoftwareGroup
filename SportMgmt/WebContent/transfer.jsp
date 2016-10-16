@@ -63,8 +63,7 @@
                             <!-- Scoreboard -->
                             <div class="ism-scoreboard">
 							<div class="league-deadline-bar">
-									<h4 class="league-deadline-bar__heading">Gameweek ${gameWeekNumber} Deadline:</h4>
-									<time datetime="2016-08-27T10:30:00Z" class="league-deadline-bar__deadline">${deadline}</time>
+									<h4 class="league-deadline-bar__heading">Gameweek ${gameWeekNumber} Deadline: <time datetime="2016-08-27T10:30:00Z" class="league-deadline-bar__deadline">${deadline}</time></h4>
 								</div>
                             </div>
 
@@ -889,11 +888,12 @@
         </div>
 
         <!-- Secondary content -->
-        <c:if test="${sessionScope.user.hasActivePlan}">
-        <div id="planBalanceDiv" style="color:aliceblue;">${sessionScope.user.activePlan.balance}</div>
-        </c:if>
+        
         <div id="ismr-side" class="ism-sidebar">
             <div>
+            <c:if test="${sessionScope.user.hasActivePlan}">
+        <div class="remain_coin">Remaining Coins : <span id="planBalanceDiv">${sessionScope.user.activePlan.balance}</span></div>
+        </c:if>
                 <section class="ism-bordered ism-bordered--primary">
 
                     <div class="ism-section-header">
@@ -1241,7 +1241,7 @@
 	     '<source type="/SportMgmt/js/webp" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-110.webp 110w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-66.webp 66w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-33.webp 33w" sizes="(min-width: 1024px) 55px,(min-width: 610px) 44px,33px">'+
 	     '<img src="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-33.png" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-110.png 110w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-66.png 66w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-33.png 33w" sizes="(min-width: 1024px) 55px,(min-width: 610px) 44px,33px" alt="" title="Select a Goalkeeper" class="ism-shirt ism-element__shirt">'+
 	     '</picture>'+
-	     '<div class="ism-element__name ism-element__name--placeholder">Add <abbr title="Goalkeeper" class="ism-element__type"><span class="ism-element__type__short">GKP</span></abbr></div>';
+	     '<div class="ism-element__name ism-element__name--placeholder"> <abbr title="Goalkeeper" class="ism-element__type"><span class="ism-element__type__short">GKP</span></abbr></div>';
 	     
 	     $('.ism-element-row.ism-element-row--pitch:first-child .ismjs-remove').click(function () {
 	    	 var userId = $(this).parents('.ism-element').find('.ismjs-menu').attr('id').split('_')[0];
@@ -1258,7 +1258,7 @@
 	     '<source type="/SportMgmt/js/webp" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-110.webp 110w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-66.webp 66w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-33.webp 33w" sizes="(min-width: 1024px) 55px,(min-width: 610px) 44px,33px">'+
 	     '<img src="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-33.png" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-110.png 110w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-66.png 66w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-33.png 33w" sizes="(min-width: 1024px) 55px,(min-width: 610px) 44px,33px" alt="" title="Select a Defender" class="ism-shirt ism-element__shirt">'+
 	     '</picture>'+
-	     '<div class="ism-element__name ism-element__name--placeholder">Add <abbr title="Defender" class="ism-element__type"><span class="ism-element__type__short">DEF</span></abbr></div>';
+	     '<div class="ism-element__name ism-element__name--placeholder"> <abbr title="Defender" class="ism-element__type"><span class="ism-element__type__short">DEF</span></abbr></div>';
 	     
 	     
 	     
@@ -1277,7 +1277,7 @@
 	     '<source type="/SportMgmt/js/webp" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-110.webp 110w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-66.webp 66w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-33.webp 33w" sizes="(min-width: 1024px) 55px,(min-width: 610px) 44px,33px">'+
 	     '<img src="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-33.png" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-110.png 110w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-66.png 66w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-33.png 33w" sizes="(min-width: 1024px) 55px,(min-width: 610px) 44px,33px" alt="" title="Select a Defender" class="ism-shirt ism-element__shirt">'+
 	     '</picture>'+
-	     '<div class="ism-element__name ism-element__name--placeholder">Add <abbr title="Midfielder" class="ism-element__type"><span class="ism-element__type__short">MID</span></abbr></div>';
+	     '<div class="ism-element__name ism-element__name--placeholder"> <abbr title="Midfielder" class="ism-element__type"><span class="ism-element__type__short">MID</span></abbr></div>';
 	    
 	     
 	     
@@ -1295,7 +1295,7 @@
 	     '<source type="/SportMgmt/js/webp" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-110.webp 110w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-66.webp 66w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-33.webp 33w" sizes="(min-width: 1024px) 55px,(min-width: 610px) 44px,33px">'+
 	     '<img src="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-33.png" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-110.png 110w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-66.png 66w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-33.png 33w" sizes="(min-width: 1024px) 55px,(min-width: 610px) 44px,33px" alt="" title="Select a Defender" class="ism-shirt ism-element__shirt">'+
 	     '</picture>'+
-	     '<div class="ism-element__name ism-element__name--placeholder">Add <abbr title="Forward" class="ism-element__type"><span class="ism-element__type__short">FWD</span></abbr></div>';
+	     '<div class="ism-element__name ism-element__name--placeholder"> <abbr title="Forward" class="ism-element__type"><span class="ism-element__type__short">FWD</span></abbr></div>';
 	    
 	     
 	     

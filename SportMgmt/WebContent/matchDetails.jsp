@@ -11,10 +11,10 @@
 					<div>
 						<div class="fixtures league-bordered league-bordered--highlight">
 							<div class="fixtures-head">
-								<h5>Gameweek 4 - 10 Sep 11:30 </h5>
+								<h5> </h5>
 								<div class="head-main">
 									<div class="fixtures-logo">
-										The 12th Man League <span>Fixtures</span>
+										Fixtures <span></span>
 									</div>
 									<div class="fixtures-pegination">
 										<a class="peg-lnk" onclick="updateMatchDetails(false);" href="javascript:void(0);">Previous <i class="fa fa-angle-left"></i></a>
@@ -23,11 +23,11 @@
 								</div>
 							</div>
 							<div class="fixtures-team">
-								<div class="team-row date">Saturday 10 September</div>
+								<div class="team-row date">Match Date</div>
 								<div class="team-row">
-									<div class="row-lft">Man Utd <span class="badge-25 MUN"></span></div>
-									<div class="row-mid">12:30</div>
-									<div class="row-rgt"><span class="badge-25 MCI"></span> Man City</div>
+									<div class="row-lft">Team A<span class="badge-25 MUN"></span></div>
+									<div class="row-mid">Match Time</div>
+									<div class="row-rgt"><span class="badge-25 MCI"></span>Team B</div>
 								</div>
 							
 							</div>

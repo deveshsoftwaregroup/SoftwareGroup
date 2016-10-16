@@ -112,23 +112,14 @@ h2.head {margin: 15px 0 20px 0; font-size: 17px;}
 			            <div class="panel panel-default">
 			                <div class="panel-heading" role="tab" id="headingOne">
 			                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne" class="collapsed">
-			                      <h4 class="panel-title">I have submitted a password reset email and it has not been received. What can I do?</h4>
+			                      <h4 class="panel-title">I want to reset my password. What can I do?</h4>
 			                    </a>
 			                </div>
 			                <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
 			                    <div class="panel-body">
-			                        <p>Some users with Hotmail/Outlook addresses have reported issues with receiving emails due to them being blocked by spam filters. To resolve this you need to set the Premier League as a safe sender in your settings. To do this complete the following steps:</p>
-			                        <p>Outlook.com (Formerly Hotmail)</p>
-			                        <ol class="list">
-			                        <li>Open your Outlook mailbox.</li>
-			                        <li>Select Options from the top right (next to the question mark).</li>
-			                        <li>Select More options > Safe and blocked senders (under Preventing junk email) > Safe senders.</li>
-			                        <li>In the space provided, enter the address - noreply@the12thman.in</li>
-			                        <li>Select Add to list.</li>
-			                        <li>Ensure the safe mailing lists box has the address you entered, and select OK.</li>
-			                        </ol>
-			                        <p>Once this has been completed, please go back to the FPL site and follow the 'Forgot your password?' steps again.</p>
-			                        <p>You should find that the email is then sent to your inbox. Please note that this can take up to 10 minutes to come through.</p>
+			                        
+			                        <p>You can write us at support@the12thman.in and we will resolve your problem</p>
+			                        
 			                    </div>
 			                </div>
 			            </div>
@@ -141,12 +132,10 @@ h2.head {margin: 15px 0 20px 0; font-size: 17px;}
 			                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
 			                    <div class="panel-body">
 			                        <p>Please ensure you are using your registered e-mail address and correct password. Note that the password is case sensitive.</p>
-			                        
-			                        <p>If you’ve registered for the first time this season, you will need to activate your account before entering a Fantasy Premier League team. An email will be sent to the email address you’ve registered with and contains a link you’ll need to click in order to activate your account. If you haven’t received an email, please check your spam or junk mail folders.</p>
-			                        
-			                        <p>Try resetting your password. A temporary password will be sent to your mailbox. Please update your password once logged in.</p>
-			                        
-			                        <p>If you do not receive the password reminder, please check your Junk folder in your email inbox and add noreply@mailout.users.premierleague.com to your address book.</p>
+			                        <BR>
+			                        <p>If you have registered for the first time this season, you will need to activate your account before entering The 12thman Fantasy League team. An email will be sent to the email address you have registered with and contains a link.  You will need to click in order to activate your account. If you have not received an email, please check your spam or junk mail folders.</p>
+			                        <BR>
+			                        <p>If you do not receive the password reminder, please check your Junk folder in your email inbox and add noreply@mailout.users.the12thman.in to your address book.</p>
 			                    </div>
 			                </div>
 			            </div>
@@ -164,27 +153,29 @@ h2.head {margin: 15px 0 20px 0; font-size: 17px;}
 			                    </div>
 			                </div>
 			            </div>
-			            <h2 class="head">How Can We Help?</h2>
-			            <div class="panel panel-default">
-			                <div class="panel-heading" role="tab" id="heading4">
-			                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse4" aria-expanded="false" aria-controls="collapse4">
-			                      <h4 class="panel-title">Collapsible Group Item #3</h4>
-			                    </a>
-			        		</div>
-			                <div id="collapse4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading4">
-			                    <div class="panel-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. </div>
-			                </div>
-			            </div>
+			            
+			            
 			            <div class="panel panel-default">
 			                <div class="panel-heading" role="tab" id="heading5">
 			                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse5" aria-expanded="false" aria-controls="collapse5">
-			                      <h4 class="panel-title">Collapsible Group Item #3</h4>
+			                      <h4 class="panel-title">I have some suggestions and great ideas. I want to implement my ideas with The12thman. the What should I do?</h4>
 			                    </a>
 			        		</div>
 			                <div id="collapse5" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading5">
-			                    <div class="panel-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. </div>
+			                    <div class="panel-body">We always appreciate such initiatives. You can send your ideas at support@the12thman.in. If we like your idea or suggestion, we will implement it and will award you. If you want to work with us on your idea, you are most welcome. </div>
 			                </div>
 			            </div>
+			            <div class="panel panel-default">
+			                <div class="panel-heading" role="tab" id="heading4">
+			                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse4" aria-expanded="false" aria-controls="collapse4">
+			                      <h4 class="panel-title">How can I contact The 12thman ?</h4>
+			                    </a>
+			        		</div>
+			                <div id="collapse4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading4">
+			                    <div class="panel-body">You can send your query to support@the12thman.in. We will get back to you. </div>
+			                </div>
+			            </div>
+			            
 			        </div>
 			    </div>
 

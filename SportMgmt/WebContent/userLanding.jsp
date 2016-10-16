@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The12thman | Football</title>
+    <title>The12thman | Fantasy League</title>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 	<%@ taglib uri="WEB-INF/sportmgmt.tld" prefix="s" %>  
@@ -69,7 +69,7 @@
     </div>
     </div>
     </div>-->
-</main>
+
     
  
     
@@ -103,9 +103,13 @@
     </script>
     </c:forEach>
    	</c:if>
-   		<div id="ajaxloader"></div>
+   		
+    
+
+    <%@ include file="footer.jsp" %>
+    <div id="ajaxloader"></div>
    <div class="mask" style="display:none;"></div>
-   
+    </main>
   </body>
 	
 </html>
