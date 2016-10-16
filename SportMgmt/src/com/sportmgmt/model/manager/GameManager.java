@@ -1,5 +1,6 @@
 package com.sportmgmt.model.manager;
 
+import java.math.BigInteger;
 import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -655,13 +656,18 @@ public class GameManager {
 		totalPlayingMap.put(SportConstrant.FORE_PLAYER, 0);
 		totalPlayingMap.put(SportConstrant.DEFENDER, 0);
 		totalPlayingMap.put(SportConstrant.GOAL_KEEPER, 0);
+		totalPlayingMap.put(SportConstrant.PLAYER, 0);
 		if(totalPlayerByPisitionList != null && totalPlayerByPisitionList.size() >0)
 		{
+			int totalPlayer = 0;
 			logger.debug("---------- Started updating totalMap -------- ");
 			for(Object[] row:totalPlayerByPisitionList)
 			{
 				totalPlayingMap.put(row[0], row[1]);
+				totalPlayer += ((BigInteger)row[1]).intValue();
 			}
+			totalPlayingMap.put(SportConstrant.PLAYER, totalPlayer);
+			
 		}
 		else
 		{
@@ -846,7 +852,14 @@ public class GameManager {
 					{
 						UserPlayer userPlayer = (UserPlayer)results.get(0);
 						if(isPlaying != null && !isPlaying.equals(""))
-						userPlayer.setIsPlaying(isPlaying);
+						{
+							userPlayer.setIsPlaying(isPlaying.toUpperCase());
+							if(isPlaying.toUpperCase().equals(SportConstrant.NO))
+							{
+								userPlayer.setPlayerCategory(SportConstrant.PLAYER_TYPE_NORMAL);
+							}
+						}
+						
 						if(playerCategory != null && !playerCategory.equals(""))
 						userPlayer.setPlayerCategory(playerCategory);
 						if(seqNum !=null && !seqNum.equals(""))

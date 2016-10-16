@@ -23,7 +23,6 @@ This is Begin Payment Page
 <input type="hidden" name="productinfo" value="${productinfo}" />
 <input type="hidden" name="amount" value="${amount}" />
 <input type="hidden" name="email" value="${email}" />
-<input type= "submit" value="submit">
 </form>
 <script type="text/javascript">
 $(document).ready(function() {

@@ -404,7 +404,7 @@
 																<div class="league-element__data">£${price}</div>
 																<div class="league-element__controls">
 																	<div class="leaguejs-remove league-element__control league-element__control--primary">
-																		<input class="12-box" type="checkbox" name="boxes" value="check_12">
+																		<input class="12-box" type="checkbox" name="boxes" value="check_12" <c:if test="${isPlaying eq 'Y'}">checked</c:if> onclick="activatePlayer('${sessionScope.userId}','${gameClubPlayerId}',this);">
 																	</div>
 																	<div class="leaguejs-info league-element__control league-element__control--info" <c:if test="${isPlaying eq 'Y'}">checked</c:if> onclick="activatePlayer('${sessionScope.userId}','${gameClubPlayerId}',this);"/>
 																		<a href="javascript:void(0);" title="View player information" class="fa fa-info" onclick="showPlayerDetails('${gameClubPlayerId}');"></a>
@@ -572,7 +572,7 @@
 										    <div class="form_row">
 											    <input list="choose_wisecap" name="choose_wisecaptain" placeholder="Choose Vice Captain" class="inp-control">
 											    <datalist id="choose_wisecap">
-												    <option value="Abcd">
+												    <option value="Abcd">PPPP</option>
 												    <option value="Bcde">
 												    <option value="Cdef">
 												    <option value="Defg">
@@ -670,7 +670,7 @@
 		});
 	}
 	});
-	var playerLimits =  {"minCheckLegth":7,"min":{'Goalkeeper':1,"Defender":3,"Midfielder":3,"Forward":1},"max":{'Goalkeeper':1,"Defender":5,"Midfielder":5,"Forward":3}}
+	var playerLimits =  {"minCheckLegth":7,"min":{'Goalkeeper':1,"Defender":3,"Midfielder":3,"Forward":1},"max":{'Goalkeeper':1,"Defender":5,"Midfielder":5,"Forward":3},"total":11}
 	function activatePlayer(userId,gameClubPlayerId,checkBox)
 	{
 		if(typeof userId !='undefined' && typeof gameClubPlayerId !='undefined' &&  typeof checkBox != 'undefined')
@@ -683,24 +683,55 @@
 				{
 					if(playerListJson[i].gameClubPlayerId == gameClubPlayerId)
 					{
-						playerType = playerListJson[i];
+						playerType = playerListJson[i].type;
 						//document.getElementById("leaguer-pos" +i).className ="enable";
 					}
 					
 				}
+				console.log("player Type: "+playerType);
+				console.log("total Player: "+totalPlayingJson["player"]+" , player total limit: "+playerLimits["total"]);
+				if(totalPlayingJson["player"] >= playerLimits["total"])
+				{
+					alert("You can't select more than 11 Players");
+					checkBox.checked = false;
+					return;
+				}
+				console.log("total Player of your type:  "+totalPlayingJson[playerType]+" , maximum limit of your type: "+playerLimits["max"][playerType]);
 				if(totalPlayingJson[playerType] >= playerLimits["max"][playerType])
 				{
 					alert(playerType+" Maximum limit is " +playerLimits['max'][playerType]);
+					checkBox.checked = false;
 					return;
 				}
-				if(totalPlayingJson["player"] > playerLimits["minCheckLegth"])
+				var leftMinPlayers = 0;
+				if(totalPlayingJson["Goalkeeper"] < playerLimits["min"]["Goalkeeper"])
+				{
+					leftMinPlayers += playerLimits["min"]["Goalkeeper"] - totalPlayingJson["Goalkeeper"];
+				}
+				if(totalPlayingJson["Defender"] < playerLimits["min"]["Defender"])
+				{
+					leftMinPlayers += playerLimits["min"]["Defender"] - totalPlayingJson["Defender"];
+				}
+				if(totalPlayingJson["Midfielder"] < playerLimits["min"]["Midfielder"])
+				{
+					leftMinPlayers += playerLimits["min"]["Midfielder"] - totalPlayingJson["Midfielder"];
+				}
+				if(totalPlayingJson["Forward"] < playerLimits["min"]["Forward"])
+				{
+					leftMinPlayers += playerLimits["min"]["Forward"] - totalPlayingJson["Forward"];
+				}
+				var leftTotalPlayer = playerLimits["total"]-totalPlayingJson["player"];
+				console.log("<-------- Left total Player: "+leftTotalPlayer+",  leftMinPlayers: "+leftMinPlayers);
+				if(leftTotalPlayer <= leftMinPlayers)
 				{
 					if(totalPlayingJson[playerType] >= playerLimits["min"][playerType])
 					{
 						alert("Select minimum "+playerLimits["min"]["Goalkeeper"]+" Goalkeeper, "+playerLimits["min"]["Midfielder"]+" Midfielder, "+playerLimits["min"]["Defender"]+" Defender, "+playerLimits["min"]["Forward"]+" Forward");
-						return 1;
-					}
-				}
+						checkBox.checked = false;
+						return;
+
+					}	
+				}					
 				url ="/SportMgmt/mvc/game/ActivatePlayer?userId="+userId+"&gameClubPlayerId="+gameClubPlayerId;
 				$.ajax({
 		     		  url: url,

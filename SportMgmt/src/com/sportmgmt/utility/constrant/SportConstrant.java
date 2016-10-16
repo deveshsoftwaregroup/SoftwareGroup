@@ -47,6 +47,7 @@ public class SportConstrant {
 	public final static String FORGOT_PASS_RESULT_PAGE = "forgotPasswordResult";
 	public final static String MAKE_PAYMENT_SUCCESS_PAGE = "payment/beginPayment";
 	public final static String MAKE_PAYMENT_ERROR_PAGE = "payment/beginPaymentFail";
+	public final static String PAYMENT_RESULT_PAGE = "payment/paymentResult";
 	public final static String MERCHANT_ID = "merchantId";
 	public final static String PAYMENT_SALT = "paymentSalt";
 	public final static String SHA_KEY_FOR_PAYMENT = "shaKeyForPayment";
@@ -55,7 +56,8 @@ public class SportConstrant {
 	public final static String MID_PLAYER = "Midfielder";
 	public final static String FORE_PLAYER = "Forward";
 	public final static String GOAL_KEEPER = "Goalkeeper";
-	public final static String DEFENDER = "Defeder";
+	public final static String PLAYER = "player";
+	public final static String DEFENDER = "Defender";
 	public final static String DEADLINE_START_HRS = "deadlineStartHrs";
 	public final static String DEADLINE_END_HRS = "deadlineEndHrs";
 

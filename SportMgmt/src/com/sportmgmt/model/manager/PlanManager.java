@@ -207,37 +207,11 @@ public class PlanManager {
 	}
 	public static boolean updateTransaction(Map<String,String> paymentDetails)
 	{
-		logger.debug("--------------- updateTransaction ------------: transactionId: "+paymentDetails.get("transactionId")+" ,  status : "+paymentDetails.get("status")+ " , message: "+paymentDetails.get("message"));
+		logger.debug("--------------- updateTransaction ------------: transactionId: "+paymentDetails.get("txnid")+" ,  status : "+paymentDetails.get("status")+ " , message: "+paymentDetails.get("error_Message"));
 		boolean updateTransaction =false;
-		String transactionId = paymentDetails.get("transactionId");
+		String transactionId = paymentDetails.get("txnid");
 		if(transactionId !=null && !transactionId.equals(""))
 		{
-			UserPayment userPayment = new UserPayment();
-			userPayment.setTransactionId(Integer.valueOf(transactionId));
-			if(paymentDetails.get("amount") != null && !paymentDetails.get("amount").equals(""))
-			userPayment.setAmount(Double.valueOf((String)paymentDetails.get("amount")));
-			if(paymentDetails.get("status") != null && !paymentDetails.get("status").equals(""))
-			userPayment.setStatus(paymentDetails.get("status"));
-			if(paymentDetails.get("message") != null && !paymentDetails.get("message").equals(""))
-			userPayment.setPaymentMsg(paymentDetails.get("message"));
-			if(paymentDetails.get("payUId") != null && !paymentDetails.get("payUId").equals(""))
-			userPayment.setPayUId(paymentDetails.get("payUId"));
-			if(paymentDetails.get("extraCharge") != null && !paymentDetails.get("extraCharge").equals(""))
-			{
-				double extraCharge = Double.valueOf(paymentDetails.get("extraCharge"));
-				double amount = userPayment.getAmount();
-				double totalAmount = amount + extraCharge;
-				userPayment.setExtraCharge(extraCharge);
-				userPayment.setTotalAmount(totalAmount);
-			}
-			if(paymentDetails.get("mode") != null && !paymentDetails.get("mode").equals(""))
-			userPayment.setPaymentMode(paymentDetails.get("mode"));
-			if(paymentDetails.get("bankcode") != null && !paymentDetails.get("bankcode").equals(""))
-			userPayment.setBankCode(paymentDetails.get("bankcode"));
-			if(paymentDetails.get("PG_TYPE") != null && !paymentDetails.get("PG_TYPE").equals(""))
-			userPayment.setPgType(paymentDetails.get("PG_TYPE"));
-			if(paymentDetails.get("bank_ref_num") != null && !paymentDetails.get("bank_ref_num").equals(""))
-			userPayment.setBankReferenceNo(paymentDetails.get("bank_ref_num"));
 				
 			if(factory == null)
 			{
@@ -252,7 +226,41 @@ public class PlanManager {
 				{
 					try
 					{
-						//session.beginTransaction().begin();;
+						//session.beginTransaction().begin();;UserPayment userPayment = new UserPayment();
+						UserPayment userPayment = (UserPayment)session.load(UserPayment.class, new Integer(transactionId));
+						//userPayment.setTransactionId(Integer.valueOf(transactionId));
+						if(paymentDetails.get("amount") != null && !paymentDetails.get("amount").equals(""))
+						userPayment.setAmount(Double.valueOf((String)paymentDetails.get("amount")));
+						if(paymentDetails.get("status") != null && !paymentDetails.get("status").equals(""))
+						userPayment.setStatus(paymentDetails.get("status"));
+						if(paymentDetails.get("error_Message") != null && !paymentDetails.get("error_Message").equals(""))
+						userPayment.setPaymentMsg(paymentDetails.get("error_Message"));
+						if(paymentDetails.get("mihpayid") != null && !paymentDetails.get("mihpayid").equals(""))
+						userPayment.setPayUId(paymentDetails.get("mihpayid"));
+						if(paymentDetails.get("net_amount_debit") != null && !paymentDetails.get("net_amount_debit").equals(""))
+						{
+							double net_amount_debit = Double.valueOf(paymentDetails.get("net_amount_debit"));
+							userPayment.setTotalAmount(net_amount_debit);
+						}
+						if(paymentDetails.get("extraCharge") != null && !paymentDetails.get("extraCharge").equals(""))
+						{
+							double extraCharge = Double.valueOf(paymentDetails.get("extraCharge"));
+							double amount = userPayment.getAmount();
+							double totalAmount = amount + extraCharge;
+							userPayment.setExtraCharge(extraCharge);
+							userPayment.setTotalAmount(totalAmount);
+						}
+						
+						if(paymentDetails.get("mode") != null && !paymentDetails.get("mode").equals(""))
+						userPayment.setPaymentMode(paymentDetails.get("mode"));
+						if(paymentDetails.get("bankcode") != null && !paymentDetails.get("bankcode").equals(""))
+						userPayment.setBankCode(paymentDetails.get("bankcode"));
+						if(paymentDetails.get("PG_TYPE") != null && !paymentDetails.get("PG_TYPE").equals(""))
+						userPayment.setPgType(paymentDetails.get("PG_TYPE"));
+						if(paymentDetails.get("bank_ref_num") != null && !paymentDetails.get("bank_ref_num").equals(""))
+						userPayment.setBankReferenceNo(paymentDetails.get("bank_ref_num"));
+						
+						
 						session.update(userPayment);
 						session.beginTransaction().commit(); 
 						updateTransaction = true;

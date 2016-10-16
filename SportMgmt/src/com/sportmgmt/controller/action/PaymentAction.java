@@ -96,7 +96,7 @@ public class PaymentAction {
 		}
 		if(user !=null && user.getEmailId() != null && !user.getEmailId().equals(SportConstrant.NULL))
 		{
-			email = user.getDisplayName().split(" ")[0];
+			email = user.getEmailId();
 		}
 		else
 		{
@@ -137,7 +137,7 @@ public class PaymentAction {
 				String amount =paymentMap.get("amount");
 				modeMap.put("amount", amount);
 				logger.info("----- amount: "+amount);
-				String productInfo = "User_"+userId+"|Plan_"+paymentMap.get("leaguePlanId")+"|Discount_"+paymentMap.get("planDiscountId");
+				String productInfo = "User_"+userId+"-Plan_"+paymentMap.get("leaguePlanId")+"-Discount_"+paymentMap.get("planDiscountId");
 				modeMap.put("productinfo", productInfo);
 				logger.info("----- productinfo: "+productInfo);
 				modeMap.put("firstname", firstName);
@@ -185,5 +185,23 @@ public class PaymentAction {
 		return SportConstrant.MAKE_PAYMENT_SUCCESS_PAGE;
 		else
 		return SportConstrant.MAKE_PAYMENT_ERROR_PAGE;
+	}
+	@RequestMapping(value = "SuccessView", method = RequestMethod.POST)
+	public String suceess(ModelMap modeMap,@RequestParam Map<String,String> paymentMap,HttpServletRequest request)
+	{
+		logger.debug("------Response From Payment Gateway  "+paymentMap);
+		boolean updateTrasaction = PlanManager.updateTransaction(paymentMap);
+		logger.debug("-------------------- Update Transaction is true: "+updateTrasaction);
+		modeMap.addAllAttributes(paymentMap);
+		return  SportConstrant.PAYMENT_RESULT_PAGE;
+	}
+	@RequestMapping(value = "FailureView", method = RequestMethod.POST)
+	public String failure(ModelMap modeMap,@RequestParam Map<String,String> paymentMap,HttpServletRequest request)
+	{
+		logger.debug("------Response From Payment Gateway  "+paymentMap);
+		boolean updateTrasaction = PlanManager.updateTransaction(paymentMap);
+		logger.debug("-------------------- Update Transaction is true: "+updateTrasaction);
+		modeMap.addAllAttributes(paymentMap);
+		return  SportConstrant.PAYMENT_RESULT_PAGE;
 	}
 }

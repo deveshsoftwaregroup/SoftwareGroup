@@ -399,8 +399,8 @@ public class GameAction {
 					if(isPlaying != null && !isPlaying.equals(""))
 					{
 						 HashMap totalPlayingMap= new HashMap(); 
-						 int player = GameManager.totalPlayingPlayersOfUserByGame(Integer.valueOf(userId),Integer.valueOf(gameId));
-						 totalPlayingMap.put("player", player);
+						 //int player = GameManager.totalPlayingPlayersOfUserByGame(Integer.valueOf(userId),Integer.valueOf(gameId));
+						 //totalPlayingMap.put("player", player);
 						 GameManager.updateTotalPlayingPlayerByPostion(Integer.valueOf(userId),Integer.valueOf(gameId),totalPlayingMap);
 						 resultMap.put("totalPlayingJson", totalPlayingMap);;
 					}
@@ -448,9 +448,9 @@ public class GameAction {
 	public  String myTeamView(ModelMap modeMap,HttpServletRequest request,@PathVariable String userId,@PathVariable String gameId)
 	{
 		logger.debug("---------- IN MyTeamView to : ");
-		 int player = GameManager.totalPlayingPlayersOfUserByGame(Integer.valueOf(userId),Integer.valueOf(gameId));
+		 //int player = GameManager.totalPlayingPlayersOfUserByGame(Integer.valueOf(userId),Integer.valueOf(gameId));
 		 HashMap totalPlayingMap= new HashMap();
-		 totalPlayingMap.put("player", player);
+		 //totalPlayingMap.put("player", player);
 		 GameManager.updateTotalPlayingPlayerByPostion(Integer.valueOf(userId),Integer.valueOf(gameId),totalPlayingMap);
 		 String totalPlayingJson = "";
 		 modeMap.put("totalPlayingMap", totalPlayingMap);
