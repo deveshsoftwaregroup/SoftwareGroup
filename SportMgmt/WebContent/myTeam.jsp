@@ -570,7 +570,7 @@
 											    </datalist>
 										    </div>
 										    <div class="form_row">
-											    <input list="choose_wisecap" name="choose_wisecaptain" placeholder="Choose Wise Captain" class="inp-control">
+											    <input list="choose_wisecap" name="choose_wisecaptain" placeholder="Choose Vice Captain" class="inp-control">
 											    <datalist id="choose_wisecap">
 												    <option value="Abcd">
 												    <option value="Bcde">
