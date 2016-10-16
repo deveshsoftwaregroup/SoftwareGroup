@@ -557,6 +557,7 @@
 
 								<!-- LEAGUES -->
 								<div class="league-panel choose_capt">
+								<h3 class="league-panel__heading">Choose Captain/Wise-Captain</h3>
 									<div class="league-panel__body">
 										<form action="#">
 											<div class="form_row">
