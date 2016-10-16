@@ -780,7 +780,7 @@ button.close {
     border-style: solid;
     border-bottom-left-radius: 3px;
     border-bottom-right-radius: 3px;
-    border-color: #E8E8E8;
+    border-color: #999;
 	    border-top: solid 5px #ff1048;
 }
 .league .league-entry-bar {
@@ -1186,3 +1186,28 @@ border-top: 1px solid #E8E8E8;
     min-height: 450px;
 }
 
+.league .choose_capt {
+    padding: 15px 1rem;
+}
+.choose_capt .from_row {
+    margin-bottom: 10px;
+}
+.inp-control {
+    width: 100%;
+    padding: 7px;
+    outline: none;
+    border:0;
+}
+.choose_capt input[type="submit"] {
+    background: #267788;
+    padding: 6px 20px;
+    border-radius: 2px;
+    color: #fff;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: solid 1px #3992a5;
+}
+.choose_capt input[type="submit"]:hover {
+	background: #126273;
+    border-color: #2b7e90;
+}

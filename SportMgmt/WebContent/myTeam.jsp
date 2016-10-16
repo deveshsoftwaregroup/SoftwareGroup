@@ -556,20 +556,33 @@
 								</div>
 
 								<!-- LEAGUES -->
-								<div class="league-panel">
+								<div class="league-panel choose_capt">
 									<div class="league-panel__body">
-										
-
-								<div class="league-panel league-panel--dark">
-									
-									<div class="league-panel__body">
-									
+										<form action="#">
+											<div class="form_row">
+											    <input list="choose_cap" name="choose_captain" placeholder="Choose Captain" class="inp-control">
+											    <datalist id="choose_cap">
+												    <option value="Abcd">
+												    <option value="Bcde">
+												    <option value="Cdef">
+												    <option value="Defg">
+											    </datalist>
+										    </div>
+										    <div class="form_row">
+											    <input list="choose_wisecap" name="choose_wisecaptain" placeholder="Choose Wise Captain" class="inp-control">
+											    <datalist id="choose_wisecap">
+												    <option value="Abcd">
+												    <option value="Bcde">
+												    <option value="Cdef">
+												    <option value="Defg">
+											    </datalist>
+										    </div>
+										    <input type="submit" value="Submit">
+										</form>
 									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-				</div>
 				<%-- <div class="league-panel__footer league-panel__footer--guttered">
 					<a href="#" class="leaguejs-link btn btn-secondary league-button league-button--full">Create and join leagues<span class="fa fa-caret-right"></span></a>
 				</div>
