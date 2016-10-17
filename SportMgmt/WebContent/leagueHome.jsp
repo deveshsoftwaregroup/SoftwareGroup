@@ -144,7 +144,7 @@
         <div id="main-content">
             <div class="banner-wrapper clearfix">
             	<p class="topHeaderText">
-                	The <span>12th Man</span> League
+                	The <span>12th Man</span> Fantasy League
                	</p>
                	<p class="smtxt">
                  	Play and win <span class="highlight"> Prizes!</span>

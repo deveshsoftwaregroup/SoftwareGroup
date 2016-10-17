@@ -91,7 +91,7 @@
 																	<img src="/SportMgmt/images/${imageSrc}"  alt="Burnley" title="Burnley" class="league-shirt league-element__shirt">
 																</picture>
 																<div class="league-element__name">${playerName}</div>
-																<div class="league-element__data">£${price}</div>
+																<div class="league-element__data">${price}</div>
 																<div class="league-element__controls">
 																	<div class="leaguejs-remove league-element__control league-element__control--primary">
 																		<input class="1-box" type="checkbox" name="boxes" value="check_1" title="Make Substitude" <c:if test="${isPlaying eq 'Y'}">checked</c:if> onclick="activatePlayer('${sessionScope.userId}','${gameClubPlayerId}',this);">
@@ -162,7 +162,7 @@
 																	<img src="/SportMgmt/images/${imageSrc}"  alt="West Brom" title="West Brom" class="league-shirt league-element__shirt">
 																</picture>
 																<div class="league-element__name">${playerName}</div>
-																<div class="league-element__data">£${price}</div>
+																<div class="league-element__data">${price}</div>
 																<div class="league-element__controls">
 																	<div class="leaguejs-remove league-element__control league-element__control--primary">
 																		<input class="3-box" type="checkbox" name="boxes" value="check_3" <c:if test="${isPlaying eq 'Y'}">checked</c:if> onclick="activatePlayer('${sessionScope.userId}','${gameClubPlayerId}',this);">
@@ -188,7 +188,7 @@
 																	<img src="/SportMgmt/images/${imgageSrc}" alt="West Ham" title="West Ham" class="league-shirt league-element__shirt">
 																</picture>
 																<div class="league-element__name">${playerName}</div>
-																<div class="league-element__data">£${price}</div>
+																<div class="league-element__data">${price}</div>
 																<div class="league-element__controls">
 																	<div class="leaguejs-remove league-element__control league-element__control--primary">
 																		<input class="4-box" type="checkbox" name="boxes" value="check_4" <c:if test="${isPlaying eq 'Y'}">checked</c:if> onclick="activatePlayer('${sessionScope.userId}','${gameClubPlayerId}',this);"/>
@@ -214,7 +214,7 @@
 																	<img src="/SportMgmt/images/${imageSrc}"  alt="Man Utd" title="Man Utd" class="league-shirt league-element__shirt">
 																</picture>
 																<div class="league-element__name">${playerName}</div>
-																<div class="league-element__data">£${price}</div>
+																<div class="league-element__data">${price}</div>
 																<div class="league-element__controls">
 																	<div class="leaguejs-remove league-element__control league-element__control--primary">
 																		<input class="5-box" type="checkbox" name="boxes" value="check_5" <c:if test="${isPlaying eq 'Y'}">checked</c:if> onclick="activatePlayer('${sessionScope.userId}','${gameClubPlayerId}',this);"/>
@@ -240,7 +240,7 @@
 																	<img src="/SportMgmt/images/${imageSrc}"  alt="Spurs" title="Spurs" class="league-shirt league-element__shirt">
 																</picture>
 																<div class="league-element__name">${playerName}</div>
-																<div class="league-element__data">£${price}</div>
+																<div class="league-element__data">${price}</div>
 																<div class="league-element__controls">
 																	<div class="leaguejs-remove league-element__control league-element__control--primary">
 																		<input class="6-box" type="checkbox" name="boxes" value="check_6" <c:if test="${isPlaying eq 'Y'}">checked</c:if> onclick="activatePlayer('${sessionScope.userId}','${gameClubPlayerId}',this);"/>
@@ -266,7 +266,7 @@
 																	<img src="/SportMgmt/images/${imageSrc}"  alt="Hull" title="Hull" class="league-shirt league-element__shirt">
 																</picture>
 																<div class="league-element__name">${playerName}</div>
-																<div class="league-element__data">£${price}</div>
+																<div class="league-element__data">${price}</div>
 																<div class="league-element__controls">
 																	<div class="leaguejs-remove league-element__control league-element__control--primary">
 																		<input class="7-box" type="checkbox" name="boxes" value="check_7" <c:if test="${isPlaying eq 'Y'}">checked</c:if> onclick="activatePlayer('${sessionScope.userId}','${gameClubPlayerId}',this);"/>
@@ -295,7 +295,7 @@
 																	<img src="/SportMgmt/images/${imageSrc}"  alt="Liverpool" title="Liverpool" class="league-shirt league-element__shirt">
 																</picture>
 																<div class="league-element__name">${playerName}</div>
-																<div class="league-element__data">£${price}</div>
+																<div class="league-element__data">${price}</div>
 																<div class="league-element__controls">
 																	<div class="leaguejs-remove league-element__control league-element__control--primary">
 																		<input class="8-box" type="checkbox" name="boxes" value="check_8" /<c:if test="${isPlaying eq 'Y'}">checked</c:if> onclick="activatePlayer('${sessionScope.userId}','${gameClubPlayerId}',this);">
@@ -321,7 +321,7 @@
 																	<img src="/SportMgmt/images/${imageSrc}"  alt="Everton" title="Everton" class="league-shirt league-element__shirt">
 																</picture>
 																<div class="league-element__name">${playerName}</div>
-																<div class="league-element__data">£${price}</div>
+																<div class="league-element__data">${price}</div>
 																<div class="league-element__controls">
 																	<div class="leaguejs-remove league-element__control league-element__control--primary">
 																		<input class="9-box" type="checkbox" name="boxes" value="check_9" <c:if test="${isPlaying eq 'Y'}">checked</c:if> onclick="activatePlayer('${sessionScope.userId}','${gameClubPlayerId}',this);"/>
@@ -348,7 +348,7 @@
 																	<img src="/SportMgmt/images/${imageSrc}"  alt="Chelsea" title="Chelsea" class="league-shirt league-element__shirt">
 																</picture>
 																<div class="league-element__name">${playerName}</div>
-																<div class="league-element__data">£${price}</div>
+																<div class="league-element__data">${price}</div>
 																<div class="league-element__controls">
 																	<div class="leaguejs-remove league-element__control league-element__control--primary">
 																		<input class="10-box" type="checkbox" name="boxes" value="check_10" <c:if test="${isPlaying eq 'Y'}">checked</c:if> onclick="activatePlayer('${sessionScope.userId}','${gameClubPlayerId}',this);"/>
@@ -375,7 +375,7 @@
 																	<img src="/SportMgmt/images/${imageSrc}"  alt="Swanca" title="Swanca" class="league-shirt league-element__shirt">
 																</picture>
 																<div class="league-element__name">${playerName}</div>
-																<div class="league-element__data">£${price}</div>
+																<div class="league-element__data">${price}</div>
 																<div class="league-element__controls">
 																	<div class="leaguejs-remove league-element__control league-element__control--primary">
 																		<input class="11-box" type="checkbox" name="boxes" value="check_11" <c:if test="${isPlaying eq 'Y'}">checked</c:if> onclick="activatePlayer('${sessionScope.userId}','${gameClubPlayerId}',this);"/>
@@ -401,7 +401,7 @@
 																	<img src="/SportMgmt/images/${imageSrc}"  alt="Man Utd" title="Man Utd" class="league-shirt league-element__shirt">
 																</picture>
 																<div class="league-element__name">${playerName}</div>
-																<div class="league-element__data">£${price}</div>
+																<div class="league-element__data">${price}</div>
 																<div class="league-element__controls">
 																	<div class="leaguejs-remove league-element__control league-element__control--primary">
 																		<input class="12-box" type="checkbox" name="boxes" value="check_12" <c:if test="${isPlaying eq 'Y'}">checked</c:if> onclick="activatePlayer('${sessionScope.userId}','${gameClubPlayerId}',this);">
@@ -430,7 +430,7 @@
 																	<img src="/SportMgmt/images/${imageSrc}"  alt="Middlesbrough" title="Middlesbrough" class="league-shirt league-element__shirt">
 																</picture>
 																<div class="league-element__name">${playerName}</div>
-																<div class="league-element__data">£${price}</div>
+																<div class="league-element__data">${price}</div>
 																<div class="league-element__controls">
 																	<div class="leaguejs-remove league-element__control league-element__control--primary">
 																		<input class="13-box" type="checkbox" name="boxes" value="check_13" <c:if test="${isPlaying eq 'Y'}">checked</c:if> onclick="activatePlayer('${sessionScope.userId}','${gameClubPlayerId}',this);" />
@@ -456,7 +456,7 @@
 																	<img src="/SportMgmt/images/${imageSrc}"  alt="Middlesbrough" title="Middlesbrough" class="league-shirt league-element__shirt">
 																</picture>
 																<div class="league-element__name">${playerName}</div>
-																<div class="league-element__data">£${price}</div>
+																<div class="league-element__data">${price}</div>
 																<div class="league-element__controls">
 																	<div class="leaguejs-remove league-element__control league-element__control--primary">
 																		<input class="14-box" type="checkbox" name="boxes" value="check_14" <c:if test="${isPlaying eq 'Y'}">checked</c:if> onclick="activatePlayer('${sessionScope.userId}','${gameClubPlayerId}',this);" />
@@ -482,7 +482,7 @@
 																	<img src="/SportMgmt/images/${imageSrc}"  alt="Man City" title="Man City" class="league-shirt league-element__shirt">
 																</picture>
 																<div class="league-element__name">${playerName}</div>
-																<div class="league-element__data">£${price}</div>
+																<div class="league-element__data">${price}</div>
 																<div class="league-element__controls">
 																	<div class="leaguejs-remove league-element__control league-element__control--primary">
 																		<input class="15-box" type="checkbox" name="boxes" value="check_15" <c:if test="${isPlaying eq 'Y'}">checked</c:if> onclick="activatePlayer('${sessionScope.userId}','${gameClubPlayerId}',this);"/>
@@ -563,21 +563,22 @@
 											<div class="form_row">
 											   <!--  <input list="choose_cap" name="choose_captain" placeholder="Choose Captain" class="inp-control">
 											    <datalist id="choose_cap">
-												    <option value="Abcd">
-												    <option value="Bcde">
-												    <option value="Cdef">
-												    <option value="Defg">
+												    <option value="Ospina">
+												    <option value="Chambers">
+												    <option value="Jenkinson">
+												    <option value="Coquelin">
 											    </datalist> -->
 											    <select id="captain-select">
 											    </select>
 										    </div>
+										    <br>
 										    <div class="form_row">
 											    <!-- <input list="choose_wisecap" name="choose_wisecaptain" placeholder="Choose Vice Captain" class="inp-control">
 											    <datalist id="choose_wisecap">
-												    <option value="Abcd">PPPP</option>
-												    <option value="Bcde">
-												    <option value="Cdef">
-												    <option value="Defg">
+												    <option value="Ospina">
+												    <option value="Chambers">
+												    <option value="Jenkinson">
+												    <option value="Coquelin">
 											    </datalist> -->
 											    <select id="vice-captain-select"></select>
 										    </div>
