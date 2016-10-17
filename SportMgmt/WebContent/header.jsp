@@ -55,19 +55,203 @@
     100% { transform: rotate(360deg); }
 }
 </style>
+
+
+
+<style class="cp-pen-styles">
+.top-banner {
+    position: relative;
+	height: 50px;
+    margin-top: 10px;
+}
+.top-banner .visible {
+    font-weight: 500;
+    overflow: hidden;
+    height: 40px;
+    padding: 0;
+    color: #ccc;
+    border: solid 1px #9a1500;
+    margin: 0 10px;
+	background: #38003c;
+}
+.top-banner .visible:before {
+  content: '[';
+  left: 6px;
+  line-height: 40px;
+}
+.top-banner .visible:after {
+  content: ']';
+  position: absolute;
+  right: 7px;
+  line-height: 40px;
+}
+.top-banner .visible:after, .top-banner .visible:before {
+  position: absolute;
+  top: -3px;
+  color: #d60000;
+  font-size: 42px;
+  -webkit-animation-name: opacity;
+  -webkit-animation-duration: 3s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-name: opacity;
+          animation-name: opacity;
+  -webkit-animation-duration: 3s;
+          animation-duration: 3s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+}
+
+.top-banner p {
+  display: inline;
+  float: left;
+  margin: 0;
+  line-height: 40px;
+  color: #ccc;
+	background: #3c0000;
+    padding: 0 10px;
+    border-right: solid 1px #880000;
+}
+
+.top-banner ul {
+  margin-top: 0;
+  padding-left: 150px;
+  text-align: left;
+  list-style: none;
+  -webkit-animation-name: change;
+  -webkit-animation-duration: 10s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-name: change;
+          animation-name: change;
+  -webkit-animation-duration: 10s;
+          animation-duration: 10s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+}
+
+.top-banner ul li {
+  line-height: 40px;
+  margin: 0;
+}
+
+@-webkit-keyframes opacity {
+  0%, 100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes change {
+  0%, 12%, 100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  /*17%,29% {
+    -webkit-transform: translateY(-25%);
+            transform: translateY(-25%);
+  }*/
+  34%,46% {
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+  }
+  /*51%,63% {
+    -webkit-transform: translateY(-75%);
+            transform: translateY(-75%);
+  }*/
+  68%,80% {
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+  }
+  /*85%,97% {
+    -webkit-transform: translateY(-25%);
+            transform: translateY(-25%);
+  }*/
+}
+@keyframes opacity {
+  0%, 100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+@keyframes change {
+  0%, 12%, 100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  
+  34%,46% {
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+  }
+ 
+  68%,80% {
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+  }
+  
+}
+.top-ads {
+    width: 33%;
+    float: left;
+    position: relative;
+    height: 50px;
+}
+</style>
+
+
+
 </head> 
  <body>
  <s:sportExt retrieve="priceList" />
  <div class="league_header">
+ 
     <div class="ism-header">
+    
+  <div class="top-banner">
+	<div class="top-ads">
+		<div class='visible' style="background: #003c0d;">
+			<p>The12thman</p>
+			<ul>
+			  <li>Home</li>
+			  <li>Sports At One Place</li>
+			</ul>
+		</div>
+		</div>
+	<div class="top-ads">
+		<div class='visible'>
+			<p>The12thman</p>
+			<ul>
+			  <li>Times</li>
+			  <li>Blog for Sports</li>
+			</ul>
+		</div>
+	</div>
+	<div class="top-ads">
+		<div class='visible' style="background: #00153c;">
+			<p>The12thman</p>
+			<ul>
+			  <li>Shop</li>
+			  <li>Sports E-Comm</li>
+			</ul>
+		</div>
+	</div>
+	<div class="top-ads">
+		<div class='visible' style="background: #003c0d;">
+			<p>The12thman</p>
+			<ul>
+			  <li>Fantasy League</li>
+			  <li>Platform for Sport Lovers</li>
+			</ul>
+		</div>
+	</div>
+</div> 
         <div class="wrapper">
             <div class="ism-game-header-wrap">
                 <div class="ism-game-header">
-                    <div class="top-banner">
-						<div class="top-ads"></div>
-						<div class="top-ads"></div>
-						<div class="top-ads"></div>
-					</div>
+                   
+
                     <h1>
                     	<a href="/a/">THE 12TH MAN FANTASY LEAGUE</a>
                     </h1>                    
