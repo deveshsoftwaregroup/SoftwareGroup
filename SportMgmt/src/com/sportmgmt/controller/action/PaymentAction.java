@@ -204,4 +204,75 @@ public class PaymentAction {
 		modeMap.addAllAttributes(paymentMap);
 		return  SportConstrant.PAYMENT_RESULT_PAGE;
 	}
+	@RequestMapping(value = "DoPayment", method = RequestMethod.GET)
+	public String doPayment(ModelMap modeMap,@RequestParam Map<String,String> paymentMap,HttpServletRequest request)
+	{
+		
+		String surl = null;
+		String furl = null;
+		String curl = null;
+		String paymentURL = null;
+		String merchantId = null;
+		try
+		{
+			surl = propFileUtility.getEnvProperty().getString(SportConstrant.BASE_URL)+propFileUtility.getEnvProperty().getString(SportConstrant.PAYMENT_SUCS_URL);
+			furl = propFileUtility.getEnvProperty().getString(SportConstrant.BASE_URL)+propFileUtility.getEnvProperty().getString(SportConstrant.PAYMENT_FAIL_URL);
+			curl = propFileUtility.getEnvProperty().getString(SportConstrant.BASE_URL)+propFileUtility.getEnvProperty().getString(SportConstrant.PAYMENT_CANCEL_URL);
+			paymentURL = propFileUtility.getEnvProperty().getString(SportConstrant.PAYMENT_URL);
+			merchantId = propFileUtility.getEnvProperty().getString(SportConstrant.MERCHANT_ID);
+			paymentMap.put("merchantId",merchantId);
+		}
+		catch(Exception ex)
+		{
+			logger.error("Exception while  reading from properties file: "+ex.getMessage()); 
+			modeMap.put("errorMessage", "Missing key from property file");
+		}
+				String udf1 ="",udf2="",udf3="",udf4="",udf5="";
+				modeMap.put("txnid", "12345678");
+				//logger.info("----- txnid: "+transactionId);
+				modeMap.put("key", merchantId);
+				logger.info("----- key: "+merchantId);
+				//String amount =paymentMap.get("amount");
+				modeMap.put("amount", "1");
+				//logger.info("----- amount: "+amount);
+				String productInfo = "Product";
+				modeMap.put("productinfo", productInfo);
+				logger.info("----- productinfo: "+productInfo);
+				modeMap.put("firstname", "Ravi");
+				//logger.info("----- firstName: "+firstName);
+				modeMap.put("email", "wrshastry@gmail.com");
+				//logger.info("----- email: "+email);
+				modeMap.put("phone", "8860735095");
+				//logger.info("----- phone: "+contactNumber);
+				modeMap.put("surl", surl);
+				logger.info("----- surl: "+surl);
+				modeMap.put("furl", furl);
+				logger.info("----- furl: "+furl);
+				modeMap.put("curl", curl);
+				logger.info("----- curl: "+curl);
+				modeMap.put("paymentURL", paymentURL);
+				logger.info("----- paymentURL: "+paymentURL);
+				try
+				{
+					String SALT = propFileUtility.getEnvProperty().getString(SportConstrant.PAYMENT_SALT);
+					logger.info("----- SALT: "+SALT);
+					String shaKey = propFileUtility.getEnvProperty().getString(SportConstrant.SHA_KEY_FOR_PAYMENT);
+					String data= merchantId+"|12345678|1|"+productInfo+"|Ravi|wrshastry@gmail.com|"+udf1+"|"+udf2+"|"+udf3+"|"+udf4+"|"+udf5+"||||||"+SALT;
+					String hash = GenerateHashCode.generate(data, shaKey);
+					modeMap.put("hash", hash);
+					logger.info("----- hash: "+hash);
+				}
+				catch (Exception ex)
+				{
+					logger.error("Exception while generating hash : "+ex.getMessage()); 
+					modeMap.put("errorMessage", "Error to generte hash value for payment");
+					Map<String,String> updatePayment = new HashMap<String,String>();
+					updatePayment.put("message", "Error to generte hash value for payment");
+					PlanManager.updateTransaction(updatePayment);
+				}
+			
+			
+		return SportConstrant.MAKE_PAYMENT_SUCCESS_PAGE;
+		
+	}
 }

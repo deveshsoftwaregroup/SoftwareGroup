@@ -701,12 +701,12 @@ public class GameManager {
 		}
 		return userPlayDetailsList;
 	}
-	public static boolean addPlayeOfEventToUserAccount(String userId,String gameClubPlayerId)
+	public static boolean addPlayeOfGametToUserAccount(String userId,String gameClubPlayerId)
 	{
 		boolean isAdded =  false;
 		setErrorMessage("");
 		SessionFactory factory = HibernateSessionFactory.getSessionFacotry();
-		logger.debug("--------------- addPlayeOfEventToUserAccount ------------> userId:  "+userId+" gameClubPlayerId: "+gameClubPlayerId);
+		logger.debug("--------------- addPlayeOfGametToUserAccount ------------> userId:  "+userId+" gameClubPlayerId: "+gameClubPlayerId);
 		if(factory == null)
 		{
 			setErrorCode(ErrorConstrant.SESS_FACT_NULL);
@@ -764,12 +764,12 @@ public class GameManager {
 		return isAdded;
 	}
 	
-	public static boolean removePlayeOfEventFromUserAccount(String userId,String gameClubPlayerId)
+	public static boolean removePlayeOfGameFromUserAccount(String userId,String gameClubPlayerId)
 	{
 		boolean isRemoved =  false;
 		setErrorMessage("");
 		SessionFactory factory = HibernateSessionFactory.getSessionFacotry();
-		logger.debug("--------------- removePlayeOfEventFromUserAccount ------------> userId:  "+userId+" gameClubPlayerId: "+gameClubPlayerId);
+		logger.debug("--------------- removePlayeOfGameFromUserAccount ------------> userId:  "+userId+" gameClubPlayerId: "+gameClubPlayerId);
 		if(factory == null)
 		{
 			setErrorCode(ErrorConstrant.SESS_FACT_NULL);
@@ -820,12 +820,12 @@ public class GameManager {
 		
 		return isRemoved;
 	}
-	public static boolean updatePlayeOfEventFromUserAccount(String userId,String gameClubPlayerId,String isPlaying,String playerCategory,String seqNum)
+	public static boolean updatePlayeOfGameFromUserAccount(String userId,String gameClubPlayerId,String isPlaying,String playerCategory,String seqNum)
 	{
 		boolean isUpdated =  false;
 		setErrorMessage("");
 		SessionFactory factory = HibernateSessionFactory.getSessionFacotry();
-		logger.debug("--------------- updatePlayeOfEventFromUserAccount ------------> userId:  "+userId+" gameClubPlayerId: "+gameClubPlayerId);
+		logger.debug("--------------- updatePlayeOfGameFromUserAccount ------------> userId:  "+userId+" gameClubPlayerId: "+gameClubPlayerId+" ,isPlaying: "+isPlaying+" , playerCategory: "+playerCategory+" , seqNum: "+seqNum);
 		if(factory == null)
 		{
 			setErrorCode(ErrorConstrant.SESS_FACT_NULL);
@@ -889,12 +889,12 @@ public class GameManager {
 		
 		return isUpdated;
 	}
-	public static List<Integer> fetchUserPlayerOfEventByType(String userId,String playerType)
+	public static List<Integer> fetchUserPlayerOfGameByType(String userId,String playerCategory)
 	{
 		List<Integer> results = null;
 		setErrorMessage("");
 		SessionFactory factory = HibernateSessionFactory.getSessionFacotry();
-		logger.debug("--------------- fetchUserPlayerOfEventByType ------------> userId:  "+userId+" playerType: "+playerType);
+		logger.debug("--------------- fetchUserPlayerOfGameByType ------------> userId:  "+userId+" playerCategory: "+playerCategory);
 		if(factory == null)
 		{
 			setErrorCode(ErrorConstrant.SESS_FACT_NULL);
@@ -908,7 +908,7 @@ public class GameManager {
 				try
 				{
 					Criteria cr = session.createCriteria(UserPlayer.class);
-					cr.add(Restrictions.eq("playerType", playerType));
+					cr.add(Restrictions.eq("playerCategory", playerCategory));
 					cr.add(Restrictions.eq("userId", new Integer(userId)));
 					cr.setProjection(Projections.property("gameClubPlayerId"));
 					results= cr.list();
@@ -937,7 +937,7 @@ public class GameManager {
 				setErrorMessage("Technical Error");
 			}
 		}
-		
+		logger.debug("----------- REturning player: "+results);
 		return results;
 	}
 	public static boolean checkAndIsertUserGameStatus(String userId,String gameId)

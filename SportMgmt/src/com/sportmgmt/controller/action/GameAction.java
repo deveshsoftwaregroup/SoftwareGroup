@@ -79,7 +79,7 @@ public class GameAction {
 				boolean hasActivePlan = user.isHasActivePlan();
 				if(hasActivePlan)
 				{
-					isSuccess = GameManager.addPlayeOfEventToUserAccount(userId, gameClubPlayerId);
+					isSuccess = GameManager.addPlayeOfGametToUserAccount(userId, gameClubPlayerId);
 					Integer price = null;
 					logger.debug("------------ Add Player Call isSuccess: "+isSuccess);
 					if(isSuccess)
@@ -221,7 +221,7 @@ public class GameAction {
 		}
 		else
 		{
-			isSuccess = GameManager.removePlayeOfEventFromUserAccount(userId, gameClubPlayerId);
+			isSuccess = GameManager.removePlayeOfGameFromUserAccount(userId, gameClubPlayerId);
 			logger.debug("------------ Remove Player Call isSuccess: "+isSuccess);
 			if(isSuccess)
 			{
@@ -326,9 +326,9 @@ public class GameAction {
 	public @ResponseBody Map makeCaptain(@RequestParam("userId") String userId, @RequestParam("gameClubPlayerId") String gameClubPlayerId,HttpServletRequest request)
 	{
 		logger.debug("------------ MakeCaptain  :-- calling update player");
-		List<Integer> playerList =GameManager.fetchUserPlayerOfEventByType(userId, SportConstrant.PLAYER_TYPE_CAPTAIN);
+		List<Integer> playerList =GameManager.fetchUserPlayerOfGameByType(userId, SportConstrant.PLAYER_TYPE_CAPTAIN);
 		Map updateMap = null;
-		if(playerList != null && playerList.size() ==1)
+		if(playerList != null && playerList.size() >=1)
 		{
 			updateMap= updatePlayer(userId,playerList.get(0).toString(),null,SportConstrant.PLAYER_TYPE_NORMAL,null,request);
 		}
@@ -341,7 +341,7 @@ public class GameAction {
 	public @ResponseBody Map makeViceCaptain(@RequestParam("userId") String userId, @RequestParam("gameClubPlayerId") String gameClubPlayerId,HttpServletRequest request)
 	{
 		logger.debug("------------ MakeViceCaptain  :-- calling update player");
-		List<Integer> playerList =GameManager.fetchUserPlayerOfEventByType(userId, SportConstrant.PLAYER_TYPE_VICE_CAPTAIN);
+		List<Integer> playerList =GameManager.fetchUserPlayerOfGameByType(userId, SportConstrant.PLAYER_TYPE_VICE_CAPTAIN);
 		Map updateMap = null;
 		if(playerList != null && playerList.size() ==1)
 		{
@@ -367,7 +367,7 @@ public class GameAction {
 		}
 		else
 		{
-			isSuccess = GameManager.updatePlayeOfEventFromUserAccount(userId, gameClubPlayerId,isPlaying,playerCategory,seqNum);
+			isSuccess = GameManager.updatePlayeOfGameFromUserAccount(userId, gameClubPlayerId,isPlaying,playerCategory,seqNum);
 			logger.debug("------------ update Player Call isSuccess: "+isSuccess);
 			if(isSuccess)
 			{

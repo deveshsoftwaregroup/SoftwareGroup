@@ -561,24 +561,27 @@
 									<div class="league-panel__body">
 										<form action="#">
 											<div class="form_row">
-											    <input list="choose_cap" name="choose_captain" placeholder="Choose Captain" class="inp-control">
+											   <!--  <input list="choose_cap" name="choose_captain" placeholder="Choose Captain" class="inp-control">
 											    <datalist id="choose_cap">
 												    <option value="Abcd">
 												    <option value="Bcde">
 												    <option value="Cdef">
 												    <option value="Defg">
-											    </datalist>
+											    </datalist> -->
+											    <select id="captain-select">
+											    </select>
 										    </div>
 										    <div class="form_row">
-											    <input list="choose_wisecap" name="choose_wisecaptain" placeholder="Choose Vice Captain" class="inp-control">
+											    <!-- <input list="choose_wisecap" name="choose_wisecaptain" placeholder="Choose Vice Captain" class="inp-control">
 											    <datalist id="choose_wisecap">
 												    <option value="Abcd">PPPP</option>
 												    <option value="Bcde">
 												    <option value="Cdef">
 												    <option value="Defg">
-											    </datalist>
+											    </datalist> -->
+											    <select id="vice-captain-select"></select>
 										    </div>
-										    <input type="submit" value="Submit">
+										    <input type="button" value="ChangeCaptain/ViceCaptain" onclick="updateCaptain('${sessionScope.user.userId}');">
 										</form>
 									</div>
 								</div>
@@ -743,6 +746,7 @@
 		     				  userGameJson = resp.userGameJson;
 		     				 if(typeof resp.totalPlayingJson != 'undefined')
 		     					totalPlayingJson = resp.totalPlayingJson;
+		     				updatePlayerList();
 		     			  }
 		     			  else
 		    			  {
@@ -767,6 +771,7 @@
 			     				  userGameJson = resp.userGameJson;
 			     			  if(typeof resp.totalPlayingJson != 'undefined')
 			     				totalPlayingJson = resp.totalPlayingJson;
+			     			  updatePlayerList();
 		     			  }
 		     			  else
 		    			  {
@@ -789,6 +794,116 @@
  	$(document).ajaxComplete(function(){
  	    $("#ajaxloader").css("display", "none");
  	    $('.mask').hide();
+ 	});
+ 	function updatePlayerList()
+ 	{
+ 		if(typeof userGameJson !='undefined')
+ 		{
+ 			var activePlayerHtml = '<option value="0">Select Captain</option>';
+ 			var activePlayerHtml1 = '<option value="0">Select Vice Captain</option>';
+ 			var selectedCaptain = $('#captain-select option:selected').val();
+ 			var selectedViceCaptain = $('#vice-captain-select option:selected').val();
+ 			console.log('selectedCaptain: '+selectedCaptain+" , selectedViceCaptain: "+selectedViceCaptain);
+ 			for(var i=0;i<userGameJson.playerList.length;i++)
+ 			{
+ 				
+ 				if(userGameJson.playerList[i].isPlaying == 'Y')
+ 				{
+ 					var gameClubPlayerId = userGameJson.playerList[i].gameClubPlayerId;
+ 					//console.log("i: "+i+" , gameClubPlayerId: "+userGameJson.playerList[i].gameClubPlayerId);
+ 					var playerName='';
+ 					for(var j=0;j<playerListJson.length;j++)
+ 					{
+ 						if(playerListJson[j].gameClubPlayerId == gameClubPlayerId)
+ 						{
+ 							playerName = playerListJson[j].name;
+ 						}
+ 						
+ 					}
+ 					if(typeof selectedCaptain == 'undefined' && userGameJson.playerList[i].playerCategory == 'C')
+ 					{
+ 						selectedCaptain = gameClubPlayerId;
+ 					}
+ 					if(typeof selectedViceCaptain == 'undefined' && userGameJson.playerList[i].playerCategory == 'V')
+ 					{
+ 						selectedViceCaptain = gameClubPlayerId;
+ 					}
+ 					//console.log("playerName: "+playerName);
+ 					if(gameClubPlayerId == selectedCaptain)
+ 					activePlayerHtml +='<option value="'+gameClubPlayerId+'" selected>'+playerName+'</option>';
+ 					else
+ 					activePlayerHtml +='<option value="'+gameClubPlayerId+'">'+playerName+'</option>';
+ 					
+ 					if(gameClubPlayerId == selectedViceCaptain)
+ 	 				activePlayerHtml1 +='<option value="'+gameClubPlayerId+'" selected>'+playerName+'</option>';
+ 	 				else
+ 	 				activePlayerHtml1 +='<option value="'+gameClubPlayerId+'">'+playerName+'</option>';
+ 				}
+ 			}
+ 			console.log("activePlayerHtml: "+activePlayerHtml);
+ 			$('#captain-select').html(activePlayerHtml);
+ 			$('#vice-captain-select').html(activePlayerHtml1);
+ 		}
+ 	}
+ 	function updateCaptain(userId)
+ 	{
+ 		var selectedCaptain = $('#captain-select option:selected').val();
+ 		var selectedViceCaptain = $('#vice-captain-select option:selected').val();
+ 		if(typeof selectedCaptain != 'undefined' && selectedCaptain !=0)
+ 		{
+ 			url ="/SportMgmt/mvc/game/MakeCaptain?userId="+userId+"&gameClubPlayerId="+selectedCaptain;
+ 			$.ajax({
+ 	     		  url: url,
+ 	     		  dataType: 'json',
+ 	     		  async: false,
+ 	     		  success: function( resp ) {
+ 	     			  if(resp.isSuccess)
+ 	     			  {
+ 	     				 if(typeof resp.userGameJson != 'undefined')
+ 	     				  userGameJson = resp.userGameJson;
+ 	     				 if(typeof resp.totalPlayingJson != 'undefined')
+ 	     					totalPlayingJson = resp.totalPlayingJson;
+ 	     				//updatePlayerList();
+ 	     			  }
+ 	     			  else
+ 	    			  {
+ 	    				  	alert(resp.errorMessage);
+ 	    			  }
+ 	     		  },
+ 	     		  error: function( req, status, err ) {
+ 	     		    console.log( 'something went wrong', status, err );
+ 	     		  }
+ 	     		})
+ 		}
+ 		if(typeof selectedViceCaptain != 'undefined' && selectedViceCaptain !=0)
+ 		{
+ 			url ="/SportMgmt/mvc/game/MakeViceCaptain?userId="+userId+"&gameClubPlayerId="+selectedViceCaptain;
+ 			$.ajax({
+ 	     		  url: url,
+ 	     		  dataType: 'json',
+ 	     		  async: false,
+ 	     		  success: function( resp ) {
+ 	     			  if(resp.isSuccess)
+ 	     			  {
+ 	     				 if(typeof resp.userGameJson != 'undefined')
+ 	     				  userGameJson = resp.userGameJson;
+ 	     				 if(typeof resp.totalPlayingJson != 'undefined')
+ 	     					totalPlayingJson = resp.totalPlayingJson;
+ 	     				//updatePlayerList();
+ 	     			  }
+ 	     			  else
+ 	    			  {
+ 	    				  	alert(resp.errorMessage);
+ 	    			  }
+ 	     		  },
+ 	     		  error: function( req, status, err ) {
+ 	     		    console.log( 'something went wrong', status, err );
+ 	     		  }
+ 	     		})
+ 		}
+ 	}
+ 	$(document).ready(function(){
+ 		updatePlayerList();
  	});
 </script>
 
