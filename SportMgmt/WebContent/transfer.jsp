@@ -66,7 +66,33 @@
 									<h4 class="league-deadline-bar__heading">Gameweek ${gameWeekNumber} Deadline: <time datetime="2016-08-27T10:30:00Z" class="league-deadline-bar__deadline">${deadline}</time></h4>
 								</div>
                             </div>
+                        </div>
+                        
+                        <div>
+                        	<div class="ism-copy">
+                                <p style="color: #ffcc00;"><i class="" style="color: #f00;"></i>Free Transfer: 1 Available/Used</p>
+                        	 
+                                <p style="color: #ffcc00;"><i class="" style="color: #f00;"></i>Wild Card: 1 Available/Used
+                                <input type="button" value="Use Wild Card" onclick="updateWildCard('${sessionScope.user.userId}');">
+                                </p>
+                                	
+                        	 
+                                <p style="color: #ffcc00;"><i class="" style="color: #f00;"></i>Want unlimited transfer? : 
+                                <input type="button" value="Buy Wildcard" onclick="buyWildCard('${sessionScope.user.userId}');"> 
+                                </p>
+                                
+                                <p style="color: #ffcc00;"><i class="" style="color: #f00;"></i>Cost : -4                                
+                                </p>
+                                
+                                <p style="color: #ffcc00;"><i class="" style="color: #f00;"></i>Note: Cost will be deducted from your total points. You can make your cost 0 by using WIldCard.                                
+                                </p>
+                                
+                        	 </div> 
+                        	 <input type="button" value="Confirm" onclick="updatePoints('${sessionScope.user.userId}');">
+										
 
+                           
+                           
                         </div>
                     </div>
 
@@ -684,7 +710,7 @@
                                                         <tr class="ism-table__divider ism-el-type ism-el-type--1">
                                                             <th class="ism-table--squad__status"></th>
                                                             <th class="ism-table--squad__name">Goalkeepers</th>
-                                                            <th class="ism-table--squad__price"><abbr title="Price">£</abbr></th>
+                                                            <th class="ism-table--squad__price"><abbr title="Price in Coins">Coins</abbr></th>
                                                             <th class="ism-table--squad__tsb"><abbr title="Teams selected by %">SB</abbr></th>
                                                             <th class="ism-table--squad__pts-tot"><abbr title="Total points">TP</abbr></th>
                                                             <th class="ism-table--squad__fixture"><abbr title="Fixture next Gameweek">FIX</abbr></th>
@@ -718,7 +744,7 @@
                                                         <tr class="ism-table__divider ism-el-type ism-el-type--2">
                                                             <th class="ism-table--squad__status"></th>
                                                             <th class="ism-table--squad__name">Defenders</th>
-                                                            <th class="ism-table--squad__price"><abbr title="Price">£</abbr></th>
+                                                            <th class="ism-table--squad__price"><abbr title="Price in Coins">Coins</abbr></th>
                                                             <th class="ism-table--squad__tsb"><abbr title="Teams selected by %">SB</abbr></th>
                                                             <th class="ism-table--squad__pts-tot"><abbr title="Total points">TP</abbr></th>
                                                             <th class="ism-table--squad__fixture"><abbr title="Fixture next Gameweek">FIX</abbr></th>
@@ -770,7 +796,7 @@
                                                         <tr class="ism-table__divider ism-el-type ism-el-type--3">
                                                             <th class="ism-table--squad__status"></th>
                                                             <th class="ism-table--squad__name">Midfielders</th>
-                                                            <th class="ism-table--squad__price"><abbr title="Price">£</abbr></th>
+                                                            <th class="ism-table--squad__price"><abbr title="Price in Coins">Coins</abbr></th>
                                                             <th class="ism-table--squad__tsb"><abbr title="Teams selected by %">SB</abbr></th>
                                                             <th class="ism-table--squad__pts-tot"><abbr title="Total points">TP</abbr></th>
                                                             <th class="ism-table--squad__fixture"><abbr title="Fixture next Gameweek">FIX</abbr></th>
@@ -828,7 +854,7 @@
                                                         <tr class="ism-table__divider ism-el-type ism-el-type--4">
                                                             <th class="ism-table--squad__status"></th>
                                                             <th class="ism-table--squad__name">Forwards</th>
-                                                            <th class="ism-table--squad__price"><abbr title="Price">£</abbr></th>
+                                                            <th class="ism-table--squad__price"><abbr title="Price in Coins">Coins</abbr></th>
                                                             <th class="ism-table--squad__tsb"><abbr title="Teams selected by %">SB</abbr></th>
                                                             <th class="ism-table--squad__pts-tot"><abbr title="Total points">TP</abbr></th>
                                                             <th class="ism-table--squad__fixture"><abbr title="Fixture next Gameweek">FIX</abbr></th>
@@ -999,8 +1025,8 @@
                 <tr class="ism-table__divider ism-el-type ism-el-type--1">
                     <th class="ism-table--el-list__status"></th>
                     <th class="ism-table--el-list__name"><a href="#" class="ism-link--bold">Goalkeepers</a></th>
-                    <th class="ism-table--el-list__price"><abbr title="Price">$</abbr></th>
-                    <th class="ism-table--el-list__stat"><abbr title="Goals scored">TS</abbr></th>
+                    <th class="ism-table--el-list__price"><abbr title="Price in Coins">Coins</abbr></th>
+                    <th class="ism-table--el-list__stat"><abbr title="Total Score">TS</abbr></th>
                 </tr>
             </thead>
             <tbody>
@@ -1049,7 +1075,7 @@
                 <tr class="ism-table__divider ism-el-type ism-el-type--2">
                     <th class="ism-table--el-list__status"></th>
                     <th class="ism-table--el-list__name"><a href="#" class="ism-link--bold">Defenders</a></th>
-                    <th class="ism-table--el-list__price"><abbr title="Price">$</abbr></th>
+                    <th class="ism-table--el-list__price"><abbr title="Price in Coins">Coins</abbr></th>
                     <th class="ism-table--el-list__stat"><abbr title="Goals scored">TS</abbr></th>
                 </tr>
             </thead>
@@ -1099,7 +1125,7 @@
                 <tr class="ism-table__divider ism-el-type ism-el-type--3">
                     <th class="ism-table--el-list__status"></th>
                     <th class="ism-table--el-list__name"><a href="#" class="ism-link--bold">Midfielders</a></th>
-                    <th class="ism-table--el-list__price"><abbr title="Price">$</abbr></th>
+                    <th class="ism-table--el-list__price"><abbr title="Price in Coins">Coins</abbr></th>
                     <th class="ism-table--el-list__stat"><abbr title="Goals scored">TS</abbr></th>
                 </tr>
             </thead>
@@ -1149,7 +1175,7 @@
                 <tr class="ism-table__divider ism-el-type ism-el-type--4">
                     <th class="ism-table--el-list__status"></th>
                     <th class="ism-table--el-list__name"><a href="#" class="ism-link--bold">Forwards</a></th>
-                    <th class="ism-table--el-list__price"><abbr title="Price">INR</abbr></th>
+                    <th class="ism-table--el-list__price"><abbr title="Price in Coins">Coins</abbr></th>
                     <th class="ism-table--el-list__stat"><abbr title="Goals scored">TS</abbr></th>
                 </tr>
             </thead>
