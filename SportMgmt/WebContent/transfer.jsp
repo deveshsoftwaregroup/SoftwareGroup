@@ -1582,8 +1582,16 @@
 			}
 		console.debug("--- Player Type "+playerType);
 		var ajaxCall = true;
-		if(playerType =='')
+		var avialBalance = parseInt($('#planBalanceDiv').text());
+		var planTypeVal =  '${sessionScope.user.activePlan.planTypeVal}'; /* Denoted plan is of unlimitted value (Days wise or price wise)*/
+		console.log('planTypeVal: '+planTypeVal+' , avialBalance: '+avialBalance);
+		if(playerType == '')
 		{
+			ajaxCall = false;
+		}
+		else if( planTypeVal == 0 && avialBalance < playerPrice)
+		{
+			alert("Bank Account is less than player price");
 			ajaxCall = false;
 		}
 		else if (playerType == 'Goalkeeper')
@@ -1644,7 +1652,7 @@
 	     				 var clubImage = clubIdImageMap[clubId];
 	     				 if(typeof $('#planBalanceDiv') != 'undefined')
 	     			 	 {
-	     					$('#planBalanceDiv').html(resp.activePlanBalance); 
+	     					$('#planBalanceDiv').text(resp.activePlanBalance); 
 	     				 }
 	     				 if(playerType == 'Goalkeeper')
 	     				 {
@@ -1770,7 +1778,7 @@
 	     				 userGameJson = resp.userGameJson;
 	     				if(typeof $('#planBalanceDiv') != 'undefined')
 	     			 	 {
-	     					$('#planBalanceDiv').html(resp.activePlanBalance); 
+	     					$('#planBalanceDiv').text(resp.activePlanBalance); 
 	     				 }
 	     				$(elems1).parents('.ism-element').find('.ismjs-menu').replaceWith( elems2 );
 	     			  }

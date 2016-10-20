@@ -152,6 +152,7 @@ public class GameAction {
 									balance= PlanManager.deductPointFromUserPlan(user.getActivePlan().getUserPlanId(), price.doubleValue());	
 									user.getActivePlan().setBalance(balance);
 									resultMap.put("activePlanBalance", balance);
+									
 									logger.info("--------  : Now balance is: "+balance);
 									/*if(balance <=0)
 									{
@@ -287,6 +288,7 @@ public class GameAction {
 							logger.debug("------ Started adding point---: "+price);
 							double balance= PlanManager.addPointToUserPlan(user.getActivePlan().getUserPlanId(), price.doubleValue());
 							resultMap.put("activePlanBalance", balance);
+							user.getActivePlan().setBalance(balance);
 							logger.debug("------ Current balance is ---: "+balance);
 						}
 					}
