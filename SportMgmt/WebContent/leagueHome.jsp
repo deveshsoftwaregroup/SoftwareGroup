@@ -223,13 +223,23 @@
             <input type="password" name="logonPasswordConfirm" placeholder="Confirm Password" required
                 id="password2" />
         </div>
+         <div class="large-12 columns">
+            <select name="country" placeholder="Mobile Number" required
+                id="country">
+            <option value="">Select Country</option>
+            </select>
+        </div>
+        <div class="large-12 columns">
+            <input type="input" name="contactNumber" placeholder="Mobile Number" required
+                id="contactNumber" />
+        </div>
         <div class="large-12 columns">
             <div class="register-switch">
-                <input type="radio" name="sex" value="F" id="sex_f" class="register-switch-input"
+                <input type="radio" name="gender" value="F" id="sex_f" class="register-switch-input"
                     checked="">
                 <label for="sex_f" class="register-switch-label">
                     Female</label>
-                <input type="radio" name="sex" value="M" id="sex_m" class="register-switch-input">
+                <input type="radio" name="gender" value="M" id="sex_m" class="register-switch-input">
                 <label for="sex_m" class="register-switch-label">
                     Male</label>
             </div>
@@ -316,6 +326,16 @@
         	{
         		alert("Password and confirm password should match");
         		return false;
+        	}
+        	
+        	if(typeof regForm['contactNumber'] != 'undefined')
+        	{
+        		var mobNumVal = regForm['contactNumber'].value;
+        		if(!(mobNumVal.length ==10 &&  /^\d+$/.test(mobNumVal)))
+       			{
+        			alert('Please input valid mobile number');
+        			return false;
+       			}
         	}
         	regForm.submit();
      }
