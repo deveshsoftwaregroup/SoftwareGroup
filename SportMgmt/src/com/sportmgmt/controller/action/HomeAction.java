@@ -1,5 +1,8 @@
 package com.sportmgmt.controller.action;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
@@ -10,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.sportmgmt.model.manager.UserManager;
 import com.sportmgmt.utility.constrant.SportConstrant;
 
 @Controller
@@ -26,7 +30,9 @@ public class HomeAction {
 	@RequestMapping("/LeagueHome")
 	public String leagueHome(ModelMap map)
 	{
-		//UserManager.getCountryStateCityMap();
+		HashMap<String,HashMap<String,ArrayList<String>>> countryMap = UserManager.getCountryStateCityMap();
+		logger.info("--------- League Home , countryMap: "+countryMap);
+		map.put("countryMap", countryMap);
 		return SportConstrant.LEAGE_HOME_PAGE;
 
 	}
