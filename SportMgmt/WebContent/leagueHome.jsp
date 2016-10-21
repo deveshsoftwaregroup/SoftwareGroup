@@ -3,6 +3,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -227,6 +229,9 @@
             <select name="country" placeholder="Mobile Number" required
                 id="country">
             <option value="">Select Country</option>
+            <c:forEach var="countryObj" items="${countryMap}">
+            <option value="${countryObj.key}">${countryObj.key}</option>
+            </c:forEach>
             </select>
         </div>
         <div class="large-12 columns">
