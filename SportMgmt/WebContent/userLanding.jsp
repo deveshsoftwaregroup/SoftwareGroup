@@ -73,7 +73,7 @@
     
  
     
-    <script src="/SportMgmt/js/vendor/jquery.js"></script>
+   <%--  <script src="/SportMgmt/js/vendor/jquery.js"></script> --%>
     <script src="/SportMgmt/js/vendor/what-input.js"></script>
     <script src="/SportMgmt/js/vendor/foundation.js"></script>
     <script src="/SportMgmt/js/app.js"></script>

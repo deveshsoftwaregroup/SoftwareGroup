@@ -4,12 +4,14 @@
     <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 	<%@ taglib uri="WEB-INF/sportmgmt.tld" prefix="s" %>  
 	<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-    <link rel="stylesheet" href="/SportMgmt/css/foundation.css">
+    <!-- 
     <link rel="stylesheet" href="/SportMgmt/css/app.css">
     <link rel="stylesheet" href="/SportMgmt/css/superslides.css">
     <link rel="stylesheet" type="text/css" href="/SportMgmt/css/customMedia.css">
-   <!-- <link rel="stylesheet" href="https://ismdj.scdn5.secure.raxcdn.com/static/CACHE/css/258578334140.css" type="text/css" />-->
-    <link rel="stylesheet" type="text/css" href="/SportMgmt/css/258578334140.css">
+   <link rel="stylesheet" href="https://ismdj.scdn5.secure.raxcdn.com/static/CACHE/css/258578334140.css" type="text/css" />-->
+    <link rel="stylesheet" href="/SportMgmt/css/foundation.css">
+    <link rel="stylesheet" type="text/css" href="/SportMgmt/css/258578334140.css"> 
+    
     <style>
     .addPlayer a{ color:#ed3a28; font-size: 18px; padding: 5px;}
     .removePlayerIcon{ background: #de5e00;
@@ -69,22 +71,111 @@
                         </div>
                         
                         <div>
-                        	<div class="ism-copy">
-                                <p style="color: #ffcc00;"><i class="" style="color: #f00;"></i>Free Transfer: 1 Available/Used</p>
+                        	<div class="plain_text">
+                                <p>Free Transfer: 1 Available/Used</p>
                         	 
-                                <p style="color: #ffcc00;"><i class="" style="color: #f00;"></i>Wild Card: 1 Available/Used
-                                <input type="button" value="Use Wild Card" onclick="updateWildCard('${sessionScope.user.userId}');">
+                                <p>Wild Card: 1 Available/Used
+                                <input type="button" class="link" value="Use Wild Card" data-toggle="modal" data-target="#myModal" onclick="updateWildCard('${sessionScope.user.userId}');">
                                 </p>
-                                	
+                                <div id="myModal" class="modal fade" role="dialog">
+									  <div class="modal-dialog modal-lg">
+									
+									    <!-- Modal content-->
+									    <div class="modal-content">
+									      <div class="modal-header">
+									        <a type="button" class="close" data-dismiss="modal">&times;</a>
+									        <h4 class="modal-title">Use Wild Card</h4>
+									      </div>
+									      <div class="modal-body">
+									        <div class="table-responsive prod-tbl">
+												<table class="table table-striped table-bordered table-hover">
+													<thead>
+													  <tr>
+														<th>Product Name</th>
+														<th>Product Price</th>
+														<th>Product Quantity</th>
+														<th>Total Price</th>
+													  </tr>
+													</thead>
+													<tbody>
+													  <tr>
+														<td>Abcdef ghijk</td>
+														<td>Rs. 200</td>
+														<td>
+															<select>
+																<option>1</option>
+																<option>2</option>
+																<option>3</option>
+																<option>4</option>
+																<option>5</option>
+															</select>
+														</td>
+														<td>Rs. 600</td>
+													  </tr>
+													  <tr>
+														<td>Abcdef ghijk</td>
+														<td>Rs. 200</td>
+														<td>
+															<select>
+																<option>1</option>
+																<option>2</option>
+																<option>3</option>
+																<option>4</option>
+																<option>5</option>
+															</select>
+														</td>
+														<td>Rs. 600</td>
+													  </tr>
+													  <tr>
+														<td>Abcdef ghijk</td>
+														<td>Rs. 200</td>
+														<td>
+															<select>
+																<option>1</option>
+																<option>2</option>
+																<option>3</option>
+																<option>4</option>
+																<option>5</option>
+															</select>
+														</td>
+														<td>Rs. 600</td>
+													  </tr>
+													</tbody>
+												  </table>
+											</div>
+									      </div>
+									      <div class="modal-footer">
+									        <button type="button" class="button" data-dismiss="modal">Checkout</button>
+									      </div>
+									    </div>
+									
+									  </div>
+									</div>	
                         	 
-                                <p style="color: #ffcc00;"><i class="" style="color: #f00;"></i>Want unlimited transfer? : 
-                                <input type="button" value="Buy Wildcard" onclick="buyWildCard('${sessionScope.user.userId}');"> 
+                                <p>Want unlimited transfer? : 
+                                <input type="button" class="link" value="Buy Wildcard" data-toggle="modal" data-target="#myModal-1" onclick="buyWildCard('${sessionScope.user.userId}');"> 
+                                </p>
+                                <div id="myModal-1" class="modal fade" role="dialog">
+								  <div class="modal-dialog">
+								    <div class="modal-content">
+								      <div class="modal-header">
+								        <a type="button" class="close" data-dismiss="modal">&times;</a>
+								        <h4 class="modal-title"></h4>
+								      </div>
+								      <div class="modal-body buywildcard">
+										<h2>Are you Sure</h2>
+										<p style="text-align:center">
+											<a class="button">Yes</a> &nbsp;
+											<a class="button no-btn">No</a>
+										</p>
+								      </div> 
+								    </div>
+								  </div>
+								</div>
+                                <p>Cost : -4                                
                                 </p>
                                 
-                                <p style="color: #ffcc00;"><i class="" style="color: #f00;"></i>Cost : -4                                
-                                </p>
-                                
-                                <p style="color: #ffcc00;"><i class="" style="color: #f00;"></i>Note: Cost will be deducted from your total points. You can make your cost 0 by using WIldCard.                                
+                                <p>Note: Cost will be deducted from your total points. You can make your cost 0 by using WIldCard.                                
                                 </p>
                                 
                         	 </div> 
@@ -1226,7 +1317,7 @@
 
             </div>
         </div>
-    <script src="/SportMgmt/js/vendor/jquery.js"></script>
+    <%-- <script src="/SportMgmt/js/vendor/jquery.js"></script> --%>
     <script src="/SportMgmt/js/vendor/what-input.js"></script>
     <script src="/SportMgmt/js/vendor/foundation.js"></script>
     <script src="/SportMgmt/js/app.js"></script>
@@ -1805,3 +1896,4 @@
   	});
 
   </script>
+<script src="/SportMgmt/js/bootstrap.min.js"></script>

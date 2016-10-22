@@ -187,7 +187,7 @@ h2.head {margin: 15px 0 20px 0; font-size: 17px;}
     
  
     
-    <script src="/SportMgmt/js/vendor/jquery.js"></script>
+    <%-- <script src="/SportMgmt/js/vendor/jquery.js"></script> --%>
     <script src="/SportMgmt/js/vendor/what-input.js"></script>
     <script src="/SportMgmt/js/vendor/foundation.js"></script>
     <script src="/SportMgmt/js/app.js"></script>
