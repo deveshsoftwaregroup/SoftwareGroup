@@ -75,7 +75,28 @@
                                 <p>Free Transfer: 1 Available/Used</p>
                         	 
                                 <p>Wild Card: 1 Available/Used
-                                <input type="button" class="link" value="Use Wild Card" data-toggle="modal" data-target="#myModal" onclick="updateWildCard('${sessionScope.user.userId}');">
+                                <input type="button" class="link" value="Use Wild Card" data-toggle="modal" data-target="#myModal-1" onclick="updateWildCard('${sessionScope.user.userId}');">
+                                </p>
+                                  <div id="myModal-1" class="modal fade" role="dialog">
+								  <div class="modal-dialog">
+								    <div class="modal-content">
+								      <div class="modal-header">
+								        <a type="button" class="close" data-dismiss="modal">&times;</a>
+								        <h4 class="modal-title"></h4>
+								      </div>
+								      <div class="modal-body buywildcard">
+										<h2>Are you Sure</h2>
+										<p style="text-align:center">
+											<a class="button">Yes</a> &nbsp;
+											<a class="button no-btn">No</a>
+										</p>
+								      </div> 
+								    </div>
+								  </div>
+								</div>	
+                        	 
+                                <p>Want unlimited transfer? : 
+                                <input type="button" class="link" value="Buy Wildcard" data-toggle="modal" data-target="#myModal" onclick="buyWildCard('${sessionScope.user.userId}');"> 
                                 </p>
                                 <div id="myModal" class="modal fade" role="dialog">
 									  <div class="modal-dialog modal-lg">
@@ -150,28 +171,8 @@
 									    </div>
 									
 									  </div>
-									</div>	
-                        	 
-                                <p>Want unlimited transfer? : 
-                                <input type="button" class="link" value="Buy Wildcard" data-toggle="modal" data-target="#myModal-1" onclick="buyWildCard('${sessionScope.user.userId}');"> 
-                                </p>
-                                <div id="myModal-1" class="modal fade" role="dialog">
-								  <div class="modal-dialog">
-								    <div class="modal-content">
-								      <div class="modal-header">
-								        <a type="button" class="close" data-dismiss="modal">&times;</a>
-								        <h4 class="modal-title"></h4>
-								      </div>
-								      <div class="modal-body buywildcard">
-										<h2>Are you Sure</h2>
-										<p style="text-align:center">
-											<a class="button">Yes</a> &nbsp;
-											<a class="button no-btn">No</a>
-										</p>
-								      </div> 
-								    </div>
-								  </div>
-								</div>
+									</div>
+                              
                                 <p>Cost : -4                                
                                 </p>
                                 
