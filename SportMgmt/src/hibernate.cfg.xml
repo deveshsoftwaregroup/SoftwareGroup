@@ -9,7 +9,7 @@
         <property name="connection.username">john_league_test</property>
         <property name="connection.password">Software@123</property> -->
         
-        <property name="connection.url">jdbc:mysql://137.74.73.148:3306/fantasyl_league</property>
+        <property name="connection.url">jdbc:mysql://fantasyleague.the12thman.in:3306/fantasyl_league</property>
         <property name="connection.username">fantasyl_Staging</property>
         <property name="connection.password">League_Staging</property>
  
