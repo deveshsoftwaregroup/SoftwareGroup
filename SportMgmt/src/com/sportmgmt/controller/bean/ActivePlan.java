@@ -90,6 +90,6 @@ public class ActivePlan {
 	}
 	public String toString()
 	{
-		return "userPlanId = "+userPlanId+", planTypeVal =  "+planTypeVal+", planName =  "+planName+ ", isFree = "+isFree+", balance  "+balance;
+		return "userPlanId = "+userPlanId+", planTypeVal =  "+planTypeVal+", planName =  "+planName+ ", isFree = "+isFree+", balance  ="+balance;
 	}
 }

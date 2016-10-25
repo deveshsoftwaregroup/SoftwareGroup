@@ -139,7 +139,7 @@ public class SportMgmtExtTag extends TagSupport{
     					 logger.debug("----------- startDeadlineMils: "+startDeadlineMils);
     					 logger.debug("----------- endDeadlineMils: "+endDeadlineMils);
     					 logger.debug("----------- currentTimeMils: "+currentTimeMils);
-    					 if(currentTimeMils >= startDeadlineMils && startDeadlineMils <=endDeadlineMils)
+    					 if(currentTimeMils >= startDeadlineMils && currentTimeMils <=endDeadlineMils)
     					 {
     						 pageContext.setAttribute("isUnderDeadline", true);
     						 logger.debug("----------- isUderDeadline: is true ");
