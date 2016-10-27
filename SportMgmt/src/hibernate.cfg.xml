@@ -45,5 +45,6 @@
         <mapping class="com.sportmgmt.model.entity.Match"/>
         <mapping class="com.sportmgmt.model.entity.Point"/>
         <mapping class="com.sportmgmt.model.entity.UserGame"/>
+        <mapping class="com.sportmgmt.model.entity.PaymentExt"/>
    </session-factory>
 </hibernate-configuration>
