@@ -16,6 +16,7 @@ import org.hibernate.criterion.Restrictions;
 import com.sportmgmt.controller.bean.ActivePlan;
 import com.sportmgmt.model.entity.Game;
 import com.sportmgmt.model.entity.LeaguePlan;
+import com.sportmgmt.model.entity.PaymentExt;
 import com.sportmgmt.model.entity.PlanDiscount;
 import com.sportmgmt.model.entity.User;
 import com.sportmgmt.model.entity.UserGame;
@@ -263,6 +264,103 @@ public class PlanManager {
 						
 						session.update(userPayment);
 						session.beginTransaction().commit(); 
+						logger.debug("Payment table updated ----------------");
+						logger.debug("Started to update Payment_Ext table ----------------");
+						PaymentExt paymentExt = new PaymentExt();
+						paymentExt.setTransactionId(Integer.valueOf(transactionId));
+						if(paymentDetails.get("key") != null && !paymentDetails.get("key").equals(""))
+							paymentExt.setMerchantKey(paymentDetails.get("key"));
+						
+						if(paymentDetails.get("email") != null && !paymentDetails.get("email").equals(""))
+							paymentExt.setEmail(paymentDetails.get("email"));	
+						
+						if(paymentDetails.get("phone") != null && !paymentDetails.get("phone").equals(""))
+							paymentExt.setPhone(paymentDetails.get("phone"));
+						
+						if(paymentDetails.get("udf1") != null && !paymentDetails.get("udf1").equals(""))
+							paymentExt.setUdf1(paymentDetails.get("udf1"));
+						
+						if(paymentDetails.get("udf2") != null && !paymentDetails.get("udf2").equals(""))
+							paymentExt.setUdf2(paymentDetails.get("udf2"));
+						
+						if(paymentDetails.get("udf3") != null && !paymentDetails.get("udf3").equals(""))
+							paymentExt.setUdf3(paymentDetails.get("udf3"));
+						
+						if(paymentDetails.get("udf4") != null && !paymentDetails.get("udf4").equals(""))
+							paymentExt.setUdf4(paymentDetails.get("udf4"));
+						
+						if(paymentDetails.get("udf5") != null && !paymentDetails.get("udf5").equals(""))
+							paymentExt.setUdf5(paymentDetails.get("udf5"));
+						
+						if(paymentDetails.get("udf6") != null && !paymentDetails.get("udf6").equals(""))
+							paymentExt.setUdf6(paymentDetails.get("udf6"));
+						
+						if(paymentDetails.get("udf7") != null && !paymentDetails.get("udf7").equals(""))
+							paymentExt.setUdf7(paymentDetails.get("udf7"));
+						
+						if(paymentDetails.get("udf8") != null && !paymentDetails.get("udf8").equals(""))
+							paymentExt.setUdf8(paymentDetails.get("udf8"));
+						
+						if(paymentDetails.get("udf9") != null && !paymentDetails.get("udf9").equals(""))
+							paymentExt.setUdf9(paymentDetails.get("udf9"));
+						
+						if(paymentDetails.get("udf10") != null && !paymentDetails.get("udf10").equals(""))
+							paymentExt.setUdf10(paymentDetails.get("udf10"));
+						
+						if(paymentDetails.get("hash") != null && !paymentDetails.get("hash").equals(""))
+							paymentExt.setHash(paymentDetails.get("hash"));
+						
+						if(paymentDetails.get("field1") != null && !paymentDetails.get("field1").equals(""))
+							paymentExt.setField1(paymentDetails.get("field1"));
+						
+						if(paymentDetails.get("field2") != null && !paymentDetails.get("field2").equals(""))
+						paymentExt.setField2(paymentDetails.get("field2"));
+						
+						if(paymentDetails.get("field3") != null && !paymentDetails.get("field3").equals(""))
+							paymentExt.setField3(paymentDetails.get("field3"));
+						
+						if(paymentDetails.get("field4") != null && !paymentDetails.get("field4").equals(""))
+							paymentExt.setField4(paymentDetails.get("field4"));
+						
+						if(paymentDetails.get("field5") != null && !paymentDetails.get("field5").equals(""))
+							paymentExt.setField5(paymentDetails.get("field5"));
+						
+						if(paymentDetails.get("field6") != null && !paymentDetails.get("field6").equals(""))
+							paymentExt.setField6(paymentDetails.get("field6"));
+						
+						if(paymentDetails.get("field7") != null && !paymentDetails.get("field7").equals(""))
+							paymentExt.setField7(paymentDetails.get("field7"));
+						
+						if(paymentDetails.get("field8") != null && !paymentDetails.get("field8").equals(""))
+							paymentExt.setField8(paymentDetails.get("field8"));
+						
+						if(paymentDetails.get("field9") != null && !paymentDetails.get("field9").equals(""))
+							paymentExt.setField9(paymentDetails.get("field9"));
+						
+						if(paymentDetails.get("field10") != null && !paymentDetails.get("field10").equals(""))
+							paymentExt.setField10(paymentDetails.get("field10"));
+						
+						if(paymentDetails.get("field11") != null && !paymentDetails.get("field11").equals(""))
+							paymentExt.setField11(paymentDetails.get("field11"));
+						
+						if(paymentDetails.get("payuMoneyId") != null && !paymentDetails.get("payuMoneyId").equals(""))
+							paymentExt.setPayuMoneyId(paymentDetails.get("payuMoneyId"));
+						
+						if(paymentDetails.get("cardnum") != null && !paymentDetails.get("cardnum").equals(""))
+							paymentExt.setCardNum(paymentDetails.get("cardnum"));
+						
+						if(paymentDetails.get("name_on_card") != null && !paymentDetails.get("name_on_card").equals(""))
+							paymentExt.setNameOnCard(paymentDetails.get("name_on_card"));
+							
+						if(paymentDetails.get("unmappedstatus") != null && !paymentDetails.get("unmappedstatus").equals(""))
+						 paymentExt.setUnMappedStatus(paymentDetails.get("unmappedstatus")); 
+						 
+						 if(paymentDetails.get("encryptedPaymentId") != null && !paymentDetails.get("encryptedPaymentId").equals(""))
+							 paymentExt.setIncPayMoneyId(paymentDetails.get("encryptedPaymentId"));
+						logger.debug(" ****** Making entry in payment ext table ");
+						session.save(paymentExt);
+						session.beginTransaction().commit();
+						logger.debug(" ****** Entry Done in payment ext table ");
 						updateTransaction = true;
 					}
 					catch(Exception ex)
