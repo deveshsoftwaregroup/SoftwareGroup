@@ -1,7 +1,9 @@
 package com.sportmgmt.model.manager;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -643,5 +645,313 @@ public class PlanManager {
 		logger.debug("--------------- Returning balance After Adding:  "+balance);
 		return balance;
 	}
-
+	public static String fetchFreeWildCardPlanId()
+	{
+		setErrorMessage("");
+		String freeWildCardPlanId = "";
+		SessionFactory factory = HibernateSessionFactory.getSessionFacotry();
+		logger.debug("--------------- fetchFreeWildCardPlanId ------------>");
+		if(factory == null)
+		{
+			setErrorCode(ErrorConstrant.SESS_FACT_NULL);
+			setErrorMessage("Technical Error");
+		}
+		else
+		{
+			Session session = factory.openSession();
+			if(session != null)
+			{
+				try
+				{
+					Criteria cr = session.createCriteria(LeaguePlan.class);
+					cr.add(Restrictions.eq("isActive", SportConstrant.YES));
+					cr.add(Restrictions.eq("isFree", SportConstrant.YES));
+					cr.add(Restrictions.eq("planTypeVal", 1));
+					List results = cr.list();
+					if(results == null || results.size() ==0)
+					{
+						logger.debug(" ------- Active Free Wild card does not found--");
+					}
+					else
+					{
+						LeaguePlan leaguePlan = (LeaguePlan)results.get(0);	
+						freeWildCardPlanId = leaguePlan.getPlanId().toString();
+					}
+				}
+				catch(Exception ex)
+				{
+					logger.error("Exception fetch free WildCard PlanId: "+ex.getMessage());
+					setErrorMessage("Technical Error");
+					setErrorCode(ErrorConstrant.TRANSACTION_ERROR);
+				}
+				finally
+				{
+					session.close();
+				}
+			}
+			else
+			{
+				setErrorCode(ErrorConstrant.SESS_NULL);
+				setErrorMessage("Technical Error");
+			}
+		}
+		logger.debug("---------- Returning free wild card league plan Id: "+freeWildCardPlanId);
+		return freeWildCardPlanId;
+	}
+	
+	public static boolean isWildCardPlanUsed(String wildCardPlanId,String userId)
+	{
+		setErrorMessage("");
+		boolean isWildCardPlanUsed = false;
+		SessionFactory factory = HibernateSessionFactory.getSessionFacotry();
+		logger.debug("--------------- isWildCardPlanUsed ------------> : wildCardPlanId: "+wildCardPlanId+" ,, userId :"+userId);
+		if(factory == null)
+		{
+			setErrorCode(ErrorConstrant.SESS_FACT_NULL);
+			setErrorMessage("Technical Error");
+		}
+		else
+		{
+			Session session = factory.openSession();
+			if(session != null)
+			{
+				try
+				{
+					Criteria cr = session.createCriteria(UserPlan.class);
+					User user = new User();
+					user.setUserId(new Integer(userId));
+					LeaguePlan leaguePlan = new LeaguePlan();
+					leaguePlan.setPlanId(new Integer(wildCardPlanId));
+					cr.add(Restrictions.eq("user", user));
+					cr.add(Restrictions.eq("plan", leaguePlan));
+					List results = cr.list();
+					if(results == null || results.size() ==0)
+					{
+						logger.debug(" ------- isWildCardPlanUsed not found ");
+					}
+					else
+					{
+						isWildCardPlanUsed = true;
+					}
+				}
+				catch(Exception ex)
+				{
+					logger.error("Exception fetch isWildCardPlanUsed: "+ex.getMessage());
+					setErrorMessage("Technical Error");
+					setErrorCode(ErrorConstrant.TRANSACTION_ERROR);
+				}
+				finally
+				{
+					session.close();
+				}
+			}
+			else
+			{
+				setErrorCode(ErrorConstrant.SESS_NULL);
+				setErrorMessage("Technical Error");
+			}
+		}
+		logger.debug("---------- Returning isWildCardPlanUsed "+isWildCardPlanUsed);
+		return isWildCardPlanUsed;
+	}
+	
+	public static String fetchDefualtDiscount()
+	{
+		setErrorMessage("");
+		String defultDiscountId = "";
+		SessionFactory factory = HibernateSessionFactory.getSessionFacotry();
+		logger.debug("--------------- fetchDefualtDiscount ------------>");
+		if(factory == null)
+		{
+			setErrorCode(ErrorConstrant.SESS_FACT_NULL);
+			setErrorMessage("Technical Error");
+		}
+		else
+		{
+			Session session = factory.openSession();
+			if(session != null)
+			{
+				try
+				{
+					Criteria cr = session.createCriteria(PlanDiscount.class);
+					cr.add(Restrictions.eq("isActive", SportConstrant.YES));
+					cr.add(Restrictions.eq("planId", 0));
+					cr.add(Restrictions.eq("userId", 0));
+					cr.add(Restrictions.eq("planDiscountValue", 0));
+					List results = cr.list();
+					if(results == null || results.size() ==0)
+					{
+						logger.debug(" ------- No Defult plan found ");
+					}
+					else
+					{
+						PlanDiscount planDiscount = (PlanDiscount)results.get(0);	
+						defultDiscountId = planDiscount.getPlanDiscountId().toString();
+					}
+				}
+				catch(Exception ex)
+				{
+					logger.error("Exception Defult Plan Discount ID:  "+ex.getMessage());
+					setErrorMessage("Technical Error");
+					setErrorCode(ErrorConstrant.TRANSACTION_ERROR);
+				}
+				finally
+				{
+					session.close();
+				}
+			}
+			else
+			{
+				setErrorCode(ErrorConstrant.SESS_NULL);
+				setErrorMessage("Technical Error");
+			}
+		}
+		logger.debug("---------- Returning defultDiscountId: "+defultDiscountId);
+		return defultDiscountId;
+	}
+	
+	public static boolean doEntryForUsrPlan(Map userPlanMap)
+	{
+		setErrorMessage("");
+		boolean isDone = false;
+		SessionFactory factory = HibernateSessionFactory.getSessionFacotry();
+		logger.debug("--------------- doEntryForUsrPlan ------------> userPlanMap: "+userPlanMap);
+		if(factory == null)
+		{
+			setErrorCode(ErrorConstrant.SESS_FACT_NULL);
+			setErrorMessage("Technical Error");
+		}
+		else
+		{
+			Session session = factory.openSession();
+			if(session != null)
+			{
+				try
+				{
+					logger.debug("----------- Started to make enty in user plan -----");
+					UserPlan userPlan = new UserPlan();
+					LeaguePlan leaguePlan =  new LeaguePlan();
+					leaguePlan.setPlanId(new Integer((String)userPlanMap.get("planId")));
+					userPlan.setPlan(leaguePlan);
+					
+					User user = new User();
+					user.setUserId(new Integer((String)userPlanMap.get("userId")));
+					userPlan.setUser(user);
+					
+					if(userPlanMap.get("planDiscountId") != null && !userPlanMap.get("planDiscountId").equals(""))
+					{
+						PlanDiscount planDiscount = new PlanDiscount();
+						planDiscount.setPlanDiscountId(new Integer((String)userPlanMap.get("planDiscountId")));
+						userPlan.setPlanDiscount(planDiscount);
+					}
+					if(userPlanMap.get("transactionId") != null && !userPlanMap.get("transactionId").equals(""))
+					{
+						UserPayment payment = new UserPayment();
+						payment.setTransactionId(new Integer((String)userPlanMap.get("transactionId")));
+						userPlan.setPayment(payment);
+					}
+					if(userPlanMap.get("planDesc") != null && !userPlanMap.get("planDesc").equals(""))
+					{
+						userPlan.setPlanDesc((String)userPlanMap.get("planDesc"));
+					}
+					
+					if(userPlanMap.get("currency") != null && !userPlanMap.get("currency").equals(""))
+					{
+						userPlan.setCurrency((String)userPlanMap.get("currency"));
+					}
+					
+					if(userPlanMap.get("balanceAmount") != null && !userPlanMap.get("balanceAmount").equals(""))
+					{
+						userPlan.setBalanceAmount(new Double((String)userPlanMap.get("balanceAmount")));
+					}
+					
+					if(userPlanMap.get("startDate") != null && !userPlanMap.get("startDate").equals(""))
+					{
+						userPlan.setStartDate((Date)userPlanMap.get("startDate"));
+					}
+					
+					if(userPlanMap.get("endDate") != null && !userPlanMap.get("endDate").equals(""))
+					{
+						userPlan.setEndDate(new Date(((Timestamp)userPlanMap.get("endDate")).getTime()));
+					}
+					userPlan.setIsActive(SportConstrant.YES);
+					logger.debug("----------- Making entry for user plan table-----");
+					session.save(userPlan);
+					logger.debug("----------- Commiting to database -----");
+					session.beginTransaction().commit();
+					logger.debug("----------- Done completely -----");
+					isDone = true;
+				}
+				catch(Exception ex)
+				{
+					logger.error("Exception Defult Plan Discount ID:  "+ex.getMessage());
+					setErrorMessage("Technical Error");
+					setErrorCode(ErrorConstrant.TRANSACTION_ERROR);
+					
+				}
+				finally
+				{
+					session.close();
+				}
+			}
+			else
+			{
+				setErrorCode(ErrorConstrant.SESS_NULL);
+				setErrorMessage("Technical Error");
+			}
+		}
+		logger.debug("---------- Returning isDone: "+isDone);
+		return isDone;
+	}
+	
+	public static boolean inActivePlansOfUser(String userId)
+	{
+		setErrorMessage("");
+		SessionFactory factory = HibernateSessionFactory.getSessionFacotry();
+		logger.debug("--------------- inActivePlansOfUser ------------> userId:  "+userId);
+		if(factory == null)
+		{
+			setErrorCode(ErrorConstrant.SESS_FACT_NULL);
+			setErrorMessage("Technical Error");
+			logger.error("Session Facoty is null");
+			return false;
+		}
+		else
+		{
+			Session session = factory.openSession();
+			if(session != null)
+			{
+				try
+				{
+					
+					logger.debug("----- Trying to make plan of user as inactive");
+					SQLQuery query = session.createSQLQuery(QueryConstrant.MAKE_USER_PLAN_INACTIVE);
+					query.setParameter("userId", new Integer(userId));
+					query.executeUpdate();
+					session.beginTransaction().commit();
+				}
+				catch(Exception ex)
+				{
+					logger.error("---- Error to inActivePlansOfUser: "+ex);
+					setErrorCode(ErrorConstrant.TRANSACTION_ERROR);
+					setErrorMessage("Technical Error");
+					return false;
+				}
+				finally
+				{
+					session.close();
+					
+				}
+			}
+			else
+			{
+				setErrorCode(ErrorConstrant.SESS_NULL);
+				setErrorMessage("Technical Error");
+				logger.error("Session  is null");
+				return false;
+			}
+		}
+		logger.debug("--------------- User Plans has been made as inactive ");
+		return true;
+	}
 }

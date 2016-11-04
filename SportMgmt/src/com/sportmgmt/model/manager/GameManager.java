@@ -1299,5 +1299,47 @@ public class GameManager {
 		logger.info("--------------- Returning gameWeekNumber: -------------"+gameWeekNumber);
 		return gameWeekNumber;
 	}
-
+	public static List<Timestamp> fetchEndDateListOfGameWeekFromToday()
+	{
+		List<Timestamp> endDateListOfGameWeekFromToday = null;
+		setErrorMessage("");
+		SessionFactory factory = HibernateSessionFactory.getSessionFacotry();
+		logger.debug("--------------- fetchEndDateListOfGameWeekFromToday ------------>");
+		if(factory == null)
+		{
+			setErrorCode(ErrorConstrant.SESS_FACT_NULL);
+			setErrorMessage("Technical Error");
+		}
+		else
+		{
+			Session session = factory.openSession();
+			if(session != null)
+			{
+				try
+				{
+					
+					SQLQuery query = session.createSQLQuery(QueryConstrant.FETCH_END_DATE_LIST_OF_GAME_WEEK_FROM_TODAY);
+					query.setParameter("date", new Date(System.currentTimeMillis()));
+					endDateListOfGameWeekFromToday =query.list();
+				}
+				catch(Exception ex)
+				{
+					logger.error("Exception fetch fetchEndDateListOfGameWeekFromToday: "+ex.getMessage());
+					setErrorMessage("Technical Error");
+					setErrorCode(ErrorConstrant.TRANSACTION_ERROR);
+				}
+				finally
+				{
+					session.close();
+				}
+			}
+			else
+			{
+				setErrorCode(ErrorConstrant.SESS_NULL);
+				setErrorMessage("Technical Error");
+			}
+		}
+		logger.info("--------------- Returning endDateListOfGameWeekFromToday: -------------"+endDateListOfGameWeekFromToday);
+		return endDateListOfGameWeekFromToday;
+	}
 }

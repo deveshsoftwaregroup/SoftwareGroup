@@ -26,6 +26,7 @@ import com.sportmgmt.controller.bean.User;
 import com.sportmgmt.model.manager.GameManager;
 import com.sportmgmt.model.manager.PlanManager;
 import com.sportmgmt.model.manager.UserManager;
+import com.sportmgmt.utility.common.LeaguePlanUtil;
 import com.sportmgmt.utility.common.MailUtility;
 import com.sportmgmt.utility.common.PropertyFileUtility;
 import com.sportmgmt.utility.constrant.ErrorConstrant;
@@ -312,6 +313,18 @@ public class UserAction {
 				 }
 				
 			}
+			/* Code start to fetch plan list */
+			String freeWildCardPlanId = LeaguePlanUtil.getFreeWildCardId(userId); 
+			if(freeWildCardPlanId ==null || freeWildCardPlanId.equals(""))
+			{
+				session.setAttribute("hasFreeWildCard", false);
+			}
+			else
+			{
+				session.setAttribute("hasFreeWildCard", true);
+				session.setAttribute("freeWildCardPlanId", freeWildCardPlanId);
+			}
+			/* Code end to fetch plan list */
 		 }
 		 else
 		 {

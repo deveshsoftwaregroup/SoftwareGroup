@@ -1681,7 +1681,7 @@
 		{
 			ajaxCall = false;
 		}
-		else if( planTypeVal == 0 && avialBalance < playerPrice)
+		else if(planTypeVal == 0 && avialBalance < playerPrice)
 		{
 			alert("Bank Account is less than player price");
 			ajaxCall = false;

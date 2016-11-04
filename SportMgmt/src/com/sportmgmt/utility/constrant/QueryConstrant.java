@@ -35,5 +35,6 @@ public static final String FETCH_START_GAME_WEEK = "select game_week_id,start_da
 public static final String FETCH_START_MATCH_TIME_OF_GAME_WEEK = "select start_time from MATCH_DETAIL where start_time = (select min(start_time) from MATCH_DETAIL where game_week_id = :gameWeekId)";
 public static final String FETCH_END_MATCH_TIME_OF_GAME_WEEK = "select start_time from MATCH_DETAIL where end_time = (select max(end_time) from MATCH_DETAIL where game_week_id = :gameWeekId)";
 public static final String FETCH_SORTED_GAME_WEEK = "select game_week_id from GAME_WEEK order by start_date";
-
+public static final String FETCH_END_DATE_LIST_OF_GAME_WEEK_FROM_TODAY = "select end_date from game_week where (end_date > :date  and start_date < :date ) or (start_date > :date) order by start_date";
+public static final String MAKE_USER_PLAN_INACTIVE = "update user_plan set is_active = 'N' where user_id = :userId";
 }
