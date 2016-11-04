@@ -698,7 +698,53 @@ public class PlanManager {
 		logger.debug("---------- Returning free wild card league plan Id: "+freeWildCardPlanId);
 		return freeWildCardPlanId;
 	}
-	
+	public static List<LeaguePlan> fetchNonFreeActivePlan()
+	{
+		setErrorMessage("");
+		List<LeaguePlan> purchableActivePlanList = new ArrayList<LeaguePlan>();
+		SessionFactory factory = HibernateSessionFactory.getSessionFacotry();
+		logger.debug("--------------- fetchFreeWildCardPlanId ------------>");
+		if(factory == null)
+		{
+			setErrorCode(ErrorConstrant.SESS_FACT_NULL);
+			setErrorMessage("Technical Error");
+		}
+		else
+		{
+			Session session = factory.openSession();
+			if(session != null)
+			{
+				try
+				{
+					Criteria cr = session.createCriteria(LeaguePlan.class);
+					cr.add(Restrictions.eq("isActive", SportConstrant.YES));
+					cr.add(Restrictions.eq("isFree", SportConstrant.NO));
+					purchableActivePlanList = cr.list();
+					if(purchableActivePlanList == null || purchableActivePlanList.size() ==0)
+					{
+						logger.debug(" ------- Active Pucrchable Wild card does not found--");
+					}
+				}
+				catch(Exception ex)
+				{
+					logger.error("Exception fetch free WildCard PlanId: "+ex.getMessage());
+					setErrorMessage("Technical Error");
+					setErrorCode(ErrorConstrant.TRANSACTION_ERROR);
+				}
+				finally
+				{
+					session.close();
+				}
+			}
+			else
+			{
+				setErrorCode(ErrorConstrant.SESS_NULL);
+				setErrorMessage("Technical Error");
+			}
+		}
+		logger.debug("---------- Returning purchable Plan List "+purchableActivePlanList);
+		return purchableActivePlanList;
+	}
 	public static boolean isWildCardPlanUsed(String wildCardPlanId,String userId)
 	{
 		setErrorMessage("");
@@ -781,7 +827,7 @@ public class PlanManager {
 					List results = cr.list();
 					if(results == null || results.size() ==0)
 					{
-						logger.debug(" ------- No Defult plan found ");
+						logger.debug(" ------- No Defult plan discount found ");
 					}
 					else
 					{

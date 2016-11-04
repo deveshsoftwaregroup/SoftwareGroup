@@ -1,6 +1,7 @@
 package com.sportmgmt.utility.common;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -72,5 +73,29 @@ public class LeaguePlanUtil {
 		logger.debug("---------- Activation for user: "+userId+" of plan: "+planId + " is : "+isDone);
 		return true;
 	}
-
+	
+	public static List<Map<String,String>> getPurchableWildCardList()
+	{
+		logger.debug("---------- Inside getPurchableWildCardList of Plan Util");
+		List<Map<String,String>> purchableWildCardList = new ArrayList<Map<String,String>>();
+		logger.debug("---------- Calling PlanManager.fetchNonFreeActivePlan()");
+		List<LeaguePlan> leaguePlanList = PlanManager.fetchNonFreeActivePlan();
+		logger.debug("---------------- leaguePlanList: "+leaguePlanList);
+		if(leaguePlanList != null && leaguePlanList.size() > 0)
+		{
+			for(Object leagePlanObj:leaguePlanList)
+			{
+				LeaguePlan leaguePlan = (LeaguePlan)leagePlanObj;
+				Map<String,String> planMap = new HashMap<String,String>();
+				planMap.put(leaguePlan.getPlanId().toString(), leaguePlan.getPlanAmount().toString());
+				purchableWildCardList.add(planMap);
+			}
+		}
+		logger.debug("----------------Returning  purchableWildCardList: "+purchableWildCardList);
+		return purchableWildCardList;
+	}
+	public static String getDefualtPlanDiscountId()
+	{
+		return PlanManager.fetchDefualtDiscount();
+	}
 }

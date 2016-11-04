@@ -324,6 +324,8 @@ public class UserAction {
 				session.setAttribute("hasFreeWildCard", true);
 				session.setAttribute("freeWildCardPlanId", freeWildCardPlanId);
 			}
+			session.setAttribute("planDiscountId", LeaguePlanUtil.getDefualtPlanDiscountId());
+			session.setAttribute("purchableWildCardList", LeaguePlanUtil.getPurchableWildCardList());
 			/* Code end to fetch plan list */
 		 }
 		 else
