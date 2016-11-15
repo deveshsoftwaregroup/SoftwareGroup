@@ -73,7 +73,6 @@ public class LeaguePlanUtil {
 		logger.debug("---------- Activation for user: "+userId+" of plan: "+planId + " is : "+isDone);
 		return true;
 	}
-	
 	public static List<Map<String,String>> getPurchableWildCardList()
 	{
 		logger.debug("---------- Inside getPurchableWildCardList of Plan Util");

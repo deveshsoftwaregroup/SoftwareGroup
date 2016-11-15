@@ -823,7 +823,7 @@ public class PlanManager {
 					cr.add(Restrictions.eq("isActive", SportConstrant.YES));
 					cr.add(Restrictions.eq("planId", 0));
 					cr.add(Restrictions.eq("userId", 0));
-					cr.add(Restrictions.eq("planDiscountValue", 0));
+					cr.add(Restrictions.eq("planDiscountValue", (double)0));
 					List results = cr.list();
 					if(results == null || results.size() ==0)
 					{

@@ -154,7 +154,7 @@ public class UserAction {
 	 if(logonPassword == null || logonPassword.equals(SportConstrant.NULL))
 	 {
 		 resultMap.put("errorCode", ErrorConstrant.EMPTY_PASS);
-		 resultMap.put("errorMessage", "Password Can't be black");
+		 resultMap.put("errorMessage", "Password Can't be blank");
 	 }
 	 else
 	 {
@@ -318,10 +318,12 @@ public class UserAction {
 			if(freeWildCardPlanId ==null || freeWildCardPlanId.equals(""))
 			{
 				session.setAttribute("hasFreeWildCard", false);
+				logger.debug("------------------- hasFreeWildCard: false");
 			}
 			else
 			{
 				session.setAttribute("hasFreeWildCard", true);
+				logger.debug("------------------- hasFreeWildCard: true");
 				session.setAttribute("freeWildCardPlanId", freeWildCardPlanId);
 			}
 			session.setAttribute("planDiscountId", LeaguePlanUtil.getDefualtPlanDiscountId());
@@ -554,5 +556,36 @@ public class UserAction {
 		session.invalidate();
 		logger.debug("---------- Redirecting to : LeagueHome");
 		return new ModelAndView("redirect:/mvc/LeagueHome");
+	}
+	@RequestMapping(value = "activateWildCard", method = RequestMethod.GET)
+	public String activateWildCard(ModelMap modelMap,@RequestParam Map<String,String> wildCardMap, HttpServletRequest request)
+	{
+		logger.debug("---------- Inside activateWildCard ----------");
+		if(wildCardMap.get("planId") != null && !wildCardMap.get("planId").equals(""))
+		{
+			modelMap.put("isSuccess", false);
+			modelMap.put("message", "Plan Id is required");
+			logger.debug("---------- Plan Id is not available ----------");
+		}
+		if(wildCardMap.get("userId") != null && !wildCardMap.get("userId").equals(""))
+		{
+			modelMap.put("isSuccess", false);
+			modelMap.put("message", "userId is required");
+			logger.debug("---------- User Id is not available ----------");
+		}
+		if(modelMap == null || modelMap.size() == 0)
+		{
+			if(LeaguePlanUtil.activatePlanForUser(wildCardMap.get("planId"), wildCardMap.get("userId"), null, null))
+			{
+				modelMap.put("isSuccess", true);
+				modelMap.put("message", "Plan is activated");
+			}
+			else
+			{
+				modelMap.put("isSuccess", false);
+				modelMap.put("message", "Plan is not activated");
+			}
+		}
+		return SportConstrant.USER_PLAN_PAGE;	
 	}
 }
