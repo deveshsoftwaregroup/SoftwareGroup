@@ -60,7 +60,7 @@ public class LeaguePlanUtil {
 			int totalNumberOfDays = leaguePlan.getTotalNoOfDays();
 			List<Timestamp> endDateList = GameManager.fetchEndDateListOfGameWeekFromToday();
 			Timestamp endDate = endDateList.get(totalNumberOfDays-1);
-			userPlanMap.put("startDate", new Date(System.currentTimeMillis()));
+			userPlanMap.put("startDate", new java.sql.Date(System.currentTimeMillis()));
 			userPlanMap.put("endDate", endDate);
 		}
 		boolean isDone = false;

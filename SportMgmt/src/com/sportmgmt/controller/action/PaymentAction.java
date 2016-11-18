@@ -16,12 +16,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.sportmgmt.controller.bean.ActivePlan;
 import com.sportmgmt.controller.bean.User;
 import com.sportmgmt.model.entity.UserPlan;
 import com.sportmgmt.model.manager.GameManager;
 import com.sportmgmt.model.manager.PlanManager;
 import com.sportmgmt.model.manager.UserManager;
 import com.sportmgmt.utility.common.GenerateHashCode;
+import com.sportmgmt.utility.common.LeaguePlanUtil;
 import com.sportmgmt.utility.common.MailUtility;
 import com.sportmgmt.utility.common.PropertyFileUtility;
 import com.sportmgmt.utility.constrant.ErrorConstrant;
@@ -187,12 +189,41 @@ public class PaymentAction {
 		return SportConstrant.MAKE_PAYMENT_ERROR_PAGE;
 	}
 	@RequestMapping(value = "SuccessView", method = RequestMethod.POST)
-	public String suceess(ModelMap modeMap,@RequestParam Map<String,String> paymentMap,HttpServletRequest request)
+	public String suceess(ModelMap modelMap,@RequestParam Map<String,String> paymentMap,HttpServletRequest request)
 	{
 		logger.debug("------Response From Payment Gateway  "+paymentMap);
 		boolean updateTrasaction = PlanManager.updateTransaction(paymentMap);
 		logger.debug("-------------------- Update Transaction is true: "+updateTrasaction);
-		modeMap.addAllAttributes(paymentMap);
+		if(updateTrasaction)
+		{
+			HttpSession session = request.getSession();
+			User user =(User) session.getAttribute("user");
+			if(LeaguePlanUtil.activatePlanForUser(PlanManager.getLeaguePlanId(), (String)session.getAttribute("userId"), PlanManager.getPlanDiscountId(), paymentMap.get("txnid")))
+			{
+				modelMap.put("isSuccess", true);
+				modelMap.put("message", "Plan is activated");
+				ActivePlan activePlan = PlanManager.getActivePlans(String.valueOf(user.getUserId()));
+				 if(activePlan == null)
+				 {
+					 logger.debug("---------- Setting User has not active Plan");
+					 user.setHasActivePlan(false);
+				 }
+				 else
+				 {
+					 logger.debug("---------- Setting User has active Plan");
+					 user.setHasActivePlan(true);
+					 user.setActivePlan(activePlan);
+					 logger.debug(activePlan);
+				 }
+				
+			}
+			else
+			{
+				modelMap.put("isSuccess", false);
+				modelMap.put("message", "Plan is not activated");
+			}
+		}
+		modelMap.addAllAttributes(paymentMap);
 		return  SportConstrant.PAYMENT_RESULT_PAGE;
 	}
 	@RequestMapping(value = "FailureView", method = RequestMethod.POST)

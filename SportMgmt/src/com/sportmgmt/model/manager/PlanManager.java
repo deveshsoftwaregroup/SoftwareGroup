@@ -45,6 +45,22 @@ public class PlanManager {
 		PlanManager.errorMessage = errorMessage;
 	}
 	private static SessionFactory factory = null;
+	private static String leaguePlanId;
+	private static String planDiscountId;
+	
+	public static String getLeaguePlanId() {
+		return leaguePlanId;
+	}
+	public static void setLeaguePlanId(String leaguePlanId) {
+		PlanManager.leaguePlanId = leaguePlanId;
+	}
+	public static String getPlanDiscountId() {
+		return planDiscountId;
+	}
+	public static void setPlanDiscountId(String planDiscountId) {
+		PlanManager.planDiscountId = planDiscountId;
+	}
+
 	static
 	{
 		try
@@ -263,6 +279,9 @@ public class PlanManager {
 						if(paymentDetails.get("bank_ref_num") != null && !paymentDetails.get("bank_ref_num").equals(""))
 						userPayment.setBankReferenceNo(paymentDetails.get("bank_ref_num"));
 						
+						setLeaguePlanId(String.valueOf(userPayment.getPlan().getPlanId()));
+						
+						setPlanDiscountId(String.valueOf(userPayment.getPlanDiscount().getPlanDiscountId())); 
 						
 						session.update(userPayment);
 						session.beginTransaction().commit(); 
@@ -876,18 +895,15 @@ public class PlanManager {
 				{
 					logger.debug("----------- Started to make enty in user plan -----");
 					UserPlan userPlan = new UserPlan();
-					LeaguePlan leaguePlan =  new LeaguePlan();
-					leaguePlan.setPlanId(new Integer((String)userPlanMap.get("planId")));
+					LeaguePlan leaguePlan = (LeaguePlan)session.load(LeaguePlan.class,new Integer((String)userPlanMap.get("planId")));
 					userPlan.setPlan(leaguePlan);
 					
-					User user = new User();
-					user.setUserId(new Integer((String)userPlanMap.get("userId")));
+					User user = (User)session.load(User.class,new Integer((String)userPlanMap.get("userId")));
 					userPlan.setUser(user);
 					
 					if(userPlanMap.get("planDiscountId") != null && !userPlanMap.get("planDiscountId").equals(""))
 					{
-						PlanDiscount planDiscount = new PlanDiscount();
-						planDiscount.setPlanDiscountId(new Integer((String)userPlanMap.get("planDiscountId")));
+						PlanDiscount planDiscount = (PlanDiscount)session.load(PlanDiscount.class,new Integer((String)userPlanMap.get("planDiscountId")));
 						userPlan.setPlanDiscount(planDiscount);
 					}
 					if(userPlanMap.get("transactionId") != null && !userPlanMap.get("transactionId").equals(""))

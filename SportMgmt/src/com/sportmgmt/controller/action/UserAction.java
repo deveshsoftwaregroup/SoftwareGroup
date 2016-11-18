@@ -561,13 +561,13 @@ public class UserAction {
 	public String activateWildCard(ModelMap modelMap,@RequestParam Map<String,String> wildCardMap, HttpServletRequest request)
 	{
 		logger.debug("---------- Inside activateWildCard ----------");
-		if(wildCardMap.get("planId") != null && !wildCardMap.get("planId").equals(""))
+		if(wildCardMap.get("planId") == null || wildCardMap.get("planId").equals(""))
 		{
 			modelMap.put("isSuccess", false);
 			modelMap.put("message", "Plan Id is required");
 			logger.debug("---------- Plan Id is not available ----------");
 		}
-		if(wildCardMap.get("userId") != null && !wildCardMap.get("userId").equals(""))
+		if(wildCardMap.get("userId") == null || wildCardMap.get("userId").equals(""))
 		{
 			modelMap.put("isSuccess", false);
 			modelMap.put("message", "userId is required");
@@ -579,6 +579,22 @@ public class UserAction {
 			{
 				modelMap.put("isSuccess", true);
 				modelMap.put("message", "Plan is activated");
+				HttpSession session = request.getSession();
+				User user =(User) session.getAttribute("user");
+				ActivePlan activePlan = PlanManager.getActivePlans(String.valueOf(user.getUserId()));
+				 if(activePlan == null)
+				 {
+					 logger.debug("---------- Setting User has not active Plan");
+					 user.setHasActivePlan(false);
+				 }
+				 else
+				 {
+					 logger.debug("---------- Setting User has active Plan");
+					 user.setHasActivePlan(true);
+					 user.setActivePlan(activePlan);
+					 logger.debug(activePlan);
+				 }
+				
 			}
 			else
 			{
