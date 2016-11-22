@@ -75,7 +75,8 @@
                                 <p>Free Transfer: 1 Available/Used</p>
                         	 
                                 <p>Wild Card: 1 Available/Used
-                                <input type="button" class="link" value="Use Wild Card" data-toggle="modal" data-target="#myModal-1" onclick="updateWildCard('${sessionScope.user.userId}');">
+                                <c:if test="${sessionScope.hasFreeWildCard}">
+                                <input type="button" class="link" value="Use Wild Card" data-toggle="modal" data-target="#myModal-1">
                                 </p>
                                   <div id="myModal-1" class="modal fade" role="dialog">
 								  <div class="modal-dialog">
@@ -87,18 +88,18 @@
 								      <div class="modal-body buywildcard">
 										<h2>Are you Sure</h2>
 										<p style="text-align:center">
-											<a class="button">Yes</a> &nbsp;
-											<a class="button no-btn">No</a>
+											<a class="button" href="/user/activateWildCard/userId=${sessionScope.user.userId}&planId=${sessionScope.freeWildCardPlanId}">Yes</a> &nbsp;
+											<a class="button no-btn" data-dismiss="modal">No</a>
 										</p>
 								      </div> 
 								    </div>
 								  </div>
 								</div>	
-                        	 
+								</c:if>
                                 <p>Want unlimited transfer? : 
-                                <input type="button" class="link" value="Buy Wildcard" data-toggle="modal" data-target="#myModal" onclick="buyWildCard('${sessionScope.user.userId}');"> 
+                                <input type="button" class="link" value="Buy Wildcard" data-toggle="modal" data-target="#paymentModel" > 
                                 </p>
-                                <div id="myModal" class="modal fade" role="dialog">
+                                <div id="paymentModel" class="modal fade" role="dialog">
 									  <div class="modal-dialog modal-lg">
 									
 									    <!-- Modal content-->
@@ -114,12 +115,31 @@
 													  <tr>
 														<th>Product Name</th>
 														<th>Product Price</th>
-														<th>Product Quantity</th>
+														<th>Discount Code</th>
 														<th>Total Price</th>
+														<th>Purchase It</th>
 													  </tr>
 													</thead>
 													<tbody>
+													<c:forEach var="wildCard" items="${sessionScope.purchableWildCardList}" >
+													  <form  id="paymentForm_${wildCard.planId}" action="/SportMgmt/mvc/payment/MakePayment" method="post">
+													  <input type="hidden" name="leaguePlanId" value="${wildCard.planId}"/>
+													  <input type="hidden" name="planDiscountId" value="${sessionScope.planDiscountId}"/>
+													  <input type="hidden" name="amount" value="${wildCard.price}"/>
+													  </form>
 													  <tr>
+														<td>${wildCard.name}</td>
+														<td>${wildCard.price}</td>
+														<td>
+														<input id="paymentDiscountCode_${wildCard.planId}" type="text" name="discount"value=""/>
+														</td>
+														<td>${wildCard.price}</td>
+														<td>
+									        			<button id="paymentButton_${wildCard.planId}" type="button" class="button" >Buy Now</button>
+									     				</td>
+													  </tr>
+													  </c:forEach>
+													 <%--  <tr>
 														<td>Abcdef ghijk</td>
 														<td>Rs. 200</td>
 														<td>
@@ -146,27 +166,10 @@
 															</select>
 														</td>
 														<td>Rs. 600</td>
-													  </tr>
-													  <tr>
-														<td>Abcdef ghijk</td>
-														<td>Rs. 200</td>
-														<td>
-															<select>
-																<option>1</option>
-																<option>2</option>
-																<option>3</option>
-																<option>4</option>
-																<option>5</option>
-															</select>
-														</td>
-														<td>Rs. 600</td>
-													  </tr>
+													  </tr> --%>
 													</tbody>
 												  </table>
 											</div>
-									      </div>
-									      <div class="modal-footer">
-									        <button type="button" class="button" data-dismiss="modal">Checkout</button>
 									      </div>
 									    </div>
 									
@@ -1552,6 +1555,15 @@
 		        $('.ism-element-row.ism-element-row--pitch:nth-child(4)').find('.ismjs-select').first().replaceWith( forward );
 			 }
 
+		});
+		
+		$("#paymentModel").find("button").click(function(){
+			var planId =  $(this).attr("id").split("_")[1];
+			console.log("Plan Id: "+planId);
+			var paymentForm = $("#paymentForm_"+planId);
+			paymentForm.submit();
+			//console.log("paymentForm: input length "+paymentForm.elements.length);
+			//console.log("amount Object: "+paymentForm.elements['amount']);
 		});
 	});
 	 $('#ismjs-element-filter').change(function(){

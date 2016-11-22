@@ -10,6 +10,7 @@ import java.util.Map;
 import org.apache.log4j.Logger;
 
 import com.sportmgmt.controller.action.GameAction;
+import com.sportmgmt.controller.bean.WildCard;
 import com.sportmgmt.model.entity.LeaguePlan;
 import com.sportmgmt.model.manager.GameManager;
 import com.sportmgmt.model.manager.PlanManager;
@@ -73,10 +74,10 @@ public class LeaguePlanUtil {
 		logger.debug("---------- Activation for user: "+userId+" of plan: "+planId + " is : "+isDone);
 		return true;
 	}
-	public static List<Map<String,String>> getPurchableWildCardList()
+	public static List<WildCard> getPurchableWildCardList()
 	{
 		logger.debug("---------- Inside getPurchableWildCardList of Plan Util");
-		List<Map<String,String>> purchableWildCardList = new ArrayList<Map<String,String>>();
+		List<WildCard> purchableWildCardList = new ArrayList<WildCard>();
 		logger.debug("---------- Calling PlanManager.fetchNonFreeActivePlan()");
 		List<LeaguePlan> leaguePlanList = PlanManager.fetchNonFreeActivePlan();
 		logger.debug("---------------- leaguePlanList: "+leaguePlanList);
@@ -85,9 +86,14 @@ public class LeaguePlanUtil {
 			for(Object leagePlanObj:leaguePlanList)
 			{
 				LeaguePlan leaguePlan = (LeaguePlan)leagePlanObj;
-				Map<String,String> planMap = new HashMap<String,String>();
-				planMap.put(leaguePlan.getPlanId().toString(), leaguePlan.getPlanAmount().toString());
-				purchableWildCardList.add(planMap);
+				WildCard wildCard = new WildCard();
+				wildCard.setPlanId(leaguePlan.getPlanId().toString());
+				wildCard.setPrice(leaguePlan.getPlanAmount().toString());
+				if(leaguePlan.getTotalNoOfDays() == 1)
+				wildCard.setName("Wild Card for "+leaguePlan.getTotalNoOfDays()+" gameweek");
+				else
+				wildCard.setName("Wild Card for "+leaguePlan.getTotalNoOfDays()+" gameweeks");	
+				purchableWildCardList.add(wildCard);
 			}
 		}
 		logger.debug("----------------Returning  purchableWildCardList: "+purchableWildCardList);

@@ -48,7 +48,7 @@ public class PaymentAction {
 	public void setPropFileUtility(PropertyFileUtility propFileUtility) {
 		this.propFileUtility = propFileUtility;
 	}
-	@RequestMapping(value = "MakePayment", method = RequestMethod.GET)
+	@RequestMapping(value = "MakePayment", method = RequestMethod.POST)
 	public String makePayment(ModelMap modeMap,@RequestParam Map<String,String> paymentMap,HttpServletRequest request)
 	{
 		boolean isFieldsAvail = true;
