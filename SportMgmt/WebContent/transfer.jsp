@@ -88,7 +88,7 @@
 								      <div class="modal-body buywildcard">
 										<h2>Are you Sure</h2>
 										<p style="text-align:center">
-											<a class="button" href="/user/activateWildCard/userId=${sessionScope.user.userId}&planId=${sessionScope.freeWildCardPlanId}">Yes</a> &nbsp;
+											<a class="button" href="activateWildCard?userId=${sessionScope.user.userId}&planId=${sessionScope.freeWildCardPlanId}">Yes</a> &nbsp;
 											<a class="button no-btn" data-dismiss="modal">No</a>
 										</p>
 								      </div> 
@@ -123,15 +123,15 @@
 													<tbody>
 													<c:forEach var="wildCard" items="${sessionScope.purchableWildCardList}" >
 													  <form  id="paymentForm_${wildCard.planId}" action="/SportMgmt/mvc/payment/MakePayment" method="post">
-													  <input type="hidden" name="leaguePlanId" value="${wildCard.planId}"/>
-													  <input type="hidden" name="planDiscountId" value="${sessionScope.planDiscountId}"/>
-													  <input type="hidden" name="amount" value="${wildCard.price}"/>
+													  <input type="hidden" name="leaguePlanId" value="${wildCard.planId}"></input>
+													  <input type="hidden" name="planDiscountId" value="${sessionScope.planDiscountId}"></input>
+													  <input type="hidden" name="amount" value="${wildCard.price}"></input>
 													  </form>
 													  <tr>
 														<td>${wildCard.name}</td>
 														<td>${wildCard.price}</td>
 														<td>
-														<input id="paymentDiscountCode_${wildCard.planId}" type="text" name="discount"value=""/>
+														<input id="paymentDiscountCode_${wildCard.planId}" type="text" name="discount" value=""></input>
 														</td>
 														<td>${wildCard.price}</td>
 														<td>
@@ -1012,7 +1012,7 @@
         
         <div id="ismr-side" class="ism-sidebar">
             <div>
-            <c:if test="${sessionScope.user.hasActivePlan}">
+        <c:if test="${sessionScope.user.hasActivePlan}">
         <div class="remain_coin">Remaining Coins : <span id="planBalanceDiv">${sessionScope.user.activePlan.balance}</span></div>
         </c:if>
                 <section class="ism-bordered ism-bordered--primary">
@@ -1664,6 +1664,9 @@
      	<c:when test="${isUnderDeadline}">
      	alert("You r under deadline");
      	</c:when>
+     	<c:when test="${not sessionScope.user.hasActivePlan}">
+     	alert("You don't have any plan active");
+     	</c:when>
      	<c:otherwise>
      	
     	 var playerType = '';
@@ -1689,6 +1692,8 @@
 		var avialBalance = parseInt($('#planBalanceDiv').text());
 		var planTypeVal =  '${sessionScope.user.activePlan.planTypeVal}'; /* Denoted plan is of unlimitted value (Days wise or price wise)*/
 		console.log('planTypeVal: '+planTypeVal+' , avialBalance: '+avialBalance);
+		var planTypeVal =  '${sessionScope.user.activePlan.planTypeVal}';
+		var hasActivePlan = '${sessionScope.user.hasActivePlan}';
 		if(playerType == '')
 		{
 			ajaxCall = false;
