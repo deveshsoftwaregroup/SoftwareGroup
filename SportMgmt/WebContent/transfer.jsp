@@ -1333,6 +1333,7 @@
    var playerListJson = null;
    var clubListJson = null;
    var userGameJson = null;
+   var purchableWildCardJson = null;
    </script>
    	<c:if test="${not empty sessionScope.gameDetailsJson}">
    	<script type="text/javascript">
@@ -1352,6 +1353,12 @@
 	<c:if test="${not empty sessionScope.userGameJson}">
   	<script type="text/javascript">
   		userGameJson = ${sessionScope.userGameJson};
+		</script>
+	</c:if>
+	<c:if test="${not empty sessionScope.purchableWildCardJson}">
+  	<script type="text/javascript">
+  	purchableWildCardJson = ${sessionScope.purchableWildCardJson};
+  	var planDiscountId = '${sessionScope.planDiscountId}';
 		</script>
 	</c:if>
 	<script type="text/javascript">
@@ -1560,8 +1567,40 @@
 		$("#paymentModel").find("button").click(function(){
 			var planId =  $(this).attr("id").split("_")[1];
 			console.log("Plan Id: "+planId);
-			var paymentForm = $("#paymentForm_"+planId);
-			paymentForm.submit();
+			//var paymentForm = $("#paymentForm_"+planId);
+			var paymentForm = document.createElement("form");
+		    var plan = document.createElement("input"); 
+		    var discount = document.createElement("input");
+		    var amount = document.createElement("input");
+		
+		    paymentForm.method = "POST";
+		    paymentForm.action = "/SportMgmt/mvc/payment/MakePayment";   
+		
+		    plan.value=planId;
+		    plan.name="leaguePlanId";
+		    paymentForm.appendChild(plan);  
+		
+		    discount.value=planDiscountId;
+		    discount.name="planDiscountId";
+		    paymentForm.appendChild(discount);
+		    amount.name = "amount";
+		    if(purchableWildCardJson != null && typeof purchableWildCardJson != 'undefined')
+		    {
+		    	console.log("Going ot iterate purchableWildCardJson");
+		    	for(var i = 0;i<purchableWildCardJson.length;i++)
+			    {
+			    	console.log("iterating purchableWildCardJson: planId: "+purchableWildCardJson[i].planId);
+			    	if(purchableWildCardJson[i].planId == planId)
+			    	{
+			    		console.log("gettting amount :: "+purchableWildCardJson[i].amount);
+			    		amount.value = purchableWildCardJson[i].price;
+			    		paymentForm.appendChild(amount);  
+			    		document.body.appendChild(paymentForm);
+			 			paymentForm.submit();
+			    	}
+			    }
+		    }
+		    
 			//console.log("paymentForm: input length "+paymentForm.elements.length);
 			//console.log("amount Object: "+paymentForm.elements['amount']);
 		});

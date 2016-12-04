@@ -23,6 +23,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ravij.crypto.EncodeDecoder;
 import com.sportmgmt.controller.bean.ActivePlan;
 import com.sportmgmt.controller.bean.User;
+import com.sportmgmt.controller.bean.WildCard;
 import com.sportmgmt.model.manager.GameManager;
 import com.sportmgmt.model.manager.PlanManager;
 import com.sportmgmt.model.manager.UserManager;
@@ -327,7 +328,19 @@ public class UserAction {
 				session.setAttribute("freeWildCardPlanId", freeWildCardPlanId);
 			}
 			session.setAttribute("planDiscountId", LeaguePlanUtil.getDefualtPlanDiscountId());
-			session.setAttribute("purchableWildCardList", LeaguePlanUtil.getPurchableWildCardList());
+			List<WildCard> purchableWildCardList = LeaguePlanUtil.getPurchableWildCardList();
+			session.setAttribute("purchableWildCardList", purchableWildCardList);
+			
+			try
+			{
+				ObjectMapper mapperObj = new ObjectMapper();
+				String purchableWildCardJson = mapperObj.writeValueAsString(purchableWildCardList);
+				session.setAttribute("purchableWildCardJson", purchableWildCardJson);
+			}
+			catch(Exception ex)
+			 {
+				 logger.error("---------- Error in parsing map to json: "+ex);
+			 }
 			/* Code end to fetch plan list */
 		 }
 		 else
