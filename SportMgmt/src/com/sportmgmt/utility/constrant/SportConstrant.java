@@ -29,7 +29,8 @@ public class SportConstrant {
 	public final static String FORGOT_PASSWORD_EMAIL_SUB = "forgotPasswordEmailSubject";
 	public final static String USER_VER_URL = "userVerifyURL";
 	public final static String USER_LANDING_PAGE = "userLanding";
-	public final static String USER_LANDING_REDIRECT_PAGE = "redirect:/mvc/user/UserLanding";
+	public final static String USER_LANDING_HOME_PAGE = "index";
+	public final static String USER_LANDING_REDIRECT_PAGE = "redirect:/mvc/user/UserLandingHome";
 	public final static String USER_UPDATE_PAGE = "userUpdate";
 	public final static String CHANGE_PASSWORD_PAGE = "changePassword";
 	public final static String MY_TEAM_PAGE = "myTeam";

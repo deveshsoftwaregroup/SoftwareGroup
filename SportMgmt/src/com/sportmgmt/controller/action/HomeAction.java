@@ -45,7 +45,7 @@ public class HomeAction {
 	@RequestMapping(value = "FAQView", method = RequestMethod.GET)
 	public  String fAQView(ModelMap modeMap)
 	{
-		logger.debug("---------- IN FAQView to : ");
+		logger.debug("---------- IN FAQView");
 		return SportConstrant.FAQ_PAGE;
 	}
 	@RequestMapping(value = "RulesView", method = RequestMethod.GET)

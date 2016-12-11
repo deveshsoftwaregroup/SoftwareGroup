@@ -208,45 +208,7 @@
  <div class="league_header">
  
     <div class="ism-header">
-    
-  <div class="top-banner">
-	<div class="top-ads">
-		<div class='visible' style="background: #003c0d;">
-			<p>The12thman</p>
-			<ul>
-			  <li>Home</li>
-			  <li>Sports At One Place</li>
-			</ul>
-		</div>
-		</div>
-	<div class="top-ads">
-		<div class='visible'>
-			<p>The12thman</p>
-			<ul>
-			  <li>Times</li>
-			  <li>Blog for Sports</li>
-			</ul>
-		</div>
-	</div>
-	<div class="top-ads">
-		<div class='visible' style="background: #00153c;">
-			<p>The12thman</p>
-			<ul>
-			  <li>Shop</li>
-			  <li>Sports E-Comm</li>
-			</ul>
-		</div>
-	</div>
-	<div class="top-ads">
-		<div class='visible' style="background: #003c0d;">
-			<p>The12thman</p>
-			<ul>
-			  <li>Fantasy League</li>
-			  <li>Platform for Sport Lovers</li>
-			</ul>
-		</div>
-	</div>
-</div> 
+
         <div class="wrapper">
             <div class="ism-game-header-wrap">
                 <div class="ism-game-header">

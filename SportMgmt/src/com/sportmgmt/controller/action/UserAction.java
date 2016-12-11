@@ -561,6 +561,12 @@ public class UserAction {
 		logger.debug("---------- Forwardng to : "+SportConstrant.USER_LANDING_PAGE);
 		 return SportConstrant.USER_LANDING_PAGE;
 	}
+	@RequestMapping(value = "UserLandingHome", method = RequestMethod.GET)
+	public  String userLandingHome(ModelMap modeMap,HttpServletRequest request)
+	{
+		logger.debug("---------- Forwardng to : "+SportConstrant.USER_LANDING_PAGE);
+		 return SportConstrant.USER_LANDING_HOME_PAGE;
+	}
 	@RequestMapping(value = "Logout", method = RequestMethod.GET)
 	public  ModelAndView logout(ModelMap modeMap,HttpServletRequest request)
 	{
