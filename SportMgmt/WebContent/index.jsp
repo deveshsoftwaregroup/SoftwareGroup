@@ -63,7 +63,11 @@
         <div class="latest_newsarea"> <span>Ongoing/Upcoming Leagues</span>
           <ul id="ticker01" class="news_sticker">
             <li><a href="#"><img src="/SportMgmt/images/news_thumbnail3.jpg" alt="">Fantasy League</a></li>
-            <li><a href="#"><img src="/SportMgmt/images/news_thumbnail3.jpg" alt="">Double your money league</a></li>            
+            <li><a href="http://www.google.co.in" target="_blank"><img src="/SportMgmt/images/news_thumbnail3.jpg" alt="">Double your money league</a></li>    
+            <li><a href="#"><img src="/SportMgmt/images/news_thumbnail3.jpg" alt="">Predict 11</a></li>  
+            <li><a href="#"><img src="" alt=""></a></li>  
+            <li><a href="#"><img src="" alt=""></a></li>  
+            <li><a href="#"><img src="" alt=""></a></li>                  
           </ul>
           <div class="social_area">
             <ul class="social_nav">
@@ -73,6 +77,23 @@
               <li class="youtube"><a href="#"></a></li>
             </ul>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="newsSection">
+    <div class="row">
+      <div class="col-lg-12 col-md-12">
+        <div class="latest_newsarea"> <span>Our Brands</span>
+          <ul id="ticker01" class="news_sticker">
+            <li><a href="#"><img src="/SportMgmt/images/news_thumbnail3.jpg" alt=""></a></li>
+            <li><a href="http://www.google.co.in" target="_blank"><img src="/SportMgmt/images/news_thumbnail3.jpg" alt=""></a></li>    
+            <li><a href="#"><img src="/SportMgmt/images/news_thumbnail3.jpg" alt=""></a></li>  
+            <li><a href="#"><img src="/SportMgmt/images/news_thumbnail2.jpg" alt=""></a></li>  
+            <li><a href="#"><img src="/SportMgmt/images/news_thumbnail1.jpg" alt=""></a></li>  
+            <li><a href="#"><img src="/SportMgmt/images/news_thumbnail0.jpg" alt=""></a></li>                  
+          </ul>
+          
         </div>
       </div>
     </div>
@@ -220,6 +241,7 @@ Squawka's new free-to-play weekly MatchBoss game is now live, with a £50,000 jac
 <script>
 	function redirectToLeague()
 	{
-		window.open("http://localhost:7979/SportMgmt/mvc/user/UserLanding?isLogined=true");
+		window.location="UserLanding";
+		//window.open("http://localhost:7979/SportMgmt/mvc/user/UserLanding?isLogined=true");
 	}
 </script>
