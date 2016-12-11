@@ -9651,7 +9651,7 @@ margin-left:auto;
 margin-right:auto;
 overflow:visible;
 background:rgba(0,0,0,0.8);
-border-top: solid 5px #a4e800;
+border-top: solid 5px #3F51B5;
 position: relative;
 }
 
@@ -9929,7 +9929,7 @@ margin-right:.5rem
 .ism .ism-nav__list .ism-nav__list__item>.ism-nav__tab {
 position:relative;
 background-color:#0a0a0a;
-color:#cecece;
+color:#2199e8;
     border: 1px solid #6b6b6b;
     border-bottom: 0px;
 }
@@ -9939,9 +9939,9 @@ background-color:#f1f1f1;
 }
 
 .ism .ism-nav__list .ism-nav__list__item>.ism-nav__tab.is-active, .ism .ism-nav__list .ism-nav__list__item>.ism-nav__tab:hover, .ism .ism-nav__list .ism-nav__list__item>.ism-nav__tab:focus {
-    background-color: #a4e800;
-	color:#000;
-	border-color:#fff;
+    background-color: #3F51B5;
+	color: #fff;
+	border-color: #7483D8;
 }
 
 .ism .ism-nav__list .ism-nav__list__item>.ism-nav__tab[aria-selected='true']:focus {
