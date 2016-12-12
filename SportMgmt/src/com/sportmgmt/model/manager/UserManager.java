@@ -75,7 +75,7 @@ public class UserManager {
 						user.setCreatedDate(new Date(System.currentTimeMillis()));
 						user.setRegisterDate(new Date(System.currentTimeMillis()));
 						user.setUserType("R");
-						user.setStatus("I");
+						//user.setStatus("I");
 					}
 					if(userMap.get("logonId") != null && !userMap.get("logonId").equals(""))
 					{
