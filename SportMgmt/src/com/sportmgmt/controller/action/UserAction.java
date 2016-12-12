@@ -108,7 +108,7 @@ public class UserAction {
 				modeMap.put("message","You are registered");
 				PlanManager.addDefaultPlanToUser(UserManager.getUserId());
 				logger.debug("----------- start to send mail------");
-				try
+				/*try
 				{
 					Map<String,Object> mailMap = new java.util.HashMap<String,Object>();
 					
@@ -125,7 +125,7 @@ public class UserAction {
 				catch (Exception ex)
 				{
 					logger.error("----------- Excepton in Sending Mail ----------"+ex);
-				}
+				}*/
 			}
 			else
 			{
