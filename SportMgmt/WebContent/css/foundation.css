@@ -4410,3 +4410,12 @@ button.close {
     width: 900px;
   }
 }
+/* .scroll-tbl thead {
+    position: absolute;
+    width: 100%;
+} */
+.ism .scroll-tbl .ism-table--el__primary {
+    position: relative;
+    text-align: left;
+    width: 61%;
+}

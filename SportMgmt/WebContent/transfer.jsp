@@ -13,12 +13,18 @@
     <link rel="stylesheet" type="text/css" href="/SportMgmt/css/258578334140.css"> 
     
     <style>
-    .addPlayer a{ color:#ed3a28; font-size: 18px; padding: 5px;}
+    .addPlayer a{ color:#ed3a28; font-size: 18px;padding: 5px 4px;}
     .removePlayerIcon{ background: #de5e00;
     color: #fff !important;
     padding: 2px 5px;
     font-size: 12px;
-    font-weight: bold;}
+    font-weight: bold;
+    }
+    .ism-table--el__status.text-center.addPlayer {
+    padding-left: .2rem;
+    padding-right: .2rem;
+    text-align: center;
+}
     /*  home  page */
 .ism-game-header h1 a{ color:#fff;}
 #ajaxloader {
@@ -804,13 +810,15 @@
                                                     <thead>
                                                         <tr class="ism-table__divider ism-el-type ism-el-type--1">
                                                             <th class="ism-table--squad__status"></th>
-                                                            <th class="ism-table--squad__name">Goalkeepers</th>
+                                                            <th class="ism-table--squad__name">Goalkeeperss</th>
                                                             <th class="ism-table--squad__price"><abbr title="Price in Coins">Coins</abbr></th>
                                                             <th class="ism-table--squad__tsb"><abbr title="Teams selected by %">SB</abbr></th>
                                                             <th class="ism-table--squad__pts-tot"><abbr title="Total points">TP</abbr></th>
                                                             <th class="ism-table--squad__fixture"><abbr title="Fixture next Gameweek">FIX</abbr></th>
                                                         </tr>
                                                     </thead>
+                                                    </table>
+                                                    <table class="ism-table ism-table--el ism-table--squad">
                                                     <tbody>
                                                         <tr>
 
@@ -1114,8 +1122,8 @@
     <p class="ism-elements-shown"><strong class="ism-elements-shown__num">${fn:length(sessionScope.playerList)}</strong> players shown</p>
 
     <div id="ismjs-elements-list-tables"><div>
-    <div class="table scroll-tbl" id="Goalkeepers" >
-        <table class="ism-table ism-table--el ism-table--el-list">
+    <div class="table" id="Goalkeepers" >
+        <table class="ism-table ism-table--el ism-table--el-list" style="margin-bottom: 0;">
             <thead>
                 <tr class="ism-table__divider ism-el-type ism-el-type--1">
                     <th class="ism-table--el-list__status"></th>
@@ -1124,6 +1132,10 @@
                     <th class="ism-table--el-list__stat"><abbr title="Total Score">TS</abbr></th>
                 </tr>
             </thead>
+            </table>
+            </div>
+            <div class="table scroll-tbl" id="Goalkeepers" >
+            <table class="ism-table ism-table--el ism-table--el-list">
             <tbody>
             <c:forEach var="playerMap" items="${sessionScope.playerList}">
             <c:if test="${playerMap.type eq 'Goalkeeper'}">
@@ -1164,8 +1176,8 @@
     </div>
 	</div>
 <div>
-    <div class="table scroll-tbl" id="Defenders">
-        <table class="ism-table ism-table--el ism-table--el-list">
+    <div class="table" id="Defenders">
+        <table class="ism-table ism-table--el ism-table--el-list" style="margin-bottom: 0;">
             <thead>
                 <tr class="ism-table__divider ism-el-type ism-el-type--2">
                     <th class="ism-table--el-list__status"></th>
@@ -1174,6 +1186,10 @@
                     <th class="ism-table--el-list__stat"><abbr title="Goals scored">TS</abbr></th>
                 </tr>
             </thead>
+            </table>
+            </div>
+            <div class="table scroll-tbl" id="Defenders">
+        <table class="ism-table ism-table--el ism-table--el-list">
             <tbody>
             <c:forEach var="playerMap" items="${sessionScope.playerList}">
             <c:if test="${playerMap.type eq 'Defender'}">
@@ -1214,8 +1230,8 @@
     </div>
 </div>
 <div>
-    <div class="table scroll-tbl" id="Midfielders">
-        <table class="ism-table ism-table--el ism-table--el-list">
+    <div class="table" id="Midfielders">
+        <table class="ism-table ism-table--el ism-table--el-list" style="margin-bottom: 0">
             <thead>
                 <tr class="ism-table__divider ism-el-type ism-el-type--3">
                     <th class="ism-table--el-list__status"></th>
@@ -1224,6 +1240,10 @@
                     <th class="ism-table--el-list__stat"><abbr title="Goals scored">TS</abbr></th>
                 </tr>
             </thead>
+            </table>
+            </div>
+            <div class="table scroll-tbl" id="Midfielders">
+        <table class="ism-table ism-table--el ism-table--el-list">
             <tbody>
             <c:forEach var="playerMap" items="${sessionScope.playerList}">
             <c:if test="${playerMap.type eq 'Midfielder'}">
@@ -1264,8 +1284,8 @@
     </div>
 </div>
 <div>
-    <div class="table scroll-tbl" id="Forwards">
-        <table class="ism-table ism-table--el ism-table--el-list">
+    <div class="table" id="Forwards" >
+        <table class="ism-table ism-table--el ism-table--el-list" style="margin-bottom: 0">
             <thead> 
                 <tr class="ism-table__divider ism-el-type ism-el-type--4">
                     <th class="ism-table--el-list__status"></th>
@@ -1274,6 +1294,10 @@
                     <th class="ism-table--el-list__stat"><abbr title="Goals scored">TS</abbr></th>
                 </tr>
             </thead>
+            </table>
+            </div>
+            <div class="table scroll-tbl" id="Forwards">
+        <table class="ism-table ism-table--el ism-table--el-list">
             <tbody>
             <c:forEach var="playerMap" items="${sessionScope.playerList}">
             <c:if test="${playerMap.type eq 'Forward'}">

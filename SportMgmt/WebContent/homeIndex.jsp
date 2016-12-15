@@ -21,6 +21,18 @@
               <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a pharetra urna. Morbi dui...</p>
             </div>
           </div>
+          <div class="single_iteam"> <a href="#"> <img src="/SportMgmt/images/ban-4.jpg" alt=""></a>
+            <div class="slider_article">
+              <h2><a class="slider_tittle" href="pages/single_page.html">Fusce eu nulla semper porttitor felis sit amet</a></h2>
+              <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a pharetra urna. Morbi dui...</p>
+            </div>
+          </div>
+          <div class="single_iteam"> <a href="pages/single_page.html"> <img src="/SportMgmt/images/ban-5.jpg" alt=""></a>
+            <div class="slider_article">
+              <h2><a class="slider_tittle" href="#">Fusce eu nulla semper porttitor felis sit amet</a></h2>
+              <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a pharetra urna. Morbi dui...</p>
+            </div>
+          </div>
         </div>
       </div>
       <div class="col-lg-4 col-md-4 col-sm-4">
@@ -36,7 +48,7 @@
             <blockquote>Fantasy League and Squawka have teamed up to bring you the game as you know and love it for 2016/17. Select your squad now! </blockquote>
 
 Squawka's new free-to-play weekly MatchBoss game is now live, with a £50,000 jackpot and a guaranteed £1,000 in prizes up for grabs every week. Simply pick the the player you think will fare best in each of the weekend's 10 Premier League matches - based on Squawka's unique player performance algorithm. Play now at matchboss.com</p>
-          <div ><a href="#"><img src="/SportMgmt/images/addbanner_728x90_V1.jpg" alt=""></a></div>
+          <div ><a href="#"><img class="img-responsive" src="/SportMgmt/images/addbanner_728x90_V1.jpg" alt=""></a></div>
           </div>
            
            <div class="single_post_content">

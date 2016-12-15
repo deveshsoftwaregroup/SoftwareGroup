@@ -36,7 +36,9 @@
     <div class="row">
       <div class="col-lg-12 col-md-12 col-sm-12">
         <div class="header_bottom">
-          <div class="logo_area" ><a href="http://the12thman.in" target="_blank" class="logo"><img src="/SportMgmt/images/logo.png" alt="" height="92" width="92"></a></div>
+          <div class="logo_area" ><a href="http://the12thman.in" target="_blank" class="logo"><img src="/SportMgmt/images/logo.png" alt="" height="92" width="92">
+          <span>The 12th Man <span>League</span></span>
+          </a></div>
           <div class="add_banner"><a href="#"><img src="/SportMgmt/images/addbanner_728x90_V1.jpg" alt=""></a></div>
         </div>
       </div>
