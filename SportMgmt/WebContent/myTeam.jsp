@@ -571,7 +571,7 @@
 											    <select id="captain-select">
 											    </select>
 										    </div>
-										    <br>
+										    
 										    <div class="form_row">
 											    <!-- <input list="choose_wisecap" name="choose_wisecaptain" placeholder="Choose Vice Captain" class="inp-control">
 											    <datalist id="choose_wisecap">
@@ -582,7 +582,7 @@
 											    </datalist> -->
 											    <select id="vice-captain-select"></select>
 										    </div>
-										    <input type="button" value="ChangeCaptain/ViceCaptain" onclick="updateCaptain('${sessionScope.user.userId}');">
+										    <input type="button" class="button btnSubmit" value="Save" onclick="updateCaptain('${sessionScope.user.userId}');">
 										</form>
 									</div>
 								</div>

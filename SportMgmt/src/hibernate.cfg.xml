@@ -9,9 +9,15 @@
         <property name="connection.username">john_league_test</property>
         <property name="connection.password">Software@123</property> -->
         
-       <property name="connection.url">jdbc:mysql://149.56.37.30:3306/fantasyl_league</property>
+        <!-- FOR Development -->
+        <property name="connection.url">jdbc:mysql://149.56.37.30:3306/fantasyl_league</property>
         <property name="connection.username">fantasyl_Staging</property>
         <property name="connection.password">League_Staging</property>
+        
+        <!-- FOR Live connection -->
+        <!--<property name="connection.url">jdbc:mysql://149.56.37.30:3306/fantasyl_league_live</property>
+        <property name="connection.username">fantasyl_live</property>
+        <property name="connection.password">live@987</property>-->
  
         <!-- JDBC connection pool (use the built-in) -->
         <property name="connection.pool_size">4</property> 

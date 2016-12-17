@@ -4215,7 +4215,7 @@ table.hover tr:nth-of-type(even):hover {
     /* border-color: #ccc; */
 }
 .ism-container {
-    min-height: 470px;
+    min-height: 600px;
 }
 .rules {
     padding: 20px;
@@ -4418,4 +4418,22 @@ button.close {
     position: relative;
     text-align: left;
     width: 61%;
+}
+.form_row select {
+    height: auto;
+}
+.league-panel__body .form_row{
+	margin-bottom: 20px;
+}
+.league-panel__body .btnSubmit {
+    display: block;
+    width: 100%;
+    margin: 20px 0px;
+    background: #0074c1;
+    font-size: 14px;
+    padding: 10px 20px;
+    text-transform: uppercase;
+}
+.league-panel__body .btnSubmit:hover {
+    background: #005790;
 }

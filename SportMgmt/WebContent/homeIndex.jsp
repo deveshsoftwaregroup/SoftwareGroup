@@ -1,7 +1,10 @@
 <jsp:include page="homeHeader.jsp" />
   <section id="sliderSection">
     <div class="row">
-      <div class="col-lg-8 col-md-8 col-sm-8">
+      <div class="col-lg-4 col-md-4 col-sm-4 select-team">
+        <div class="choose-team"><img src="/SportMgmt/images/ball-1.jpg" class="img-responsive"> <span class="overlay-img">Select your Team <br/> & Play <br/> <a class="btn btn-black" onclick="redirectToLeague();">Select Team</a> </span></div>
+      </div>
+      <div class="col-lg-8 col-md-8 col-sm-8 slider-col">
         <div class="slick_slider">
           <div class="single_iteam"> <a href="#"> <img src="/SportMgmt/images/ban-1.jpg" alt=""></a>
             <div class="slider_article">
@@ -34,9 +37,6 @@
             </div>
           </div>
         </div>
-      </div>
-      <div class="col-lg-4 col-md-4 col-sm-4">
-        <div class="choose-team"><img src="/SportMgmt/images/ball-1.jpg" class="img-responsive"> <span class="overlay-img">Select your Team <br/> & Play <br/> <a class="btn btn-black" onclick="redirectToLeague();">Select Team</a> </span></div>
       </div>
     </div>
   </section>
@@ -95,6 +95,9 @@ Squawka's new free-to-play weekly MatchBoss game is now live, with a £50,000 jac
               </ul>
             </div>
           </div>
+          <div class="single_post_content">
+          	<img alt="" src="/SportMgmt/images/ads-bottom.jpg" class="img-responsive">
+          </div>
         </div>
       </div>
       <div class="col-lg-4 col-md-4 col-sm-4">
@@ -103,6 +106,35 @@ Squawka's new free-to-play weekly MatchBoss game is now live, with a £50,000 jac
             <a class="sideAdd" href="#"><img src="/SportMgmt/images/ball-2.jpg" alt=""></a> 
             <a class="sideAdd" href="#"><img src="/SportMgmt/images/ball-3.jpg" alt=""></a> 
           </div>
+          <div class="single_sidebar">
+          <div class="slick_slider ads-slide">
+	          <div class="single_iteam"> <a target="_blank" href="http://the12thman.in"> <img src="/SportMgmt/images/ban-1.jpg" alt=""></a>
+	            <div class="slider_article">
+	              <h2><a class="slider_tittle" target="_blank" href="http://the12thman.in">Fusce eu nulla semper porttitor felis sit amet</a></h2>
+	            </div>
+	          </div>
+	          <div class="single_iteam"> <a target="_blank" href="http://the12thman.in"> <img src="/SportMgmt/images/ban-2.jpg" alt=""></a>
+	            <div class="slider_article">
+	              <h2><a class="slider_tittle" target="_blank" href="http://the12thman.in">Fusce eu nulla semper porttitor felis sit amet</a></h2>
+	            </div>
+	          </div>
+	          <div class="single_iteam"> <a target="_blank" href="http://the12thman.in"> <img src="/SportMgmt/images/ban-3.jpg" alt=""></a>
+	            <div class="slider_article">
+	              <h2><a class="slider_tittle" target="_blank" href="http://the12thman.in">Fusce eu nulla semper porttitor felis sit amet</a></h2>
+	            </div>
+	          </div>
+	          <div class="single_iteam"> <a target="_blank" href="http://the12thman.in"> <img src="/SportMgmt/images/ban-4.jpg" alt=""></a>
+	            <div class="slider_article">
+	              <h2><a class="slider_tittle" target="_blank" href="http://the12thman.in">Fusce eu nulla semper porttitor felis sit amet</a></h2>
+	            </div>
+	          </div>
+	          <div class="single_iteam"> <a target="_blank" href="http://the12thman.in"> <img src="/SportMgmt/images/ban-5.jpg" alt=""></a>
+	            <div class="slider_article">
+	              <h2><a class="slider_tittle" target="_blank" href="http://the12thman.in">Fusce eu nulla semper porttitor felis sit amet</a></h2>
+	            </div>
+	          </div>
+	        </div>
+	        </div>
         </aside>
       </div>
     </div>

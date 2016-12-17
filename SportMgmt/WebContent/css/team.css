@@ -837,7 +837,7 @@ button.close {
     margin-top: 1rem;
     margin-bottom: 1rem;
     font-size: 1.4rem;
-    color:#ffcc00;
+    color:#ffdf00;
 }
 .league .league-data-list {
     background-color: #fafafa
@@ -1187,7 +1187,9 @@ border-top: 1px solid #E8E8E8;
 }
 
 .league .choose_capt {
-    padding: 15px 1rem;
+        padding:5px 1rem;
+    background: #223541;
+    margin: 10px;
 }
 .choose_capt .from_row {
     margin-bottom: 10px;
