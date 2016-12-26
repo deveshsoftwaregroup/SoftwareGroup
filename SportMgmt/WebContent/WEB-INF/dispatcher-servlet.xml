@@ -73,4 +73,5 @@
             </list>
         </property>
     </bean>
+    <import resource="spring-social.xml" />
 </beans>
