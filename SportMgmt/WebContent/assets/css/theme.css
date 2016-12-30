@@ -106,6 +106,7 @@ ul.newsticker a > img{height:20px; margin-right:5px; width:25px}
 
 .choose-team {
     position: relative;
+    margin-bottom: 10px;
 }
 .overlay-img {
     bottom: 0;
@@ -127,6 +128,12 @@ ul.newsticker a > img{height:20px; margin-right:5px; width:25px}
     color: #fff;
     text-transform: uppercase;
     font-family: "Oswald",sans-serif;
+}
+.side-ban-1 .overlay-img {
+    background: rgba(124, 187, 39, 0.78);
+}
+.side-ban-2 .overlay-img {
+    background: rgba(224, 60, 23, 0.78);
 }
 .btn {
     padding: 10px 25px;
