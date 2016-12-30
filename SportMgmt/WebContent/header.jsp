@@ -221,14 +221,13 @@
                 <nav role="navigation" class="ism-nav ismjs-priority-nav ismjs-nav priority-nav" instance="0">
 
                     <ul class="ism-nav__list ismjs-main-nav">                        
-
+						<li class="ism-nav__list__item">                            
+                            <a href="javascript:void(0);" class="ism-nav__tab" onclick="openHomeHome();">League Home</a>
+                        </li>
                         <li class="ism-nav__list__item">
-                           
-                            <%-- <a href="/SportMgmt/mvc/user/login/${sessionScope.userId}" class="ism-nav__tab" data-nav-tab="squad">Transfers</a> --%>
                         	<a href="javascript:void(0);" class="ism-nav__tab" onclick="uploadTransferView();" data-nav-tab="squad">Transfers</a>
                         </li> 
                         <li class="ism-nav__list__item">
-                            <%-- <a href="/SportMgmt/mvc/game/MyTeamView/${sessionScope.userId}/${sessionScope.gameDetails.gameId}" class="ism-nav__tab " data-nav-tab="squad">My Team</a> --%>
                         <a href="javascript:void(0);" class="ism-nav__tab" onclick="uploadTeamView('${sessionScope.userId}','${sessionScope.gameDetails.gameId}');" data-nav-tab="squad">My Team</a>		
                         </li> 
                         <li class="ism-nav__list__item">
@@ -279,6 +278,10 @@
     <script src="/SportMgmt/js/jquery.superslides.js" type="text/javascript" charset="utf-8"></script>
  	<script type="text/javascript" src="/SportMgmt/js/69e9bb26ef46.js"></script>
 	<script type="text/javascript">
+		function openHomeHome()
+		{
+			window.location="/SportMgmt/mvc/LeagueLandingHome";			
+		}
 		function uploadMatchView(gameId)
 		{
 			if(typeof gameId != 'undefined' && gameId != '')
