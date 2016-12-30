@@ -68,14 +68,14 @@ public class UserManager {
 						List userRecord =query.list();
 						if(userRecord.size() >= 1)
 						{
-							setErrorMessage("Logoin Id already existing");
+							setErrorMessage("Login ID already exists");
 							return false;
 						}
 						user = new User();
 						user.setCreatedDate(new Date(System.currentTimeMillis()));
 						user.setRegisterDate(new Date(System.currentTimeMillis()));
 						user.setUserType("R");
-						//user.setStatus("I");
+						user.setStatus("A");
 					}
 					if(userMap.get("logonId") != null && !userMap.get("logonId").equals(""))
 					{

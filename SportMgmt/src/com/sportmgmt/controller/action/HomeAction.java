@@ -36,6 +36,19 @@ public class HomeAction {
 		return SportConstrant.LEAGE_HOME_PAGE;
 
 	}
+	@RequestMapping("/LeagueLandingHome")
+	public String userLandingHome(ModelMap map)
+	{
+		logger.info("--------- USER_LANDING_HOME_PAGE");
+		return SportConstrant.LEAGUE_LANDING_HOME_PAGE;
+
+	}
+	@RequestMapping(value = "HomeGameGuide", method = RequestMethod.GET)
+	public  String homeGameGuide(ModelMap modeMap,HttpServletRequest request)
+	{
+		logger.debug("---------- Forwardng to : "+SportConstrant.HOME_GAME_GUIDE);
+		 return SportConstrant.HOME_GAME_GUIDE;
+	}
 	@RequestMapping("/LeagueLogin")
 	public String login(ModelMap map)
 	{

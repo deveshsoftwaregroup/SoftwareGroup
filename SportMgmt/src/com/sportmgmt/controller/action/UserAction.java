@@ -138,8 +138,9 @@ public class UserAction {
 			modeMap.put("message","Your Registration is failed due to incomplete info");
 		}
 		//return "redirect:/login/loginSuccess.jsp";
-		return "redirect:/"+SportConstrant.USER_REG_RESULT_PAGE+".jsp";
-
+		//return "redirect:/"+SportConstrant.LEAGUE_LANDING_HOME_PAGE+".jsp";
+		//return "redirect:/mvc/"+SportConstrant.LEAGUE_LANDING_HOME_PAGE;
+		return "redirect:/mvc/LeagueLandingHome";
 	}
 	
 	@RequestMapping(value = "validate", method = RequestMethod.GET)
@@ -561,18 +562,9 @@ public class UserAction {
 		logger.debug("---------- Forwardng to : "+SportConstrant.USER_LANDING_PAGE);
 		 return SportConstrant.USER_LANDING_PAGE;
 	}
-	@RequestMapping(value = "UserLandingHome", method = RequestMethod.GET)
-	public  String userLandingHome(ModelMap modeMap,HttpServletRequest request)
-	{
-		logger.debug("---------- Forwardng to : "+SportConstrant.USER_LANDING_HOME_PAGE);
-		 return SportConstrant.USER_LANDING_HOME_PAGE;
-	}
-	@RequestMapping(value = "HomeGameGuide", method = RequestMethod.GET)
-	public  String homeGameGuide(ModelMap modeMap,HttpServletRequest request)
-	{
-		logger.debug("---------- Forwardng to : "+SportConstrant.HOME_GAME_GUIDE);
-		 return SportConstrant.HOME_GAME_GUIDE;
-	}
+	
+	
+	
 	@RequestMapping(value = "Logout", method = RequestMethod.GET)
 	public  ModelAndView logout(ModelMap modeMap,HttpServletRequest request)
 	{
