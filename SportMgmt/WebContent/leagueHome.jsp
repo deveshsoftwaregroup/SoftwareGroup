@@ -107,9 +107,9 @@
             </div>
             <nav class="large-8 columns">
                 <ul class="d-menu" >
-                    <li><a href="http://the12thman.in/"> Home </a></li>
-                    <li><a href="javascript:void(0);" data-open="exampleModal2"> Log in </a></li>   
-                    <li><a href="javascript:void(0);" data-open="exampleModal1"> Sign Up </a></li>               
+                    <li><a href="http://the12thman.in/"> The12thMan Blog </a></li>
+                    
+                    <li><a href="javascript:void(0);" onclick="openHomeHome();">Fantasy League</a></li>            
                 </ul>
                 
               
@@ -124,9 +124,8 @@
                     <div id="mmenu" class="mmenu">	<!-- Main nav links start -->
                         <ul class="clearfix nav" id="mobileMenu">
                             <div id="scrollBox" style="position:relative;">
-                                <li><a href="http://the12thman.in/"> Home </a></li>
-                                <li><a href="javascript:void(0);" data-open="exampleModal2"> Log in </a></li>
-                    			<li><a href="javascript:void(0);" data-open="exampleModal1"> Sign Up </a></li>              
+                                <li><a href="http://the12thman.in/"> The12thMan Blog </a></li>
+                                <li><a href="javascript:void(0);" onclick="openHomeHome();">Fantasy League</a></li>     
                             </div>
                         </ul>
                     </div>
@@ -182,7 +181,7 @@
             </div>-->
             <div class="row clearfix big-register">
                 <div class="large-12 column text-center">
-                    <button class="btn btn-default bigRegister" data-open="exampleModal1"><span>Play Now</span></button>
+                    <button class="btn btn-default bigRegister" onclick="openHomeHome();"><span>Play Now</span></button>
                    
                 </div>
             </div>
@@ -439,7 +438,13 @@ $(document).ready(function() {
 		$('#fbox2').animate({ right: '-350px' }, 2000);
 	});
 	
-	
+	 
+	function openHomeHome()
+	{
+		window.location="LeagueLandingHome";
+		
+	}
+
 </script>
  <script>
                     	/*-- button background change  --*/

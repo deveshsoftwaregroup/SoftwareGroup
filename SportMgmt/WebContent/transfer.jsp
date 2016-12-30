@@ -220,25 +220,25 @@
 
                                         <div class="ism-element-row ism-element-row--pitch">
                                             <div class="ism-pitch__unit ism-pitch__unit--4"></div>
+                                            
+                                            
+                                            
                                             <div id="ismr-pos1"  class="ism-pitch__unit ism-pitch__unit--4">
                                                 <div>
                                                 <s:sport position="1" playerType="Goalkeeper"/>
                                                     <div class="ism-element" tabindex="0">
 
-                                                        <div <c:choose><c:when test='${isPlayerAvail}'>class="ismjs-select added-player-css" id="${gameClubPlayerId}"</c:when><c:otherwise>class="ismjs-select"</c:otherwise></c:choose>>
+                                                        <div 
+                                                        <c:choose>
+                                                        <c:when test='${isPlayerAvail}'>class="ismjs-select added-player-css" id="${gameClubPlayerId}"</c:when>
+                                                        <c:otherwise>class="ismjs-select"</c:otherwise>
+                                                        </c:choose>
+                                                        >
 
                                                             <picture>
-                                                                <source type="/SportMgmt/js/webp" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-110.webp 110w,
-                                https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-66.webp 66w,
-                                https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-33.webp 33w" sizes="(min-width: 1024px) 55px,
-                               (min-width: 610px) 44px,
-                                33px">
                                                                 
-                                                                <img src="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-33.png" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-110.png 110w,
-                                https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-66.png 66w,
-                                https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-33.png 33w" sizes="(min-width: 1024px) 55px,
-                               (min-width: 610px) 44px,
-                                33px" alt="" title="Select a Goalkeeper" class="ism-shirt ism-element__shirt">
+                                                                
+                                                                <img src="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-33.png"  alt="" title="Select a Goalkeeper" class="ism-shirt ism-element__shirt">
                                                             </picture>
 															
                                                              <c:choose>
@@ -259,6 +259,10 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            
+                                            
+                                            
+                                            
                                             <div id="ismr-pos2" class="ism-pitch__unit ism-pitch__unit--4">
                                                 <div>
                                                 <s:sport position="2" playerType="Goalkeeper"/>
@@ -266,16 +270,12 @@
                                                     	<div <c:choose><c:when test='${isPlayerAvail}'>class="ismjs-select added-player-css" id="${gameClubPlayerId}"</c:when><c:otherwise>class="ismjs-select"</c:otherwise></c:choose>>
 
                 <picture>
-                    <source type="image/webp" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-110.webp 110w,
-                                https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-66.webp 66w,
-                                https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-33.webp 33w" sizes="(min-width: 1024px) 55px,
-                               (min-width: 610px) 44px,
-                                33px">
-                    <img src="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-33.png" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-110.png 110w,
-                                https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-66.png 66w,
-                                https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0_1-33.png 33w" sizes="(min-width: 1024px) 55px,
-                               (min-width: 610px) 44px,
-                                33px" alt="" title="Select a Goalkeeper" class="ism-shirt ism-element__shirt">
+                    
+                    <img src="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_0-33.png"
+                    
+                    
+                    
+                     title="Select a Goalkeeper" class="ism-shirt ism-element__shirt">
                 </picture>
 
                 											

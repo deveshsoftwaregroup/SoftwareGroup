@@ -107,7 +107,7 @@
 																			<h4 class="modal-title">player information</h4>
 																		  </div>
 																		  <div class="modal-body">
-																			<p>Some text in the modal.</p>
+																			<p>No information found.</p>
 																		  </div>
 																		</div>
 
@@ -180,12 +180,13 @@
 													<div class="league-transfer--original">
 													<s:sport position="2" playerType="Defender"/>
 														<div class="league-element" tabindex="0">
+														<c:set var="imageSrc" value="" />
 														<c:if test="${not empty clubId and clubId ne ''}">
 																<spring:message code="club_${clubId}_image" var="imageSrc" />
 															</c:if>		
 															<div class="leaguejs-menu check_4">
 																<picture>
-																	<img src="/SportMgmt/images/${imgageSrc}" alt="West Ham" title="West Ham" class="league-shirt league-element__shirt">
+																	<img src="/SportMgmt/images/${imageSrc}" alt="West Ham" title="West Ham" class="league-shirt league-element__shirt">
 																</picture>
 																<div class="league-element__name">${playerName}</div>
 																<div class="league-element__data">${price}</div>
