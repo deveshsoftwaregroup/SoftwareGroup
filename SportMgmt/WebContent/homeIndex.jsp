@@ -1,8 +1,18 @@
 <jsp:include page="homeHeader.jsp" />
+  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
   <section id="sliderSection">
     <div class="row">
       <div class="col-lg-4 col-md-4 col-sm-4 select-team">
-        <div class="choose-team"><img src="/SportMgmt/images/ball-1.jpg" class="img-responsive"> <span class="overlay-img">Select your Team <br/> & Play <br/> <a class="btn btn-black" onclick="redirectToLeague();">Select Team</a> </span></div>
+        <div class="choose-team"><img src="/SportMgmt/images/ball-1.jpg" class="img-responsive"> 
+        	<span class="overlay-img">Select your Team <br/> & Play <br/>        	 
+	        	<c:if test="${empty sessionScope.user.displayName}">
+	        		<a class="btn btn-black" href="javascript:void(0);" data-toggle="modal" data-target="#myModal">Select Team</a>    
+	        	</c:if>
+	        		<c:if test="${not empty sessionScope.user.displayName}">
+	        	<a class="btn btn-black" onclick="redirectToLeague();">Select Team</a>   
+	        	</c:if>
+        	 </span>
+        </div>
       </div>
       <div class="col-lg-8 col-md-8 col-sm-8 slider-col">
         <div class="slick_slider">
@@ -108,8 +118,17 @@ Conte's switch to 3-4-3 has done wonders to the Chelsea side who were down on co
       <div class="col-lg-4 col-md-4 col-sm-4">
         <aside class="right_content">
           <div class="single_sidebar wow fadeInDown">
-            <a class="sideAdd" href="#"><img src="/SportMgmt/images/ball-2.jpg" alt=""></a> 
-            <a class="sideAdd" href="#"><img src="/SportMgmt/images/ball-3.jpg" alt=""></a> 
+            <div class="choose-team side-ban-1"><img src="/SportMgmt/images/ball-1.jpg" class="img-responsive"> 
+		       	<span class="overlay-img">Predict 11 and win upto INR 10,000 <br> &amp; Play <br>        	 
+		        	<a class="btn btn-black" href="javascript:void(0);" data-open="exampleModal2">Select Team</a>    
+		        </span>
+		    </div>
+		    <div class="choose-team side-ban-2"><img src="/SportMgmt/images/ball-1.jpg" class="img-responsive"> 
+		       	<span class="overlay-img">Add banner starting from INR 20,000/Month <br><br>        	 
+		        </span>
+		    </div>
+            <!-- <a class="sideAdd" href="#"><img src="/SportMgmt/images/ball-2.jpg" alt=""></a> 
+            <a class="sideAdd" href="#"><img src="/SportMgmt/images/ball-3.jpg" alt=""></a>  -->
           </div>
           <div class="single_sidebar">
           <div class="slick_slider ads-slide">
