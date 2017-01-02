@@ -2,8 +2,11 @@ package com.sportmgmt.controller.action;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,6 +18,7 @@ import org.scribe.oauth.OAuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.social.connect.support.ConnectionFactoryRegistry;
 import org.springframework.social.facebook.api.FacebookProfile;
 import org.springframework.social.facebook.api.impl.FacebookTemplate;
@@ -33,6 +37,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.sportmgmt.model.manager.UserManager;
 import com.sportmgmt.utility.common.FacebookUtil;
 import com.sportmgmt.utility.common.OAuthServiceProvider;
 import org.scribe.model.Token;
@@ -47,6 +54,49 @@ public class SocailAction {
 	private static final String FACEBOOK = "facebook";
 	private static final String PUBLISH_SUCCESS = "facebookSuccess";
 	private static final String PUBLISH_ERROR = "error";
+    @Value("${app.config.oauth.facebook.apikey}")
+	private  String clientID ;
+    @Value("${app.config.oauth.facebook.apisecret}")
+    private   String clientSecret ;
+    @Value("${app.config.oauth.facebook.callback}")
+    private   String redirectURI; 
+
+    
+	public  String getClientid() {
+		return clientID;
+	}
+
+	public  String getClientsecret() {
+		return clientSecret;
+	}
+
+	public  String getRedirecturi() {
+		return redirectURI;
+	}
+
+	public String getClientID() {
+		return clientID;
+	}
+
+	public void setClientID(String clientID) {
+		this.clientID = clientID;
+	}
+
+	public String getClientSecret() {
+		return clientSecret;
+	}
+
+	public void setClientSecret(String clientSecret) {
+		this.clientSecret = clientSecret;
+	}
+
+	public String getRedirectURI() {
+		return redirectURI;
+	}
+
+	public void setRedirectURI(String redirectURI) {
+		this.redirectURI = redirectURI;
+	}
 
 	@Autowired
 	private ConnectionFactoryRegistry connectionFactoryRegistry;
@@ -69,7 +119,7 @@ public class SocailAction {
 				.getConnectionFactory(FACEBOOK);
 		OAuth2Operations oauthOperations = facebookConnectionFactory
 				.getOAuthOperations();
-		oAuth2Parameters.setState("recivedfromfacebooktoken");
+		//oAuth2Parameters.setState("recivedfromfacebooktoken");
 		String authorizeUrl = oauthOperations.buildAuthorizeUrl(
 				GrantType.AUTHORIZATION_CODE, oAuth2Parameters);
 		logger.debug("Authorization URL: "+authorizeUrl);
@@ -82,7 +132,7 @@ public class SocailAction {
 
 	@RequestMapping(value = "facebook/callback", method = RequestMethod.GET)
 	public String postOnWall(@RequestParam("code") String code,
-			@RequestParam("state") String state, HttpServletRequest request,
+			HttpServletRequest request,
 			HttpServletResponse response,ModelMap modelMap) throws Exception {
 
 		logger.debug("----------------- Started call back method:");
@@ -146,6 +196,144 @@ public class SocailAction {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	@RequestMapping(value = "/facebook/login", method = RequestMethod.GET)
+	public ModelAndView loginin(HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+
+		String authorizeUrl = "https://www.facebook.com/dialog/oauth?client_id="+ clientID + "&redirect_uri=" + redirectURI +"&scope=public_profile";
+		logger.debug("Authorization URL: "+authorizeUrl);
+		System.out.println("authorizeUrl: "+authorizeUrl);
+		RedirectView redirectView = new RedirectView(authorizeUrl, true, true,
+				true);
+
+		return new ModelAndView(redirectView);
+	}
+
+	@RequestMapping(value = "facebook/recall", method = RequestMethod.GET)
+	public String callBack(@RequestParam("code") String code,
+			HttpServletRequest request,
+			HttpServletResponse response,ModelMap modelMap) throws Exception {
+
+		URL url = new URL(
+                "https://graph.facebook.com/oauth/access_token?client_id="
+                        + clientID + "&redirect_uri=" + redirectURI
+                        + "&client_secret=" + clientSecret
+                        + "&code=" + code+"&scope=public_profile");
+        
+        // request for Access Token
+        HttpURLConnection conn = (HttpURLConnection) url
+                .openConnection();
+        conn.setRequestMethod("GET");
+        String line, outputString = "";
+        BufferedReader reader = new BufferedReader(
+                new InputStreamReader(conn.getInputStream()));
+        while ((line = reader.readLine()) != null) {
+            outputString += line;
+        }
+        System.out.println(outputString);
+        
+        // extract access token from response
+        String accessToken = null;
+        if(outputString.indexOf("access_token")!=-1) {
+            accessToken = outputString.substring(13,outputString.indexOf("&"));
+        }
+				
+		
+		url = new URL("https://graph.facebook.com/me?access_token="
+                + accessToken+"&scope=public_profile");
+        System.out.println(url);
+        URLConnection conn1 = url.openConnection();
+        outputString = ""; line="";
+        reader = new BufferedReader(new InputStreamReader(
+                conn1.getInputStream()));
+        while ((line = reader.readLine()) != null) {
+            outputString += line;
+        }
+        reader.close();
+
+		logger.debug("logged in user: "+outputString);
+		modelMap.put("userId", outputString);
+		String redirectAction = getRedirectURL(outputString);
+		if(redirectAction == null)
+		redirectAction = PUBLISH_SUCCESS;
+		return redirectAction;
+	}
+	private String getRedirectURL(String facebookJson)
+	{
+		String facebookUserId = "";
+		String facebookName = "";
+		try
+		{
+			ObjectMapper mapperObj = new ObjectMapper();
+			Map<String, String> facebookMap = new HashMap<String, String>();
+
+			facebookMap = mapperObj.readValue(facebookJson, new TypeReference<Map<String, String>>(){});
+			facebookUserId = facebookMap.get("id");
+			facebookName = facebookMap.get("name");
+		}
+		catch(Exception ex)
+		{
+			logger.error("Error occure during parsing facebook response",ex);
+		}
+		
+		logger.debug("------- facebookUserId: "+facebookUserId+" , facebookName: "+facebookName);
+		if(facebookUserId != null && !facebookUserId.equals(""))
+		{
+			String userId = getUserId(facebookUserId,facebookName);
+			logger.debug("---------- userId: "+userId);
+			if(userId != null && !userId.equals(""))
+			{
+				return "redirect:/mvc/user/login/"+userId;
+			}
+		}
+		return null;
+
+	}
+	private String getUserId(String facebookUserId,String facebookName)
+	{
+		logger.debug("Checking user is first time or logined before to this site");
+		String userId = UserManager.getUserIdByLogonId(facebookUserId);
+		if(userId == null || userId.equals(""))
+		{
+			logger.debug("User is first timmer, going to create user Id");
+			Map<String,String> userMap = new HashMap<String,String>();
+			userMap.put("logonId", facebookUserId);
+			userMap.put("emailId", facebookUserId);
+			userMap.put("logonPassword", facebookUserId);
+			userMap.put("displayName", facebookName);
+			userMap.put("userType", "F");
+			if(UserManager.saveUser(userMap))
+			userId = UserManager.getUserId();
+			else
+			logger.error("Error occured to create userid in our database, error code: "+UserManager.getErrorCode()+" , message: "+UserManager.getErrorMessage());
+			
+		}
+		return userId;
+	}
+	
+	@RequestMapping(value = "/facebook/userLoginTest", method = RequestMethod.GET)
+	public ModelAndView userLoginTest(HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+
+		String redirectURL = getRedirectURL("{\"name\":\"Ravi Paagal\",\"id\":\"1342129129185745\"} ");
+		if(redirectURL == null)
+		redirectURL	= PUBLISH_SUCCESS;
+		RedirectView redirectView = new RedirectView(redirectURL, true, true,
+				true);
+
+		return new ModelAndView(redirectView);
+	}
+	
+	@RequestMapping(value = "/facebook/userLoginTest1", method = RequestMethod.GET)
+	public String userLoginTest1(HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+
+		String redirectURL = getRedirectURL("{\"name\":\"Ravi Paagal\",\"id\":\"1342129129185745\"} ");
+		if(redirectURL == null)
+		redirectURL	= PUBLISH_SUCCESS;
+		return redirectURL;
 	}
 
 }

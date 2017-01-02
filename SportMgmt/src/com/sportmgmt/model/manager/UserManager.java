@@ -93,6 +93,10 @@ public class UserManager {
 					{
 						user.setDisplayName(userMap.get("displayName"));
 					}
+					if(userMap.get("userType") != null && !userMap.get("userType").equals(""))
+					{
+						user.setUserType(userMap.get("userType"));
+					}
 					if(userMap.get("firstName") != null && !userMap.get("firstName").equals(""))
 					{
 						user.setFirstName(userMap.get("firstName"));
@@ -450,6 +454,64 @@ public class UserManager {
 		}
 		logger.debug("----- Returning Passowrd ----"+password);
 		return password;
+	}
+
+	public static String getUserIdByLogonId(String loginId)
+	{
+		logger.debug("----- Indie getUserIdByLogonId ----"+loginId);
+		setErrorMessage(SportConstrant.NULL);
+		setErrorCode(SportConstrant.NULL);
+		setUserId(SportConstrant.NULL);
+		SessionFactory factory = HibernateSessionFactory.getSessionFacotry();
+		String userId = "";
+		if(factory == null)
+		{
+			setErrorCode(ErrorConstrant.SESS_FACT_NULL);
+			setErrorMessage("Technical Error");
+			logger.debug("----- Factory Object is null----");
+		}
+		else
+		{
+			Session session = factory.openSession();
+			if(session != null)
+			{
+				try
+				{
+					logger.debug("----- Loading for user----: "+loginId);
+				
+					Query query	 = session.createQuery("FROM User U WHERE U.logonID =:logonId");
+					query.setParameter("logonId",loginId );
+					List userRecord =query.list();
+					if(userRecord.size() >= 1)
+					{
+						userId = String.valueOf(((User)userRecord.get(0)).getUserId());
+					}
+					else
+					{
+						setErrorCode(ErrorConstrant.USER_NULL);
+						setErrorMessage("User with loginId "+loginId+ " does not exist");
+					}
+				}
+				catch(Exception ex)
+				{
+					logger.error("Exception in load user: "+ex);
+					setErrorMessage("Technical Error");
+					setErrorCode(ErrorConstrant.TRANSACTION_ERROR);
+				}
+				finally
+				{
+					session.close();
+				}
+			}
+			else
+			{
+				setErrorCode(ErrorConstrant.SESS_NULL);
+				setErrorMessage("Technical Error");
+				logger.debug("----- Session Object is null----");
+			}
+		}
+		logger.debug("----- Returning userId ----"+userId);
+		return userId;
 	}
 
 	public static String getErrorCode() {
