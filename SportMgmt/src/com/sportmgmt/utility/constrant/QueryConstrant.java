@@ -37,4 +37,7 @@ public static final String FETCH_END_MATCH_TIME_OF_GAME_WEEK = "select start_tim
 public static final String FETCH_SORTED_GAME_WEEK = "select game_week_id from GAME_WEEK order by start_date";
 public static final String FETCH_END_DATE_LIST_OF_GAME_WEEK_FROM_TODAY = "select end_date from game_week where (end_date > :date  and start_date < :date ) or (start_date > :date) order by start_date";
 public static final String MAKE_USER_PLAN_INACTIVE = "update user_plan set is_active = 'N' where user_id = :userId";
+public static final String SELECT_COUNT_OF_PLAYER_BY_USER = "select game_club_player_id,count(*) as user_count from USER_PLAYER where game_club_player_id in (:gameClubPlayerIdList) group by game_club_player_id order by user_count";
+public static final String SELECT_PLAYER_WITH_PRICE_IN_ORDER = "select game_club_player_id,price from GAME_CLUB_PLAYER where game_club_player_id in (:gameClubPlayerIdList) order by price";
+public static final String SELECT_PLAYER_WITH_TOTAL_POINT_IN_ORDER = "select game_club_player_id,PLAYER_TOTAL_POINT from GAME_CLUB_PLAYER where game_club_player_id in (:gameClubPlayerIdList) order by PLAYER_TOTAL_POINT";
 }

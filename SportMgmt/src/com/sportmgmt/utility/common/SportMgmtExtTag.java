@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeSet;
 import java.util.concurrent.TimeUnit;
 
 import javax.servlet.http.HttpServletRequest;
@@ -57,12 +58,12 @@ public class SportMgmtExtTag extends TagSupport{
 	    	}
 	    	return SKIP_BODY;//will not evaluate the body content of the tag  
 	}  
-	public HashSet getPriceList()
+	public TreeSet getPriceList()
 	{
 		logger.debug("---------- Entry in getPriceList: ");
 		HttpServletRequest request = (HttpServletRequest)pageContext.getRequest();
     	HttpSession session = request.getSession();
-		HashSet priceList = new HashSet();
+		TreeSet priceList = new TreeSet();
 		ArrayList playerList = (ArrayList)session.getAttribute("playerList");
 		if(playerList != null && playerList.size() > 0)
 		{

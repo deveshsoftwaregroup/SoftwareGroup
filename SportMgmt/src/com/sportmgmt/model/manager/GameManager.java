@@ -6,6 +6,7 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -469,6 +470,135 @@ public class GameManager {
 		return totalPlayerByPisitionList;
 	}
 	
+	public static List<Object[]> fetchCountOfPlayersByUser(List gameClubPlayerIdList)
+	{
+		List<Object[]> countOfPlayerByUser = null;
+		setErrorMessage("");
+		SessionFactory factory = HibernateSessionFactory.getSessionFacotry();
+		logger.debug("--------------- fetchCountOfPlayersByUser ------------> gameClubPlayerList:  "+gameClubPlayerIdList);
+		if(factory == null)
+		{
+			setErrorCode(ErrorConstrant.SESS_FACT_NULL);
+			setErrorMessage("Technical Error");
+		}
+		else
+		{
+			Session session = factory.openSession();
+			if(session != null)
+			{
+				try
+				{
+					
+					SQLQuery query = session.createSQLQuery(QueryConstrant.SELECT_COUNT_OF_PLAYER_BY_USER);
+					query.setParameterList("gameClubPlayerIdList", gameClubPlayerIdList);
+					countOfPlayerByUser =query.list();
+				}
+				catch(Exception ex)
+				{
+					logger.error("Exception fetch : fetchCountOfPlayersByUser"+ex.getMessage());
+					setErrorMessage("Technical Error");
+					setErrorCode(ErrorConstrant.TRANSACTION_ERROR);
+				}
+				finally
+				{
+					session.close();
+				}
+			}
+			else
+			{
+				setErrorCode(ErrorConstrant.SESS_NULL);
+				setErrorMessage("Technical Error");
+			}
+		}
+		logger.info("--------------- Returning user countOfPlayerByUser: -------------"+countOfPlayerByUser);
+		return countOfPlayerByUser;
+	}
+	public static List<Object[]> fetchPlayerWithPrice(List gameClubPlayerIdList)
+	{
+		List<Object[]> playerWithPriceList = null;
+		setErrorMessage("");
+		SessionFactory factory = HibernateSessionFactory.getSessionFacotry();
+		logger.debug("--------------- fetchPlayerWithPrice ------------> gameClubPlayerList:  "+gameClubPlayerIdList);
+		if(factory == null)
+		{
+			setErrorCode(ErrorConstrant.SESS_FACT_NULL);
+			setErrorMessage("Technical Error");
+		}
+		else
+		{
+			Session session = factory.openSession();
+			if(session != null)
+			{
+				try
+				{
+					
+					SQLQuery query = session.createSQLQuery(QueryConstrant.SELECT_PLAYER_WITH_PRICE_IN_ORDER);
+					query.setParameterList("gameClubPlayerIdList", gameClubPlayerIdList);
+					playerWithPriceList =query.list();
+				}
+				catch(Exception ex)
+				{
+					logger.error("Exception fetch : fetchPlayerWithPrice"+ex.getMessage());
+					setErrorMessage("Technical Error");
+					setErrorCode(ErrorConstrant.TRANSACTION_ERROR);
+				}
+				finally
+				{
+					session.close();
+				}
+			}
+			else
+			{
+				setErrorCode(ErrorConstrant.SESS_NULL);
+				setErrorMessage("Technical Error");
+			}
+		}
+		logger.info("--------------- Returning user playerWithPriceList: -------------"+playerWithPriceList);
+		return playerWithPriceList;
+	}
+	public static List<Object[]> fetchPlayerWithTotalPoint(List gameClubPlayerIdList)
+	{
+		List<Object[]> playerWithTotalPointList = null;
+		setErrorMessage("");
+		SessionFactory factory = HibernateSessionFactory.getSessionFacotry();
+		logger.debug("--------------- fetchPlayerWithTotalPoint ------------> gameClubPlayerList:  "+gameClubPlayerIdList);
+		if(factory == null)
+		{
+			setErrorCode(ErrorConstrant.SESS_FACT_NULL);
+			setErrorMessage("Technical Error");
+		}
+		else
+		{
+			Session session = factory.openSession();
+			if(session != null)
+			{
+				try
+				{
+					
+					SQLQuery query = session.createSQLQuery(QueryConstrant.SELECT_PLAYER_WITH_TOTAL_POINT_IN_ORDER);
+					query.setParameterList("gameClubPlayerIdList", gameClubPlayerIdList);
+					playerWithTotalPointList =query.list();
+				}
+				catch(Exception ex)
+				{
+					logger.error("Exception fetch : fetchPlayerWithTotalPoint"+ex.getMessage());
+					setErrorMessage("Technical Error");
+					setErrorCode(ErrorConstrant.TRANSACTION_ERROR);
+				}
+				finally
+				{
+					session.close();
+				}
+			}
+			else
+			{
+				setErrorCode(ErrorConstrant.SESS_NULL);
+				setErrorMessage("Technical Error");
+			}
+		}
+		logger.info("--------------- Returning user playerWithTotalPointList: -------------"+playerWithTotalPointList);
+		return playerWithTotalPointList;
+	}
 	public static int totalPlayersOfUserByGame(Integer userId, Integer gameId)
 	{
 		int totalPlayers = 0;
@@ -676,6 +806,72 @@ public class GameManager {
 		}
 		
 	}
+	public static Map<String,Integer>  getGameClubPlayerWithUserCountMap(List gameClubPlayerIdList)
+	{
+		logger.debug("---------- Inside getGameClubPlayerWithUserCountMap: ");
+		List<Object[]> countOfPlayerByUser = fetchCountOfPlayersByUser(gameClubPlayerIdList);
+		Map<String,Integer> gameClubPlayerWithUserCountMap = new LinkedHashMap<String,Integer>();
+		
+		for(Object[] row:countOfPlayerByUser)
+		{
+			gameClubPlayerWithUserCountMap.put(row[0].toString(), ((BigInteger)row[1]).intValue());
+		}
+		for(Object gameClubPlayerIdObj:gameClubPlayerIdList)
+		{
+			if(!gameClubPlayerWithUserCountMap.containsKey(gameClubPlayerIdObj.toString()))
+			{
+				gameClubPlayerWithUserCountMap.put(gameClubPlayerIdObj.toString(), 0);
+			}
+				
+		}	
+	logger.info("----------- gameClubPlayerWithUserCountMap: "+gameClubPlayerWithUserCountMap);	
+	return gameClubPlayerWithUserCountMap;
+	}
+	
+	public static Map<String,Integer>  getPlayerPriceMap(List gameClubPlayerIdList)
+	{
+		logger.debug("---------- Inside getPlayerPriceMap: ");
+		List<Object[]> playerWithPriceList = fetchPlayerWithPrice(gameClubPlayerIdList);
+		Map<String,Integer> playerPriceMap = new LinkedHashMap<String,Integer>();
+		
+		for(Object[] row:playerWithPriceList)
+		{
+			playerPriceMap.put(row[0].toString(), (Integer)row[1]);
+		}
+		for(Object gameClubPlayerIdObj:gameClubPlayerIdList)
+		{
+			if(!playerPriceMap.containsKey(gameClubPlayerIdObj.toString()))
+			{
+				playerPriceMap.put(gameClubPlayerIdObj.toString(), 0);
+			}
+				
+		}	
+	logger.info("----------- playerPriceMap: "+playerPriceMap);	
+	return playerPriceMap;
+	}
+	
+	public static Map<String,Integer>  getPlayerTotalPointMap(List gameClubPlayerIdList)
+	{
+		logger.info("---------- Inside getPlayerTotalPointMap: ");
+		List<Object[]> playerWithTotalPointList = fetchPlayerWithTotalPoint(gameClubPlayerIdList);
+		Map<String,Integer> playerTotalPointMap = new LinkedHashMap<String,Integer>();
+		
+		for(Object[] row:playerWithTotalPointList)
+		{
+			playerTotalPointMap.put(row[0].toString(), (Integer)row[1]);
+		}
+		for(Object gameClubPlayerIdObj:gameClubPlayerIdList)
+		{
+			if(!playerTotalPointMap.containsKey(gameClubPlayerIdObj.toString()))
+			{
+				playerTotalPointMap.put(gameClubPlayerIdObj.toString(), 0);
+			}
+				
+		}	
+	logger.info("----------- playerTotalPointMap: "+playerTotalPointMap);	
+	return playerTotalPointMap;
+	}
+	
 	public static List<Map<String,String>> userPlayerDetailsList(Integer userId, Integer gameId)
 	{
 		logger.debug("---------- Inside userPlayerDetailsList userId: "+userId+" , gameId: "+gameId);

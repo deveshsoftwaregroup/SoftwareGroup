@@ -22,9 +22,9 @@ public class SportSchedular {
 	        logger.debug(" -------------- Started fixed rate job at:  "+new Date());
 	    }
 	*/
-	//@Scheduled(cron="*/5 * * * * ?")
-	/*public void testCron(){
+	@Scheduled(cron="*/5 * * * * ?")
+	public void testCron(){
 	        System.out.println("Started Cron job at:  "+new Date());
 	        logger.debug(" -------------- Started Cron job at:   "+new Date());
-	    }*/
+	    }
 }
