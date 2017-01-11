@@ -215,7 +215,7 @@
 	                                  <input type="password" name="logonPassword" placeholder="password" required class="form-control" /> 
 	                                  <span class="help-block"></span>
 	                              </div>
-	                              <div id="loginErrorMsg" class="alert alert-error hide">Wrong username og password</div>
+	                              <div id="loginErrorMsg" class="alert alert-error hide">Wrong username or password</div>
 	                              <div class="checkbox">
 	                                  <label>
 	                                      <input type="checkbox" name="remember" id="remember"> Remember login
@@ -232,13 +232,14 @@
 	                  <div class="col-xs-6">
 	                      <p class="lead">Register now for <span class="text-success">FREE</span></p>
 	                      <ul class="list-unstyled" style="line-height: 2">
-	                          <li><span class="fa fa-check text-success"></span> See all your orders</li>
-	                          <li><span class="fa fa-check text-success"></span> Fast re-order</li>
+	                          <li><span class="fa fa-check text-success"></span> Manage your team</li>
+	                          <li><span class="fa fa-check text-success"></span> Great UI Experience</li>
 	                          <li><span class="fa fa-check text-success"></span> Save your favorites</li>
-	                          <li><span class="fa fa-check text-success"></span> Fast checkout</li>
-	                          <li><span class="fa fa-check text-success"></span> Get a gift <small>(only new customers)</small></li>
+	                          <li><span class="fa fa-check text-success"></span> See your rank</li>
+	                          <li><span class="fa fa-check text-success"></span> Win prizes <small></small></li>
 	                      </ul>
-	                      <p><a href="/new-customer/" class="btn btn-info btn-block">Yes please, register now!</a></p>
+	                      <p><a href="javascript:void(0);" data-toggle="modal" data-target="#myModal1" class="btn btn-info btn-block">Register with Email ID!</a></p>
+	                  	<div ><a href="javascript:void(0);" onclick="loginWithFB()"; class=""><img src="/SportMgmt/images/login_fb.jpg" class="img-responsive" alt="" height="75" width="270" ></a></div>
 	                  </div>
 	              </div>
 	          </div>
@@ -291,9 +292,10 @@
             </div>
         </div>   
         <div class="form-group">            
-            <div align="right">
+            <div align="center">
                 <a href="javascript:void(0);" class="button-lrg" onclick="submitForm();"><input type="button" class="btn btn-primary" value="REGISTER"></a>
             </div> 
+            <div align="center"><a href="javascript:void(0);" onclick="loginWithFB()"; class=""><img src="/SportMgmt/images/login_fb.jpg" class="img-responsive" alt="" height="92" ></a></div>
         </div>
     </form>
 	          </div>
@@ -572,6 +574,12 @@ $('#exampleModal3').data('revealInit').close_on_esc = false
             $('#fbox1').animate({ left: '0' }, 4000);
             $('#fbox2').animate({ right: '-301px' }, 2000);
      });
+        
+function loginWithFB()
+{
+	window.location="../SportMgmt/mvc/social/facebook/signin";
+	
+}
 </script>
 
 <script src="/SportMgmt/js/vendor/jquery.js"></script>    
