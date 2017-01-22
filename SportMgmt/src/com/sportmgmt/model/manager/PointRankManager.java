@@ -84,4 +84,54 @@ public class PointRankManager {
 		return pointList;
 	}
 
+	public static List<Object[]> getTotalPointAndRank(String gameId,String userId)
+	{
+		logger.debug("----- Inside getTotalPointAndRank ---- gameId: "+gameId+" ,userId: "+userId);
+		setErrorMessage(SportConstrant.NULL);
+		setErrorCode(SportConstrant.NULL);
+		List<Object[]> totalPointAndRank = null;
+		SessionFactory factory = HibernateSessionFactory.getSessionFacotry();
+		if(factory == null)
+		{
+			setErrorCode(ErrorConstrant.SESS_FACT_NULL);
+			setErrorMessage("Technical Error");
+			logger.debug("----- Factory Object is null----");
+		}
+		else
+		{
+			Session session = factory.openSession();
+			if(session != null)
+			{
+				try
+				{
+				
+					Query query	 = session.createQuery(QueryConstrant.SELECT_TOTAL_POINT_AND_RANK_OF_USER);
+					query.setParameter("gameId", new Integer(gameId));
+					query.setParameter("userId", new Integer(userId));
+					logger.debug("----------- Executing query to total point and rank ");
+					totalPointAndRank = query.list();
+					
+				}
+				catch(Exception ex)
+				{
+					logger.error("Exception in getTotalPointAndRank "+ex);
+					setErrorMessage("Technical Error");
+					setErrorCode(ErrorConstrant.TRANSACTION_ERROR);
+				}
+				finally
+				{
+					session.close();
+				}
+			}
+			else
+			{
+				setErrorCode(ErrorConstrant.SESS_NULL);
+				setErrorMessage("Technical Error");
+				logger.debug("----- Session Object is null----");
+			}
+		}
+		logger.debug("----- Returning Match List  ---- : "+totalPointAndRank);
+		return totalPointAndRank;
+	}
+
 }

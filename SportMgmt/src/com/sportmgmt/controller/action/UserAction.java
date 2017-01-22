@@ -8,7 +8,6 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.apache.catalina.tribes.group.interceptors.TwoPhaseCommitInterceptor.MapEntry;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -32,6 +31,7 @@ import com.sportmgmt.utility.common.ApplicationDataUtility;
 import com.sportmgmt.utility.common.LeaguePlanUtil;
 import com.sportmgmt.utility.common.MailUtility;
 import com.sportmgmt.utility.common.PropertyFileUtility;
+import com.sportmgmt.utility.common.SortUtility;
 import com.sportmgmt.utility.constrant.ErrorConstrant;
 import com.sportmgmt.utility.constrant.SportConstrant;
 
@@ -55,7 +55,7 @@ public class UserAction {
 	public void setPropFileUtility(PropertyFileUtility propFileUtility) {
 		this.propFileUtility = propFileUtility;
 	}
-	@Autowired
+	/*@Autowired
 	private ApplicationDataUtility applicationDataUtility;
 	
 	
@@ -65,6 +65,20 @@ public class UserAction {
 	public void setApplicationDataUtility(ApplicationDataUtility applicationDataUtility) {
 		this.applicationDataUtility = applicationDataUtility;
 	}
+	*/
+	@Autowired
+	private SortUtility sortUtility;
+		
+	
+	public SortUtility getSortUtility() {
+		return sortUtility;
+	}
+
+
+	public void setSortUtility(SortUtility sortUtility) {
+		this.sortUtility = sortUtility;
+	}
+
 	@RequestMapping(value = "register", method = RequestMethod.POST)
 	public String userRegister(ModelMap modeMap,@RequestParam Map<String,String> userMap)
 	{
@@ -273,7 +287,7 @@ public class UserAction {
 			 ArrayList clubList = new ArrayList();
 			 HashMap gameMap = null;
 			// List games = GameManager.fetchGames();
-			 List games = applicationDataUtility.getGames();
+			 List games = sortUtility.getApplicationDataUtility().getGames();
 			 HashMap userGameMap = new HashMap();
 			if(games != null && games.size() ==1)
 			{
@@ -283,12 +297,10 @@ public class UserAction {
 				if(gameId != null && !gameId.equals(""))
 				{
 					//GameManager.updateClubListAndPlayersList(playersList, clubList, gameId);
-					playersList = applicationDataUtility.getPlayersList();
-					clubList = applicationDataUtility.getClubList();
-					//Map playerUserCountMap = GameManager.getGameClubPlayerWithUserCountMap(applicationDataUtility.getGameClubPlayerIdList());
-					//Map playerPriceMap = GameManager.getPlayerPriceMap(applicationDataUtility.getGameClubPlayerIdList());
-					//Map playerTotalPointMap = GameManager.getPlayerTotalPointMap(applicationDataUtility.getGameClubPlayerIdList());
-					playersList =shortPlayerListByPrice(playersList);
+					playersList = sortUtility.getApplicationDataUtility().getPlayersList();
+					clubList = sortUtility.getApplicationDataUtility().getClubList();
+					playersList = sortUtility.sortPlayerListByPrice(playersList);
+					session.setAttribute("playersOrderBy", "price");
 					
 				}
 				List<Map<String,String>> userPlayersList = GameManager.userPlayerDetailsList(user.getUserId(),Integer.valueOf(gameId)); 
@@ -641,25 +653,5 @@ public class UserAction {
 		}
 		return SportConstrant.USER_PLAN_PAGE;	
 	}
-	private ArrayList<Map<String,String>> shortPlayerListByPrice(List playerList)
-	{
-		Map playerPriceMap = GameManager.getPlayerPriceMap(applicationDataUtility.getGameClubPlayerIdList());
-		ArrayList<Map<String,String>> sortedPlayerList = new ArrayList<Map<String,String>>(); 
-		for(Object priceEntryObj:playerPriceMap.entrySet())
-		{
-			Map.Entry<String, String> priceEntry = (Map.Entry)priceEntryObj;
-			for(Object playerListObj:playerList)
-			{
-				Map playerListMap = (Map)playerListObj;
-				if(priceEntry.getKey().equals(playerListMap.get("gameClubPlayerId")))
-				{
-					playerListMap.put("price", priceEntry.getValue());
-					sortedPlayerList.add(playerListMap);
-					break;
-				}
-			}
-		}
-		
-	return sortedPlayerList;
-	}
+	
 }

@@ -407,6 +407,25 @@
 		     		  }
 		     		});	
 		}
+		
+		function orderPlayerList(orderBy)
+		{
+			
+				$.ajax({
+		     		  url: "/SportMgmt/mvc/player/orderBy/"+orderBy,
+		     		  dataType: 'html',
+		     		  success: function( resp ) {
+		     			 //console.log(resp); 
+		     			if(typeof resp.playerList !='undefined')
+		     			 playerListJson = resp.playerList;
+		     			 uploadTransferView();
+		     		  },
+		     		  error: function( req, status, err ) {
+		     		    console.log( 'something went wrong', status, err );
+		     		  }
+		     		});	
+		}
+		
   </script>
   </body>
 </html>

@@ -1,5 +1,6 @@
 package com.sportmgmt.controller.action;
 
+import java.math.BigInteger;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -31,6 +32,7 @@ import com.sportmgmt.model.entity.Match;
 import com.sportmgmt.model.manager.GameManager;
 import com.sportmgmt.model.manager.MatchManager;
 import com.sportmgmt.model.manager.PlanManager;
+import com.sportmgmt.model.manager.PointRankManager;
 import com.sportmgmt.utility.common.MailUtility;
 import com.sportmgmt.utility.common.PropertyFileUtility;
 import com.sportmgmt.utility.constrant.ErrorConstrant;
@@ -454,6 +456,15 @@ public class GameAction {
 		 HashMap totalPlayingMap= new HashMap();
 		 //totalPlayingMap.put("player", player);
 		 GameManager.updateTotalPlayingPlayerByPostion(Integer.valueOf(userId),Integer.valueOf(gameId),totalPlayingMap);
+		 modeMap.put("userOverAllRank", 0);
+		 modeMap.put("userOverAllPoint", 0);
+		 List<Object[]> totalPointAndRank = PointRankManager.getTotalPointAndRank(gameId, userId);
+		 if(totalPointAndRank !=null && totalPointAndRank.size() !=0)
+		 {
+			 modeMap.put("userOverAllRank", ((BigInteger)totalPointAndRank.get(0)[1]).intValue());
+			 modeMap.put("userOverAllPoint", ((BigInteger)totalPointAndRank.get(0)[0]).intValue());
+		 }
+		
 		 String totalPlayingJson = "";
 		 modeMap.put("totalPlayingMap", totalPlayingMap);
 		 logger.debug("-------- MyTeamView : totalPlayingMap: "+totalPlayingMap);
@@ -581,6 +592,34 @@ public class GameAction {
 		 }
 		 
 		 return SportConstrant.MATCH_PAGE;
+	}
+	
+	@RequestMapping(value = "SortPlayer/{orderBy}", method = RequestMethod.GET)
+	public  String orderBy(ModelMap modeMap,HttpServletRequest request,@PathVariable String orderBy)
+	{
+		logger.debug("---------- IN MyTeamView to : ");
+		 //int player = GameManager.totalPlayingPlayersOfUserByGame(Integer.valueOf(userId),Integer.valueOf(gameId));
+		 HashMap totalPlayingMap= new HashMap();
+		 //totalPlayingMap.put("player", player);
+		// GameManager.updateTotalPlayingPlayerByPostion(Integer.valueOf(userId),Integer.valueOf(gameId),totalPlayingMap);
+		 String totalPlayingJson = "";
+		 modeMap.put("totalPlayingMap", totalPlayingMap);
+		 logger.debug("-------- MyTeamView : totalPlayingMap: "+totalPlayingMap);
+		 ObjectMapper mapperObj = new ObjectMapper();
+		 try
+		 {
+			 
+			 totalPlayingJson = mapperObj.writeValueAsString(totalPlayingMap);
+			 logger.debug("-------- MyTeamView : totalPlayingJson: "+totalPlayingJson);
+			 
+		 }
+		 catch(Exception ex)
+		 {
+			 logger.error("---------- Entry in parsing map to json: "+ex);
+		 }
+		 modeMap.put("totalPlayingJson", totalPlayingJson);
+			
+		 return SportConstrant.MY_TEAM_PAGE;
 	}
 
 }

@@ -513,6 +513,49 @@ public class GameManager {
 		logger.info("--------------- Returning user countOfPlayerByUser: -------------"+countOfPlayerByUser);
 		return countOfPlayerByUser;
 	}
+	
+	public static BigInteger fetchTotalUserOfGame()
+	{
+		List totalUserOfGame = null;
+		setErrorMessage("");
+		SessionFactory factory = HibernateSessionFactory.getSessionFacotry();
+		logger.debug("--------------- fetchTotalUserOfGame ------------ ");
+		if(factory == null)
+		{
+			setErrorCode(ErrorConstrant.SESS_FACT_NULL);
+			setErrorMessage("Technical Error");
+		}
+		else
+		{
+			Session session = factory.openSession();
+			if(session != null)
+			{
+				try
+				{
+					
+					SQLQuery query = session.createSQLQuery(QueryConstrant.SELECT_TOTAL_USER_FOR_GAME);
+					totalUserOfGame =query.list();
+				}
+				catch(Exception ex)
+				{
+					logger.error("Exception fetch : fetchTotalUserOfGame = "+ex.getMessage());
+					setErrorMessage("Technical Error");
+					setErrorCode(ErrorConstrant.TRANSACTION_ERROR);
+				}
+				finally
+				{
+					session.close();
+				}
+			}
+			else
+			{
+				setErrorCode(ErrorConstrant.SESS_NULL);
+				setErrorMessage("Technical Error");
+			}
+		}
+		logger.info("--------------- Returning user countOfPlayerByUser: -------------"+totalUserOfGame);
+		return (BigInteger)totalUserOfGame.get(0);
+	}
 	public static List<Object[]> fetchPlayerWithPrice(List gameClubPlayerIdList)
 	{
 		List<Object[]> playerWithPriceList = null;
@@ -810,22 +853,29 @@ public class GameManager {
 	{
 		logger.debug("---------- Inside getGameClubPlayerWithUserCountMap: ");
 		List<Object[]> countOfPlayerByUser = fetchCountOfPlayersByUser(gameClubPlayerIdList);
+		int totalUserOfGame = fetchTotalUserOfGame().intValue();
 		Map<String,Integer> gameClubPlayerWithUserCountMap = new LinkedHashMap<String,Integer>();
-		
 		for(Object[] row:countOfPlayerByUser)
 		{
-			gameClubPlayerWithUserCountMap.put(row[0].toString(), ((BigInteger)row[1]).intValue());
+			int countPercentage = (((BigInteger)row[1]).intValue()*100)/totalUserOfGame;
+			//gameClubPlayerWithUserCountMap.put(row[0].toString(), ((BigInteger)row[1]).intValue());
+			gameClubPlayerWithUserCountMap.put(row[0].toString(), countPercentage);
+			//logger.info("-------Inside loop--- gameClubPlayerWithUserCountMap: "+gameClubPlayerWithUserCountMap);
 		}
+		Map<String,Integer> playerUserSelectedByPercentageMap = new LinkedHashMap<String,Integer>();
 		for(Object gameClubPlayerIdObj:gameClubPlayerIdList)
 		{
 			if(!gameClubPlayerWithUserCountMap.containsKey(gameClubPlayerIdObj.toString()))
 			{
-				gameClubPlayerWithUserCountMap.put(gameClubPlayerIdObj.toString(), 0);
+				playerUserSelectedByPercentageMap.put(gameClubPlayerIdObj.toString(), 0);
 			}
 				
-		}	
-	logger.info("----------- gameClubPlayerWithUserCountMap: "+gameClubPlayerWithUserCountMap);	
-	return gameClubPlayerWithUserCountMap;
+		}
+		playerUserSelectedByPercentageMap.putAll(gameClubPlayerWithUserCountMap);
+		//logger.info("--------1--- gameClubPlayerWithUserCountMap: "+gameClubPlayerWithUserCountMap);
+			
+	logger.info("------2----- playerUserSelectedByPercentageMap: "+playerUserSelectedByPercentageMap);	
+	return playerUserSelectedByPercentageMap;
 	}
 	
 	public static Map<String,Integer>  getPlayerPriceMap(List gameClubPlayerIdList)

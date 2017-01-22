@@ -1105,10 +1105,10 @@
                             <div>
                                 <label for="ismjs-element-price" class="ism-form__label">Sorted By</label>
                                 <div class="ism-form__select-wrap">
-                                    <select id="ismjs-element-price" class="ism-form__select">
-                                        <option value="1">Price</option>
-                                        <option value="2">Total Score</option>
-                                        <option value="3">Selected By %</option>
+                                    <select id="ismjs-element-price" class="ism-form__select" onchange="orderPlayerList(this.value);">
+                                        <option <c:if test="${sessionScope.playersOrderBy eq 'price'}">selected</c:if>  value="price">Price</option>
+                                        <option <c:if test="${sessionScope.playersOrderBy eq 'total_score'}">selected</c:if> value="total_score">Total Score</option>
+                                        <option <c:if test="${sessionScope.playersOrderBy eq 'user_count'}">selected</c:if> value="user_count">Selected By %</option>
                                     </select>
                                 </div>
                             </div>
@@ -1141,7 +1141,10 @@
                     <th class="ism-table--el-list__status"></th>
                     <th class="ism-table--el-list__name"><a href="#" class="ism-link--bold">Goalkeepers</a></th>
                     <th class="ism-table--el-list__price"><abbr title="Price in Coins">Coins</abbr></th>
-                    <th class="ism-table--el-list__stat"><abbr title="Total Score">TS</abbr></th>
+                    <c:choose>
+                    <c:when test="${sessionScope.playersOrderBy eq 'user_count'}"><th class="ism-table--el-list__stat"><abbr title="Total Score">UC</abbr></c:when>
+                    <c:otherwise><th class="ism-table--el-list__stat"><abbr title="Total Score">TS</abbr></th></c:otherwise>
+                    </c:choose>
                 </tr>
             </thead>
             </table>
@@ -1179,7 +1182,10 @@
 
     </td>
     <td class="ism-table--el__strong playerPrice">${playerMap.price}</td>
-    <td class="ism-table--el__strong">${playerMap.totalScore}</td>
+    <c:choose>
+        <c:when test="${sessionScope.playersOrderBy eq 'user_count'}"><td class="ism-table--el__strong">${playerMap.userCount}</td></c:when>
+        <c:otherwise><td class="ism-table--el__strong">${playerMap.totalScore}</td>></c:otherwise>
+    </c:choose>
 </tr>
 </c:if>
  </c:forEach>
@@ -1195,7 +1201,10 @@
                     <th class="ism-table--el-list__status"></th>
                     <th class="ism-table--el-list__name"><a href="#" class="ism-link--bold">Defenders</a></th>
                     <th class="ism-table--el-list__price"><abbr title="Price in Coins">Coins</abbr></th>
-                    <th class="ism-table--el-list__stat"><abbr title="Goals scored">TS</abbr></th>
+                    <c:choose>
+                    <c:when test="${sessionScope.playersOrderBy eq 'user_count'}"><th class="ism-table--el-list__stat"><abbr title="Total Score">UC</abbr></c:when>
+                    <c:otherwise><th class="ism-table--el-list__stat"><abbr title="Total Score">TS</abbr></th></c:otherwise>
+                    </c:choose>
                 </tr>
             </thead>
             </table>
@@ -1233,7 +1242,10 @@
 
     </td>
     <td class="ism-table--el__strong playerPrice">${playerMap.price}</td>
-    <td class="ism-table--el__strong">${playerMap.totalScore}</td>
+    <c:choose>
+        <c:when test="${sessionScope.playersOrderBy eq 'user_count'}"><td class="ism-table--el__strong">${playerMap.userCount}</td></c:when>
+        <c:otherwise><td class="ism-table--el__strong">${playerMap.totalScore}</td>></c:otherwise>
+    </c:choose>
 </tr>
 </c:if>
 </c:forEach>
@@ -1249,7 +1261,10 @@
                     <th class="ism-table--el-list__status"></th>
                     <th class="ism-table--el-list__name"><a href="#" class="ism-link--bold">Midfielders</a></th>
                     <th class="ism-table--el-list__price"><abbr title="Price in Coins">Coins</abbr></th>
-                    <th class="ism-table--el-list__stat"><abbr title="Goals scored">TS</abbr></th>
+                    <c:choose>
+                    <c:when test="${sessionScope.playersOrderBy eq 'user_count'}"><th class="ism-table--el-list__stat"><abbr title="Total Score">UC</abbr></c:when>
+                    <c:otherwise><th class="ism-table--el-list__stat"><abbr title="Total Score">TS</abbr></th></c:otherwise>
+                    </c:choose>
                 </tr>
             </thead>
             </table>
@@ -1287,7 +1302,10 @@
 
     </td>
     <td class="ism-table--el__strong playerPrice">${playerMap.price}</td>
-    <td class="ism-table--el__strong">${playerMap.totalScore}</td>
+    <c:choose>
+        <c:when test="${sessionScope.playersOrderBy eq 'user_count'}"><td class="ism-table--el__strong">${playerMap.userCount}</td></c:when>
+        <c:otherwise><td class="ism-table--el__strong">${playerMap.totalScore}</td>></c:otherwise>
+    </c:choose>
 </tr>
 </c:if>
 </c:forEach>
@@ -1303,7 +1321,10 @@
                     <th class="ism-table--el-list__status"></th>
                     <th class="ism-table--el-list__name"><a href="#" class="ism-link--bold">Forwards</a></th>
                     <th class="ism-table--el-list__price"><abbr title="Price in Coins">Coins</abbr></th>
-                    <th class="ism-table--el-list__stat"><abbr title="Goals scored">TS</abbr></th>
+                    <c:choose>
+                    <c:when test="${sessionScope.playersOrderBy eq 'user_count'}"><th class="ism-table--el-list__stat"><abbr title="Total Score">UC</abbr></c:when>
+                    <c:otherwise><th class="ism-table--el-list__stat"><abbr title="Total Score">TS</abbr></th></c:otherwise>
+                    </c:choose>
                 </tr>
             </thead>
             </table>
@@ -1341,7 +1362,10 @@
 
     </td>
     <td class="ism-table--el__strong playerPrice">${playerMap.price }</td>
-    <td class="ism-table--el__strong">${playerMap.totalScore}</td>
+    <c:choose>
+        <c:when test="${sessionScope.playersOrderBy eq 'user_count'}"><td class="ism-table--el__strong">${playerMap.userCount}</td></c:when>
+        <c:otherwise><td class="ism-table--el__strong">${playerMap.totalScore}</td>></c:otherwise>
+    </c:choose>
 </tr>
 </c:if>
 </c:forEach>
