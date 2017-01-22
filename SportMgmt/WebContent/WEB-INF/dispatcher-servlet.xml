@@ -80,6 +80,9 @@
     <bean id="applicationDataUtility" class="com.sportmgmt.utility.common.ApplicationDataUtility">  
 	    <property name="msg" value="This is load message" /> 
 	</bean>
+	<bean id="SortUtility" class="com.sportmgmt.utility.common.SortUtility">  
+	    <property name="applicationDataUtility" ref="applicationDataUtility" /> 
+	</bean>
     <!-- <bean id="sportSchedular" class="com.sportmgmt.utility.common.SportSchedular"></bean> -->
     <import resource="spring-social.xml" />
 </beans>
