@@ -1101,6 +1101,18 @@
                                 </div>
                             </div>
                         </div>
+                        <div id="ismr-price" class="ism-form__group">
+                            <div>
+                                <label for="ismjs-element-price" class="ism-form__label">Sorted By</label>
+                                <div class="ism-form__select-wrap">
+                                    <select id="ismjs-element-price" class="ism-form__select">
+                                        <option value="1">Price</option>
+                                        <option value="2">Total Score</option>
+                                        <option value="3">Selected By %</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
 
                        <!--  <div class="ism-search">
                             <label for="ismjs-element-search" class="ism-form__label">Search Player List</label>
