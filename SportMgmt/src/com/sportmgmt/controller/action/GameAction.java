@@ -35,8 +35,8 @@ import com.sportmgmt.model.manager.PlanManager;
 import com.sportmgmt.model.manager.PointRankManager;
 import com.sportmgmt.utility.common.MailUtility;
 import com.sportmgmt.utility.common.PropertyFileUtility;
-import com.sportmgmt.utility.constrant.ErrorConstrant;
 import com.sportmgmt.utility.constrant.SportConstrant;
+import com.sportmgmt.utility.exception.ErrorConstrant;
 
 @Controller
 @RequestMapping("/game")
@@ -456,15 +456,7 @@ public class GameAction {
 		 HashMap totalPlayingMap= new HashMap();
 		 //totalPlayingMap.put("player", player);
 		 GameManager.updateTotalPlayingPlayerByPostion(Integer.valueOf(userId),Integer.valueOf(gameId),totalPlayingMap);
-		 modeMap.put("userOverAllRank", 0);
-		 modeMap.put("userOverAllPoint", 0);
-		 List<Object[]> totalPointAndRank = PointRankManager.getTotalPointAndRank(gameId, userId);
-		 if(totalPointAndRank !=null && totalPointAndRank.size() !=0)
-		 {
-			 modeMap.put("userOverAllRank", ((BigInteger)totalPointAndRank.get(0)[1]).intValue());
-			 modeMap.put("userOverAllPoint", ((BigInteger)totalPointAndRank.get(0)[0]).intValue());
-		 }
-		
+		 modeMap.put("userGameMap",GameManager.getUserGameStatus(userId, gameId));
 		 String totalPlayingJson = "";
 		 modeMap.put("totalPlayingMap", totalPlayingMap);
 		 logger.debug("-------- MyTeamView : totalPlayingMap: "+totalPlayingMap);

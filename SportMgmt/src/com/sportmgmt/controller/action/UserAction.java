@@ -32,8 +32,8 @@ import com.sportmgmt.utility.common.LeaguePlanUtil;
 import com.sportmgmt.utility.common.MailUtility;
 import com.sportmgmt.utility.common.PropertyFileUtility;
 import com.sportmgmt.utility.common.SortUtility;
-import com.sportmgmt.utility.constrant.ErrorConstrant;
 import com.sportmgmt.utility.constrant.SportConstrant;
+import com.sportmgmt.utility.exception.ErrorConstrant;
 
 @Controller
 @RequestMapping("/user")
@@ -282,7 +282,6 @@ public class UserAction {
 			 HttpSession session = request.getSession();
 			 logger.debug("---------- Setting User to Sesison: "+user);
 			 session.setAttribute("userId", String.valueOf(user.getUserId()));
-			 session.setAttribute("user", user);
 			 ArrayList playersList = new ArrayList();
 			 ArrayList clubList = new ArrayList();
 			 HashMap gameMap = null;
@@ -314,6 +313,7 @@ public class UserAction {
 				GameManager.updateTotalPlayerByPostion(user.getUserId(),Integer.valueOf(gameId),totalMap);
 				userGameMap.put("total", totalMap);
 				System.out.println("---------------- totalMap Now : "+userGameMap);
+				user.setUserGameMap(GameManager.getUserGameStatus(userId, gameId));
 			}
 			if(gameMap != null)
 			{
@@ -375,6 +375,7 @@ public class UserAction {
 				 logger.error("---------- Error in parsing map to json: "+ex);
 			 }
 			/* Code end to fetch plan list */
+			session.setAttribute("user", user);
 		 }
 		 else
 		 {

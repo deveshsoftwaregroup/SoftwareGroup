@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.sportmgmt.controller.response.SportMgmtResponse;
 import com.sportmgmt.model.manager.GameManager;
 import com.sportmgmt.utility.common.ApplicationDataUtility;
 import com.sportmgmt.utility.common.SortUtility;
@@ -62,5 +63,12 @@ public class PlayerAction {
 		session.setAttribute("playerList", playerList);
 		session.setAttribute("playersOrderBy", orderBy);
 		return resultMap;
+	}
+	
+	@RequestMapping(value = "make-player-history/{gameId}", method = RequestMethod.GET)
+	public @ResponseBody SportMgmtResponse createGameWeekHistoryForPlayers(@PathVariable String gameId, HttpServletRequest request)
+	{
+		SportMgmtResponse sportMgmtResponse = new SportMgmtResponse();
+		return sportMgmtResponse;
 	}
 }

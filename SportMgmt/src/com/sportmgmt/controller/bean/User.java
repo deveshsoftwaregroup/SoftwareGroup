@@ -1,6 +1,7 @@
 package com.sportmgmt.controller.bean;
 
 import java.sql.Date;
+import java.util.Map;
 
 public class User {
 		
@@ -63,6 +64,8 @@ public class User {
 		private String address2;
 		
 		private boolean hasActivePlan;
+		
+		private Map<String,String> userGameMap;
 		
 		private ActivePlan activePlan;
 		
@@ -315,4 +318,13 @@ public class User {
 		public void setActivePlan(ActivePlan activePlan) {
 			this.activePlan = activePlan;
 		}
+
+		public Map<String, String> getUserGameMap() {
+			return userGameMap;
+		}
+
+		public void setUserGameMap(Map<String, String> userGameMap) {
+			this.userGameMap = userGameMap;
+		}
+		
 }
