@@ -32,8 +32,8 @@ import com.sportmgmt.utility.common.LeaguePlanUtil;
 import com.sportmgmt.utility.common.MailUtility;
 import com.sportmgmt.utility.common.PropertyFileUtility;
 import com.sportmgmt.utility.common.SortUtility;
+import com.sportmgmt.utility.constrant.ErrorConstrant;
 import com.sportmgmt.utility.constrant.SportConstrant;
-import com.sportmgmt.utility.exception.ErrorConstrant;
 
 @Controller
 @RequestMapping("/user")

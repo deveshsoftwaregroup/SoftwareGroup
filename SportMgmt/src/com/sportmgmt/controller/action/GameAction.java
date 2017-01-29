@@ -35,8 +35,8 @@ import com.sportmgmt.model.manager.PlanManager;
 import com.sportmgmt.model.manager.PointRankManager;
 import com.sportmgmt.utility.common.MailUtility;
 import com.sportmgmt.utility.common.PropertyFileUtility;
+import com.sportmgmt.utility.constrant.ErrorConstrant;
 import com.sportmgmt.utility.constrant.SportConstrant;
-import com.sportmgmt.utility.exception.ErrorConstrant;
 
 @Controller
 @RequestMapping("/game")
