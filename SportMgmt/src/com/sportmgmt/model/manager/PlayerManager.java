@@ -16,9 +16,9 @@ import com.sportmgmt.model.entity.Match;
 import com.sportmgmt.model.entity.PlayerGroup;
 import com.sportmgmt.model.entity.PlayerGroupPlayer;
 import com.sportmgmt.model.entity.Point;
+import com.sportmgmt.utility.constrant.ErrorConstrant;
 import com.sportmgmt.utility.constrant.QueryConstrant;
 import com.sportmgmt.utility.constrant.SportConstrant;
-import com.sportmgmt.utility.exception.ErrorConstrant;
 
 public class PlayerManager {
 	private static Logger logger = Logger.getLogger(PlayerManager.class);

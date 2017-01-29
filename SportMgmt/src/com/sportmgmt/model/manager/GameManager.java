@@ -25,9 +25,9 @@ import com.sportmgmt.model.entity.GameClubPlayer;
 import com.sportmgmt.model.entity.Player;
 import com.sportmgmt.model.entity.UserGame;
 import com.sportmgmt.model.entity.UserPlayer;
+import com.sportmgmt.utility.constrant.ErrorConstrant;
 import com.sportmgmt.utility.constrant.QueryConstrant;
 import com.sportmgmt.utility.constrant.SportConstrant;
-import com.sportmgmt.utility.exception.ErrorConstrant;
 
 public class GameManager {
 	private static Logger logger = Logger.getLogger(GameManager.class);
