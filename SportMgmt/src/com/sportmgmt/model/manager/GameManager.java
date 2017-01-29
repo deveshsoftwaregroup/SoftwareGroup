@@ -25,9 +25,9 @@ import com.sportmgmt.model.entity.GameClubPlayer;
 import com.sportmgmt.model.entity.Player;
 import com.sportmgmt.model.entity.UserGame;
 import com.sportmgmt.model.entity.UserPlayer;
-import com.sportmgmt.utility.constrant.ErrorConstrant;
 import com.sportmgmt.utility.constrant.QueryConstrant;
 import com.sportmgmt.utility.constrant.SportConstrant;
+import com.sportmgmt.utility.exception.ErrorConstrant;
 
 public class GameManager {
 	private static Logger logger = Logger.getLogger(GameManager.class);
@@ -1217,6 +1217,7 @@ public class GameManager {
 						userGame.setUserId(new Integer(userId));
 						userGame.setGameId(new Integer(gameId));
 						userGame.setTotalPoint(0);
+						userGame.setRank(0);
 						userGame.setAddedPlayerCount(0);
 						session.save(userGame);
 						session.beginTransaction().commit();
@@ -1248,7 +1249,96 @@ public class GameManager {
 		
 		return isSuccess;
 	}
-	
+	public static Map<String,String> getUserGameStatus(String userId,String gameId)
+	{
+		Map<String,String> userGameMap = new HashMap<String,String>();
+		setErrorMessage("");
+		SessionFactory factory = HibernateSessionFactory.getSessionFacotry();
+		logger.debug("--------------- getUserGameStatus ------------> userId:  "+userId+" gameId: "+gameId);
+		if(factory == null)
+		{
+			setErrorCode(ErrorConstrant.SESS_FACT_NULL);
+			setErrorMessage("Technical Error");
+		}
+		else
+		{
+			Session session = factory.openSession();
+			if(session != null)
+			{
+				try
+				{
+					Criteria cr = session.createCriteria(UserGame.class);
+					cr.add(Restrictions.eq("gameId", new Integer(gameId)));
+					cr.add(Restrictions.eq("userId", new Integer(userId)));
+					List results = cr.list();
+					if(results != null && results.size() !=0)
+					{
+						logger.info(" ------- Enrty found in UserGameStatus");
+						logger.info(" ------- Making new Entry in USER_GAME table for user and game");
+						UserGame userGame = (UserGame)results.get(0);
+						if(userGame.getTotalPoint() !=null && !userGame.getTotalPoint().equals(""))
+						userGameMap.put("point", userGame.getTotalPoint().toString());
+						else
+						userGameMap.put("point", "0");
+						
+						if(userGame.getRank() !=null && !userGame.getRank().equals("") )
+						userGameMap.put("rank", userGame.getRank().toString());
+						else
+						userGameMap.put("rank", "0");
+						
+						if(userGame.getTeamName() !=null)
+						userGameMap.put("teamName", userGame.getTeamName());
+						else
+						userGameMap.put("teamName", "");
+						
+						if(userGame.getFavoriteClub() !=null)
+						{
+							userGameMap.put("favoriteClubId", userGame.getFavoriteClub().getClubID().toString());
+							userGameMap.put("favoriteClubName", userGame.getFavoriteClub().getClubName());
+						}
+						else
+						{
+							userGameMap.put("favoriteClubId", "");
+							userGameMap.put("favoriteClubName", "");
+						}
+						
+						if(userGame.getFavoritePlayer() !=null)
+						{
+							userGameMap.put("favoritePlayerId", userGame.getFavoritePlayer().getPlayerId().toString());
+							userGameMap.put("favoritePlayerName", userGame.getFavoritePlayer().getPlayerName());
+						}
+						else
+						{
+							userGameMap.put("favoritePlayerId", "");
+							userGameMap.put("favoritePlayerName", "");
+						}
+					
+					}
+					else
+					{
+						logger.info(" ------- Enty not found in USER_GAME table ");
+					}
+									}
+				catch(Exception ex)
+				{
+					logger.error("Exception  getUserGameStatus: "+ex.getMessage());
+					setErrorMessage("Technical Error");
+					setErrorCode(ErrorConstrant.TRANSACTION_ERROR);
+				}
+				finally
+				{
+					session.close();
+				}
+			}
+			else
+			{
+				setErrorCode(ErrorConstrant.SESS_NULL);
+				setErrorMessage("Technical Error");
+			}
+		}
+		logger.info("Returning userGameMap: "+userGameMap);
+		return userGameMap;
+	}
 	public static int increaseAddedPlayerCountToUserGame(String userId,String gameId)
 	{
 		boolean isSuccess =  true;

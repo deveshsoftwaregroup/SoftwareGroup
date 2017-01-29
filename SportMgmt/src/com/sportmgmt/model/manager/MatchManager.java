@@ -9,9 +9,9 @@ import org.hibernate.SessionFactory;
 
 import com.sportmgmt.model.entity.Game;
 import com.sportmgmt.model.entity.Match;
-import com.sportmgmt.utility.constrant.ErrorConstrant;
 import com.sportmgmt.utility.constrant.QueryConstrant;
 import com.sportmgmt.utility.constrant.SportConstrant;
+import com.sportmgmt.utility.exception.ErrorConstrant;
 
 public class MatchManager {
 	private static Logger logger = Logger.getLogger(MatchManager.class);

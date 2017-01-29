@@ -53,4 +53,10 @@ public static final String SELECT_PLAYER_WITH_TOTAL_POINT_IN_ORDER = "select gam
 public static final String SELECT_TOTAL_USER_FOR_GAME = "select count(distinct user_id) from USER_PLAYER";
 
 public static final String SELECT_TOTAL_POINT_AND_RANK_OF_USER = "select USER_TOTAL_POINT, RANK from OVERALL_RANK where game_Id=:gameId and user_id=:userId";
+
+public static final String SELECT_LAST_GAME_WEEK = "select game_week_id from GAME_WEEK where end_date = (select max(end_date) from GAME_WEEK where end_date<sysdate() and game_id =:gameId)";
+
+public static final String SELECT_GAME_WEEK_HISTORY_PLAYER_GROUP = "select * from PLAYER_GROUP where USER_ID=:userId and GAME_WEEK_ID:=gameWeekId";
+
+public static final String SELECT_USERS_OF_GAME = "select distinct(up.USER_ID) from USER_PLAYER up,GAME_CLUB_PLAYER gcp where gcp.game_id =:gameId and up.GAME_CLUB_PLAYER_ID=gcp.GAME_CLUB_PLAYER_ID";
 }

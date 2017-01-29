@@ -2,10 +2,14 @@ package com.sportmgmt.model.entity;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -22,20 +26,34 @@ public class UserGame {
 	@Column(name="GAME_ID")
 	private Integer gameId;
 	
-	@Column(name="USER_TOTAL_POINT")
+	@Column(name="TOTAL_POINT")
 	private Integer totalPoint;
 	
-	@Column(name="USER_TEAM_NAME")
+	@Column(name="TEAM_NAME")
 	private String teamName;
 	
 	@Column(name="ADDED_PLAYER_COUNT")
 	private Integer addedPlayerCount;
 	
-	@Column(name="USER_FAV_CLUB_ID")
-	private Integer favouiteClubId;
+	@OneToOne(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
+	@JoinColumn(name="FAV_CLUB_ID",insertable=true, updatable=true,nullable=true,unique=true)
+	private Club favoriteClub;
 	
-	@Column(name="USER_FAV_PLAYER_ID")
-	private Integer favoritePlayerId;
+	@OneToOne(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
+	@JoinColumn(name="FAV_PLAYER_ID",insertable=true, updatable=true,nullable=true,unique=true)
+	private Player favoritePlayer;
+	
+	@Column(name="TOTAL_RANK")
+	private Integer rank;
+	
+	@Column(name="FIELD1")
+	private String field1;
+	
+	@Column(name="FIELD2")
+	private String field2;
+	
+	@Column(name="FIELD3")
+	private String field3;
 
 	public Integer getUserGameId() {
 		return userGameId;
@@ -85,20 +103,51 @@ public class UserGame {
 		this.addedPlayerCount = addedPlayerCount;
 	}
 
-	public Integer getFavouiteClubId() {
-		return favouiteClubId;
+	public Club getFavoriteClub() {
+		return favoriteClub;
 	}
 
-	public void setFavouiteClubId(Integer favouiteClubId) {
-		this.favouiteClubId = favouiteClubId;
+	public void setFavoriteClub(Club favoriteClub) {
+		this.favoriteClub = favoriteClub;
 	}
 
-	public Integer getFavoritePlayerId() {
-		return favoritePlayerId;
+	public Player getFavoritePlayer() {
+		return favoritePlayer;
 	}
 
-	public void setFavoritePlayerId(Integer favoritePlayerId) {
-		this.favoritePlayerId = favoritePlayerId;
+	public void setFavoritePlayer(Player favoritePlayer) {
+		this.favoritePlayer = favoritePlayer;
 	}
 
+	public Integer getRank() {
+		return rank;
+	}
+
+	public void setRank(Integer rank) {
+		this.rank = rank;
+	}
+
+	public String getField1() {
+		return field1;
+	}
+
+	public void setField1(String field1) {
+		this.field1 = field1;
+	}
+
+	public String getField2() {
+		return field2;
+	}
+
+	public void setField2(String field2) {
+		this.field2 = field2;
+	}
+
+	public String getField3() {
+		return field3;
+	}
+
+	public void setField3(String field3) {
+		this.field3 = field3;
+	}
 }

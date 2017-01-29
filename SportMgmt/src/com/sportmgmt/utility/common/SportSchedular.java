@@ -3,6 +3,7 @@ package com.sportmgmt.utility.common;
 import java.util.Date;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 
 
@@ -22,9 +23,12 @@ public class SportSchedular {
 	        logger.debug(" -------------- Started fixed rate job at:  "+new Date());
 	    }
 	*/
+	@Value("${scedular.game.Id}")
+    private   String game ;
 	@Scheduled(cron="*/5 * * * * ?")
 	public void testCron(){
-	        System.out.println("Started Cron job at:  "+new Date());
-	        logger.debug(" -------------- Started Cron job at:   "+new Date());
+	       // System.out.println("Started Cron job at:  "+new Date());
+	        logger.info(" -------------- Started Cron job at:   "+new Date());
+	        logger.info(" -------------- game:   "+game);
 	    }
 }

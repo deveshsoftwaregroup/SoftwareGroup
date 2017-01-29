@@ -14,9 +14,9 @@ import org.hibernate.SessionFactory;
 
 import com.sportmgmt.model.entity.CountryStateCity;
 import com.sportmgmt.model.entity.User;
-import com.sportmgmt.utility.constrant.ErrorConstrant;
 import com.sportmgmt.utility.constrant.QueryConstrant;
 import com.sportmgmt.utility.constrant.SportConstrant;
+import com.sportmgmt.utility.exception.ErrorConstrant;
 
 public class UserManager {
 	private static Logger logger = Logger.getLogger(UserManager.class);

@@ -1,5 +1,6 @@
 package com.sportmgmt.model.manager;
 
+import java.math.BigInteger;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -10,9 +11,9 @@ import org.hibernate.SessionFactory;
 import com.sportmgmt.model.entity.Game;
 import com.sportmgmt.model.entity.Match;
 import com.sportmgmt.model.entity.Point;
-import com.sportmgmt.utility.constrant.ErrorConstrant;
 import com.sportmgmt.utility.constrant.QueryConstrant;
 import com.sportmgmt.utility.constrant.SportConstrant;
+import com.sportmgmt.utility.exception.ErrorConstrant;
 
 public class PointRankManager {
 	private static Logger logger = Logger.getLogger(PointRankManager.class);
@@ -64,7 +65,7 @@ public class PointRankManager {
 				}
 				catch(Exception ex)
 				{
-					logger.error("Exception in fetching country state city: "+ex);
+					logger.error("Exception in fetching point list: "+ex);
 					setErrorMessage("Technical Error");
 					setErrorCode(ErrorConstrant.TRANSACTION_ERROR);
 				}
@@ -83,19 +84,20 @@ public class PointRankManager {
 		logger.debug("----- Returning Match List  ---- : "+pointList);
 		return pointList;
 	}
-
-	public static List<Object[]> getTotalPointAndRank(String gameId,String userId)
+	
+	public static Integer getLastGameWeekId(String gameId)
 	{
-		logger.debug("----- Inside getTotalPointAndRank ---- gameId: "+gameId+" ,userId: "+userId);
+		logger.debug("----- Inside getLastGameWeekId ---- gameId: "+gameId);
 		setErrorMessage(SportConstrant.NULL);
 		setErrorCode(SportConstrant.NULL);
-		List<Object[]> totalPointAndRank = null;
+		List lastGameWeekIdList = null;
 		SessionFactory factory = HibernateSessionFactory.getSessionFacotry();
 		if(factory == null)
 		{
 			setErrorCode(ErrorConstrant.SESS_FACT_NULL);
 			setErrorMessage("Technical Error");
 			logger.debug("----- Factory Object is null----");
+			return null;
 		}
 		else
 		{
@@ -105,18 +107,18 @@ public class PointRankManager {
 				try
 				{
 				
-					Query query	 = session.createQuery(QueryConstrant.SELECT_TOTAL_POINT_AND_RANK_OF_USER);
+					Query query	 = session.createQuery(QueryConstrant.SELECT_LAST_GAME_WEEK);
 					query.setParameter("gameId", new Integer(gameId));
-					query.setParameter("userId", new Integer(userId));
-					logger.debug("----------- Executing query to total point and rank ");
-					totalPointAndRank = query.list();
+					logger.debug("----------- Executing query to point list by game");
+					lastGameWeekIdList = query.list();
 					
 				}
 				catch(Exception ex)
 				{
-					logger.error("Exception in getTotalPointAndRank "+ex);
+					logger.error("Exception in fetching last game week: "+ex);
 					setErrorMessage("Technical Error");
 					setErrorCode(ErrorConstrant.TRANSACTION_ERROR);
+					return null;
 				}
 				finally
 				{
@@ -128,10 +130,12 @@ public class PointRankManager {
 				setErrorCode(ErrorConstrant.SESS_NULL);
 				setErrorMessage("Technical Error");
 				logger.debug("----- Session Object is null----");
+				return null;
 			}
 		}
-		logger.debug("----- Returning Match List  ---- : "+totalPointAndRank);
-		return totalPointAndRank;
+		logger.debug("----- Returning Match List  ---- : "+lastGameWeekIdList);
+		return ((BigInteger)lastGameWeekIdList.get(0)).intValue();
 	}
+
 
 }
