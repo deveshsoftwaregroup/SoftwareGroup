@@ -178,6 +178,48 @@ public class GameManager {
 		logger.info("--------------- Returning gameClubPlayersList: -------------"+gameClubPlayersList);
 		return gameClubPlayersList;
 	}
+	
+	public static boolean isGameExistAndActive(String gameId)
+	{
+		setErrorMessage("");
+		SessionFactory factory = HibernateSessionFactory.getSessionFacotry();
+		logger.info("--------------- isGameExist -------------gameId: "+gameId);
+		if(factory == null)
+		{
+			setErrorCode(ErrorConstrant.SESS_FACT_NULL);
+			setErrorMessage("Technical Error");
+		}
+		else
+		{
+			Session session = factory.openSession();
+			if(session != null)
+			{
+				try
+				{
+					
+					Game game = (Game)session.load(Game.class, new Integer(gameId));
+					return game.getIsActive().equals(SportConstrant.YES);
+				}
+				catch(Exception ex)
+				{
+					logger.error("Exception fetch isGameExist: "+ex.getMessage());
+					setErrorMessage("Technical Error");
+					setErrorCode(ErrorConstrant.TRANSACTION_ERROR);
+				}
+				finally
+				{
+					session.close();
+				}
+			}
+			else
+			{
+				setErrorCode(ErrorConstrant.SESS_NULL);
+				setErrorMessage("Technical Error");
+			}
+		}
+		return false;
+	}
+	
 	public static void updateClubListAndPlayersList(List playersList, List clubList,String gameId)
 	{
 		logger.debug("--------------- updateClubListAndPlayersList: ---gameId: "+gameId); 

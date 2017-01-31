@@ -125,48 +125,56 @@ public class PointRankingUtility {
 		return isSuccess;
 	}
 	
-	private List<String> createPlayerHistoryForUsers(String gameId) throws SportMgmtException
+	public List<String> createPlayerHistoryForUsers(String gameId) throws SportMgmtException
 	{
-		List<BigInteger> userListOfGame = PlayerManager.userListOfGame(gameId);
-		if(userListOfGame !=null && userListOfGame.size() !=0)
+		try
 		{
-			String gameWeekId =getLatestGameWeekId(gameId);
-			if(gameWeekId != null && !gameWeekId.equals(""))
+			List<Integer> userListOfGame = PlayerManager.userListOfGame(gameId);
+			if(userListOfGame !=null && userListOfGame.size() !=0)
 			{
-				List<String> logList = new ArrayList<String>();
-				for(BigInteger userIdBigInt:userListOfGame)
+				String gameWeekId =getLatestGameWeekId(gameId);
+				if(gameWeekId != null && !gameWeekId.equals(""))
 				{
-					String userId = String.valueOf(userIdBigInt.intValue());
-					logger.info("Going to create player history of user: "+userId+" for gameWeekId: "+gameWeekId+" of gameId: "+gameId);
-					boolean isSuccess = createPlayerHistoryForGameWeek(gameId,gameWeekId,userId);
-					logger.info("player history creation went :"+isSuccess);
-					if(!isSuccess)
+					List<String> logList = new ArrayList<String>();
+					for(Integer userIdBigInt:userListOfGame)
 					{
-						if(!logMessage.equals(""))
+						String userId = String.valueOf(userIdBigInt.intValue());
+						logger.info("Going to create player history of user: "+userId+" for gameWeekId: "+gameWeekId+" of gameId: "+gameId);
+						boolean isSuccess = createPlayerHistoryForGameWeek(gameId,gameWeekId,userId);
+						logger.info("player history creation went :"+isSuccess);
+						if(!isSuccess)
 						{
-							logList.add(logMessage);
+							if(!logMessage.equals(""))
+							{
+								logList.add(logMessage);
+							}
+							else
+							{
+								logList.add("Failed userId="+userId+" gameWeekId="+gameWeekId);
+							}
 						}
-						else
-						{
-							logList.add("Failed userId="+userId+" gameWeekId="+gameWeekId);
-						}
+						
 					}
-					
+					return logList;
 				}
-				return logList;
+				else
+				{
+					logger.info("skiping to create player history of users, becuase of game week id is empty:");
+					throw new SportMgmtException("game week id is empty");
+				}
 			}
 			else
 			{
-				logger.info("skiping to create player history of users, becuase of game week id is empty:");
-				throw new SportMgmtException("game week id is empty");
+				logger.info("User List for game: "+gameId+" is empty");
+				throw new SportMgmtException("User List for game: "+gameId+" is empty");
 			}
-		}
-		else
-		{
-			logger.info("User List for game: "+gameId+" is empty");
-			throw new SportMgmtException("User List for game: "+gameId+" is empty");
-		}
 		
+		}
+		catch(Exception ex)
+		{
+			logger.error(ex);
+			throw new SportMgmtException(ex);
+		}
 	}
 	
 	private void createPlayerHistoryForGame()

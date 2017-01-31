@@ -16,6 +16,10 @@ public class SportMgmtException extends Exception{
 	{
 		super(message);
 	}
+	public SportMgmtException(Exception ex)
+	{
+		super(ex);
+	}
 	public SportMgmtException(String errorCode,String message)
 	{
 		super(message);

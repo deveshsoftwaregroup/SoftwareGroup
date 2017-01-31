@@ -9,7 +9,6 @@ public class SportMgmtResponse {
 	private boolean isSuccess;
 	private String message;
 	private List<String> logList;
-	private SportMgmtException error;
 	public boolean isSuccess() {
 		return isSuccess;
 	}
@@ -27,12 +26,6 @@ public class SportMgmtResponse {
 	}
 	public void setLogList(List<String> logList) {
 		this.logList = logList;
-	}
-	public SportMgmtException getError() {
-		return error;
-	}
-	public void setError(SportMgmtException error) {
-		this.error = error;
 	}
 	
 }

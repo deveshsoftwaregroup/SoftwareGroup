@@ -69,7 +69,7 @@ public class PlayerManager {
 							PlayerGroupPlayer playerGroupPlayer = new PlayerGroupPlayer();
 							playerGroupPlayer.setGameClubPlayerId(new Integer(playerMap.get("gameClubPlayerId")));
 							playerGroupPlayer.setPlayerCategory(playerMap.get("playerCategory"));
-							playerGroupPlayer.setGameClubPlayerId(new Integer(playerMap.get("playerSeqNum")));
+							playerGroupPlayer.setSegNum(new Integer(playerMap.get("playerSeqNum")));
 							playerGroupPlayer.setIsPlaying(playerMap.get("isPlaying"));
 							playerHistoryList.add(playerGroupPlayer);
 						}
@@ -157,7 +157,7 @@ public class PlayerManager {
 	}
 	
 	
-	public static List<BigInteger> userListOfGame(String gameId)
+	public static List<Integer> userListOfGame(String gameId)
 	{
 		logger.info("----- Inside userListOfGame ---- gameId: "+gameId);
 		setErrorMessage(SportConstrant.NULL);
@@ -179,7 +179,7 @@ public class PlayerManager {
 				
 					SQLQuery query = session.createSQLQuery(QueryConstrant.SELECT_USERS_OF_GAME);
 					query.setParameter("gameId", new Integer(gameId));
-					List<BigInteger> userListOfGame =query.list();
+					List<Integer> userListOfGame =query.list();
 					logger.info("Returing userListOfGame: "+userListOfGame);
 					return userListOfGame;
 				}

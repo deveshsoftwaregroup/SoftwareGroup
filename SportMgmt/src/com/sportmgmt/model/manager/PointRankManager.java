@@ -1,15 +1,15 @@
 package com.sportmgmt.model.manager;
 
 import java.math.BigInteger;
+import java.sql.Date;
 import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.hibernate.Query;
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
-import com.sportmgmt.model.entity.Game;
-import com.sportmgmt.model.entity.Match;
 import com.sportmgmt.model.entity.Point;
 import com.sportmgmt.utility.constrant.ErrorConstrant;
 import com.sportmgmt.utility.constrant.QueryConstrant;
@@ -107,11 +107,13 @@ public class PointRankManager {
 				try
 				{
 				
-					Query query	 = session.createQuery(QueryConstrant.SELECT_LAST_GAME_WEEK);
+					SQLQuery query = session.createSQLQuery(QueryConstrant.SELECT_LAST_GAME_WEEK);
 					query.setParameter("gameId", new Integer(gameId));
-					logger.debug("----------- Executing query to point list by game");
+					query.setParameter("date", new Date(System.currentTimeMillis()));
+					logger.info("----------- Executing query to point list by game");
 					lastGameWeekIdList = query.list();
-					
+					logger.info("----- Returning Match List  ---- : "+lastGameWeekIdList);
+					return (Integer)lastGameWeekIdList.get(0);
 				}
 				catch(Exception ex)
 				{
@@ -133,9 +135,6 @@ public class PointRankManager {
 				return null;
 			}
 		}
-		logger.debug("----- Returning Match List  ---- : "+lastGameWeekIdList);
-		return ((BigInteger)lastGameWeekIdList.get(0)).intValue();
 	}
-
 
 }
