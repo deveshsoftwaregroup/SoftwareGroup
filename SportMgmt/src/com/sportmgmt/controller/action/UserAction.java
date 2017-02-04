@@ -82,7 +82,7 @@ public class UserAction {
 	@RequestMapping(value = "register", method = RequestMethod.POST)
 	public String userRegister(ModelMap modeMap,@RequestParam Map<String,String> userMap)
 	{
-		logger.debug("Entry in register method model Map: "+modeMap);
+		logger.info("Entry in register method model Map: "+modeMap);
 		if(userMap.get("emailId") == null || userMap.get("emailId").equals(SportConstrant.NULL))
 		{
 			modeMap.put("emailIdError", "emailId is required");
@@ -113,18 +113,18 @@ public class UserAction {
 		}
 		else
 		{
-			logger.debug("--------- password: "+userMap.get("logonPassword"));
+			logger.info("--------- password: "+userMap.get("logonPassword"));
 			try
 			{
 				userMap.put("logonPassword", EncodeDecoder.encrypt(userMap.get("logonPassword")));
-				logger.debug("--------- password: After Encoding:  "+userMap.get("logonPassword"));
+				logger.info("--------- password: After Encoding:  "+userMap.get("logonPassword"));
 			}
 			catch(Exception ex)
 			{
 				logger.error("--------- Error in encoding password: "+ex);
 			}
 		}
-		logger.debug("------------ Error Map: "+modeMap);
+		logger.info("------------ Error Map: "+modeMap);
 		if(modeMap.isEmpty())
 		{
 			boolean isRegistered = UserManager.saveUser(userMap);
@@ -133,7 +133,7 @@ public class UserAction {
 			{
 				modeMap.put("message","You are registered");
 				PlanManager.addDefaultPlanToUser(UserManager.getUserId());
-				logger.debug("----------- start to send mail------");
+				logger.info("----------- start to send mail------");
 				/*try
 				{
 					Map<String,Object> mailMap = new java.util.HashMap<String,Object>();
@@ -146,7 +146,7 @@ public class UserAction {
 					String userVerifyURL = propFileUtility.getEnvProperty().getString(SportConstrant.BASE_URL)+propFileUtility.getEnvProperty().getString(SportConstrant.USER_VER_URL)+"/"+UserManager.getUserId();
 					mailMap.put(SportConstrant.USER_VER_URL,userVerifyURL);
 					mailUtility.sendHtmlMail(mailMap);
-					logger.debug("----------- end to send mail------");
+					logger.info("----------- end to send mail------");
 				}
 				catch (Exception ex)
 				{
@@ -186,11 +186,11 @@ public class UserAction {
 	 }
 	 else
 	 {
-		 logger.debug("--------- password: "+logonPassword);
+		 logger.info("--------- password: "+logonPassword);
 			try
 			{
 				logonPassword = EncodeDecoder.encrypt(logonPassword);
-				logger.debug("--------- password: After Encoding:  "+logonPassword);
+				logger.info("--------- password: After Encoding:  "+logonPassword);
 			}
 			catch(Exception ex)
 			{
@@ -217,7 +217,7 @@ public class UserAction {
 	@RequestMapping(value = "verify/{userId}", method = RequestMethod.GET)
 	public  String verifyUser(ModelMap modeMap,@PathVariable String userId)
 	{
-	 logger.debug("---------- Entry in verifyUser  -----Path Variable User Id:  "+userId);
+	 logger.info("---------- Entry in verifyUser  -----Path Variable User Id:  "+userId);
 	 modeMap.clear();
 	 if(userId == null || userId.equals(SportConstrant.NULL))
 	 {
@@ -247,7 +247,7 @@ public class UserAction {
 	@RequestMapping(value = "login/{userId}", method = RequestMethod.GET)
 	public  String doLogin(ModelMap modeMap,@PathVariable String userId,HttpServletRequest request)
 	{
-	 logger.debug("---------- Entry in login  ---- Path Variable User Id:  "+userId);
+	 logger.info("---------- Entry in login  ---- Path Variable User Id:  "+userId);
 	 modeMap.clear();
 	 if(userId == null || userId.equals(SportConstrant.NULL))
 	 {
@@ -258,29 +258,29 @@ public class UserAction {
 	
 	 if(modeMap.size() == 0)
 	 {
-		 logger.debug("---------- Calling Hibernate get User Method: ");
+		 logger.info("---------- Calling Hibernate get User Method: ");
 		 User user = UserManager.getUser(userId);
-		 logger.debug("---------- Fetche User Object: "+user);
+		 logger.info("---------- Fetche User Object: "+user);
 		 if(user != null)
 		 {
 			 modeMap.put("isLogined", true);
-			 logger.debug("---------- Fetching Active Plan");
+			 logger.info("---------- Fetching Active Plan");
 			 ActivePlan activePlan = PlanManager.getActivePlans(String.valueOf(user.getUserId()));
 			 if(activePlan == null)
 			 {
-				 logger.debug("---------- Setting User has not active Plan");
+				 logger.info("---------- Setting User has not active Plan");
 				 user.setHasActivePlan(false);
 			 }
 			 else
 			 {
-				 logger.debug("---------- Setting User has active Plan");
+				 logger.info("---------- Setting User has active Plan");
 				 user.setHasActivePlan(true);
 				 user.setActivePlan(activePlan);
-				 logger.debug(activePlan);
+				 logger.info(activePlan);
 			 }
-			 logger.debug("---------- Getting HTTP Session: "+user);
+			 logger.info("---------- Getting HTTP Session: "+user);
 			 HttpSession session = request.getSession();
-			 logger.debug("---------- Setting User to Sesison: "+user);
+			 logger.info("---------- Setting User to Sesison: "+user);
 			 session.setAttribute("userId", String.valueOf(user.getUserId()));
 			 ArrayList playersList = new ArrayList();
 			 ArrayList clubList = new ArrayList();
@@ -329,13 +329,13 @@ public class UserAction {
 				 try
 				 {
 					 gameDetailsJson = mapperObj.writeValueAsString(gameMap);
-					 logger.debug("-------- Login : gameDetailsJson: "+gameDetailsJson);
+					 logger.info("-------- Login : gameDetailsJson: "+gameDetailsJson);
 					 playerListJson = mapperObj.writeValueAsString(playersList);
-					 logger.debug("-------- Login : playerListJson: "+playerListJson);
+					 logger.info("-------- Login : playerListJson: "+playerListJson);
 					 clubListJson = mapperObj.writeValueAsString(clubList);
-					 logger.debug("-------- Login : clubListJson: "+clubListJson);
+					 logger.info("-------- Login : clubListJson: "+clubListJson);
 					 userGameJson = mapperObj.writeValueAsString(userGameMap);
-					 logger.debug("-------- Login : userGameJson: "+userGameJson);
+					 logger.info("-------- Login : userGameJson: "+userGameJson);
 					 session.setAttribute("gameDetailsJson", gameDetailsJson);
 					 session.setAttribute("playerListJson", playerListJson);
 					 session.setAttribute("clubListJson", clubListJson);
@@ -352,12 +352,12 @@ public class UserAction {
 			if(freeWildCardPlanId ==null || freeWildCardPlanId.equals(""))
 			{
 				session.setAttribute("hasFreeWildCard", false);
-				logger.debug("------------------- hasFreeWildCard: false");
+				logger.info("------------------- hasFreeWildCard: false");
 			}
 			else
 			{
 				session.setAttribute("hasFreeWildCard", true);
-				logger.debug("------------------- hasFreeWildCard: true");
+				logger.info("------------------- hasFreeWildCard: true");
 				session.setAttribute("freeWildCardPlanId", freeWildCardPlanId);
 			}
 			session.setAttribute("planDiscountId", LeaguePlanUtil.getDefualtPlanDiscountId());
@@ -388,13 +388,13 @@ public class UserAction {
 		
 	}
 	 
-	 logger.debug("---------- Redircting to : "+SportConstrant.USER_LANDING_REDIRECT_PAGE);
+	 logger.info("---------- Redircting to : "+SportConstrant.USER_LANDING_REDIRECT_PAGE);
 	 return SportConstrant.USER_LANDING_REDIRECT_PAGE;
 	}
 	@RequestMapping(value = "forgotPassword", method = RequestMethod.GET)
 	public  String forgorPassword(ModelMap modeMap,@RequestParam String emailId)
 	{
-	 logger.debug("---------- Entry in forgotPassword  ---- Path Variable EmailId:  "+emailId);
+	 logger.info("---------- Entry in forgotPassword  ---- Path Variable EmailId:  "+emailId);
 	 modeMap.clear();
 	 if(emailId == null || emailId.equals(SportConstrant.NULL))
 	 {
@@ -404,21 +404,21 @@ public class UserAction {
 	
 	 if(modeMap.size() == 0)
 	 {
-		 logger.debug("---------- Calling Hibernate getPasswordByEmail Method: ");
+		 logger.info("---------- Calling Hibernate getPasswordByEmail Method: ");
 		 String password = UserManager.getPasswordByEmail(emailId);
-		 logger.debug("---------- Fetche User Passoword: "+password);
+		 logger.info("---------- Fetche User Passoword: "+password);
 		 if(password != null && !password.equals(SportConstrant.NULL))
 		 {
 				try
 				{
 					password = EncodeDecoder.decrypt(password);
-					logger.debug("--------- password: After Decoding:  "+password);
+					logger.info("--------- password: After Decoding:  "+password);
 				}
 				catch(Exception ex)
 				{
 					logger.error("--------- Error in encoding password: "+ex);
 				}
-			 logger.debug("---------- Starting to send mail");
+			 logger.info("---------- Starting to send mail");
 			 try
 				{
 					Map<String,Object> mailMap = new java.util.HashMap<String,Object>();
@@ -429,7 +429,7 @@ public class UserAction {
 					mailMap.put(SportConstrant.VELOCIYY_FILE_LOC,propFileUtility.getEnvProperty().getString(SportConstrant.FORGOT_PASS_EMAIL_LOC) );
 					mailMap.put(SportConstrant.SUBJECT, propFileUtility.getEnvProperty().getString(SportConstrant.FORGOT_PASSWORD_EMAIL_SUB));
 					mailUtility.sendHtmlMail(mailMap);
-					logger.debug("----------- end to send mail------");
+					logger.info("----------- end to send mail------");
 					modeMap.put("message", "Password is sent to provided email");
 				}
 				catch (Exception ex)
@@ -448,13 +448,13 @@ public class UserAction {
 		 }
 		
 	}
-	 logger.debug("---------- Forwardng to : "+SportConstrant.FORGOT_PASS_RESULT_PAGE);
+	 logger.info("---------- Forwardng to : "+SportConstrant.FORGOT_PASS_RESULT_PAGE);
 	 return SportConstrant.FORGOT_PASS_RESULT_PAGE;
 	}
 	@RequestMapping(value = "UpdateAction", method = RequestMethod.POST)
 	public String updateUser(ModelMap modeMap,@RequestParam Map<String,String> userMap,HttpServletRequest request)
 	{
-		logger.debug("Entry in UpdateAction method model Map: "+modeMap);
+		logger.info("Entry in UpdateAction method model Map: "+modeMap);
 		if(userMap.get("userId") == null || userMap.get("userId").equals(SportConstrant.NULL))
 		{
 			modeMap.put("userIdError", "UserId is required");
@@ -465,11 +465,11 @@ public class UserAction {
 			modeMap.put("newPasswordError", "New Password is required");
 			else
 			{
-				logger.debug("--------- password: "+userMap.get("logonPassword"));
+				logger.info("--------- password: "+userMap.get("logonPassword"));
 				try
 				{
 					userMap.put("logonPassword", EncodeDecoder.encrypt(userMap.get("logonPassword")));
-					logger.debug("--------- password: After Encoding:  "+userMap.get("logonPassword"));
+					logger.info("--------- password: After Encoding:  "+userMap.get("logonPassword"));
 				}
 				catch(Exception ex)
 				{
@@ -477,7 +477,7 @@ public class UserAction {
 				}
 			}
 		}
-		logger.debug("------------ Error Map: "+modeMap);
+		logger.info("------------ Error Map: "+modeMap);
 		if(modeMap.isEmpty())
 		{
 			boolean isUpdated = UserManager.saveUser(userMap);
@@ -485,7 +485,7 @@ public class UserAction {
 			if(isUpdated)
 			{
 				modeMap.put("message","Your profile is updated");
-				logger.debug("----------- start to send mail------");
+				logger.info("----------- start to send mail------");
 				if(userMap.get(SportConstrant.ACTION) != null && userMap.get(SportConstrant.ACTION).equals(SportConstrant.CHANGE_PASS))
 				{
 						String emailId = SportConstrant.NULL;
@@ -517,7 +517,7 @@ public class UserAction {
 								mailMap.put(SportConstrant.VELOCIYY_FILE_LOC,propFileUtility.getEnvProperty().getString(SportConstrant.USER_PASS_CHANGE_EMAIL_LOC));
 								mailMap.put(SportConstrant.SUBJECT, propFileUtility.getEnvProperty().getString(SportConstrant.USER_PASS_CHANGE_EMAIL_SUB));
 								mailUtility.sendHtmlMail(mailMap);
-								logger.debug("----------- Mail sent successfylly to mail Id: "+emailId);
+								logger.info("----------- Mail sent successfylly to mail Id: "+emailId);
 							}
 							catch (Exception ex)
 							{
@@ -556,9 +556,9 @@ public class UserAction {
 	@RequestMapping(value = "UserUpdateView", method = RequestMethod.GET)
 	public  String updateView(ModelMap modeMap,HttpServletRequest request)
 	{
-		 logger.debug("---------- Entry in --- UpdateView");
+		 logger.info("---------- Entry in --- UpdateView");
 		 HashMap<String,HashMap<String,ArrayList<String>>> countryStateCityMap = UserManager.getCountryStateCityMap();
-		 logger.debug("-------- UpdateView : countryStateCityMap: "+countryStateCityMap);
+		 logger.info("-------- UpdateView : countryStateCityMap: "+countryStateCityMap);
 		 modeMap.put("countryStateCityMap", countryStateCityMap);
 		 String countryStateCityJson = "{}";
 		 if(countryStateCityMap != null)
@@ -567,7 +567,7 @@ public class UserAction {
 			 try
 			 {
 				 countryStateCityJson = mapperObj.writeValueAsString(countryStateCityMap);
-				 logger.debug("-------- UpdateView : countryStateCityJson: "+countryStateCityJson);
+				 logger.info("-------- UpdateView : countryStateCityJson: "+countryStateCityJson);
 				 modeMap.put("countryStateCityJson", countryStateCityJson);
 			 }
 			 catch(Exception ex)
@@ -580,19 +580,19 @@ public class UserAction {
 	@RequestMapping(value = "ChangePasswordView", method = RequestMethod.GET)
 	public  String changePasswordView(ModelMap modeMap,HttpServletRequest request)
 	{
-		logger.debug("---------- Forwardng to : "+SportConstrant.CHANGE_PASSWORD_PAGE);
+		logger.info("---------- Forwardng to : "+SportConstrant.CHANGE_PASSWORD_PAGE);
 		 return SportConstrant.CHANGE_PASSWORD_PAGE;
 	}
 	@RequestMapping(value = "ForgotPasswordView", method = RequestMethod.GET)
 	public  String forgotPasswordView(ModelMap modeMap,HttpServletRequest request)
 	{
-		logger.debug("---------- Forwardng to : "+SportConstrant.FORGOT_PASSWORD_PAGE);
+		logger.info("---------- Forwardng to : "+SportConstrant.FORGOT_PASSWORD_PAGE);
 		 return SportConstrant.FORGOT_PASSWORD_PAGE;
 	}
 	@RequestMapping(value = "UserLanding", method = RequestMethod.GET)
 	public  String userLanding(ModelMap modeMap,HttpServletRequest request)
 	{
-		logger.debug("---------- Forwardng to : "+SportConstrant.USER_LANDING_PAGE);
+		logger.info("---------- Forwardng to : "+SportConstrant.USER_LANDING_PAGE);
 		 return SportConstrant.USER_LANDING_PAGE;
 	}
 	
@@ -604,24 +604,24 @@ public class UserAction {
 		
 		HttpSession session = request.getSession();
 		session.invalidate();
-		logger.debug("---------- Redirecting to : LeagueHome");
+		logger.info("---------- Redirecting to : LeagueHome");
 		return new ModelAndView("redirect:/mvc/LeagueHome");
 	}
 	@RequestMapping(value = "activateWildCard", method = RequestMethod.GET)
 	public String activateWildCard(ModelMap modelMap,@RequestParam Map<String,String> wildCardMap, HttpServletRequest request)
 	{
-		logger.debug("---------- Inside activateWildCard ----------");
+		logger.info("---------- Inside activateWildCard ----------");
 		if(wildCardMap.get("planId") == null || wildCardMap.get("planId").equals(""))
 		{
 			modelMap.put("isSuccess", false);
 			modelMap.put("message", "Plan Id is required");
-			logger.debug("---------- Plan Id is not available ----------");
+			logger.info("---------- Plan Id is not available ----------");
 		}
 		if(wildCardMap.get("userId") == null || wildCardMap.get("userId").equals(""))
 		{
 			modelMap.put("isSuccess", false);
 			modelMap.put("message", "userId is required");
-			logger.debug("---------- User Id is not available ----------");
+			logger.info("---------- User Id is not available ----------");
 		}
 		if(modelMap == null || modelMap.size() == 0)
 		{
@@ -634,15 +634,15 @@ public class UserAction {
 				ActivePlan activePlan = PlanManager.getActivePlans(String.valueOf(user.getUserId()));
 				 if(activePlan == null)
 				 {
-					 logger.debug("---------- Setting User has not active Plan");
+					 logger.info("---------- Setting User has not active Plan");
 					 user.setHasActivePlan(false);
 				 }
 				 else
 				 {
-					 logger.debug("---------- Setting User has active Plan");
+					 logger.info("---------- Setting User has active Plan");
 					 user.setHasActivePlan(true);
 					 user.setActivePlan(activePlan);
-					 logger.debug(activePlan);
+					 logger.info(activePlan);
 				 }
 				
 			}

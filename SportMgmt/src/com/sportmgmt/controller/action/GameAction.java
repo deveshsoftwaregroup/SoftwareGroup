@@ -65,12 +65,12 @@ public class GameAction {
 		boolean isSuccess = false;
 		String errorMessage = "";
 		String errorCode = "";
-		logger.debug("------------ addPlayer ");
+		logger.info("------------ addPlayer ");
 		if(userId == null || userId.equals("") || gameClubPlayerId == null || gameClubPlayerId.equals(""))
 		{
 			errorMessage = "Parameter missing";
 			errorCode = ErrorConstrant.INVALID_PARAMETER;
-			logger.debug("------------ Parameter is invalid/missing ");
+			logger.info("------------ Parameter is invalid/missing ");
 		}
 		else
 		{
@@ -83,11 +83,11 @@ public class GameAction {
 				{
 					isSuccess = GameManager.addPlayeOfGametToUserAccount(userId, gameClubPlayerId);
 					Integer price = null;
-					logger.debug("------------ Add Player Call isSuccess: "+isSuccess);
+					logger.info("------------ Add Player Call isSuccess: "+isSuccess);
 					if(isSuccess)
 					{
 						
-						logger.debug("------------ Updating session and json value");
+						logger.info("------------ Updating session and json value");
 						try
 						{
 							
@@ -125,7 +125,7 @@ public class GameAction {
 							 {
 								 
 								 String userGameJson = mapperObj.writeValueAsString(userGameMap);
-								 logger.debug("--------  : userGameJson: "+userGameJson);
+								 logger.info("--------  : userGameJson: "+userGameJson);
 								 session.setAttribute("userGameJson", userGameJson);
 								 
 							 }
@@ -141,10 +141,10 @@ public class GameAction {
 							{
 								GameManager.checkAndIsertUserGameStatus(userId,gameId);
 							}
-							logger.debug("--------  : Starting deducting point: "+price);
+							logger.info("--------  : Starting deducting point: "+price);
 							if(price != null && user.getActivePlan() != null && user.getActivePlan().getPlanTypeVal() == 0)
 							{
-								logger.debug("--------  : plan typ vlaue: "+user.getActivePlan().getPlanTypeVal());
+								logger.info("--------  : plan typ vlaue: "+user.getActivePlan().getPlanTypeVal());
 								try
 								{
 									double balance = 0;
@@ -205,7 +205,7 @@ public class GameAction {
 		resultMap.put("isSuccess", isSuccess);
 		resultMap.put("errorMessage", errorMessage);
 		resultMap.put("errorCode", errorCode);
-		logger.debug("Returning action: with reuslt-- : "+resultMap);
+		logger.info("Returning action: with reuslt-- : "+resultMap);
 		return resultMap;
 	}
 	@RequestMapping(value = "RemovePlayer", method = RequestMethod.GET)
@@ -215,20 +215,20 @@ public class GameAction {
 		boolean isSuccess = false;
 		String errorMessage = "";
 		String errorCode = "";
-		logger.debug("------------ RemovePlayer ");
+		logger.info("------------ RemovePlayer ");
 		if(userId == null || userId.equals("") || gameClubPlayerId == null || gameClubPlayerId.equals(""))
 		{
 			errorMessage = "Parameter missing";
 			errorCode = ErrorConstrant.INVALID_PARAMETER;
-			logger.debug("------------ Parameter is invalid/missing ");
+			logger.info("------------ Parameter is invalid/missing ");
 		}
 		else
 		{
 			isSuccess = GameManager.removePlayeOfGameFromUserAccount(userId, gameClubPlayerId);
-			logger.debug("------------ Remove Player Call isSuccess: "+isSuccess);
+			logger.info("------------ Remove Player Call isSuccess: "+isSuccess);
 			if(isSuccess)
 			{
-				logger.debug("------------ Updating session and json value");
+				logger.info("------------ Updating session and json value");
 				try
 				{
 					HttpSession session = request.getSession();
@@ -258,7 +258,7 @@ public class GameAction {
 					 {
 						 
 						 String userGameJson = mapperObj.writeValueAsString(userGameMap);
-						 logger.debug("--------  : userGameJson: "+userGameJson);
+						 logger.info("--------  : userGameJson: "+userGameJson);
 						 session.setAttribute("userGameJson", userGameJson);
 						 
 					 }
@@ -287,11 +287,11 @@ public class GameAction {
 									}
 								}
 							}
-							logger.debug("------ Started adding point---: "+price);
+							logger.info("------ Started adding point---: "+price);
 							double balance= PlanManager.addPointToUserPlan(user.getActivePlan().getUserPlanId(), price.doubleValue());
 							resultMap.put("activePlanBalance", balance);
 							user.getActivePlan().setBalance(balance);
-							logger.debug("------ Current balance is ---: "+balance);
+							logger.info("------ Current balance is ---: "+balance);
 						}
 					}
 				}
@@ -311,25 +311,25 @@ public class GameAction {
 		resultMap.put("isSuccess", isSuccess);
 		resultMap.put("errorMessage", errorMessage);
 		resultMap.put("errorCode", errorCode);
-		logger.debug("Returning action: with reuslt-- : "+resultMap);
+		logger.info("Returning action: with reuslt-- : "+resultMap);
 		return resultMap;
 	}
 	@RequestMapping(value = "ActivatePlayer", method = RequestMethod.GET)
 	public @ResponseBody Map activatePlayer(@RequestParam("userId") String userId, @RequestParam("gameClubPlayerId") String gameClubPlayerId,HttpServletRequest request)
 	{
-		logger.debug("------------ activate Player :-- calling update player");
+		logger.info("------------ activate Player :-- calling update player");
 		return updatePlayer(userId,gameClubPlayerId,SportConstrant.YES,null,null,request);
 	}
 	@RequestMapping(value = "DeActivatePlayer", method = RequestMethod.GET)
 	public @ResponseBody Map deActivatePlayer(@RequestParam("userId") String userId, @RequestParam("gameClubPlayerId") String gameClubPlayerId,HttpServletRequest request)
 	{
-		logger.debug("------------ de-activate Player :-- calling update player");
+		logger.info("------------ de-activate Player :-- calling update player");
 		return updatePlayer(userId,gameClubPlayerId,SportConstrant.NO,null,null,request);
 	}
 	@RequestMapping(value = "MakeCaptain", method = RequestMethod.GET)
 	public @ResponseBody Map makeCaptain(@RequestParam("userId") String userId, @RequestParam("gameClubPlayerId") String gameClubPlayerId,HttpServletRequest request)
 	{
-		logger.debug("------------ MakeCaptain  :-- calling update player");
+		logger.info("------------ MakeCaptain  :-- calling update player");
 		List<Integer> playerList =GameManager.fetchUserPlayerOfGameByType(userId, SportConstrant.PLAYER_TYPE_CAPTAIN);
 		Map updateMap = null;
 		if(playerList != null && playerList.size() >=1)
@@ -344,7 +344,7 @@ public class GameAction {
 	@RequestMapping(value = "MakeViceCaptain", method = RequestMethod.GET)
 	public @ResponseBody Map makeViceCaptain(@RequestParam("userId") String userId, @RequestParam("gameClubPlayerId") String gameClubPlayerId,HttpServletRequest request)
 	{
-		logger.debug("------------ MakeViceCaptain  :-- calling update player");
+		logger.info("------------ MakeViceCaptain  :-- calling update player");
 		List<Integer> playerList =GameManager.fetchUserPlayerOfGameByType(userId, SportConstrant.PLAYER_TYPE_VICE_CAPTAIN);
 		Map updateMap = null;
 		if(playerList != null && playerList.size() ==1)
@@ -362,20 +362,20 @@ public class GameAction {
 		boolean isSuccess = false;
 		String errorMessage = "";
 		String errorCode = "";
-		logger.debug("------------ update Player ");
+		logger.info("------------ update Player ");
 		if(userId == null || userId.equals("") || gameClubPlayerId == null || gameClubPlayerId.equals(""))
 		{
 			errorMessage = "Parameter missing";
 			errorCode = ErrorConstrant.INVALID_PARAMETER;
-			logger.debug("------------ Parameter is invalid/missing ");
+			logger.info("------------ Parameter is invalid/missing ");
 		}
 		else
 		{
 			isSuccess = GameManager.updatePlayeOfGameFromUserAccount(userId, gameClubPlayerId,isPlaying,playerCategory,seqNum);
-			logger.debug("------------ update Player Call isSuccess: "+isSuccess);
+			logger.info("------------ update Player Call isSuccess: "+isSuccess);
 			if(isSuccess)
 			{
-				logger.debug("------------ Updating session and json value");
+				logger.info("------------ Updating session and json value");
 				try
 				{
 					HttpSession session = request.getSession();
@@ -418,7 +418,7 @@ public class GameAction {
 					 {
 						 
 						 String userGameJson = mapperObj.writeValueAsString(userGameMap);
-						 logger.debug("--------  : userGameJson: "+userGameJson);
+						 logger.info("--------  : userGameJson: "+userGameJson);
 						 session.setAttribute("userGameJson", userGameJson);
 						 
 					 }
@@ -445,13 +445,13 @@ public class GameAction {
 		resultMap.put("isSuccess", isSuccess);
 		resultMap.put("errorMessage", errorMessage);
 		resultMap.put("errorCode", errorCode);
-		logger.debug("Returning action: with reuslt-- : "+resultMap);
+		logger.info("Returning action: with reuslt-- : "+resultMap);
 		return resultMap;
 	}
 	@RequestMapping(value = "MyTeamView/{userId}/{gameId}", method = RequestMethod.GET)
 	public  String myTeamView(ModelMap modeMap,HttpServletRequest request,@PathVariable String userId,@PathVariable String gameId)
 	{
-		logger.debug("---------- IN MyTeamView to : ");
+		logger.info("---------- IN MyTeamView to : ");
 		 //int player = GameManager.totalPlayingPlayersOfUserByGame(Integer.valueOf(userId),Integer.valueOf(gameId));
 		 HashMap totalPlayingMap= new HashMap();
 		 //totalPlayingMap.put("player", player);
@@ -459,13 +459,13 @@ public class GameAction {
 		 modeMap.put("userGameMap",GameManager.getUserGameStatus(userId, gameId));
 		 String totalPlayingJson = "";
 		 modeMap.put("totalPlayingMap", totalPlayingMap);
-		 logger.debug("-------- MyTeamView : totalPlayingMap: "+totalPlayingMap);
+		 logger.info("-------- MyTeamView : totalPlayingMap: "+totalPlayingMap);
 		 ObjectMapper mapperObj = new ObjectMapper();
 		 try
 		 {
 			 
 			 totalPlayingJson = mapperObj.writeValueAsString(totalPlayingMap);
-			 logger.debug("-------- MyTeamView : totalPlayingJson: "+totalPlayingJson);
+			 logger.info("-------- MyTeamView : totalPlayingJson: "+totalPlayingJson);
 			 
 		 }
 		 catch(Exception ex)
@@ -480,7 +480,7 @@ public class GameAction {
 	@RequestMapping(value = "MatchView/{gameId}", method = RequestMethod.GET)
 	public  String matchView(ModelMap modeMap,HttpServletRequest request,@PathVariable String gameId)
 	{
-		logger.debug("---------- IN matchView to : "+gameId);
+		logger.info("---------- IN matchView to : "+gameId);
 		TreeSet<GameWeek> gameWeekList = new TreeSet<GameWeek>();
 		List<Match> matchList = MatchManager.getMatchesByGame(gameId);
 		SimpleDateFormat sdfStart;
@@ -492,7 +492,7 @@ public class GameAction {
 				MatchDetails matchDetails = new MatchDetails();
 				SimpleDateFormat sdfTime = new SimpleDateFormat("dd-mm-yyyy hh:mm:ss");
 				//String startDateStr = sdfTime.format(match.getStartTime());
-				logger.debug("Date: "+match.getStartTime());
+				logger.info("Date: "+match.getStartTime());
 				//String endDateStr = sdfTime.format(match.getEndTime());
 				try
 				{
@@ -546,7 +546,7 @@ public class GameAction {
 				}
 				sdfStart = new SimpleDateFormat("yyMMdd");
 				String startDateStr = sdfStart.format(match.getStartTime());
-				logger.debug("------------ Start date Key: "+startDateStr);
+				logger.info("------------ Start date Key: "+startDateStr);
 				Integer startDayInt = Integer.parseInt(startDateStr);
 				if(gameWeek.getMatchMap().containsKey(startDayInt))
 				{
@@ -562,19 +562,19 @@ public class GameAction {
 				gameWeekList.add(gameWeek);
 			}
 		}
-		logger.debug("----------- Game Week List: "+gameWeekList);
+		logger.info("----------- Game Week List: "+gameWeekList);
 		 Map<String,Object> matchesMap = new HashMap<String,Object>();
 		 matchesMap.put("currentGameWeek", 0);
 		 matchesMap.put("totalGameWeek", gameWeekList.size());
 		 matchesMap.put("gameWeekList", gameWeekList);
-		logger.debug("----------- matchesMap: "+matchesMap);
+		logger.info("----------- matchesMap: "+matchesMap);
 		modeMap.put("matchesMap", matchesMap);
 		 ObjectMapper mapperObj = new ObjectMapper();
 		 try
 		 {
 			 
 			 String matchesMapJson = mapperObj.writeValueAsString(matchesMap);
-			 logger.debug("-------- matchView : matchesMapJson: "+matchesMapJson);
+			 logger.info("-------- matchView : matchesMapJson: "+matchesMapJson);
 			 modeMap.put("matchesMapJson", matchesMapJson);
 			 
 		 }
@@ -589,20 +589,20 @@ public class GameAction {
 	@RequestMapping(value = "SortPlayer/{orderBy}", method = RequestMethod.GET)
 	public  String orderBy(ModelMap modeMap,HttpServletRequest request,@PathVariable String orderBy)
 	{
-		logger.debug("---------- IN MyTeamView to : ");
+		logger.info("---------- IN MyTeamView to : ");
 		 //int player = GameManager.totalPlayingPlayersOfUserByGame(Integer.valueOf(userId),Integer.valueOf(gameId));
 		 HashMap totalPlayingMap= new HashMap();
 		 //totalPlayingMap.put("player", player);
 		// GameManager.updateTotalPlayingPlayerByPostion(Integer.valueOf(userId),Integer.valueOf(gameId),totalPlayingMap);
 		 String totalPlayingJson = "";
 		 modeMap.put("totalPlayingMap", totalPlayingMap);
-		 logger.debug("-------- MyTeamView : totalPlayingMap: "+totalPlayingMap);
+		 logger.info("-------- MyTeamView : totalPlayingMap: "+totalPlayingMap);
 		 ObjectMapper mapperObj = new ObjectMapper();
 		 try
 		 {
 			 
 			 totalPlayingJson = mapperObj.writeValueAsString(totalPlayingMap);
-			 logger.debug("-------- MyTeamView : totalPlayingJson: "+totalPlayingJson);
+			 logger.info("-------- MyTeamView : totalPlayingJson: "+totalPlayingJson);
 			 
 		 }
 		 catch(Exception ex)

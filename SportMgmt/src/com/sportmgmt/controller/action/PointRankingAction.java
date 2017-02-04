@@ -28,14 +28,14 @@ public class PointRankingAction {
 	@RequestMapping(value = "RankingView/{gameId}", method = RequestMethod.GET)
 	public  String rankingView(ModelMap modeMap,HttpServletRequest request,@PathVariable String gameId)
 	{
-		logger.debug("---------- IN RankingView to : "+gameId);
+		logger.info("---------- IN RankingView to : "+gameId);
 		modeMap.put("message", "No data found...");
 		return SportConstrant.RANKING_PAGE;
 	}
 	@RequestMapping(value = "PointTableView/{gameId}", method = RequestMethod.GET)
 	public  String pointTableView(ModelMap modeMap,HttpServletRequest request,@PathVariable String gameId)
 	{
-		logger.debug("---------- IN PointTableView to : "+gameId);
+		logger.info("---------- IN PointTableView to : "+gameId);
 		List<Point> pointObjList = PointRankManager.getMPointByGame(gameId);
 		List<Map<String,String>> pointList = new ArrayList<Map<String,String>>();
 		if(pointObjList != null)

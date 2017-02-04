@@ -46,7 +46,7 @@ public class HomeAction {
 	@RequestMapping(value = "HomeGameGuide", method = RequestMethod.GET)
 	public  String homeGameGuide(ModelMap modeMap,HttpServletRequest request)
 	{
-		logger.debug("---------- Forwardng to : "+SportConstrant.HOME_GAME_GUIDE);
+		logger.info("---------- Forwardng to : "+SportConstrant.HOME_GAME_GUIDE);
 		 return SportConstrant.HOME_GAME_GUIDE;
 	}
 	@RequestMapping("/LeagueLogin")
@@ -58,13 +58,13 @@ public class HomeAction {
 	@RequestMapping(value = "FAQView", method = RequestMethod.GET)
 	public  String fAQView(ModelMap modeMap)
 	{
-		logger.debug("---------- IN FAQView");
+		logger.info("---------- IN FAQView");
 		return SportConstrant.FAQ_PAGE;
 	}
 	@RequestMapping(value = "RulesView", method = RequestMethod.GET)
 	public  String rulesView(ModelMap modeMap)
 	{
-		logger.debug("IN RulesView ");
+		logger.info("IN RulesView ");
 		return SportConstrant.RULES_PAGE;
 	}
 }

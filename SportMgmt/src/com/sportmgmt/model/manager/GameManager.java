@@ -50,7 +50,7 @@ public class GameManager {
 		List<Game> gameList = null;
 		setErrorMessage("");
 		SessionFactory factory = HibernateSessionFactory.getSessionFacotry();
-		logger.debug("--------------- fetchActiveGameList -------------");
+		logger.info("--------------- fetchActiveGameList -------------");
 		if(factory == null)
 		{
 			setErrorCode(ErrorConstrant.SESS_FACT_NULL);
@@ -139,7 +139,7 @@ public class GameManager {
 		List<GameClubPlayer> gameClubPlayersList = null;
 		setErrorMessage("");
 		SessionFactory factory = HibernateSessionFactory.getSessionFacotry();
-		logger.debug("--------------- fetchGamePlayers -------------");
+		logger.info("--------------- fetchGamePlayers -------------");
 		if(factory == null)
 		{
 			setErrorCode(ErrorConstrant.SESS_FACT_NULL);
@@ -222,13 +222,13 @@ public class GameManager {
 	
 	public static void updateClubListAndPlayersList(List playersList, List clubList,String gameId)
 	{
-		logger.debug("--------------- updateClubListAndPlayersList: ---gameId: "+gameId); 
+		logger.info("--------------- updateClubListAndPlayersList: ---gameId: "+gameId); 
 		List<GameClubPlayer> gameClubPlayersList = fetchGameClubPlayers(Integer.parseInt(gameId));
 		
 		if(gameClubPlayersList != null && gameClubPlayersList.size() > 0)
 		{
-			logger.debug("--------Started Updating Club List---: "+clubList); 
-			logger.debug("--------------- Started Updating Player List ---: "+playersList);
+			logger.info("--------Started Updating Club List---: "+clubList); 
+			logger.info("--------------- Started Updating Player List ---: "+playersList);
 			Iterator gameClubPlayerItr = gameClubPlayersList.iterator();
 			while(gameClubPlayerItr.hasNext())
 			{
@@ -334,7 +334,7 @@ public class GameManager {
 		List<String> userPlayersList = null;
 		setErrorMessage("");
 		SessionFactory factory = HibernateSessionFactory.getSessionFacotry();
-		logger.debug("--------------- userPlayersList ------------> userId:  "+userId+" gameId: "+gameId);
+		logger.info("--------------- userPlayersList ------------> userId:  "+userId+" gameId: "+gameId);
 		if(factory == null)
 		{
 			setErrorCode(ErrorConstrant.SESS_FACT_NULL);
@@ -379,7 +379,7 @@ public class GameManager {
 		List<Object[]> userPlayersList = null;
 		setErrorMessage("");
 		SessionFactory factory = HibernateSessionFactory.getSessionFacotry();
-		logger.debug("--------------- fetchUserPlayersDetailsList ------------> userId:  "+userId+" gameId: "+gameId);
+		logger.info("--------------- fetchUserPlayersDetailsList ------------> userId:  "+userId+" gameId: "+gameId);
 		if(factory == null)
 		{
 			setErrorCode(ErrorConstrant.SESS_FACT_NULL);
@@ -424,7 +424,7 @@ public class GameManager {
 		List<Object[]> totalPlayerByPisitionList = null;
 		setErrorMessage("");
 		SessionFactory factory = HibernateSessionFactory.getSessionFacotry();
-		logger.debug("--------------- fetchTotalPlayerByPostion ------------> userId:  "+userId+" gameId: "+gameId);
+		logger.info("--------------- fetchTotalPlayerByPostion ------------> userId:  "+userId+" gameId: "+gameId);
 		if(factory == null)
 		{
 			setErrorCode(ErrorConstrant.SESS_FACT_NULL);
@@ -470,7 +470,7 @@ public class GameManager {
 		List<Object[]> totalPlayerByPisitionList = null;
 		setErrorMessage("");
 		SessionFactory factory = HibernateSessionFactory.getSessionFacotry();
-		logger.debug("--------------- fetchTotalPayingPlayerByPostion ------------> userId:  "+userId+" gameId: "+gameId);
+		logger.info("--------------- fetchTotalPayingPlayerByPostion ------------> userId:  "+userId+" gameId: "+gameId);
 		if(factory == null)
 		{
 			setErrorCode(ErrorConstrant.SESS_FACT_NULL);
@@ -517,7 +517,7 @@ public class GameManager {
 		List<Object[]> countOfPlayerByUser = null;
 		setErrorMessage("");
 		SessionFactory factory = HibernateSessionFactory.getSessionFacotry();
-		logger.debug("--------------- fetchCountOfPlayersByUser ------------> gameClubPlayerList:  "+gameClubPlayerIdList);
+		logger.info("--------------- fetchCountOfPlayersByUser ------------> gameClubPlayerList:  "+gameClubPlayerIdList);
 		if(factory == null)
 		{
 			setErrorCode(ErrorConstrant.SESS_FACT_NULL);
@@ -561,7 +561,7 @@ public class GameManager {
 		List totalUserOfGame = null;
 		setErrorMessage("");
 		SessionFactory factory = HibernateSessionFactory.getSessionFacotry();
-		logger.debug("--------------- fetchTotalUserOfGame ------------ ");
+		logger.info("--------------- fetchTotalUserOfGame ------------ ");
 		if(factory == null)
 		{
 			setErrorCode(ErrorConstrant.SESS_FACT_NULL);
@@ -603,7 +603,7 @@ public class GameManager {
 		List<Object[]> playerWithPriceList = null;
 		setErrorMessage("");
 		SessionFactory factory = HibernateSessionFactory.getSessionFacotry();
-		logger.debug("--------------- fetchPlayerWithPrice ------------> gameClubPlayerList:  "+gameClubPlayerIdList);
+		logger.info("--------------- fetchPlayerWithPrice ------------> gameClubPlayerList:  "+gameClubPlayerIdList);
 		if(factory == null)
 		{
 			setErrorCode(ErrorConstrant.SESS_FACT_NULL);
@@ -646,7 +646,7 @@ public class GameManager {
 		List<Object[]> playerWithTotalPointList = null;
 		setErrorMessage("");
 		SessionFactory factory = HibernateSessionFactory.getSessionFacotry();
-		logger.debug("--------------- fetchPlayerWithTotalPoint ------------> gameClubPlayerList:  "+gameClubPlayerIdList);
+		logger.info("--------------- fetchPlayerWithTotalPoint ------------> gameClubPlayerList:  "+gameClubPlayerIdList);
 		if(factory == null)
 		{
 			setErrorCode(ErrorConstrant.SESS_FACT_NULL);
@@ -690,7 +690,7 @@ public class GameManager {
 		List<Object> totalPlayerFetchList = null;
 		setErrorMessage("");
 		SessionFactory factory = HibernateSessionFactory.getSessionFacotry();
-		logger.debug("--------------- totalPlayersOfUserByEvent ------------> userId:  "+userId+" gameId: "+gameId);
+		logger.info("--------------- totalPlayersOfUserByEvent ------------> userId:  "+userId+" gameId: "+gameId);
 		if(factory == null)
 		{
 			setErrorCode(ErrorConstrant.SESS_FACT_NULL);
@@ -740,7 +740,7 @@ public class GameManager {
 		List<Object> totalPlayingPlayerFetchList = null;
 		setErrorMessage("");
 		SessionFactory factory = HibernateSessionFactory.getSessionFacotry();
-		logger.debug("--------------- totalPlayingPlayersOfUserByGame ------------> userId:  "+userId+" gameId: "+gameId);
+		logger.info("--------------- totalPlayingPlayersOfUserByGame ------------> userId:  "+userId+" gameId: "+gameId);
 		if(factory == null)
 		{
 			setErrorCode(ErrorConstrant.SESS_FACT_NULL);
@@ -791,7 +791,7 @@ public class GameManager {
 		List<Object> totalPlayerPriceFetchList = null;
 		setErrorMessage("");
 		SessionFactory factory = HibernateSessionFactory.getSessionFacotry();
-		logger.debug("--------------- totalPlayersPriceOfUserByGame ------------> userId:  "+userId+" gameId: "+gameId);
+		logger.info("--------------- totalPlayersPriceOfUserByGame ------------> userId:  "+userId+" gameId: "+gameId);
 		if(factory == null)
 		{
 			setErrorCode(ErrorConstrant.SESS_FACT_NULL);
@@ -842,7 +842,7 @@ public class GameManager {
 	
 	public static void updateTotalPlayerByPostion(Integer userId, Integer gameId,Map totalMap)
 	{
-		logger.debug("---------- Inside updateTotalPlayerByPostion: ");
+		logger.info("---------- Inside updateTotalPlayerByPostion: ");
 		List<Object[]> totalPlayerByPisitionList = fetchTotalPlayerByPostion(userId,gameId);
 		totalMap.put(SportConstrant.MID_PLAYER, 0);
 		totalMap.put(SportConstrant.FORE_PLAYER, 0);
@@ -850,7 +850,7 @@ public class GameManager {
 		totalMap.put(SportConstrant.GOAL_KEEPER, 0);
 		if(totalPlayerByPisitionList != null && totalPlayerByPisitionList.size() >0)
 		{
-			logger.debug("---------- Started updating totalMap -------- ");
+			logger.info("---------- Started updating totalMap -------- ");
 			for(Object[] row:totalPlayerByPisitionList)
 			{
 				totalMap.put(row[0], row[1]);
@@ -858,14 +858,14 @@ public class GameManager {
 		}
 		else
 		{
-			logger.debug("------------ no update found due to totalPlayerByPisitionList is empty ");
+			logger.info("------------ no update found due to totalPlayerByPisitionList is empty ");
 			
 		}
 		
 	}
 	public static void updateTotalPlayingPlayerByPostion(Integer userId, Integer gameId,Map totalPlayingMap)
 	{
-		logger.debug("---------- Inside updateTotalPlayingPlayerByPostion: ");
+		logger.info("---------- Inside updateTotalPlayingPlayerByPostion: ");
 		List<Object[]> totalPlayerByPisitionList = fetchTotalPayingPlayerByPostion(userId,gameId);
 		totalPlayingMap.put(SportConstrant.MID_PLAYER, 0);
 		totalPlayingMap.put(SportConstrant.FORE_PLAYER, 0);
@@ -875,7 +875,7 @@ public class GameManager {
 		if(totalPlayerByPisitionList != null && totalPlayerByPisitionList.size() >0)
 		{
 			int totalPlayer = 0;
-			logger.debug("---------- Started updating totalMap -------- ");
+			logger.info("---------- Started updating totalMap -------- ");
 			for(Object[] row:totalPlayerByPisitionList)
 			{
 				totalPlayingMap.put(row[0], row[1]);
@@ -886,14 +886,14 @@ public class GameManager {
 		}
 		else
 		{
-			logger.debug("------------ no update found due to updateTotalPlayingPlayerByPostion is empty ");
+			logger.info("------------ no update found due to updateTotalPlayingPlayerByPostion is empty ");
 			
 		}
 		
 	}
 	public static Map<String,Integer>  getGameClubPlayerWithUserCountMap(List gameClubPlayerIdList)
 	{
-		logger.debug("---------- Inside getGameClubPlayerWithUserCountMap: ");
+		logger.info("---------- Inside getGameClubPlayerWithUserCountMap: ");
 		List<Object[]> countOfPlayerByUser = fetchCountOfPlayersByUser(gameClubPlayerIdList);
 		int totalUserOfGame = fetchTotalUserOfGame().intValue();
 		Map<String,Integer> gameClubPlayerWithUserCountMap = new LinkedHashMap<String,Integer>();
@@ -922,7 +922,7 @@ public class GameManager {
 	
 	public static Map<String,Integer>  getPlayerPriceMap(List gameClubPlayerIdList)
 	{
-		logger.debug("---------- Inside getPlayerPriceMap: ");
+		logger.info("---------- Inside getPlayerPriceMap: ");
 		List<Object[]> playerWithPriceList = fetchPlayerWithPrice(gameClubPlayerIdList);
 		Map<String,Integer> playerPriceMap = new LinkedHashMap<String,Integer>();
 		
@@ -966,12 +966,12 @@ public class GameManager {
 	
 	public static List<Map<String,String>> userPlayerDetailsList(Integer userId, Integer gameId)
 	{
-		logger.debug("---------- Inside userPlayerDetailsList userId: "+userId+" , gameId: "+gameId);
+		logger.info("---------- Inside userPlayerDetailsList userId: "+userId+" , gameId: "+gameId);
 		List<Map<String,String>> userPlayDetailsList = new ArrayList<Map<String,String>>();
 		List<Object[]> userPlayerDetailListObj = fetchUserPlayersDetailsList(userId,gameId);
 		if(userPlayerDetailListObj != null && userPlayerDetailListObj.size() >0)
 		{
-			logger.debug("---------- Started updating totalMap -------- ");
+			logger.info("---------- Started updating totalMap -------- ");
 			for(Object[] row:userPlayerDetailListObj)
 			{
 				Map<String,String> userPlayerDetail = new HashMap<String,String>();
@@ -985,7 +985,7 @@ public class GameManager {
 		}
 		else
 		{
-			logger.debug("------------ userPlayerDetailListObj is empty ");
+			logger.info("------------ userPlayerDetailListObj is empty ");
 		}
 		return userPlayDetailsList;
 	}
@@ -994,7 +994,7 @@ public class GameManager {
 		boolean isAdded =  false;
 		setErrorMessage("");
 		SessionFactory factory = HibernateSessionFactory.getSessionFacotry();
-		logger.debug("--------------- addPlayeOfGametToUserAccount ------------> userId:  "+userId+" gameClubPlayerId: "+gameClubPlayerId);
+		logger.info("--------------- addPlayeOfGametToUserAccount ------------> userId:  "+userId+" gameClubPlayerId: "+gameClubPlayerId);
 		if(factory == null)
 		{
 			setErrorCode(ErrorConstrant.SESS_FACT_NULL);
@@ -1025,7 +1025,7 @@ public class GameManager {
 					}
 					else
 					{
-						logger.debug(" ------- Player is already asssociated with user ");
+						logger.info(" ------- Player is already asssociated with user ");
 						setErrorMessage("Player is already added");
 						setErrorCode(ErrorConstrant.TRANSACTION_ERROR);
 					}
@@ -1057,7 +1057,7 @@ public class GameManager {
 		boolean isRemoved =  false;
 		setErrorMessage("");
 		SessionFactory factory = HibernateSessionFactory.getSessionFacotry();
-		logger.debug("--------------- removePlayeOfGameFromUserAccount ------------> userId:  "+userId+" gameClubPlayerId: "+gameClubPlayerId);
+		logger.info("--------------- removePlayeOfGameFromUserAccount ------------> userId:  "+userId+" gameClubPlayerId: "+gameClubPlayerId);
 		if(factory == null)
 		{
 			setErrorCode(ErrorConstrant.SESS_FACT_NULL);
@@ -1076,7 +1076,7 @@ public class GameManager {
 					List results = cr.list();
 					if(results == null || results.size() ==0)
 					{
-						logger.debug(" ------- Player is not found to remove ");
+						logger.info(" ------- Player is not found to remove ");
 						setErrorMessage("Player is  not associated with user");
 						setErrorCode(ErrorConstrant.RECORD_NOT_FOUND);
 					}
@@ -1113,7 +1113,7 @@ public class GameManager {
 		boolean isUpdated =  false;
 		setErrorMessage("");
 		SessionFactory factory = HibernateSessionFactory.getSessionFacotry();
-		logger.debug("--------------- updatePlayeOfGameFromUserAccount ------------> userId:  "+userId+" gameClubPlayerId: "+gameClubPlayerId+" ,isPlaying: "+isPlaying+" , playerCategory: "+playerCategory+" , seqNum: "+seqNum);
+		logger.info("--------------- updatePlayeOfGameFromUserAccount ------------> userId:  "+userId+" gameClubPlayerId: "+gameClubPlayerId+" ,isPlaying: "+isPlaying+" , playerCategory: "+playerCategory+" , seqNum: "+seqNum);
 		if(factory == null)
 		{
 			setErrorCode(ErrorConstrant.SESS_FACT_NULL);
@@ -1132,7 +1132,7 @@ public class GameManager {
 					List results = cr.list();
 					if(results == null || results.size() ==0)
 					{
-						logger.debug(" ------- Player is not found to update ");
+						logger.info(" ------- Player is not found to update ");
 						setErrorMessage("Player is  not associated with user");
 						setErrorCode(ErrorConstrant.RECORD_NOT_FOUND);
 					}
@@ -1182,7 +1182,7 @@ public class GameManager {
 		List<Integer> results = null;
 		setErrorMessage("");
 		SessionFactory factory = HibernateSessionFactory.getSessionFacotry();
-		logger.debug("--------------- fetchUserPlayerOfGameByType ------------> userId:  "+userId+" playerCategory: "+playerCategory);
+		logger.info("--------------- fetchUserPlayerOfGameByType ------------> userId:  "+userId+" playerCategory: "+playerCategory);
 		if(factory == null)
 		{
 			setErrorCode(ErrorConstrant.SESS_FACT_NULL);
@@ -1202,7 +1202,7 @@ public class GameManager {
 					results= cr.list();
 					if(results == null || results.size() ==0)
 					{
-						logger.debug(" ------- Player is not found  ");
+						logger.info(" ------- Player is not found  ");
 						setErrorMessage("Player not found");
 						setErrorCode(ErrorConstrant.RECORD_NOT_FOUND);
 					}
@@ -1225,7 +1225,7 @@ public class GameManager {
 				setErrorMessage("Technical Error");
 			}
 		}
-		logger.debug("----------- REturning player: "+results);
+		logger.info("----------- REturning player: "+results);
 		return results;
 	}
 	public static boolean checkAndIsertUserGameStatus(String userId,String gameId)
@@ -1233,7 +1233,7 @@ public class GameManager {
 		boolean isSuccess =  true;
 		setErrorMessage("");
 		SessionFactory factory = HibernateSessionFactory.getSessionFacotry();
-		logger.debug("--------------- checkAndIsertUserGameStatus ------------> userId:  "+userId+" gameId: "+gameId);
+		logger.info("--------------- checkAndIsertUserGameStatus ------------> userId:  "+userId+" gameId: "+gameId);
 		if(factory == null)
 		{
 			setErrorCode(ErrorConstrant.SESS_FACT_NULL);
@@ -1253,8 +1253,8 @@ public class GameManager {
 					List results = cr.list();
 					if(results == null || results.size() ==0)
 					{
-						logger.debug(" ------- Enty not found in UserGameStatus");
-						logger.debug(" ------- Making new Entry in USER_GAME table for user and game");
+						logger.info(" ------- Enty not found in UserGameStatus");
+						logger.info(" ------- Making new Entry in USER_GAME table for user and game");
 						UserGame userGame = new UserGame();
 						userGame.setUserId(new Integer(userId));
 						userGame.setGameId(new Integer(gameId));
@@ -1266,7 +1266,7 @@ public class GameManager {
 					}
 					else
 					{
-						logger.debug(" ------- Enty found in USER_GAME_STATUS table ");
+						logger.info(" ------- Enty found in USER_GAME_STATUS table ");
 					}
 									}
 				catch(Exception ex)
@@ -1296,7 +1296,7 @@ public class GameManager {
 		Map<String,String> userGameMap = new HashMap<String,String>();
 		setErrorMessage("");
 		SessionFactory factory = HibernateSessionFactory.getSessionFacotry();
-		logger.debug("--------------- getUserGameStatus ------------> userId:  "+userId+" gameId: "+gameId);
+		logger.info("--------------- getUserGameStatus ------------> userId:  "+userId+" gameId: "+gameId);
 		if(factory == null)
 		{
 			setErrorCode(ErrorConstrant.SESS_FACT_NULL);
@@ -1387,7 +1387,7 @@ public class GameManager {
 		int addedPlayerCount = 0;
 		setErrorMessage("");
 		SessionFactory factory = HibernateSessionFactory.getSessionFacotry();
-		logger.debug("--------------- increaseAddedPlayerCountToUserGame ------------> userId:  "+userId+" gameId: "+gameId);
+		logger.info("--------------- increaseAddedPlayerCountToUserGame ------------> userId:  "+userId+" gameId: "+gameId);
 		if(factory == null)
 		{
 			setErrorCode(ErrorConstrant.SESS_FACT_NULL);
@@ -1407,18 +1407,18 @@ public class GameManager {
 					List results = cr.list();
 					if(results == null || results.size() ==0)
 					{
-						logger.debug(" ------- Enty not found in UserGameStatus");
-						logger.debug("-- User Team is still not completed---");
+						logger.info(" ------- Enty not found in UserGameStatus");
+						logger.info("-- User Team is still not completed---");
 					}
 					else
 					{
-						logger.debug(" ------- Enty found in USER_GAME_STATUS table ");
+						logger.info(" ------- Enty found in USER_GAME_STATUS table ");
 						UserGame userGame = (UserGame)results.get(1);
 						userGame.setAddedPlayerCount(userGame.getAddedPlayerCount()+1);	
 						addedPlayerCount = userGame.getAddedPlayerCount();
 						//session.save(userGame);
 						session.beginTransaction().commit();
-						logger.debug(" ------- Increasing Added Player Count is done ");
+						logger.info(" ------- Increasing Added Player Count is done ");
 					}
 									}
 				catch(Exception ex)
@@ -1447,7 +1447,7 @@ public class GameManager {
 		List<Object[]> currentGameWeek = null;
 		setErrorMessage("");
 		SessionFactory factory = HibernateSessionFactory.getSessionFacotry();
-		logger.debug("--------------- fetchCurrenGametWeek ------------> gameId: "+gameId);
+		logger.info("--------------- fetchCurrenGametWeek ------------> gameId: "+gameId);
 		if(factory == null)
 		{
 			setErrorCode(ErrorConstrant.SESS_FACT_NULL);
@@ -1492,7 +1492,7 @@ public class GameManager {
 		List<Object[]> startGameWeek = null;
 		setErrorMessage("");
 		SessionFactory factory = HibernateSessionFactory.getSessionFacotry();
-		logger.debug("--------------- fetchStartGametWeek ------------> gameId: "+gameId);
+		logger.info("--------------- fetchStartGametWeek ------------> gameId: "+gameId);
 		if(factory == null)
 		{
 			setErrorCode(ErrorConstrant.SESS_FACT_NULL);
@@ -1537,7 +1537,7 @@ public class GameManager {
 		List<Timestamp> firstMatchOfGameWeek = null;
 		setErrorMessage("");
 		SessionFactory factory = HibernateSessionFactory.getSessionFacotry();
-		logger.debug("--------------- fetchFirstMatchOfGameWeek ------------> gameWeekId: "+gameWeekId);
+		logger.info("--------------- fetchFirstMatchOfGameWeek ------------> gameWeekId: "+gameWeekId);
 		if(factory == null)
 		{
 			setErrorCode(ErrorConstrant.SESS_FACT_NULL);
@@ -1581,7 +1581,7 @@ public class GameManager {
 		List<Timestamp> lastMatchOfGameWeek = null;
 		setErrorMessage("");
 		SessionFactory factory = HibernateSessionFactory.getSessionFacotry();
-		logger.debug("--------------- lastFirstMatchOfGameWeek ------------> gameWeekId: "+gameWeekId);
+		logger.info("--------------- lastFirstMatchOfGameWeek ------------> gameWeekId: "+gameWeekId);
 		if(factory == null)
 		{
 			setErrorCode(ErrorConstrant.SESS_FACT_NULL);
@@ -1626,7 +1626,7 @@ public class GameManager {
 		int gameWeekNumber = 0;
 		setErrorMessage("");
 		SessionFactory factory = HibernateSessionFactory.getSessionFacotry();
-		logger.debug("--------------- getGameWeekNumber ------------> gameWeekId: "+gameWeekId);
+		logger.info("--------------- getGameWeekNumber ------------> gameWeekId: "+gameWeekId);
 		if(factory == null)
 		{
 			setErrorCode(ErrorConstrant.SESS_FACT_NULL);
@@ -1682,7 +1682,7 @@ public class GameManager {
 		List<Timestamp> endDateListOfGameWeekFromToday = null;
 		setErrorMessage("");
 		SessionFactory factory = HibernateSessionFactory.getSessionFacotry();
-		logger.debug("--------------- fetchEndDateListOfGameWeekFromToday ------------>");
+		logger.info("--------------- fetchEndDateListOfGameWeekFromToday ------------>");
 		if(factory == null)
 		{
 			setErrorCode(ErrorConstrant.SESS_FACT_NULL);

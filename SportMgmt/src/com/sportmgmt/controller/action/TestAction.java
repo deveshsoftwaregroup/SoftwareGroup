@@ -78,7 +78,7 @@ public class TestAction {
 	{
 		//System.out.println("---------Model Map :-- User Name: "+map.get("userName"));
 		System.out.println("----------- Request Param Map User Name: "+paramMap.get("userName"));
-		logger.debug("-----------In Logger Request Param Map User Name: "+paramMap.get("userName"));
+		logger.info("-----------In Logger Request Param Map User Name: "+paramMap.get("userName"));
 		HashMap hmap = new HashMap();
 		hmap.put("key1","val1");
 		hmap.put("key2","val2");

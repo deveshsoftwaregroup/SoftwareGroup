@@ -122,7 +122,7 @@ public class SocailAction {
 		//oAuth2Parameters.setState("recivedfromfacebooktoken");
 		String authorizeUrl = oauthOperations.buildAuthorizeUrl(
 				GrantType.AUTHORIZATION_CODE, oAuth2Parameters);
-		logger.debug("Authorization URL: "+authorizeUrl);
+		logger.info("Authorization URL: "+authorizeUrl);
 		System.out.println("authorizeUrl: "+authorizeUrl);
 		RedirectView redirectView = new RedirectView(authorizeUrl, true, true,
 				true);
@@ -135,7 +135,7 @@ public class SocailAction {
 			HttpServletRequest request,
 			HttpServletResponse response,ModelMap modelMap) throws Exception {
 
-		logger.debug("----------------- Started call back method:");
+		logger.info("----------------- Started call back method:");
 		OAuthService oAuthService = facebookServiceProvider.getService();
 
 		Verifier verifier = new Verifier(code);
@@ -166,7 +166,7 @@ public class SocailAction {
         }
         reader.close();
 
-		logger.debug("logged in user: "+outputString);
+		logger.info("logged in user: "+outputString);
 		modelMap.put("userId", outputString);
 
 		/*MultiValueMap<String, Object> map = facebookUtil
@@ -203,7 +203,7 @@ public class SocailAction {
 			HttpServletResponse response) throws Exception {
 
 		String authorizeUrl = "https://www.facebook.com/dialog/oauth?client_id="+ clientID + "&redirect_uri=" + redirectURI +"&scope=public_profile";
-		logger.debug("Authorization URL: "+authorizeUrl);
+		logger.info("Authorization URL: "+authorizeUrl);
 		System.out.println("authorizeUrl: "+authorizeUrl);
 		RedirectView redirectView = new RedirectView(authorizeUrl, true, true,
 				true);
@@ -253,7 +253,7 @@ public class SocailAction {
         }
         reader.close();
 
-		logger.debug("logged in user: "+outputString);
+		logger.info("logged in user: "+outputString);
 		modelMap.put("userId", outputString);
 		String redirectAction = getRedirectURL(outputString);
 		if(redirectAction == null)
@@ -278,11 +278,11 @@ public class SocailAction {
 			logger.error("Error occure during parsing facebook response",ex);
 		}
 		
-		logger.debug("------- facebookUserId: "+facebookUserId+" , facebookName: "+facebookName);
+		logger.info("------- facebookUserId: "+facebookUserId+" , facebookName: "+facebookName);
 		if(facebookUserId != null && !facebookUserId.equals(""))
 		{
 			String userId = getUserId(facebookUserId,facebookName);
-			logger.debug("---------- userId: "+userId);
+			logger.info("---------- userId: "+userId);
 			if(userId != null && !userId.equals(""))
 			{
 				return "redirect:/mvc/user/login/"+userId;
@@ -293,11 +293,11 @@ public class SocailAction {
 	}
 	private String getUserId(String facebookUserId,String facebookName)
 	{
-		logger.debug("Checking user is first time or logined before to this site");
+		logger.info("Checking user is first time or logined before to this site");
 		String userId = UserManager.getUserIdByLogonId(facebookUserId);
 		if(userId == null || userId.equals(""))
 		{
-			logger.debug("User is first timmer, going to create user Id");
+			logger.info("User is first timmer, going to create user Id");
 			Map<String,String> userMap = new HashMap<String,String>();
 			userMap.put("logonId", facebookUserId);
 			userMap.put("emailId", facebookUserId);
