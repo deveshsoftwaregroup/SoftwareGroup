@@ -191,9 +191,9 @@ public class PaymentAction {
 	@RequestMapping(value = "SuccessView", method = RequestMethod.POST)
 	public String suceess(ModelMap modelMap,@RequestParam Map<String,String> paymentMap,HttpServletRequest request)
 	{
-		logger.debug("------Response From Payment Gateway  "+paymentMap);
+		logger.info("------Response From Payment Gateway  "+paymentMap);
 		boolean updateTrasaction = PlanManager.updateTransaction(paymentMap);
-		logger.debug("-------------------- Update Transaction is true: "+updateTrasaction);
+		logger.info("-------------------- Update Transaction is true: "+updateTrasaction);
 		if(updateTrasaction)
 		{
 			HttpSession session = request.getSession();
@@ -205,15 +205,15 @@ public class PaymentAction {
 				ActivePlan activePlan = PlanManager.getActivePlans(String.valueOf(user.getUserId()));
 				 if(activePlan == null)
 				 {
-					 logger.debug("---------- Setting User has not active Plan");
+					 logger.info("---------- Setting User has not active Plan");
 					 user.setHasActivePlan(false);
 				 }
 				 else
 				 {
-					 logger.debug("---------- Setting User has active Plan");
+					 logger.info("---------- Setting User has active Plan");
 					 user.setHasActivePlan(true);
 					 user.setActivePlan(activePlan);
-					 logger.debug(activePlan);
+					 logger.info(activePlan);
 				 }
 				
 			}
@@ -229,9 +229,9 @@ public class PaymentAction {
 	@RequestMapping(value = "FailureView", method = RequestMethod.POST)
 	public String failure(ModelMap modeMap,@RequestParam Map<String,String> paymentMap,HttpServletRequest request)
 	{
-		logger.debug("------Response From Payment Gateway  "+paymentMap);
+		logger.info("------Response From Payment Gateway  "+paymentMap);
 		boolean updateTrasaction = PlanManager.updateTransaction(paymentMap);
-		logger.debug("-------------------- Update Transaction is true: "+updateTrasaction);
+		logger.info("-------------------- Update Transaction is true: "+updateTrasaction);
 		modeMap.addAllAttributes(paymentMap);
 		return  SportConstrant.PAYMENT_RESULT_PAGE;
 	}
