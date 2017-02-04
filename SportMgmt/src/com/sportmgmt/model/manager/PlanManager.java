@@ -78,7 +78,7 @@ public class PlanManager {
 	}
 	public static LeaguePlan fetchLeaguePlan(Integer leaguePlanId)
 	{
-		logger.debug("--------------- fetchLeaguePlan -------------");
+		logger.info("--------------- fetchLeaguePlan -------------");
 		LeaguePlan leaguePlan = null;
 		if(factory == null)
 		{
@@ -118,7 +118,7 @@ public class PlanManager {
 	}
 	public static PlanDiscount fetchPlanDiscount(Integer planDiscountId)
 	{
-		logger.debug("--------------- fetchPlanDiscount -------------");
+		logger.info("--------------- fetchPlanDiscount -------------");
 		PlanDiscount planDiscount = null;
 		if(factory == null)
 		{
@@ -159,13 +159,13 @@ public class PlanManager {
 	
 	public static Integer createTransaction(Map<String,String> paymentDetails)
 	{
-		logger.debug("--------------- createTransaction ------------: plndId: "+paymentDetails.get("leaguePlanId")+" , discount Id: "+paymentDetails.get("planDiscountId")+ " , userId: "+paymentDetails.get("userId"));
+		logger.info("--------------- createTransaction ------------: plndId: "+paymentDetails.get("leaguePlanId")+" , discount Id: "+paymentDetails.get("planDiscountId")+ " , userId: "+paymentDetails.get("userId"));
 		Integer transactionId =null;
-		logger.debug("----- fetching plan------------------ ");
+		logger.info("----- fetching plan------------------ ");
 		LeaguePlan leaguePlan = fetchLeaguePlan(Integer.valueOf((String)paymentDetails.get("leaguePlanId")));
-		logger.debug("----- fetching discount------------------ ");
+		logger.info("----- fetching discount------------------ ");
 		PlanDiscount planDiscount = fetchPlanDiscount(Integer.valueOf((String)paymentDetails.get("planDiscountId")));
-		logger.debug("----- fetching user------------------ ");
+		logger.info("----- fetching user------------------ ");
 		User user = UserManager.getUserModel((String)paymentDetails.get("userId"));
 		UserPayment userPayment = null;
 		if(leaguePlan !=null && planDiscount != null && user != null)
@@ -226,7 +226,7 @@ public class PlanManager {
 	}
 	public static boolean updateTransaction(Map<String,String> paymentDetails)
 	{
-		logger.debug("--------------- updateTransaction ------------: transactionId: "+paymentDetails.get("txnid")+" ,  status : "+paymentDetails.get("status")+ " , message: "+paymentDetails.get("error_Message"));
+		logger.info("--------------- updateTransaction ------------: transactionId: "+paymentDetails.get("txnid")+" ,  status : "+paymentDetails.get("status")+ " , message: "+paymentDetails.get("error_Message"));
 		boolean updateTransaction =false;
 		String transactionId = paymentDetails.get("txnid");
 		if(transactionId !=null && !transactionId.equals(""))
@@ -285,8 +285,8 @@ public class PlanManager {
 						
 						session.update(userPayment);
 						session.beginTransaction().commit(); 
-						logger.debug("Payment table updated ----------------");
-						logger.debug("Started to update Payment_Ext table ----------------");
+						logger.info("Payment table updated ----------------");
+						logger.info("Started to update Payment_Ext table ----------------");
 						PaymentExt paymentExt = new PaymentExt();
 						paymentExt.setTransactionId(Integer.valueOf(transactionId));
 						if(paymentDetails.get("key") != null && !paymentDetails.get("key").equals(""))
@@ -378,10 +378,10 @@ public class PlanManager {
 						 
 						 if(paymentDetails.get("encryptedPaymentId") != null && !paymentDetails.get("encryptedPaymentId").equals(""))
 							 paymentExt.setIncPayMoneyId(paymentDetails.get("encryptedPaymentId"));
-						logger.debug(" ****** Making entry in payment ext table ");
+						logger.info(" ****** Making entry in payment ext table ");
 						session.save(paymentExt);
 						session.beginTransaction().commit();
-						logger.debug(" ****** Entry Done in payment ext table ");
+						logger.info(" ****** Entry Done in payment ext table ");
 						updateTransaction = true;
 					}
 					catch(Exception ex)
@@ -413,7 +413,7 @@ public class PlanManager {
 		ActivePlan activePlan = null;
 		setErrorMessage("");
 		SessionFactory factory = HibernateSessionFactory.getSessionFacotry();
-		logger.debug("--------------- fetchActivePlans ------------> userId:  "+userId);
+		logger.info("--------------- fetchActivePlans ------------> userId:  "+userId);
 		if(factory == null)
 		{
 			setErrorCode(ErrorConstrant.SESS_FACT_NULL);
@@ -434,7 +434,7 @@ public class PlanManager {
 					List results = cr.list();
 					if(results == null || results.size() ==0)
 					{
-						logger.debug(" ------- Active Plans does not found--");
+						logger.info(" ------- Active Plans does not found--");
 					}
 					else
 					{
@@ -487,7 +487,7 @@ public class PlanManager {
 		boolean isSuccess = false;
 		setErrorMessage("");
 		SessionFactory factory = HibernateSessionFactory.getSessionFacotry();
-		logger.debug("--------------- deActivateUserPlan ------------> userPlanId:  "+userPlanId);
+		logger.info("--------------- deActivateUserPlan ------------> userPlanId:  "+userPlanId);
 		if(factory == null)
 		{
 			setErrorCode(ErrorConstrant.SESS_FACT_NULL);
@@ -525,7 +525,7 @@ public class PlanManager {
 				setErrorMessage("Technical Error");
 			}
 		}
-		logger.debug("--------------- Returning DeActiveate Success:  "+isSuccess);
+		logger.info("--------------- Returning DeActiveate Success:  "+isSuccess);
 		return isSuccess;
 	}
 	public static double deductPointFromUserPlan(Integer userPlanId,double point) throws Exception
@@ -533,7 +533,7 @@ public class PlanManager {
 		double balance =0;
 		setErrorMessage("");
 		SessionFactory factory = HibernateSessionFactory.getSessionFacotry();
-		logger.debug("--------------- deductPointFromUserPlan ------------> userPlanId:  "+userPlanId+" , point: "+point);
+		logger.info("--------------- deductPointFromUserPlan ------------> userPlanId:  "+userPlanId+" , point: "+point);
 		if(factory == null)
 		{
 			setErrorCode(ErrorConstrant.SESS_FACT_NULL);
@@ -567,7 +567,7 @@ public class PlanManager {
 				throw new Exception("Session  is null");
 			}
 		}
-		logger.debug("--------------- Returning balance After Deduction:  "+balance);
+		logger.info("--------------- Returning balance After Deduction:  "+balance);
 		return balance;
 	}
 	
@@ -576,7 +576,7 @@ public class PlanManager {
 		double balance =0;
 		setErrorMessage("");
 		SessionFactory factory = HibernateSessionFactory.getSessionFacotry();
-		logger.debug("--------------- addDefaultPlanToUser ------------> userId:  "+userId);
+		logger.info("--------------- addDefaultPlanToUser ------------> userId:  "+userId);
 		if(factory == null)
 		{
 			setErrorCode(ErrorConstrant.SESS_FACT_NULL);
@@ -592,7 +592,7 @@ public class PlanManager {
 				try
 				{
 					
-					logger.debug("----- Trying to insert defaul plan for user");
+					logger.info("----- Trying to insert defaul plan for user");
 					SQLQuery query = session.createSQLQuery(QueryConstrant.INSERT_DEFAULT_USER_PLAN);
 					query.setParameter("userId", new Integer(userId));
 					query.executeUpdate();
@@ -619,7 +619,7 @@ public class PlanManager {
 				return false;
 			}
 		}
-		logger.debug("--------------- Defualt Plan for user is added  ");
+		logger.info("--------------- Defualt Plan for user is added  ");
 		return true;
 	}
 	public static double addPointToUserPlan(Integer userPlanId,double point) throws Exception
@@ -627,7 +627,7 @@ public class PlanManager {
 		double balance =0;
 		setErrorMessage("");
 		SessionFactory factory = HibernateSessionFactory.getSessionFacotry();
-		logger.debug("--------------- addPointToUserPlan ------------> userPlanId:  "+userPlanId+" , point: "+point);
+		logger.info("--------------- addPointToUserPlan ------------> userPlanId:  "+userPlanId+" , point: "+point);
 		if(factory == null)
 		{
 			setErrorCode(ErrorConstrant.SESS_FACT_NULL);
@@ -661,7 +661,7 @@ public class PlanManager {
 				throw new Exception("Session  is null");
 			}
 		}
-		logger.debug("--------------- Returning balance After Adding:  "+balance);
+		logger.info("--------------- Returning balance After Adding:  "+balance);
 		return balance;
 	}
 	public static String fetchFreeWildCardPlanId()
@@ -669,7 +669,7 @@ public class PlanManager {
 		setErrorMessage("");
 		String freeWildCardPlanId = "";
 		SessionFactory factory = HibernateSessionFactory.getSessionFacotry();
-		logger.debug("--------------- fetchFreeWildCardPlanId ------------>");
+		logger.info("--------------- fetchFreeWildCardPlanId ------------>");
 		if(factory == null)
 		{
 			setErrorCode(ErrorConstrant.SESS_FACT_NULL);
@@ -689,7 +689,7 @@ public class PlanManager {
 					List results = cr.list();
 					if(results == null || results.size() ==0)
 					{
-						logger.debug(" ------- Active Free Wild card does not found--");
+						logger.info(" ------- Active Free Wild card does not found--");
 					}
 					else
 					{
@@ -714,7 +714,7 @@ public class PlanManager {
 				setErrorMessage("Technical Error");
 			}
 		}
-		logger.debug("---------- Returning free wild card league plan Id: "+freeWildCardPlanId);
+		logger.info("---------- Returning free wild card league plan Id: "+freeWildCardPlanId);
 		return freeWildCardPlanId;
 	}
 	public static List<LeaguePlan> fetchNonFreeActivePlan()
@@ -722,7 +722,7 @@ public class PlanManager {
 		setErrorMessage("");
 		List<LeaguePlan> purchableActivePlanList = new ArrayList<LeaguePlan>();
 		SessionFactory factory = HibernateSessionFactory.getSessionFacotry();
-		logger.debug("--------------- fetchFreeWildCardPlanId ------------>");
+		logger.info("--------------- fetchFreeWildCardPlanId ------------>");
 		if(factory == null)
 		{
 			setErrorCode(ErrorConstrant.SESS_FACT_NULL);
@@ -741,7 +741,7 @@ public class PlanManager {
 					purchableActivePlanList = cr.list();
 					if(purchableActivePlanList == null || purchableActivePlanList.size() ==0)
 					{
-						logger.debug(" ------- Active Pucrchable Wild card does not found--");
+						logger.info(" ------- Active Pucrchable Wild card does not found--");
 					}
 				}
 				catch(Exception ex)
@@ -761,7 +761,7 @@ public class PlanManager {
 				setErrorMessage("Technical Error");
 			}
 		}
-		logger.debug("---------- Returning purchable Plan List "+purchableActivePlanList);
+		logger.info("---------- Returning purchable Plan List "+purchableActivePlanList);
 		return purchableActivePlanList;
 	}
 	public static boolean isWildCardPlanUsed(String wildCardPlanId,String userId)
@@ -769,7 +769,7 @@ public class PlanManager {
 		setErrorMessage("");
 		boolean isWildCardPlanUsed = false;
 		SessionFactory factory = HibernateSessionFactory.getSessionFacotry();
-		logger.debug("--------------- isWildCardPlanUsed ------------> : wildCardPlanId: "+wildCardPlanId+" ,, userId :"+userId);
+		logger.info("--------------- isWildCardPlanUsed ------------> : wildCardPlanId: "+wildCardPlanId+" ,, userId :"+userId);
 		if(factory == null)
 		{
 			setErrorCode(ErrorConstrant.SESS_FACT_NULL);
@@ -792,7 +792,7 @@ public class PlanManager {
 					List results = cr.list();
 					if(results == null || results.size() ==0)
 					{
-						logger.debug(" ------- isWildCardPlanUsed not found ");
+						logger.info(" ------- isWildCardPlanUsed not found ");
 					}
 					else
 					{
@@ -816,7 +816,7 @@ public class PlanManager {
 				setErrorMessage("Technical Error");
 			}
 		}
-		logger.debug("---------- Returning isWildCardPlanUsed "+isWildCardPlanUsed);
+		logger.info("---------- Returning isWildCardPlanUsed "+isWildCardPlanUsed);
 		return isWildCardPlanUsed;
 	}
 	
@@ -825,7 +825,7 @@ public class PlanManager {
 		setErrorMessage("");
 		String defultDiscountId = "";
 		SessionFactory factory = HibernateSessionFactory.getSessionFacotry();
-		logger.debug("--------------- fetchDefualtDiscount ------------>");
+		logger.info("--------------- fetchDefualtDiscount ------------>");
 		if(factory == null)
 		{
 			setErrorCode(ErrorConstrant.SESS_FACT_NULL);
@@ -846,7 +846,7 @@ public class PlanManager {
 					List results = cr.list();
 					if(results == null || results.size() ==0)
 					{
-						logger.debug(" ------- No Defult plan discount found ");
+						logger.info(" ------- No Defult plan discount found ");
 					}
 					else
 					{
@@ -871,7 +871,7 @@ public class PlanManager {
 				setErrorMessage("Technical Error");
 			}
 		}
-		logger.debug("---------- Returning defultDiscountId: "+defultDiscountId);
+		logger.info("---------- Returning defultDiscountId: "+defultDiscountId);
 		return defultDiscountId;
 	}
 	
@@ -880,7 +880,7 @@ public class PlanManager {
 		setErrorMessage("");
 		boolean isDone = false;
 		SessionFactory factory = HibernateSessionFactory.getSessionFacotry();
-		logger.debug("--------------- doEntryForUsrPlan ------------> userPlanMap: "+userPlanMap);
+		logger.info("--------------- doEntryForUsrPlan ------------> userPlanMap: "+userPlanMap);
 		if(factory == null)
 		{
 			setErrorCode(ErrorConstrant.SESS_FACT_NULL);
@@ -893,7 +893,7 @@ public class PlanManager {
 			{
 				try
 				{
-					logger.debug("----------- Started to make enty in user plan -----");
+					logger.info("----------- Started to make enty in user plan -----");
 					UserPlan userPlan = new UserPlan();
 					LeaguePlan leaguePlan = (LeaguePlan)session.load(LeaguePlan.class,new Integer((String)userPlanMap.get("planId")));
 					userPlan.setPlan(leaguePlan);
@@ -937,11 +937,11 @@ public class PlanManager {
 						userPlan.setEndDate(new Date(((Timestamp)userPlanMap.get("endDate")).getTime()));
 					}
 					userPlan.setIsActive(SportConstrant.YES);
-					logger.debug("----------- Making entry for user plan table-----");
+					logger.info("----------- Making entry for user plan table-----");
 					session.save(userPlan);
-					logger.debug("----------- Commiting to database -----");
+					logger.info("----------- Commiting to database -----");
 					session.beginTransaction().commit();
-					logger.debug("----------- Done completely -----");
+					logger.info("----------- Done completely -----");
 					isDone = true;
 				}
 				catch(Exception ex)
@@ -962,7 +962,7 @@ public class PlanManager {
 				setErrorMessage("Technical Error");
 			}
 		}
-		logger.debug("---------- Returning isDone: "+isDone);
+		logger.info("---------- Returning isDone: "+isDone);
 		return isDone;
 	}
 	
@@ -970,7 +970,7 @@ public class PlanManager {
 	{
 		setErrorMessage("");
 		SessionFactory factory = HibernateSessionFactory.getSessionFacotry();
-		logger.debug("--------------- inActivePlansOfUser ------------> userId:  "+userId);
+		logger.info("--------------- inActivePlansOfUser ------------> userId:  "+userId);
 		if(factory == null)
 		{
 			setErrorCode(ErrorConstrant.SESS_FACT_NULL);
@@ -986,7 +986,7 @@ public class PlanManager {
 				try
 				{
 					
-					logger.debug("----- Trying to make plan of user as inactive");
+					logger.info("----- Trying to make plan of user as inactive");
 					SQLQuery query = session.createSQLQuery(QueryConstrant.MAKE_USER_PLAN_INACTIVE);
 					query.setParameter("userId", new Integer(userId));
 					query.executeUpdate();
@@ -1013,7 +1013,7 @@ public class PlanManager {
 				return false;
 			}
 		}
-		logger.debug("--------------- User Plans has been made as inactive ");
+		logger.info("--------------- User Plans has been made as inactive ");
 		return true;
 	}
 }

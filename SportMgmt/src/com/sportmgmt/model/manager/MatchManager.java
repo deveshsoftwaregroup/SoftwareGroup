@@ -36,7 +36,7 @@ public class MatchManager {
 
 	public static List<Match> getMatchesByGame(String gameId)
 	{
-		logger.debug("----- Inside getMatchesByGame ---- gameId: "+gameId);
+		logger.info("----- Inside getMatchesByGame ---- gameId: "+gameId);
 		setErrorMessage(SportConstrant.NULL);
 		setErrorCode(SportConstrant.NULL);
 		List<Match> matchList = null;
@@ -45,7 +45,7 @@ public class MatchManager {
 		{
 			setErrorCode(ErrorConstrant.SESS_FACT_NULL);
 			setErrorMessage("Technical Error");
-			logger.debug("----- Factory Object is null----");
+			logger.info("----- Factory Object is null----");
 		}
 		else
 		{
@@ -59,7 +59,7 @@ public class MatchManager {
 					game.setGameId(new Integer(gameId));
 					Query query	 = session.createQuery(QueryConstrant.SELECT_MATCH_BY_GAME);
 					query.setParameter("game", game);
-					logger.debug("----------- Executing query to match list by game");
+					logger.info("----------- Executing query to match list by game");
 					matchList = query.list();
 					
 				}
@@ -78,10 +78,10 @@ public class MatchManager {
 			{
 				setErrorCode(ErrorConstrant.SESS_NULL);
 				setErrorMessage("Technical Error");
-				logger.debug("----- Session Object is null----");
+				logger.info("----- Session Object is null----");
 			}
 		}
-		logger.debug("----- Returning Match List  ---- : "+matchList);
+		logger.info("----- Returning Match List  ---- : "+matchList);
 		return matchList;
 	}
 

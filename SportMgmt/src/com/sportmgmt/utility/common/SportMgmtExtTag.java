@@ -60,7 +60,7 @@ public class SportMgmtExtTag extends TagSupport{
 	}  
 	public TreeSet getPriceList()
 	{
-		logger.debug("---------- Entry in getPriceList: ");
+		logger.info("---------- Entry in getPriceList: ");
 		HttpServletRequest request = (HttpServletRequest)pageContext.getRequest();
     	HttpSession session = request.getSession();
 		TreeSet priceList = new TreeSet();
@@ -74,7 +74,7 @@ public class SportMgmtExtTag extends TagSupport{
 			}
 		
 		}
-		logger.debug("---------- Returning in price List: "+priceList);
+		logger.info("---------- Returning in price List: "+priceList);
 	return priceList;
 	}
 	public void refreshDeadline()
@@ -95,19 +95,19 @@ public class SportMgmtExtTag extends TagSupport{
     		 {
     			 currentGameWeek = GameManager.fetchStartGametWeek(new Integer(gameId));
     		 }
-    		 logger.debug("Current Game Week: "+currentGameWeek);
+    		 logger.info("Current Game Week: "+currentGameWeek);
     		 if(currentGameWeek != null && currentGameWeek.size() > 0)
     		 {
     			 Integer gameWeekId = (Integer)currentGameWeek.get(0)[0];
-    			 logger.debug("--------------- currentGameWeek: Game week ID: "+gameWeekId+"  , Date: "+currentGameWeek.get(0)[1]);
+    			 logger.info("--------------- currentGameWeek: Game week ID: "+gameWeekId+"  , Date: "+currentGameWeek.get(0)[1]);
     			 List<Timestamp> firstMatchOfGameWeek = GameManager.fetchFirstMatchOfGameWeek(gameWeekId);
-    			 logger.debug("First Match of  Game Week: "+firstMatchOfGameWeek);
+    			 logger.info("First Match of  Game Week: "+firstMatchOfGameWeek);
     			 int gameWeekNumber = GameManager.getGameWeekNumber(gameWeekId);
-    			 logger.debug(" Game Week Number : "+gameWeekNumber);
+    			 logger.info(" Game Week Number : "+gameWeekNumber);
     			 pageContext.setAttribute("gameWeekNumber", gameWeekNumber);
     			 if(firstMatchOfGameWeek != null && firstMatchOfGameWeek.size() >=0)
     			 {
-    				 logger.debug("First Match of  Game Week:  "+firstMatchOfGameWeek.get(0));
+    				 logger.info("First Match of  Game Week:  "+firstMatchOfGameWeek.get(0));
     				 Timestamp startTimeOfFirstMatch = firstMatchOfGameWeek.get(0);
     				 int startHour = startTimeOfFirstMatch.getHours();
     				 int startMin = startTimeOfFirstMatch.getMinutes();
@@ -130,20 +130,20 @@ public class SportMgmtExtTag extends TagSupport{
     				 logger.info("--------- Game Week: deadline  -- :"+deadline);
     				 pageContext.setAttribute("deadline", deadline);
     				 List<Timestamp> lastMatchOfGameWeek = GameManager.lastFirstMatchOfGameWeek(gameWeekId);
-    				 logger.debug("--------------- lastMatchOfGameWeek: "+lastMatchOfGameWeek);
+    				 logger.info("--------------- lastMatchOfGameWeek: "+lastMatchOfGameWeek);
     				 if(lastMatchOfGameWeek != null && lastMatchOfGameWeek.size() > 0 )
     				 {
     					 Timestamp endTimeOfLastMatch =  lastMatchOfGameWeek.get(0);
     					 long startDeadlineMils = startTimeOfFirstMatch.getTime() - TimeUnit.HOURS.toMillis(deadLineHrsBeforeStart);
     					 long endDeadlineMils = endTimeOfLastMatch.getTime() + TimeUnit.HOURS.toMillis(deadLineHrsAfterEnd);
     					 long currentTimeMils = System.currentTimeMillis();
-    					 logger.debug("----------- startDeadlineMils: "+startDeadlineMils);
-    					 logger.debug("----------- endDeadlineMils: "+endDeadlineMils);
-    					 logger.debug("----------- currentTimeMils: "+currentTimeMils);
+    					 logger.info("----------- startDeadlineMils: "+startDeadlineMils);
+    					 logger.info("----------- endDeadlineMils: "+endDeadlineMils);
+    					 logger.info("----------- currentTimeMils: "+currentTimeMils);
     					 if(currentTimeMils >= startDeadlineMils && currentTimeMils <=endDeadlineMils)
     					 {
     						 pageContext.setAttribute("isUnderDeadline", true);
-    						 logger.debug("----------- isUderDeadline: is true ");
+    						 logger.info("----------- isUderDeadline: is true ");
     					 }
     				 }
     			 }

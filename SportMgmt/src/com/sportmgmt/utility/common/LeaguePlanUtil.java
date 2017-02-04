@@ -20,20 +20,20 @@ public class LeaguePlanUtil {
 	private static Logger logger = Logger.getLogger(LeaguePlanUtil.class);
 	public static String getFreeWildCardId(String userId)
 	{
-		logger.debug("---------- Started getting free wild card in Plan Util ");
-		logger.debug("---------- Calling PlanManager.fetchFreeWildCardPlanId() ");
+		logger.info("---------- Started getting free wild card in Plan Util ");
+		logger.info("---------- Calling PlanManager.fetchFreeWildCardPlanId() ");
 		String freeWildCardPlanId = PlanManager.fetchFreeWildCardPlanId();
 		if(!freeWildCardPlanId.equals(""))
 		{
 			if(PlanManager.isWildCardPlanUsed(freeWildCardPlanId, userId))
 			freeWildCardPlanId = "";
 		}
-		logger.debug("----------Returning freeWildCardPlanId: in Plan Util : "+freeWildCardPlanId);
+		logger.info("----------Returning freeWildCardPlanId: in Plan Util : "+freeWildCardPlanId);
 		return freeWildCardPlanId;
 	}
 	public static boolean activatePlanForUser(String planId,String userId,String planDiscountId,String transactionId)
 	{
-		logger.debug("---------- Started activating Plan for user in Plan Util ");
+		logger.info("---------- Started activating Plan for user in Plan Util ");
 		Map userPlanMap = new HashMap();
 		userPlanMap.put("planId", planId);
 		userPlanMap.put("userId", userId);
@@ -46,7 +46,7 @@ public class LeaguePlanUtil {
 		}
 		else
 		userPlanMap.put("planDesc", "This is the free wild Card Plan");
-		logger.debug("---------- Calling PlanManager.fetchLeaguePlan method ");
+		logger.info("---------- Calling PlanManager.fetchLeaguePlan method ");
 		LeaguePlan leaguePlan= PlanManager.fetchLeaguePlan(new Integer(planId));
 		if(leaguePlan.getCurrency() != null)
 		{
@@ -65,22 +65,22 @@ public class LeaguePlanUtil {
 			userPlanMap.put("endDate", endDate);
 		}
 		boolean isDone = false;
-		logger.debug("---------- Calling PlanManager.inActivePlansOfUser ");
+		logger.info("---------- Calling PlanManager.inActivePlansOfUser ");
 		if(PlanManager.inActivePlansOfUser(userId))
 		{
-			logger.debug("---------- Inactivating plans of user is done completely ");
+			logger.info("---------- Inactivating plans of user is done completely ");
 			isDone = PlanManager.doEntryForUsrPlan(userPlanMap);
 		}
-		logger.debug("---------- Activation for user: "+userId+" of plan: "+planId + " is : "+isDone);
+		logger.info("---------- Activation for user: "+userId+" of plan: "+planId + " is : "+isDone);
 		return true;
 	}
 	public static List<WildCard> getPurchableWildCardList()
 	{
-		logger.debug("---------- Inside getPurchableWildCardList of Plan Util");
+		logger.info("---------- Inside getPurchableWildCardList of Plan Util");
 		List<WildCard> purchableWildCardList = new ArrayList<WildCard>();
-		logger.debug("---------- Calling PlanManager.fetchNonFreeActivePlan()");
+		logger.info("---------- Calling PlanManager.fetchNonFreeActivePlan()");
 		List<LeaguePlan> leaguePlanList = PlanManager.fetchNonFreeActivePlan();
-		logger.debug("---------------- leaguePlanList: "+leaguePlanList);
+		logger.info("---------------- leaguePlanList: "+leaguePlanList);
 		if(leaguePlanList != null && leaguePlanList.size() > 0)
 		{
 			for(Object leagePlanObj:leaguePlanList)
@@ -96,7 +96,7 @@ public class LeaguePlanUtil {
 				purchableWildCardList.add(wildCard);
 			}
 		}
-		logger.debug("----------------Returning  purchableWildCardList: "+purchableWildCardList);
+		logger.info("----------------Returning  purchableWildCardList: "+purchableWildCardList);
 		return purchableWildCardList;
 	}
 	public static String getDefualtPlanDiscountId()

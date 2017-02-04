@@ -265,7 +265,7 @@ public class UserManager {
 		{
 			setErrorCode(ErrorConstrant.SESS_FACT_NULL);
 			setErrorMessage("Technical Error");
-			logger.debug("----- Factory Object is null----");
+			logger.info("----- Factory Object is null----");
 			return false;
 		}
 		else
@@ -275,13 +275,13 @@ public class UserManager {
 			{
 				try
 				{
-					logger.debug("----- Loading for user----");
+					logger.info("----- Loading for user----");
 					User user = (User) session.load(User.class,Integer.valueOf(userId));
 					user.setStatus("A");
-					logger.debug("----- Calling Save Update for user----");
+					logger.info("----- Calling Save Update for user----");
 					session.save(user);
 					session.beginTransaction().commit();
-					logger.debug("-----  Save Update gets executed ----");
+					logger.info("-----  Save Update gets executed ----");
 				}
 				catch(Exception ex)
 				{
@@ -300,7 +300,7 @@ public class UserManager {
 			{
 				setErrorCode(ErrorConstrant.SESS_NULL);
 				setErrorMessage("Technical Error");
-				logger.debug("----- Session Object is null----");
+				logger.info("----- Session Object is null----");
 				return false;
 			}
 		}
@@ -318,7 +318,7 @@ public class UserManager {
 		{
 			setErrorCode(ErrorConstrant.SESS_FACT_NULL);
 			setErrorMessage("Technical Error");
-			logger.debug("----- Factory Object is null----");
+			logger.info("----- Factory Object is null----");
 		}
 		else
 		{
@@ -327,7 +327,7 @@ public class UserManager {
 			{
 				try
 				{
-					logger.debug("----- Loading for user----: "+userId);
+					logger.info("----- Loading for user----: "+userId);
 				
 					com.sportmgmt.model.entity.User modelUser = (com.sportmgmt.model.entity.User) session.load(com.sportmgmt.model.entity.User.class,Integer.valueOf(userId));
 					user = getControllerUserFromModelUser(modelUser);
@@ -347,10 +347,10 @@ public class UserManager {
 			{
 				setErrorCode(ErrorConstrant.SESS_NULL);
 				setErrorMessage("Technical Error");
-				logger.debug("----- Session Object is null----");
+				logger.info("----- Session Object is null----");
 			}
 		}
-		logger.debug("----- Returning User Object ----"+user);
+		logger.info("----- Returning User Object ----"+user);
 		return user;
 	}
 	public static com.sportmgmt.model.entity.User getUserModel(String userId)
@@ -364,7 +364,7 @@ public class UserManager {
 		{
 			setErrorCode(ErrorConstrant.SESS_FACT_NULL);
 			setErrorMessage("Technical Error");
-			logger.debug("----- Factory Object is null----");
+			logger.info("----- Factory Object is null----");
 		}
 		else
 		{
@@ -373,7 +373,7 @@ public class UserManager {
 			{
 				try
 				{
-					logger.debug("----- Loading for user----: "+userId);
+					logger.info("----- Loading for user----: "+userId);
 				
 					 modelUser = (com.sportmgmt.model.entity.User) session.get(com.sportmgmt.model.entity.User.class,Integer.valueOf(userId));
 				}
@@ -392,15 +392,15 @@ public class UserManager {
 			{
 				setErrorCode(ErrorConstrant.SESS_NULL);
 				setErrorMessage("Technical Error");
-				logger.debug("----- Session Object is null----");
+				logger.info("----- Session Object is null----");
 			}
 		}
-		logger.debug("----- Returning User Modle ----"+modelUser);
+		logger.info("----- Returning User Modle ----"+modelUser);
 		return modelUser;
 	}
 	public static String getPasswordByEmail(String emailId)
 	{
-		logger.debug("----- Indie getPasswordByEmail ----"+emailId);
+		logger.info("----- Indie getPasswordByEmail ----"+emailId);
 		setErrorMessage(SportConstrant.NULL);
 		setErrorCode(SportConstrant.NULL);
 		setUserId(SportConstrant.NULL);
@@ -410,7 +410,7 @@ public class UserManager {
 		{
 			setErrorCode(ErrorConstrant.SESS_FACT_NULL);
 			setErrorMessage("Technical Error");
-			logger.debug("----- Factory Object is null----");
+			logger.info("----- Factory Object is null----");
 		}
 		else
 		{
@@ -419,7 +419,7 @@ public class UserManager {
 			{
 				try
 				{
-					logger.debug("----- Loading for user----: "+userId);
+					logger.info("----- Loading for user----: "+userId);
 				
 					Query query	 = session.createQuery("FROM User U WHERE U.emailId =:emailId");
 					query.setParameter("emailId", emailId);
@@ -449,16 +449,16 @@ public class UserManager {
 			{
 				setErrorCode(ErrorConstrant.SESS_NULL);
 				setErrorMessage("Technical Error");
-				logger.debug("----- Session Object is null----");
+				logger.info("----- Session Object is null----");
 			}
 		}
-		logger.debug("----- Returning Passowrd ----"+password);
+		logger.info("----- Returning Passowrd ----"+password);
 		return password;
 	}
 
 	public static String getUserIdByLogonId(String loginId)
 	{
-		logger.debug("----- Indie getUserIdByLogonId ----"+loginId);
+		logger.info("----- Indie getUserIdByLogonId ----"+loginId);
 		setErrorMessage(SportConstrant.NULL);
 		setErrorCode(SportConstrant.NULL);
 		setUserId(SportConstrant.NULL);
@@ -468,7 +468,7 @@ public class UserManager {
 		{
 			setErrorCode(ErrorConstrant.SESS_FACT_NULL);
 			setErrorMessage("Technical Error");
-			logger.debug("----- Factory Object is null----");
+			logger.info("----- Factory Object is null----");
 		}
 		else
 		{
@@ -477,7 +477,7 @@ public class UserManager {
 			{
 				try
 				{
-					logger.debug("----- Loading for user----: "+loginId);
+					logger.info("----- Loading for user----: "+loginId);
 				
 					Query query	 = session.createQuery("FROM User U WHERE U.logonID =:logonId");
 					query.setParameter("logonId",loginId );
@@ -507,10 +507,10 @@ public class UserManager {
 			{
 				setErrorCode(ErrorConstrant.SESS_NULL);
 				setErrorMessage("Technical Error");
-				logger.debug("----- Session Object is null----");
+				logger.info("----- Session Object is null----");
 			}
 		}
-		logger.debug("----- Returning userId ----"+userId);
+		logger.info("----- Returning userId ----"+userId);
 		return userId;
 	}
 
@@ -531,7 +531,7 @@ public class UserManager {
 	}
 	public static com.sportmgmt.controller.bean.User getControllerUserFromModelUser(com.sportmgmt.model.entity.User modelUser) 
 	{
-		logger.debug("-------------  Inside getControllerUserFromModelUser , Model User : "+modelUser);
+		logger.info("-------------  Inside getControllerUserFromModelUser , Model User : "+modelUser);
 		com.sportmgmt.controller.bean.User controllerUser = null;
 		if(modelUser != null)
 		{
@@ -578,7 +578,7 @@ public class UserManager {
 	}
 	public static List fetchAllCountryStateCity()
 	{
-		logger.debug("----- Indie fetchAllCountryStateCity ----");
+		logger.info("----- Indie fetchAllCountryStateCity ----");
 		setErrorMessage(SportConstrant.NULL);
 		setErrorCode(SportConstrant.NULL);
 		List countryStateCityList = null;
@@ -587,7 +587,7 @@ public class UserManager {
 		{
 			setErrorCode(ErrorConstrant.SESS_FACT_NULL);
 			setErrorMessage("Technical Error");
-			logger.debug("----- Factory Object is null----");
+			logger.info("----- Factory Object is null----");
 		}
 		else
 		{
@@ -598,7 +598,7 @@ public class UserManager {
 				{
 				
 					Query query	 = session.createQuery(QueryConstrant.FROM_COUNTRY_STATE_CITY);
-					logger.debug("----------- Executing query to load county city map:");
+					logger.info("----------- Executing query to load county city map:");
 					countryStateCityList = query.list();
 					
 				}
@@ -617,10 +617,10 @@ public class UserManager {
 			{
 				setErrorCode(ErrorConstrant.SESS_NULL);
 				setErrorMessage("Technical Error");
-				logger.debug("----- Session Object is null----");
+				logger.info("----- Session Object is null----");
 			}
 		}
-		logger.debug("----- Returning County State City List  ----"+countryStateCityList);
+		logger.info("----- Returning County State City List  ----"+countryStateCityList);
 		return countryStateCityList;
 	}
 	public static void main(String...str)
@@ -660,7 +660,7 @@ public class UserManager {
 				}
 			}
 		}
-		logger.debug("---------------> Returning Country State City Map: "+countryCityStateMap);
+		logger.info("---------------> Returning Country State City Map: "+countryCityStateMap);
 		return countryCityStateMap;
 	}
 }

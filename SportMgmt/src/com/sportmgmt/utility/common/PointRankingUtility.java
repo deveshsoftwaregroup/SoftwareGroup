@@ -64,11 +64,11 @@ public class PointRankingUtility {
 			 
 			 long startDeadlineMils = startTimeOfFirstMatch.getTime() - TimeUnit.HOURS.toMillis(deadLineHrsBeforeStart);
 			 long currentTimeMils = System.currentTimeMillis();
-			 logger.debug("----------- startDeadlineMils: "+startDeadlineMils);
-			 logger.debug("----------- currentTimeMils: "+currentTimeMils);
+			 logger.info("----------- startDeadlineMils: "+startDeadlineMils);
+			 logger.info("----------- currentTimeMils: "+currentTimeMils);
 			 if(currentTimeMils >= startDeadlineMils)
 			 {
-				 logger.debug("----------- isUderDeadline: is true ");
+				 logger.info("----------- isUderDeadline: is true ");
 				 return true;
 			 }
 		 }

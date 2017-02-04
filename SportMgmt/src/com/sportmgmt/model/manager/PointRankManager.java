@@ -38,7 +38,7 @@ public class PointRankManager {
 
 	public static List<Point> getMPointByGame(String gameId)
 	{
-		logger.debug("----- Inside getMatchesByGame ---- gameId: "+gameId);
+		logger.info("----- Inside getMatchesByGame ---- gameId: "+gameId);
 		setErrorMessage(SportConstrant.NULL);
 		setErrorCode(SportConstrant.NULL);
 		List<Point> pointList = null;
@@ -47,7 +47,7 @@ public class PointRankManager {
 		{
 			setErrorCode(ErrorConstrant.SESS_FACT_NULL);
 			setErrorMessage("Technical Error");
-			logger.debug("----- Factory Object is null----");
+			logger.info("----- Factory Object is null----");
 		}
 		else
 		{
@@ -59,7 +59,7 @@ public class PointRankManager {
 				
 					Query query	 = session.createQuery(QueryConstrant.SELECT_POINT_BY_GAME);
 					query.setParameter("gameId", new Integer(gameId));
-					logger.debug("----------- Executing query to point list by game");
+					logger.info("----------- Executing query to point list by game");
 					pointList = query.list();
 					
 				}
@@ -78,16 +78,16 @@ public class PointRankManager {
 			{
 				setErrorCode(ErrorConstrant.SESS_NULL);
 				setErrorMessage("Technical Error");
-				logger.debug("----- Session Object is null----");
+				logger.info("----- Session Object is null----");
 			}
 		}
-		logger.debug("----- Returning Match List  ---- : "+pointList);
+		logger.info("----- Returning Match List  ---- : "+pointList);
 		return pointList;
 	}
 	
 	public static Integer getLastGameWeekId(String gameId)
 	{
-		logger.debug("----- Inside getLastGameWeekId ---- gameId: "+gameId);
+		logger.info("----- Inside getLastGameWeekId ---- gameId: "+gameId);
 		setErrorMessage(SportConstrant.NULL);
 		setErrorCode(SportConstrant.NULL);
 		List lastGameWeekIdList = null;
@@ -96,7 +96,7 @@ public class PointRankManager {
 		{
 			setErrorCode(ErrorConstrant.SESS_FACT_NULL);
 			setErrorMessage("Technical Error");
-			logger.debug("----- Factory Object is null----");
+			logger.info("----- Factory Object is null----");
 			return null;
 		}
 		else
@@ -131,7 +131,7 @@ public class PointRankManager {
 			{
 				setErrorCode(ErrorConstrant.SESS_NULL);
 				setErrorMessage("Technical Error");
-				logger.debug("----- Session Object is null----");
+				logger.info("----- Session Object is null----");
 				return null;
 			}
 		}
