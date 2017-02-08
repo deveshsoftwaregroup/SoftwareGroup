@@ -1,6 +1,5 @@
 package com.sportmgmt.utility.common;
 
-import java.math.BigInteger;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,6 +10,7 @@ import java.util.concurrent.TimeUnit;
 import org.apache.log4j.Logger;
 
 import com.sportmgmt.model.manager.GameManager;
+import com.sportmgmt.model.manager.GameWeeKManager;
 import com.sportmgmt.model.manager.PlayerManager;
 import com.sportmgmt.model.manager.PointRankManager;
 import com.sportmgmt.utility.constrant.SportConstrant;
@@ -81,7 +81,7 @@ public class PointRankingUtility {
 		Integer lastGameWeekId = null; 
 		if(currentGameWeekId == null || !isDeadlineStart(currentGameWeekId.toString()))
 		{
-			lastGameWeekId = getLastGameWeekId(gameId);
+			lastGameWeekId = getPreviousGameWeekId(gameId);
 			if(lastGameWeekId !=null)
 			{
 				return lastGameWeekId.toString();
@@ -94,7 +94,7 @@ public class PointRankingUtility {
 		return null;
 	}
 	
-	private Integer getLastGameWeekId(String gameId)
+	private Integer getPreviousGameWeekId(String gameId)
 	{
 		return PointRankManager.getLastGameWeekId(gameId);
 	}
@@ -129,46 +129,9 @@ public class PointRankingUtility {
 	{
 		try
 		{
-			List<Integer> userListOfGame = PlayerManager.userListOfGame(gameId);
-			if(userListOfGame !=null && userListOfGame.size() !=0)
-			{
-				String gameWeekId =getLatestGameWeekId(gameId);
-				if(gameWeekId != null && !gameWeekId.equals(""))
-				{
-					List<String> logList = new ArrayList<String>();
-					for(Integer userIdBigInt:userListOfGame)
-					{
-						String userId = String.valueOf(userIdBigInt.intValue());
-						logger.info("Going to create player history of user: "+userId+" for gameWeekId: "+gameWeekId+" of gameId: "+gameId);
-						boolean isSuccess = createPlayerHistoryForGameWeek(gameId,gameWeekId,userId);
-						logger.info("player history creation went :"+isSuccess);
-						if(!isSuccess)
-						{
-							if(!logMessage.equals(""))
-							{
-								logList.add(logMessage);
-							}
-							else
-							{
-								logList.add("Failed userId="+userId+" gameWeekId="+gameWeekId);
-							}
-						}
-						
-					}
-					return logList;
-				}
-				else
-				{
-					logger.info("skiping to create player history of users, becuase of game week id is empty:");
-					throw new SportMgmtException("game week id is empty");
-				}
-			}
-			else
-			{
-				logger.info("User List for game: "+gameId+" is empty");
-				throw new SportMgmtException("User List for game: "+gameId+" is empty");
-			}
-		
+			String gameWeekId =getLatestGameWeekId(gameId);
+			return createPlayerHistoryForUsers(gameId,gameWeekId);
+			
 		}
 		catch(Exception ex)
 		{
@@ -177,6 +140,106 @@ public class PointRankingUtility {
 		}
 	}
 	
+	public List<String> createPlayerHistoryForUsers(String gameId,String gameWeekId) throws SportMgmtException
+	{
+		if(gameWeekId !=null && !gameWeekId.equals(""))
+		{
+			List<Integer> userListOfGame = PlayerManager.userListOfGame(gameId);
+			if(userListOfGame !=null && userListOfGame.size() !=0)
+			{
+				List<String> logList = new ArrayList<String>();
+				for(Integer userIdBigInt:userListOfGame)
+				{
+					String userId = String.valueOf(userIdBigInt.intValue());
+					logger.info("Going to create player history of user: "+userId+" for gameWeekId: "+gameWeekId+" of gameId: "+gameId);
+					boolean isSuccess = createPlayerHistoryForGameWeek(gameId,gameWeekId,userId);
+					logger.info("player history creation went :"+isSuccess);
+					if(!isSuccess)
+					{
+						if(!logMessage.equals(""))
+						{
+							logList.add(logMessage);
+						}
+						else
+						{
+							logList.add("Failed userId="+userId+" gameWeekId="+gameWeekId);
+						}
+					}
+					
+				}
+				return logList;
+			}
+			else
+			{
+				logger.info("User List for game: "+gameId+" is empty");
+				throw new SportMgmtException("User List for game: "+gameId+" is empty");
+			}
+	    }
+		else
+		{
+			logger.info("skiping to create player history of users, becuase of game week id is empty:");
+			throw new SportMgmtException("game week id is empty");
+		}
+	}
+	public Map<String,String> getGameWeekForPointView(String gameId, String gameWeekIdParam,String direction)
+	{
+		Map<String,String> gameWeekForPoint = new HashMap<>();
+		gameWeekForPoint.put("isLatestGameWeek", SportConstrant.NO);
+		String latestGameWeekId = getLatestGameWeekId(gameId);
+		if(latestGameWeekId != null && !latestGameWeekId.equals(""))
+		{
+			List<Integer> sortedGameWeekIds = GameWeeKManager.sortedGameWeekIds(gameId);
+			if(sortedGameWeekIds !=null && !sortedGameWeekIds.isEmpty())
+			{
+				if(gameWeekIdParam == null || gameWeekIdParam.equals(""))
+				{
+					gameWeekForPoint.put("isLatestGameWeek", SportConstrant.YES);
+					gameWeekForPoint.put("gameWeekId", latestGameWeekId);
+					int gameWeekNumber = 0;
+					for(Integer gameWeekId:sortedGameWeekIds)
+					{
+						if(latestGameWeekId.equals(gameWeekId.toString()))
+						{
+							gameWeekForPoint.put("gameWeekNumber", String.valueOf(gameWeekNumber+1));
+							break;
+						}
+						gameWeekNumber++;
+					}
+				}
+				else
+				{
+					int gameWeekNumber = 0;
+					for(Integer gameWeekId:sortedGameWeekIds)
+					{
+						if(gameWeekIdParam.equals(gameWeekId.toString()))
+						{
+							if(direction.equals(SportConstrant.PREVIOUS))
+							{
+								gameWeekForPoint.put("gameWeekId", sortedGameWeekIds.get(gameWeekNumber-1).toString());
+								gameWeekForPoint.put("gameWeekNumber", String.valueOf(gameWeekNumber));
+								break;
+							}
+							else if(direction.equals(SportConstrant.NEXT))
+							{
+								gameWeekForPoint.put("gameWeekId", sortedGameWeekIds.get(gameWeekNumber+1).toString());
+								gameWeekForPoint.put("gameWeekNumber", String.valueOf(gameWeekNumber+2));
+							}
+							if(gameWeekForPoint.get("gameWeekId").equals(latestGameWeekId))
+							{
+								gameWeekForPoint.put("isLatestGameWeek", SportConstrant.YES);
+							}
+							break;
+						}
+						gameWeekNumber++;
+					}
+		
+				}
+							
+			}
+		}
+		
+		return gameWeekForPoint;
+	}
 	private void createPlayerHistoryForGame()
 	{
 		List gameList =applicationDataUtility.getGames();

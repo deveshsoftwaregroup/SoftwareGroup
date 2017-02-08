@@ -1,7 +1,7 @@
 package com.sportmgmt.model.manager;
 
-import java.math.BigInteger;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -11,11 +11,8 @@ import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
-import com.sportmgmt.model.entity.Game;
-import com.sportmgmt.model.entity.Match;
 import com.sportmgmt.model.entity.PlayerGroup;
 import com.sportmgmt.model.entity.PlayerGroupPlayer;
-import com.sportmgmt.model.entity.Point;
 import com.sportmgmt.utility.constrant.ErrorConstrant;
 import com.sportmgmt.utility.constrant.QueryConstrant;
 import com.sportmgmt.utility.constrant.SportConstrant;
@@ -76,8 +73,8 @@ public class PlayerManager {
 						PlayerGroup playerGroup = new PlayerGroup();
 						playerGroup.setUserId(new Integer(userId));
 						playerGroup.setGameWeekId(new Integer(gameWeekId));
-						playerGroup.setGroupType("GAME_WEEK_HISTORY");
-						playerGroup.setGroupName(userId+"|"+gameWeekId+"|GAME_WEEK_HISTORY");
+						playerGroup.setGroupType(SportConstrant.GAME_WEEK_HISTORY);
+						playerGroup.setGroupName(userId+"|"+gameWeekId+"|"+SportConstrant.GAME_WEEK_HISTORY);
 						playerGroup.setPlayerList(playerHistoryList);
 						session.save(playerGroup);
 						logger.info("---------- commiting player group player");
@@ -156,7 +153,6 @@ public class PlayerManager {
 		return false;
 	}
 	
-	
 	public static List<Integer> userListOfGame(String gameId)
 	{
 		logger.info("----- Inside userListOfGame ---- gameId: "+gameId);
@@ -203,7 +199,77 @@ public class PlayerManager {
 		}
 		return null;
 	}
-
-
-
+	
+	public static List<Map<String,String>> gameWeekPlayerList(String userId,String gameWeekId)
+	{
+		logger.info("----- Inside gameWeekPlayerList ---- userId: "+userId+" ,:"+gameWeekId);
+		setErrorMessage(SportConstrant.NULL);
+		setErrorCode(SportConstrant.NULL);
+		List<Map<String,String>> gameWeekPlayerList;
+		SessionFactory factory = HibernateSessionFactory.getSessionFacotry();
+		if(factory == null)
+		{
+			setErrorCode(ErrorConstrant.SESS_FACT_NULL);
+			setErrorMessage("Technical Error");
+			logger.info("----- Factory Object is null----");
+		}
+		else
+		{
+			Session session = factory.openSession();
+			if(session != null)
+			{
+				try
+				{
+				
+					Query query = session.createQuery(QueryConstrant.SELECT_PLAYER_GROUP);
+					query.setParameter("gameWeekId", new Integer(gameWeekId));
+					query.setParameter("userId", new Integer(userId));
+					query.setParameter("groupType",SportConstrant.GAME_WEEK_HISTORY);
+					List<PlayerGroup> playerGroupList =query.list();
+					if(playerGroupList !=null && !playerGroupList.isEmpty())
+					{
+						gameWeekPlayerList = new ArrayList<>();
+						PlayerGroup playerGroup = playerGroupList.get(0);
+						List<PlayerGroupPlayer> playerGroPlrList = playerGroup.getPlayerList();
+						if(playerGroPlrList !=null && !playerGroPlrList.isEmpty())
+						{
+							for(PlayerGroupPlayer playerGrpPlr:playerGroPlrList)
+							{
+								gameWeekPlayerList.add(getPlayerMap(playerGrpPlr));
+							}
+						}
+						return gameWeekPlayerList;
+					}
+					
+				}
+				catch(Exception ex)
+				{
+					logger.error("Exception in gameWeekPlayerList: method "+ex);
+					setErrorMessage("Technical Error");
+					setErrorCode(ErrorConstrant.TRANSACTION_ERROR);
+				}
+				finally
+				{
+					session.close();
+				}
+			}
+			else
+			{
+				setErrorCode(ErrorConstrant.SESS_NULL);
+				setErrorMessage("Technical Error");
+				logger.info("----- Session Object is null----");
+			}
+		}
+		return null;
+	}
+	
+	private static Map<String,String> getPlayerMap(PlayerGroupPlayer playerGrpPlr)
+	{
+		Map<String,String> player = new HashMap<>();
+		player.put("gameClubPlayerId", playerGrpPlr.getGameClubPlayerId().toString());
+		player.put("isPlaying", playerGrpPlr.getIsPlaying());
+		player.put("playerCategory", playerGrpPlr.getPlayerCategory());
+		player.put("playerSeq", playerGrpPlr.getSegNum().toString());
+		return player;
+	}
 }

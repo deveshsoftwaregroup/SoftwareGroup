@@ -65,5 +65,8 @@ public class SportConstrant {
 	public final static String DEADLINE_START_HRS = "deadlineStartHrs";
 	public final static String DEADLINE_END_HRS = "deadlineEndHrs";
 	public final static String USER_PLAN_PAGE = "userPlan";
+	public final static String PREVIOUS = "prev";
+	public final static String NEXT = "next";
+	public final static String GAME_WEEK_HISTORY = "GAME_WEEK_HISTORY";
 
 }

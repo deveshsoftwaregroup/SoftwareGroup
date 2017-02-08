@@ -102,7 +102,7 @@ public class SportMgmtExtTag extends TagSupport{
     			 logger.info("--------------- currentGameWeek: Game week ID: "+gameWeekId+"  , Date: "+currentGameWeek.get(0)[1]);
     			 List<Timestamp> firstMatchOfGameWeek = GameManager.fetchFirstMatchOfGameWeek(gameWeekId);
     			 logger.info("First Match of  Game Week: "+firstMatchOfGameWeek);
-    			 int gameWeekNumber = GameManager.getGameWeekNumber(gameWeekId);
+    			 int gameWeekNumber = GameManager.getGameWeekNumber(gameWeekId,new Integer(gameId));
     			 logger.info(" Game Week Number : "+gameWeekNumber);
     			 pageContext.setAttribute("gameWeekNumber", gameWeekNumber);
     			 if(firstMatchOfGameWeek != null && firstMatchOfGameWeek.size() >=0)

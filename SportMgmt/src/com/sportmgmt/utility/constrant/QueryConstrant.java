@@ -38,7 +38,7 @@ public static final String FETCH_START_MATCH_TIME_OF_GAME_WEEK = "select start_t
 
 public static final String FETCH_END_MATCH_TIME_OF_GAME_WEEK = "select start_time from MATCH_DETAIL where end_time = (select max(end_time) from MATCH_DETAIL where game_week_id = :gameWeekId)";
 
-public static final String FETCH_SORTED_GAME_WEEK = "select game_week_id from GAME_WEEK order by start_date";
+public static final String FETCH_SORTED_GAME_WEEK = "select game_week_id from GAME_WEEK where game_Id=:gameId order by start_date";
 
 public static final String FETCH_END_DATE_LIST_OF_GAME_WEEK_FROM_TODAY = "select end_date from game_week where (end_date > :date  and start_date < :date ) or (start_date > :date) order by start_date";
 
@@ -57,6 +57,8 @@ public static final String SELECT_TOTAL_POINT_AND_RANK_OF_USER = "select USER_TO
 public static final String SELECT_LAST_GAME_WEEK = "select game_week_id from GAME_WEEK where end_date = (select max(end_date) from GAME_WEEK where end_date < :date and game_id =:gameId)";
 
 public static final String SELECT_GAME_WEEK_HISTORY_PLAYER_GROUP = "select * from PLAYER_GROUP where USER_ID=:userId and GAME_WEEK_ID=:gameWeekId";
-
+ 
 public static final String SELECT_USERS_OF_GAME = "select distinct(up.USER_ID) from USER_PLAYER up,GAME_CLUB_PLAYER gcp where gcp.game_id =:gameId and up.GAME_CLUB_PLAYER_ID=gcp.GAME_CLUB_PLAYER_ID";
+
+public static final String SELECT_PLAYER_GROUP = "FROM PlayerGroup PLG WHERE PLG.userId =:userId AND PLG.gameWeekId=:gameWeekId AND PLG.groupType=:groupType";
 }

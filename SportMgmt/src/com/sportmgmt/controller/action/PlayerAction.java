@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sportmgmt.controller.response.SportMgmtResponse;
 import com.sportmgmt.model.manager.GameManager;
+import com.sportmgmt.model.manager.PlayerManager;
 import com.sportmgmt.model.manager.PointRankManager;
 import com.sportmgmt.utility.common.ApplicationDataUtility;
 import com.sportmgmt.utility.common.PointRankingUtility;
@@ -110,6 +111,68 @@ public class PlayerAction {
 			sportMgmtResponse.setSuccess(false);
 			sportMgmtResponse.setMessage("Invalid game Id");
 		}
+		return sportMgmtResponse;
+	}
+	@RequestMapping(value = "make-player-history/{gameId}/{gameWeekId}", method = RequestMethod.GET)
+	public @ResponseBody SportMgmtResponse createGameWeekHistoryForPlayers(@PathVariable String gameId, @PathVariable String gameWeekId)
+	{
+		SportMgmtResponse sportMgmtResponse = new SportMgmtResponse();
+		boolean isGameExist = GameManager.isGameExistAndActive(gameId);
+		if(isGameExist)
+		{
+			try
+			{
+				List<String> logList =pointRankingUtility.createPlayerHistoryForUsers(gameId,gameWeekId);
+				sportMgmtResponse.setSuccess(true);
+				sportMgmtResponse.setLogList(logList);
+			}
+			catch(SportMgmtException sme)
+			{
+				sportMgmtResponse.setSuccess(false);
+				sportMgmtResponse.setMessage(sme.getMessage());
+				logger.error("--------------- Error Occured: "+sme);
+			}
+			
+		}
+		else
+		{
+			sportMgmtResponse.setSuccess(false);
+			sportMgmtResponse.setMessage("Invalid game Id");
+		}
+		return sportMgmtResponse;
+	}
+	@RequestMapping(value = "game-week-history/{gameId}/{userId}", method = RequestMethod.GET)
+	public @ResponseBody SportMgmtResponse<Map> gameWeekHistory(@PathVariable String gameId,@PathVariable String userId,HttpServletRequest request)
+	{
+		String gameWeekIdParam = request.getParameter("gameWeekId");
+		String direction = request.getParameter("game-week-for");
+		return getGameWeeKHistory(gameId, userId, gameWeekIdParam, direction);
+	}
+	
+	private SportMgmtResponse<Map> getGameWeeKHistory(String gameId,String userId,String gameWeekIdParam,String direction)
+	{
+		SportMgmtResponse<Map> 	sportMgmtResponse = new SportMgmtResponse<>();
+		try
+			{
+				
+				Map result = new HashMap();
+				Map<String,String> gameWeek =pointRankingUtility.getGameWeekForPointView(gameId, gameWeekIdParam, direction);
+				logger.info("-------- gameWeek: "+gameWeek);
+				List<Map<String,String>> historyPlayerList = PlayerManager.gameWeekPlayerList(userId, gameWeek.get("gameWeekId"));
+				logger.info("-- History player list: "+historyPlayerList);
+				result.put("hisotryPlayerList", historyPlayerList);
+				result.put("gameWeek", gameWeek);
+				sportMgmtResponse.setSuccess(true);
+				sportMgmtResponse.setResult(result);
+				
+			}
+			catch(Exception sme)
+			{
+				sportMgmtResponse.setSuccess(false);
+				sportMgmtResponse.setMessage(sme.getMessage());
+				logger.error("--------------- Error Occured: "+sme);
+			}
+			
 		return sportMgmtResponse;
 	}
 }

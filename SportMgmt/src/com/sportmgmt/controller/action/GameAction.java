@@ -30,7 +30,7 @@ import com.sportmgmt.controller.bean.MatchDetails;
 import com.sportmgmt.controller.bean.User;
 import com.sportmgmt.model.entity.Match;
 import com.sportmgmt.model.manager.GameManager;
-import com.sportmgmt.model.manager.MatchManager;
+import com.sportmgmt.model.manager.GameWeeKManager;
 import com.sportmgmt.model.manager.PlanManager;
 import com.sportmgmt.model.manager.PointRankManager;
 import com.sportmgmt.utility.common.MailUtility;
@@ -482,7 +482,7 @@ public class GameAction {
 	{
 		logger.info("---------- IN matchView to : "+gameId);
 		TreeSet<GameWeek> gameWeekList = new TreeSet<GameWeek>();
-		List<Match> matchList = MatchManager.getMatchesByGame(gameId);
+		List<Match> matchList = GameWeeKManager.getMatchesByGame(gameId);
 		SimpleDateFormat sdfStart;
 		if(matchList != null && matchList.size() >=1)
 		{

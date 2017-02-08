@@ -4,11 +4,19 @@ import java.util.List;
 
 import com.sportmgmt.utility.exception.SportMgmtException;
 
-public class SportMgmtResponse {
+public class SportMgmtResponse<T> {
 	
 	private boolean isSuccess;
 	private String message;
 	private List<String> logList;
+	private T result;
+	
+	public T getResult() {
+		return result;
+	}
+	public void setResult(T result) {
+		this.result = result;
+	}
 	public boolean isSuccess() {
 		return isSuccess;
 	}

@@ -1620,7 +1620,7 @@ public class GameManager {
 		logger.info("--------------- Returning lastMatchOfGameWeek: -------------"+lastMatchOfGameWeek);
 		return lastMatchOfGameWeek;
 	}
-	public static int getGameWeekNumber(Integer gameWeekId)
+	public static int getGameWeekNumber(Integer gameWeekId,Integer gameId)
 	{
 		List<Integer> gameWeekList = null;
 		int gameWeekNumber = 0;
@@ -1642,7 +1642,7 @@ public class GameManager {
 					
 					//SQLQuery query = session.createSQLQuery("select gcp.game_club_player_id from game_club_player gcp, user_player up where gcp.game_club_player_id = up.game_club_player_id and up.user_id =20 and gcp.game_id =1");
 					SQLQuery query = session.createSQLQuery(QueryConstrant.FETCH_SORTED_GAME_WEEK);
-					//query.setParameter("gameWeekId", gameWeekId);
+					query.setParameter("gameId", gameId);
 					gameWeekList =query.list();
 					if(gameWeekList != null && gameWeekList.size() > 0)
 					{
