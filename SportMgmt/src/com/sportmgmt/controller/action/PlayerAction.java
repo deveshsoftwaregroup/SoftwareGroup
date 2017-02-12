@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sportmgmt.controller.response.SportMgmtResponse;
 import com.sportmgmt.model.manager.GameManager;
+import com.sportmgmt.model.manager.GameWeeKManager;
 import com.sportmgmt.model.manager.PlayerManager;
 import com.sportmgmt.model.manager.PointRankManager;
 import com.sportmgmt.utility.common.ApplicationDataUtility;
@@ -158,8 +159,12 @@ public class PlayerAction {
 				Map result = new HashMap();
 				Map<String,String> gameWeek =pointRankingUtility.getGameWeekForPointView(gameId, gameWeekIdParam, direction);
 				logger.info("-------- gameWeek: "+gameWeek);
-				List<Map<String,String>> historyPlayerList = PlayerManager.gameWeekPlayerList(userId, gameWeek.get("gameWeekId"));
+				String gameWeekId = gameWeek.get("gameWeekId");
+				List<Map<String,String>> historyPlayerList = PlayerManager.gameWeekPlayerList(userId, gameWeekId);
 				logger.info("-- History player list: "+historyPlayerList);
+				Map<String,String> gameWeekReport = GameWeeKManager.getGameWeekReport(userId, gameWeekId);
+				logger.info("--- Game Week Report: "+gameWeekReport);
+				gameWeek.putAll(gameWeekReport);
 				result.put("hisotryPlayerList", historyPlayerList);
 				result.put("gameWeek", gameWeek);
 				sportMgmtResponse.setSuccess(true);
