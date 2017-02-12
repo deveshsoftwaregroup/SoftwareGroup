@@ -233,13 +233,13 @@
                         <li class="ism-nav__list__item">
                             <a href="javascript:void(0);" class="ism-nav__tab" onclick="uploadMatchView('${sessionScope.gameDetails.gameId}');" data-nav-tab="squad">Fixtures</a>
                         </li>                      
-                           
+                        <li class="ism-nav__list__item">
+                            <a href="javascript:void(0);" class="ism-nav__tab" onclick="uploadRankingView('${sessionScope.gameDetails.gameId}');">My Points</a>
+                        </li>   
                         <li class="ism-nav__list__item">
                             <a href="javascript:void(0);" class="ism-nav__tab" onclick="uploadPointTableView('${sessionScope.gameDetails.gameId}');">Point Table</a>
                         </li>  
-                        <li class="ism-nav__list__item">
-                            <a href="javascript:void(0);" class="ism-nav__tab" onclick="uploadRankingView('${sessionScope.gameDetails.gameId}');">Rankings</a>
-                        </li>             
+                                     
                         <li class="ism-nav__list__item">
                             <a href="#" class="ism-nav__tab ">Scout</a>
                         </li>       
