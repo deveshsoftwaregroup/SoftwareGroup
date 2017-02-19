@@ -5,14 +5,31 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 //import java.util.Calendar;  
-import javax.servlet.jsp.JspException;  
-import javax.servlet.jsp.JspWriter;  
-import javax.servlet.jsp.tagext.TagSupport; 
+import javax.servlet.jsp.JspException;
+import javax.servlet.jsp.tagext.TagSupport;
+
+import org.apache.log4j.Logger;
+
+import com.sportmgmt.controller.action.GameAction;
+import com.sportmgmt.controller.response.SportMgmtResponse; 
 public class SportMgmtTag extends TagSupport{
-	
+	/**
+	 * 
+	 */
+	private Logger logger = Logger.getLogger(SportMgmtTag.class);
+	private static final long serialVersionUID = 1L;
 	private Integer position;  
 	private String playerType;
+	private String pageName;
 	
+	public String getPageName() {
+		return pageName;
+	}
+
+	public void setPageName(String pageName) {
+		this.pageName = pageName;
+	}
+
 	public Integer getPosition() {
 		return position;
 	}
@@ -37,16 +54,32 @@ public class SportMgmtTag extends TagSupport{
 	    	//pageContext.setAttribute("name", "My name is Gentle Man");
 	    	boolean isPlayerAvail = false;
 	    	String gameClubPlayerId = "";
+	    	logger.info("----- position: "+position+" , playerType: "+playerType+" , pageName: "+pageName);
 	    	if(position !=null && playerType !=null && !playerType.equals(""))
 	    	{
 	    		HttpServletRequest request = (HttpServletRequest)pageContext.getRequest();
 		    	HttpSession session = request.getSession();
-				Map userGameMap = (Map)session.getAttribute("userGameDetails");
-				if(userGameMap != null && userGameMap.size() >0)
+		    	List<Map<String,String>> playerList = null;
+		    	
+				if(pageName !=null && pageName.equals("MY_POINT"))
 				{
-					List<Map<String,String>> userPlayersList = (List<Map<String,String>>)userGameMap.get("playerList");
+					SportMgmtResponse<Map<Object,Object>> sprotMgmtRes = (SportMgmtResponse<Map<Object,Object>>)request.getAttribute("sportMgmtRes");
+					Map<Object,Object> result = sprotMgmtRes.getResult();
+					playerList= (List<Map<String,String>>)result.get("hisotryPlayerList"); 
+					
+				}
+				else
+				{
+					Map userGameMap = (Map)session.getAttribute("userGameDetails");
+					if(userGameMap != null && userGameMap.size() >0)
+					{
+						playerList = (List<Map<String,String>>)userGameMap.get("playerList");
+					}
+				}
+				if(playerList != null && playerList.size() >0)
+				{
 					int count=1;
-					for(Object userPlayerObj:userPlayersList)
+					for(Object userPlayerObj:playerList)
 					{
 						Map<String,String> userPlayerMap = (Map<String,String>)userPlayerObj;
 						if(userPlayerMap.get("playerType") !=null && userPlayerMap.get("playerType").equals(playerType))
@@ -74,10 +107,10 @@ public class SportMgmtTag extends TagSupport{
 				if(isPlayerAvail)
 				{
 					pageContext.setAttribute("gameClubPlayerId", gameClubPlayerId);
-					List<Map<Object,Object>> playerList = (List<Map<Object,Object>>)session.getAttribute("playerList");
-					if(playerList !=null && playerList.size() >0)
+					List<Map<Object,Object>> playerListAll = (List<Map<Object,Object>>)session.getAttribute("playerList");
+					if(playerListAll !=null && playerListAll.size() >0)
 					{
-						for(Object playerObj:playerList)
+						for(Object playerObj:playerListAll)
 						{
 							Map playerMap = (Map)playerObj;
 							if(playerMap.get("gameClubPlayerId") != null && playerMap.get("gameClubPlayerId").equals(gameClubPlayerId))
@@ -105,7 +138,10 @@ public class SportMgmtTag extends TagSupport{
 	    	}
 	    	position = null;
 	    	playerType = null;
-	    }catch(Exception e){System.out.println(e);}  
+	    }catch(Exception e)
+	    {
+	     logger.error(e);
+	     }  
 	    return SKIP_BODY;//will not evaluate the body content of the tag  
 	}  
 

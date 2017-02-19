@@ -36,4 +36,8 @@ public class SportMgmtResponse<T> {
 		this.logList = logList;
 	}
 	
+	public String toString()
+	{
+		return "isSuccess = "+isSuccess+" , result = "+result;
+	}
 }

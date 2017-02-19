@@ -44,7 +44,6 @@ public class PointRankingUtility {
 	 return gameWeekId;
 	}
 	
-	
 	private boolean isDeadlineStart(String gameWeekId)
 	{
 		List<Timestamp> firstMatchOfGameWeek = GameManager.fetchFirstMatchOfGameWeek(new Integer(gameWeekId));
@@ -240,6 +239,53 @@ public class PointRankingUtility {
 		
 		return gameWeekForPoint;
 	}
+	
+	
+	public String gameWeekIdForTransferPlayer(String gameId)
+	{
+		List<Integer> sortedGameWeekIds  = GameWeeKManager.sortedGameWeekIds(gameId);
+		logger.info("--------- sortedGameWeekIds: "+sortedGameWeekIds);
+		if(sortedGameWeekIds !=null && !sortedGameWeekIds.isEmpty())
+		{
+			boolean isGameStarted = GameWeeKManager.isGameStarted(gameId, sortedGameWeekIds);
+			logger.info("-------- isGameStarted: "+isGameStarted);
+			if(isGameStarted)
+			{
+				Integer currentGameWeekId = getCurrentGameWeek(gameId);
+				logger.info("-------- Current Game Week ID: "+currentGameWeekId);
+				if(currentGameWeekId != null)
+				{
+					boolean isDeadlineStart = isDeadlineStart(currentGameWeekId.toString());
+					logger.info(" ---- deadline start for current game Week: "+isDeadlineStart);
+					String gameWeekId = currentGameWeekId.toString();
+					if(isDeadlineStart)
+					{
+						gameWeekId = getNextGameWeekId(sortedGameWeekIds,gameWeekId);
+					}
+					return gameWeekId;
+				}
+			}
+		}
+		return null;
+	}
+	private String getNextGameWeekId(List<Integer> sortedGameWeekIds,String currentGameWeekId)
+	{
+		int index = 0;
+		if(sortedGameWeekIds.get(sortedGameWeekIds.size()-1).toString().equals(currentGameWeekId))
+		{
+			logger.info("--------- Current game week is already last game week of game , last Game Week ID: "+sortedGameWeekIds.get(sortedGameWeekIds.size()-1));
+			return null;
+		}
+		for(Integer gameWeekIdTemp:sortedGameWeekIds)
+		{
+			if(gameWeekIdTemp.toString().equals(currentGameWeekId.toString()))
+			{
+				return sortedGameWeekIds.get(index+1).toString();
+			}
+			index++;
+		}
+		return null;
+	}
 	private void createPlayerHistoryForGame()
 	{
 		List gameList =applicationDataUtility.getGames();
@@ -248,7 +294,6 @@ public class PointRankingUtility {
 			String gameId = (String)((HashMap)gameList.get(i)).get("gameId");
 			logger.info("Going to create player history for gameId: "+gameId);
 			//createPlayerHistoryForUsers(gameId);
-			
 		}
 		
 	}

@@ -34,6 +34,7 @@ import com.sportmgmt.model.manager.GameWeeKManager;
 import com.sportmgmt.model.manager.PlanManager;
 import com.sportmgmt.model.manager.PointRankManager;
 import com.sportmgmt.utility.common.MailUtility;
+import com.sportmgmt.utility.common.PointRankingUtility;
 import com.sportmgmt.utility.common.PropertyFileUtility;
 import com.sportmgmt.utility.constrant.ErrorConstrant;
 import com.sportmgmt.utility.constrant.SportConstrant;
@@ -58,6 +59,21 @@ public class GameAction {
 	public void setPropFileUtility(PropertyFileUtility propFileUtility) {
 		this.propFileUtility = propFileUtility;
 	}
+	
+	@Autowired
+	private PointRankingUtility pointRankingUtility;
+	
+	
+	
+	public PointRankingUtility getPointRankingUtility() {
+		return pointRankingUtility;
+	}
+
+
+	public void setPointRankingUtility(PointRankingUtility pointRankingUtility) {
+		this.pointRankingUtility = pointRankingUtility;
+	}
+	
 	@RequestMapping(value = "AddPlayer", method = RequestMethod.GET)
 	public @ResponseBody Map addPlayer(@RequestParam("userId") String userId, @RequestParam("gameClubPlayerId") String gameClubPlayerId,HttpServletRequest request)
 	{
@@ -140,6 +156,13 @@ public class GameAction {
 							if((Integer)totalMap.get("player") ==15)
 							{
 								GameManager.checkAndIsertUserGameStatus(userId,gameId);
+							}
+							String gameWeekIdForPlayerTrasfer = pointRankingUtility.gameWeekIdForTransferPlayer(gameId);
+							logger.info("------ gameWeekIdForPlayerTrasfer: "+gameWeekIdForPlayerTrasfer);
+							if(gameWeekIdForPlayerTrasfer !=null && !gameWeekIdForPlayerTrasfer.equals(""))
+							{
+								int playerTransfered = GameWeeKManager.updatePlayerTransfered(new Integer(userId), new Integer(gameWeekIdForPlayerTrasfer));
+								logger.info("total player transfer= "+playerTransfered+" for game_week: "+gameWeekIdForPlayerTrasfer);
 							}
 							logger.info("--------  : Starting deducting point: "+price);
 							if(price != null && user.getActivePlan() != null && user.getActivePlan().getPlanTypeVal() == 0)
@@ -456,7 +479,7 @@ public class GameAction {
 		 HashMap totalPlayingMap= new HashMap();
 		 //totalPlayingMap.put("player", player);
 		 GameManager.updateTotalPlayingPlayerByPostion(Integer.valueOf(userId),Integer.valueOf(gameId),totalPlayingMap);
-		 modeMap.put("userGameMap",GameManager.getUserGameStatus(userId, gameId));
+		 //modeMap.put("userGameMap",GameManager.getUserGameStatus(userId, gameId));
 		 String totalPlayingJson = "";
 		 modeMap.put("totalPlayingMap", totalPlayingMap);
 		 logger.info("-------- MyTeamView : totalPlayingMap: "+totalPlayingMap);

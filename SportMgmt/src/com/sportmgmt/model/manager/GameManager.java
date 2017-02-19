@@ -1316,7 +1316,6 @@ public class GameManager {
 					if(results != null && results.size() !=0)
 					{
 						logger.info(" ------- Enrty found in UserGameStatus");
-						logger.info(" ------- Making new Entry in USER_GAME table for user and game");
 						UserGame userGame = (UserGame)results.get(0);
 						if(userGame.getTotalPoint() !=null && !userGame.getTotalPoint().equals(""))
 						userGameMap.put("point", userGame.getTotalPoint().toString());

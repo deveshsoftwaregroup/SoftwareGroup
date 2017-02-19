@@ -89,7 +89,7 @@ public class PlayerAction {
 	@RequestMapping(value = "make-player-history/{gameId}", method = RequestMethod.GET)
 	public @ResponseBody SportMgmtResponse createGameWeekHistoryForPlayers(@PathVariable String gameId, HttpServletRequest request)
 	{
-		SportMgmtResponse sportMgmtResponse = new SportMgmtResponse();
+		SportMgmtResponse<Map> sportMgmtResponse = new SportMgmtResponse();
 		boolean isGameExist = GameManager.isGameExistAndActive(gameId);
 		if(isGameExist)
 		{
@@ -147,20 +147,39 @@ public class PlayerAction {
 	{
 		String gameWeekIdParam = request.getParameter("gameWeekId");
 		String direction = request.getParameter("game-week-for");
-		return getGameWeeKHistory(gameId, userId, gameWeekIdParam, direction);
+		return getGameWeeKHistory(gameId, userId, gameWeekIdParam, direction,request);
 	}
 	
-	private SportMgmtResponse<Map> getGameWeeKHistory(String gameId,String userId,String gameWeekIdParam,String direction)
+	private SportMgmtResponse<Map> getGameWeeKHistory(String gameId,String userId,String gameWeekIdParam,String direction,HttpServletRequest request)
 	{
 		SportMgmtResponse<Map> 	sportMgmtResponse = new SportMgmtResponse<>();
 		try
 			{
 				
-				Map result = new HashMap();
+				Map<Object,Object> result = new HashMap();
 				Map<String,String> gameWeek =pointRankingUtility.getGameWeekForPointView(gameId, gameWeekIdParam, direction);
 				logger.info("-------- gameWeek: "+gameWeek);
 				String gameWeekId = gameWeek.get("gameWeekId");
 				List<Map<String,String>> historyPlayerList = PlayerManager.gameWeekPlayerList(userId, gameWeekId);
+				/* Statt Code to add playerType to history player List */
+				if(historyPlayerList !=null && !historyPlayerList.isEmpty())
+				{
+					HttpSession session = request.getSession();
+					List<Map<Object,Object>> playerList = (List<Map<Object,Object>>)session.getAttribute("playerList");
+					for(Map<String,String> historyPlayer:historyPlayerList)
+					{
+						String historyPlayerGCPID = historyPlayer.get("gameClubPlayerId");
+						for(Map<Object,Object>player:playerList)
+						{
+							if(player.get("gameClubPlayerId").equals(historyPlayerGCPID))
+							{
+								historyPlayer.put("playerType",(String)player.get("type"));
+								break;
+							}
+						}
+					}
+				}
+				/* End Code to add playerType to history player List */
 				logger.info("-- History player list: "+historyPlayerList);
 				Map<String,String> gameWeekReport = GameWeeKManager.getGameWeekReport(userId, gameWeekId);
 				logger.info("--- Game Week Report: "+gameWeekReport);
