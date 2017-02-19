@@ -160,43 +160,63 @@
                 <div id="leaguer-main" class="league-main">
 					<div>
 						<div class="pager-header">
-							<h3 class="subHeader pager-heading">Gameweek 24</h3>
+							<h3 class="subHeader pager-heading">Gameweek ${requestScope.sportMgmtRes.result.gameWeek.gameWeekNumber}</h3>
 							<div class="league-pager">
 								<div class="pager pager-left">
-									<a href="#" title="View previous" class="pager-btn btn-prev">
+									<c:choose>
+									<c:when test="${sportMgmtRes.result.gameWeek.gameWeekNumber eq '1'}">
+									<a href="javascript:void(0);" title="View previous" class="pager-btn btn-prev">
 										<span class="fa fa-angle-left"></span>
 										<span>Previous</span>
 									</a>
+									</c:when>
+									<c:otherwise>
+									<a href="javascript:void(0);" onclick="uploadMyPointView('${sessionScope.gameDetails.gameId}','${sessionScope.userId}','${sportMgmtRes.result.gameWeek.gameWeekId}','prev');" title="View previous" class="pager-btn btn-prev">
+										<span class="fa fa-angle-left"></span>
+										<span>Previous</span>
+									</a>
+									</c:otherwise>
+									</c:choose>
 								</div>
 								<div class="pager pager-right">
-									<a href="#" title="View next" class="pager-btn btn-next">
-										<span>Next</span>
+									<c:choose>
+									<c:when test="${sportMgmtRes.result.gameWeek.isLatestGameWeek eq 'Y'}">
+									<a href="javascript:void(0);" onclick="uploadTeamView('${sessionScope.userId}','${sessionScope.gameDetails.gameId}');" title="View next" class="pager-btn btn-next">
+									<span>Next</span>
 										<span class="fa fa-angle-right"></span>
 									</a>
+									</c:when>
+									<c:otherwise>
+									<a href="javascript:void(0)" onclick="uploadMyPointView('${sessionScope.gameDetails.gameId}','${sessionScope.userId}','${sportMgmtRes.result.gameWeek.gameWeekId}','next');" title="View next" class="pager-btn btn-next">
+									<span>Next</span>
+										<span class="fa fa-angle-right"></span>
+									</a>
+									</c:otherwise>
+									</c:choose>
 								</div>
 							</div>
 						</div>
 						<div class="points-area">
 							<div class="final-points">
 								Final Points
-								<span>81</span>
+								<span>${sportMgmtRes.result.gameWeek.finalPoint}</span>
 							</div>
 							<div class="points-container">
 								<div class="point-row">
 									<div class="pt-col pt-txt">Average Pts</div>
-									<div class="pt-col pt-no">51</div>
+									<div class="pt-col pt-no">${sportMgmtRes.result.gameWeek.averagePoint}</div>
 								</div>
 								<div class="point-row">
 									<div class="pt-col pt-txt">Highest Pts</div>
-									<div class="pt-col pt-no highest">146</div>
+									<div class="pt-col pt-no highest">${sportMgmtRes.result.gameWeek.heighestPoint}</div>
 								</div>
 								<div class="point-row">
 									<div class="pt-col pt-txt">GW Rank</div>
-									<div class="pt-col pt-no">198,828</div>
+									<div class="pt-col pt-no">${sportMgmtRes.result.gameWeek.rank}</div>
 								</div>
 								<div class="point-row">
 									<div class="pt-col pt-txt">Transfers</div>
-									<div class="pt-col pt-no">2 (-4pts)</div>
+									<div class="pt-col pt-no">${sportMgmtRes.result.gameWeek.transfer} (-4pts)</div>
 								</div>
 							</div>
 						</div>
@@ -220,7 +240,7 @@
 												<div class="league-pitch__unit league-pitch__unit--4"></div>
 												<div id="leaguer-pos1" class="league-pitch__unit league-pitch__unit--4">
 													<div class="league-transfer--original">
-													<s:sport position="1" playerType="Goalkeeper"/>
+													<s:sport position="1" playerType="Goalkeeper" pageName="MY_POINT"/>
 														<div class="league-element" tabindex="0">
 															<div class="leaguejs-menu check_1">
 															<c:if test="${not empty clubId and clubId ne ''}">
@@ -259,7 +279,7 @@
 												</div>
 												<div id="leaguer-pos2" class="league-pitch__unit league-pitch__unit--4">
 													<div class="league-transfer--original">
-													<s:sport position="2" playerType="Goalkeeper"/>
+													<s:sport position="2" playerType="Goalkeeper" pageName="MY_POINT"/>
 														<div class="league-element" tabindex="0">
 															<div class="leaguejs-menu check_2">
 															<c:set var="imageSrc" value="" />
@@ -290,7 +310,7 @@
 											<div class="league-element-row league-element-row--pitch">
 												<div id="leaguer-pos3" class="league-pitch__unit league-pitch__unit--5">
 													<div class="league-transfer--original">
-													<s:sport position="1" playerType="Defender"/>
+													<s:sport position="1" playerType="Defender" pageName="MY_POINT"/>
 														<div class="league-element" tabindex="0">
 														<c:set var="imageSrc" value="" />
 														<c:if test="${not empty clubId and clubId ne ''}">
@@ -317,7 +337,7 @@
 												</div>
 												<div id="leaguer-pos4" class="league-pitch__unit league-pitch__unit--5">
 													<div class="league-transfer--original">
-													<s:sport position="2" playerType="Defender"/>
+													<s:sport position="2" playerType="Defender" pageName="MY_POINT"/>
 														<div class="league-element" tabindex="0">
 														<c:set var="imageSrc" value="" />
 														<c:if test="${not empty clubId and clubId ne ''}">
@@ -344,7 +364,7 @@
 												</div>
 												<div id="leaguer-pos5" class="league-pitch__unit league-pitch__unit--5">
 													<div class="league-transfer--original">
-													<s:sport position="3" playerType="Defender"/>
+													<s:sport position="3" playerType="Defender" pageName="MY_POINT"/>
 														<div class="league-element" tabindex="0">
 														<c:if test="${not empty clubId and clubId ne ''}">
 																<spring:message code="club_${clubId}_image" var="imageSrc" />
@@ -370,7 +390,7 @@
 												</div>
 												<div id="leaguer-pos6" class="league-pitch__unit league-pitch__unit--5">
 													<div class="league-transfer--original">
-														<s:sport position="4" playerType="Defender"/>
+														<s:sport position="4" playerType="Defender" pageName="MY_POINT"/>
 														<div class="league-element" tabindex="0">
 															<div class="leaguejs-menu check_6">
 															<c:if test="${not empty clubId and clubId ne ''}">
@@ -396,7 +416,7 @@
 												</div>
 												<div id="leaguer-pos7" class="league-pitch__unit league-pitch__unit--5">
 													<div class="league-transfer--original">
-													<s:sport position="5" playerType="Defender"/>
+													<s:sport position="5" playerType="Defender" pageName="MY_POINT"/>
 														<div class="league-element" tabindex="0">
 															<div class="leaguejs-menu check_7">
 															<c:if test="${not empty clubId and clubId ne ''}">
@@ -425,7 +445,7 @@
 											<div class="league-element-row league-element-row--pitch">
 												<div id="leaguer-pos8" class="league-pitch__unit league-pitch__unit--5">
 													<div class="league-transfer--original">
-													<s:sport position="1" playerType="Midfielder"/>
+													<s:sport position="1" playerType="Midfielder" pageName="MY_POINT"/>
 														<div class="league-element" tabindex="0">
 															<div class="leaguejs-menu check_8">
 															<c:if test="${not empty clubId and clubId ne ''}">
@@ -451,7 +471,7 @@
 												</div>
 												<div id="leaguer-pos9" class="league-pitch__unit league-pitch__unit--5">
 													<div class="league-transfer--original">
-													<s:sport position="2" playerType="Midfielder"/>
+													<s:sport position="2" playerType="Midfielder" pageName="MY_POINT"/>
 														<div class="league-element" tabindex="0">
 															<div class="leaguejs-menu check_9">
 															<c:if test="${not empty clubId and clubId ne ''}">
@@ -478,7 +498,7 @@
 												</div>
 												<div id="leaguer-pos10" class="league-pitch__unit league-pitch__unit--5">
 													<div class="league-transfer--original">
-													<s:sport position="3" playerType="Midfielder"/>
+													<s:sport position="3" playerType="Midfielder" pageName="MY_POINT"/>
 														<div class="league-element" tabindex="0">
 															<div class="leaguejs-menu check_10">
 															<c:if test="${not empty clubId and clubId ne ''}">
@@ -505,7 +525,7 @@
 												</div>
 												<div id="leaguer-pos11" class="league-pitch__unit league-pitch__unit--5">
 													<div class="league-transfer--original">
-													<s:sport position="4" playerType="Midfielder"/>
+													<s:sport position="4" playerType="Midfielder" pageName="MY_POINT"/>
 														<div class="league-element" tabindex="0">
 															<div class="leaguejs-menu check_11">
 															<c:if test="${not empty clubId and clubId ne ''}">
@@ -532,7 +552,7 @@
 												<div id="leaguer-pos12" class="league-pitch__unit league-pitch__unit--5">
 													<div class="league-transfer--original">
 														<div class="league-element" tabindex="0">
-														<s:sport position="5" playerType="Midfielder"/>
+														<s:sport position="5" playerType="Midfielder" pageName="MY_POINT"/>
 															<div class="leaguejs-menu check_12">
 															<c:if test="${not empty clubId and clubId ne ''}">
 																<spring:message code="club_${clubId}_image" var="imageSrc" />
@@ -560,7 +580,7 @@
 											<div class="league-element-row league-element-row--pitch">
 												<div id="leaguer-pos13" class="league-pitch__unit league-pitch__unit--3">
 													<div class="league-transfer--original">
-													<s:sport position="1" playerType="Forward"/>
+													<s:sport position="1" playerType="Forward" pageName="MY_POINT"/>
 														<div class="league-element" tabindex="0">
 														<c:if test="${not empty clubId and clubId ne ''}">
 																<spring:message code="club_${clubId}_image" var="imageSrc" />
@@ -586,7 +606,7 @@
 												</div>
 												<div id="leaguer-pos14" class="league-pitch__unit league-pitch__unit--3">
 													<div class="league-transfer--original">
-													<s:sport position="2" playerType="Forward"/>
+													<s:sport position="2" playerType="Forward" pageName="MY_POINT"/>
 														<div class="league-element" tabindex="0">
 															<div class="leaguejs-menu check_14">
 															<c:if test="${not empty clubId and clubId ne ''}">
@@ -612,7 +632,7 @@
 												</div>
 												<div id="leaguer-pos15" class="league-pitch__unit league-pitch__unit--3">
 													<div class="league-transfer--original">
-													<s:sport position="3" playerType="Forward"/>
+													<s:sport position="3" playerType="Forward" pageName="MY_POINT"/>
 														<div class="league-element" tabindex="0">
 														<c:if test="${not empty clubId and clubId ne ''}">
 																<spring:message code="club_${clubId}_image" var="imageSrc" />
@@ -674,11 +694,11 @@
 										<ul class="league-data-list league-data-list--bordered">
 											<li class="league-data-list__item">
 												<h3 class="league-data-list__item__heading">Overall Points:</h3>
-												<div class="league-data-list__item__value">${userGameMap.point}</div>
+												<div class="league-data-list__item__value">${sessionScope.user.userGameMap.point}</div>
 											</li>
 											<li class="league-data-list__item">
 												<h3 class="league-data-list__item__heading">Overall Rank:</h3>
-												<div class="league-data-list__item__value">${userGameMap.rank}</div>
+												<div class="league-data-list__item__value">${sessionScope.user.userGameMap.rank}</div>
 											</li>
 											<li class="league-data-list__item">
 												<h3 class="league-data-list__item__heading">Total Players:</h3>
@@ -687,7 +707,7 @@
 											<li class="league-data-list__item">
 												<h3 class="league-data-list__item__heading">Gameweek Points:</h3>
 												<div class="league-data-list__item__value">
-													
+												${sportMgmtRes.result.gameWeek.point}	
 												</div>
 											</li>
 										</ul>

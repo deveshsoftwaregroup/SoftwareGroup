@@ -234,7 +234,7 @@
                             <a href="javascript:void(0);" class="ism-nav__tab" onclick="uploadMatchView('${sessionScope.gameDetails.gameId}');" data-nav-tab="squad">Fixtures</a>
                         </li>                      
                         <li class="ism-nav__list__item">
-                            <a href="javascript:void(0);" class="ism-nav__tab" onclick="uploadRankingView('${sessionScope.gameDetails.gameId}');">My Points</a>
+                            <a href="javascript:void(0);" class="ism-nav__tab" onclick="uploadMyPointView('${sessionScope.gameDetails.gameId}','${sessionScope.userId}','','');">My Points</a>
                         </li>   
                         <li class="ism-nav__list__item">
                             <a href="javascript:void(0);" class="ism-nav__tab" onclick="uploadPointTableView('${sessionScope.gameDetails.gameId}');">Point Table</a>
@@ -341,11 +341,15 @@
 			}
 			
 		}
-		function uploadRankingView(gameId)
+		function uploadMyPointView(gameId,userId,gameWeekId,direction)
 		{
 			if(typeof gameId != 'undefined' && gameId != '')
 			{
-				url ="/SportMgmt/mvc/game/RankingView/"+gameId;
+				url ="/SportMgmt/mvc/game/MyPoint/"+gameId+"/"+userId;
+				if(gameWeekId !='' && direction!='')
+				{
+					url =url+"?gameWeekId="+gameWeekId+"&game-week-for="+direction;
+				}
 				$.ajax({
 		     		  url: url,
 		     		  dataType: 'html',

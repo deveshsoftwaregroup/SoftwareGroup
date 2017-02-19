@@ -535,11 +535,11 @@
 										<ul class="league-data-list league-data-list--bordered">
 											<li class="league-data-list__item">
 												<h3 class="league-data-list__item__heading">Overall Points:</h3>
-												<div class="league-data-list__item__value">${userGameMap.point}</div>
+												<div class="league-data-list__item__value">${sessionScope.user.userGameMap.point}</div>
 											</li>
 											<li class="league-data-list__item">
 												<h3 class="league-data-list__item__heading">Overall Rank:</h3>
-												<div class="league-data-list__item__value">${userGameMap.rank}</div>
+												<div class="league-data-list__item__value">${sessionScope.user.userGameMap.rank}</div>
 											</li>
 											<li class="league-data-list__item">
 												<h3 class="league-data-list__item__heading">Total Players:</h3>
