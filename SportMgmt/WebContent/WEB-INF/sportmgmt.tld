@@ -21,7 +21,11 @@
 <attribute>  
     <name>playerType</name>  
     <required>true</required>  
-</attribute>  
+</attribute>
+<attribute>  
+    <name>pageName</name>  
+    <required>false</required>  
+</attribute>   
 </tag>
 <tag>  
 <name>sportExt</name>  
