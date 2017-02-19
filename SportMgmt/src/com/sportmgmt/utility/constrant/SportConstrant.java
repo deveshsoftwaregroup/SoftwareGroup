@@ -35,7 +35,7 @@ public class SportConstrant {
 	public final static String CHANGE_PASSWORD_PAGE = "changePassword";
 	public final static String MY_TEAM_PAGE = "myTeam";
 	public final static String MATCH_PAGE = "matchDetails";
-	public final static String RANKING_PAGE = "ranking";
+	public final static String MY_POINT_PAGE = "myPoint";
 	public final static String FAQ_PAGE = "FAQ";
 	public final static String RULES_PAGE = "rules";
 	public final static String POINT_TABLE_PAGE = "pointTable";

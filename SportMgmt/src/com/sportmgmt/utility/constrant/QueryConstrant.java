@@ -40,6 +40,8 @@ public static final String FETCH_END_MATCH_TIME_OF_GAME_WEEK = "select start_tim
 
 public static final String FETCH_SORTED_GAME_WEEK = "select game_week_id from GAME_WEEK where game_Id=:gameId order by start_date";
 
+public static final String FETCH_START_AND_END_DATE_OF_GAME_WEEK = "select start_date, end_date from GAME_WEEK where game_week_id=:gameWeekId";
+
 public static final String FETCH_END_DATE_LIST_OF_GAME_WEEK_FROM_TODAY = "select end_date from game_week where (end_date > :date  and start_date < :date ) or (start_date > :date) order by start_date";
 
 public static final String MAKE_USER_PLAN_INACTIVE = "update user_plan set is_active = 'N' where user_id = :userId";
@@ -65,4 +67,8 @@ public static final String SELECT_PLAYER_GROUP = "FROM PlayerGroup PLG WHERE PLG
 public static final String SELECT_HIEGHEST_RANK_OF_GAME_WEEK = "select max(week_rank) from game_week_report where game_week_id =:gameWeekId";
 
 public static final String SELECT_AVERAGE_RANK_OF_GAME_WEEK = "select avg(week_rank) from game_week_report where game_week_id =:gameWeekId";
+
+public static final String SELECT_HIEGHEST_POINT_OF_GAME_WEEK = "select max(week_point) from game_week_report where game_week_id =:gameWeekId";
+
+public static final String SELECT_AVERAGE_POINT_OF_GAME_WEEK = "select avg(week_point) from game_week_report where game_week_id =:gameWeekId";
 }
