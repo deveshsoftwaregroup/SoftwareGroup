@@ -40,6 +40,9 @@ public class HomeAction {
 	public String userLandingHome(ModelMap map)
 	{
 		logger.info("--------- USER_LANDING_HOME_PAGE");
+		HashMap<String,HashMap<String,ArrayList<String>>> countryMap = UserManager.getCountryStateCityMap();
+		logger.info("--------- League Home , countryMap: "+countryMap);
+		map.put("countryMap", countryMap);
 		return SportConstrant.LEAGUE_LANDING_HOME_PAGE;
 
 	}
