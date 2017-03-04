@@ -85,10 +85,10 @@
 														<div class="league-element" tabindex="0">
 															<div class="leaguejs-menu check_1">
 															<c:if test="${not empty clubId and clubId ne ''}">
-																<spring:message code="club_${clubId}_image" var="imageSrc" />
+																<spring:message code="club_${clubId}_gk_image" var="imageSrc" />
 															</c:if>
 																<picture>
-																	<img src="/SportMgmt/images/${imageSrc}"  alt="Burnley" title="Burnley" class="league-shirt league-element__shirt">
+																	<img src="/SportMgmt/images/${imageSrc}"  alt="Burnley" title="Burnleyyy" class="league-shirt league-element__shirt">
 																</picture>
 																<div class="league-element__name">${playerName}</div>
 																<div class="league-element__data">${price}</div>
@@ -125,7 +125,7 @@
 															<div class="leaguejs-menu check_2">
 															<c:set var="imageSrc" value="" />
 															<c:if test="${not empty clubId and clubId ne ''}">
-																<spring:message code="club_${clubId}_image" var="imageSrc" />
+																<spring:message code="club_${clubId}_gk_image" var="imageSrc" />
 															</c:if>																<picture>
 																	<img src="/SportMgmt/images/${imageSrc}"  alt="West Brom" title="West Brom" class="league-shirt league-element__shirt">
 																</picture>
