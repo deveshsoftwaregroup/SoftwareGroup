@@ -686,7 +686,7 @@
                                                     <thead>
                                                         <tr class="ism-table__divider ism-el-type ism-el-type--1">
                                                             <th class="ism-table--squad__status"></th>
-                                                            <th class="ism-table--squad__name">Goalkeeperss</th>
+                                                            <th class="ism-table--squad__name">Goalkeeper</th>
                                                             <th class="ism-table--squad__price"><abbr title="Price in Coins">Coins</abbr></th>
                                                             <th class="ism-table--squad__tsb"><abbr title="Teams selected by %">SB</abbr></th>
                                                             <th class="ism-table--squad__pts-tot"><abbr title="Total points">TP</abbr></th>
@@ -1037,12 +1037,12 @@
     <td class="ism-table--el__primary">
         <div class="ism-media ism-media--centred">
             <div class="ism-media__figure">
-
-                
-                    <img src="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3_1-33.png"  alt="Arsenal" title="${playerMap.name}" class="ism-shirt">
-                
+				<c:if test="${not empty playerMap.clubId and playerMap.clubId ne ''}">
+					<c:set value="${clubImageMap[playerMap.clubId]}" var="imageSrc" />
+				</c:if>	
+              <!--  player list image -->              
+                    <img src="/SportMgmt/images/gk_${imageSrc}" height="20" width="20" alt="Arsenal" title="${playerMap.name}" class="ism-shirt">
             </div>
-
             <div class="ism-media__body ism-table--el__primary-text">
                 <a href="#" class="ism-table--el__name">${playerMap.name}</a>
                 <span class="ism-table--el__strong"><a href="javascript:void(0);"   title="Add Player"></a></span>
@@ -1092,10 +1092,11 @@
     <td class="ism-table--el__primary">
         <div class="ism-media ism-media--centred">
             <div class="ism-media__figure">
-
-                <picture>
-                    <img src="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-33.png" alt="Arsenal" title="Arsenal" class="ism-shirt">
-                </picture>
+				<c:if test="${not empty playerMap.clubId and playerMap.clubId ne ''}">
+				<c:set value="${clubImageMap[playerMap.clubId]}" var="imageSrc" />
+				</c:if>
+               <img src="/SportMgmt/images/${imageSrc}" height="20" width="20" alt="Arsenal" title="${playerMap.name}" class="ism-shirt">
+                
             </div>
 
             <div class="ism-media__body ism-table--el__primary-text">
@@ -1147,10 +1148,11 @@
     <td class="ism-table--el__primary">
         <div class="ism-media ism-media--centred">
             <div class="ism-media__figure">
-
-                <picture>
-                   <img src="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-33.png" alt="Arsenal" title="Arsenal" class="ism-shirt">
-                </picture>
+				<c:if test="${not empty playerMap.clubId and playerMap.clubId ne ''}">
+				<c:set value="${clubImageMap[playerMap.clubId]}" var="imageSrc" />
+				</c:if>
+               <img src="/SportMgmt/images/${imageSrc}" height="20" width="20" alt="Arsenal" title="${playerMap.name}" class="ism-shirt">
+                
             </div>
 
             <div class="ism-media__body ism-table--el__primary-text">
@@ -1163,7 +1165,7 @@
     <td class="ism-table--el__strong playerPrice">${playerMap.price}</td>
     <c:choose>
         <c:when test="${sessionScope.playersOrderBy eq 'user_count'}"><td class="ism-table--el__strong">${playerMap.userCount}</td></c:when>
-        <c:otherwise><td class="ism-table--el__strong">${playerMap.totalScore}</td>></c:otherwise>
+        <c:otherwise><td class="ism-table--el__strong">${playerMap.totalScore}</td></c:otherwise>
     </c:choose>
 </tr>
 </c:if>
@@ -1194,20 +1196,19 @@
             <c:forEach var="playerMap" items="${sessionScope.playerList}">
             <c:if test="${playerMap.type eq 'Forward'}">
             <tr class="ismjs-menu ism-row-select ism-element-list__info--0" id="${playerMap.gameClubPlayerId}">
-    <td class="ism-table--el__status text-center addPlayer">
-        
+    <td class="ism-table--el__status text-center addPlayer">        
             <a href="javascript:void(0);"  onclick="addPlayer('${sessionScope.userId}','${playerMap.gameClubPlayerId}');" ><i class="fa fa-plus" aria-hidden="true"></i></a>
         
     </td>
     <td class="ism-table--el__primary">
         <div class="ism-media ism-media--centred">
             <div class="ism-media__figure">
-
-                <picture>
-                    <img src="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_3-33.png"  alt="Arsenal" title="Arsenal" class="ism-shirt">
-                </picture>
+            
+               <c:if test="${not empty playerMap.clubId and playerMap.clubId ne ''}">
+				<c:set value="${clubImageMap[playerMap.clubId]}" var="imageSrc" />
+				</c:if>
+               <img src="/SportMgmt/images/${imageSrc}" height="20" width="20" alt="Arsenal" title="${playerMap.name}" class="ism-shirt">
             </div>
-
             <div class="ism-media__body ism-table--el__primary-text">
                 <a href="#" class="ism-table--el__name">${playerMap.name}</a>
                 <span class="ism-table--el__strong"><a href="javascript:void(0);"   title="Add Player"></a></span>
@@ -1218,7 +1219,7 @@
     <td class="ism-table--el__strong playerPrice">${playerMap.price }</td>
     <c:choose>
         <c:when test="${sessionScope.playersOrderBy eq 'user_count'}"><td class="ism-table--el__strong">${playerMap.userCount}</td></c:when>
-        <c:otherwise><td class="ism-table--el__strong">${playerMap.totalScore}</td>></c:otherwise>
+        <c:otherwise><td class="ism-table--el__strong">${playerMap.totalScore}</td></c:otherwise>
     </c:choose>
 </tr>
 </c:if>
@@ -1380,6 +1381,7 @@
 				}
 			}
 			console.info('playerClubId--: '+playerClubId);
+			//playerClubId=playerClubId+"_gk";
 			var clubImage = clubIdImageMap[playerClubId];
 			console.info('clubImage--: '+clubImage);
 			/*if(typeof clubImage != 'undefined' && clubImage !='')
@@ -1397,7 +1399,7 @@
 		        '<img src="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_90_1-33.png" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_90_1-110.png 110w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_90_1-66.png 66w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_90_1-33.png 33w" sizes="(min-width: 1024px) 55px,(min-width: 610px) 44px,33px" alt="Burnley" title="Burnley" class="ism-shirt ism-element__shirt">'+
 		        '</picture>'+*/
 		       '<picture>'+
-		        '<img src="/SportMgmt/images/'+clubImage+'" alt="" title="" class="ism-shirt ism-element__shirt">'+
+		        '<img src="/SportMgmt/images/gk_'+clubImage+'" alt="" title="" class="ism-shirt ism-element__shirt">'+
 		        '</picture>'+
 		        '<div class="ism-element__name">'+playerName+'</div>'+
 		        '<div class="ism-element__data">'+playerPrice+'</div>'+
@@ -1718,7 +1720,7 @@
 	     			        '<img src="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_90_1-33.png" srcset="https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_90_1-110.png 110w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_90_1-66.png 66w,https://ismdj.scdn5.secure.raxcdn.com/static/libsass/plfpl/dist/img/shirts/shirt_90_1-33.png 33w" sizes="(min-width: 1024px) 55px,(min-width: 610px) 44px,33px" alt="Burnley" title="Burnley" class="ism-shirt ism-element__shirt">'+
 	     			        '</picture>'+*/
 	     			       '<picture>'+
-	     			        '<img src="/SportMgmt/images/'+clubImage+'" alt="'+playerName+'" title="'+playerName+'" class="ism-shirt ism-element__shirt">'+
+	     			        '<img src="/SportMgmt/images/gk_'+clubImage+'" alt="'+playerName+'" title="'+playerName+'" class="ism-shirt ism-element__shirt">'+
 	     			        '</picture>'+
 	     			        '<div class="ism-element__name">'+playerName+'</div>'+
 	     			        '<div class="ism-element__data">'+playerPrice+'</div>'+
