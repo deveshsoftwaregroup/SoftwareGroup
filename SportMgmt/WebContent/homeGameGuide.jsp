@@ -18,7 +18,7 @@
                     <img src="/SportMgmt/images/inner-img.jpg" align="left" class="img-inner">
                     <p>Welcome to Fantasy League Classic 2016/17. Fantasy League Classic returns this summer with the start of another Premier League season on Saturday, 13 August!</p>
 
-<p>Compete against managers from far and wide and win big with over £50,000 in prizes across a wide range of competitions.</p>
+<p>Compete against managers from far and wide and win big with over INR 50,000 in prizes across a wide range of competitions.</p>
 
 <p>The game covers the entire 2016/17 Premier League campaign, with competitions for overall, monthly and weekly standings as well as plenty of side games meaning managers will always have something to play for!</p>
 
@@ -32,7 +32,7 @@
                     <img src="/SportMgmt/images/inner-img-2.jpg" align="left" class="img-inner">
                     <p><strong>You're in charge!</strong></p>
 
-<p>As a Fantasy League Classic manager, you'll pick your squad of 16 Premier League stars from a budget of £75 million.</p>
+<p>As a Fantasy League Classic manager, you'll pick your squad of 20 Premier League stars from a budget of INR 1000.</p>
 
 <p>All players and prices are listed on our Squad Selection page, so send your scouts off in that direction.</p>
 
@@ -54,7 +54,7 @@
                     <img src="/SportMgmt/images/inner-img.jpg" align="left" class="img-inner">
                     <p>Fantasy League Classic offers the widest array of competitions, with weekly and monthly leaderboards in addition to the season-long competition. You'll also have the chance to do battle in our FA Cup, Double Team and Gold & Silver competitions. So even if your initial signings fail to deliver, there is always the opportunity to turn your team around and win great prizes!</p>
 
-<p>Embark on a quest for personal glory in our Premier League competition, which places your team in a league of 20, where you’ll compete for qualification into tiered groups. Then battle it out in Champions League style group stages, knockouts and - for the survivors - a final week sprint to decide the ultimate honours.</p>
+<p>Embark on a quest for personal glory in our Premier League competition, which places your team in a league of 20, where you will compete for qualification into tiered groups. Then battle it out in Champions League style group stages, knockouts and - for the survivors - a final week sprint to decide the ultimate honours.</p>
 
 <p>Keep your friends close and your enemies closer by setting up or joining your own Friends & Enemies League to keep the banter going throughout the season!</p>
 
@@ -71,7 +71,8 @@
                 </div>
           </div>
         </div>
-        <div ><a href="#"><img src="/SportMgmt/images/addbanner_728x90_V1.jpg" alt=""></a></div>
+        <div ><a href="#"><img src="/SportMgmt/images/addbanner_728x90_V1.jpg" class="img-responsive" alt=""></a></div>
+        <br>
       </div>
       <div class="col-lg-4 col-md-4 col-sm-4">
         <aside class="right_content">
