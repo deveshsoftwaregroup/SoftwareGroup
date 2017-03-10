@@ -9,15 +9,15 @@
 <div class="rl-row">
 <h4>Squad Size</h4>
 To join the game select a fantasy football squad of 15 players, consisting of:
-•2 Goalkeepers
-•5 Defenders
-•5 Midfielders
-•3 Forwards
+2 Goalkeepers
+5 Defenders
+5 Midfielders
+3 Forwards
 </div>
 
 <div class="rl-row">
 <h4>Budget</h4>
-The total value of your initial squad must not exceed £100 million. 
+The total value of your initial squad must not exceed INR 1000. 
 </div>
 
 <div class="rl-row">
@@ -69,7 +69,7 @@ If you do not use your free transfer, you are able to make an additional free tr
 <div class="rl-row">
 <h4>Wildcards</h4>
 
-For information on wildcards please refer to the chips section of the rules.
+To do free transfer in a week, you can use wildcard. One wild card will be free and after that you can avail more wildcard by purchasing it. It will boost your chance to win prizes.
 </div>
 
 <div class="rl-row">
