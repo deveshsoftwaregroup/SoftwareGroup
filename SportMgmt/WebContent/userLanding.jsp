@@ -15,7 +15,6 @@
     <link rel="stylesheet" href="/SportMgmt/css/app.css">
     <link rel="stylesheet" href="/SportMgmt/css/superslides.css">
     <link rel="stylesheet" type="text/css" href="/SportMgmt/css/customMedia.css">
-   <!-- <link rel="stylesheet" href="https://ismdj.scdn5.secure.raxcdn.com/static/CACHE/css/258578334140.css" type="text/css" />-->
     <link rel="stylesheet" type="text/css" href="/SportMgmt/css/258578334140.css">
     <script src="https://use.fontawesome.com/d4e6d4c165.js"></script>
     <style>
@@ -96,19 +95,18 @@
    	<script type="text/javascript">
    		var clubIdImageMap = {};
    	</script>
+   	<jsp:useBean id="clubImageMap" class="java.util.HashMap" scope="session"/>
    	<c:forEach var="clubMap" items="${sessionScope.clubList}">
    	<spring:message code="club_${clubMap['clubId']}_image" var="imageSrc" />;
+   	<c:set target="${clubImageMap}" property="${clubMap['clubId']}" value="${imageSrc}"/>
     <script type="text/javascript">
     	clubIdImageMap["${clubMap['clubId']}"] = "${imageSrc}";
     </script>
     </c:forEach>
    	</c:if>
-   		
-    
-
     <%@ include file="footer.jsp" %>
-    <div id="ajaxloader"></div>
-   <div class="mask" style="display:none;"></div>
+   <!--  <div id="ajaxloader"></div>
+   <div class="mask" style="display:none;"></div> -->
     </main>
   </body>
 	
