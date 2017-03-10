@@ -609,12 +609,7 @@
 					</div>
 				</div>
 			</div>
-		</div>
-		<%-- </c:when>
-		<c:otherwise>
-		Please complete team first
-		</c:otherwise>
-		</c:choose> --%>
+		</div>		
 	</main>
 
  <script src="/SportMgmt/js/jquery.js"></script> 
