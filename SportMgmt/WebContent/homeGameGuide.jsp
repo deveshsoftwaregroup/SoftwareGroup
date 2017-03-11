@@ -43,7 +43,7 @@
 <p>Visit the Squad Selection & Changes page for more information.</p>
                   </div>
                   <div role="tabpanel" class="tab-pane" id="scoring">
-                    <img src="/SportMgmt/images/slider_img4.jpg" align="left" class="img-inner">
+                    <img src="/SportMgmt/images/inner-img-2.jpg" align="left" class="img-inner">
                     <p>Your team will score points based upon how your chosen players perform in Barclays Premier League matches (or FA Cup matches for the FA Cup competition) during the 2016/17 season.</p>
 
 <p>Score points for goals, assists and clean sheets, while minimising goals against for your keeper and defenders. Silver and Gold package subscribers even get live points updates as the matches happen!</p>
@@ -78,8 +78,7 @@
         <aside class="right_content">
           <div class="single_sidebar wow fadeInDown">
           <div class="choose-team"><img src="/SportMgmt/images/ball-1.jpg" class="img-responsive"> <span class="overlay-img">Select your Team <br/> & Play <br/> <a class="btn btn-black">Select Team</a></span></div>
-            <a class="sideAdd" href="#"><img src="/SportMgmt/images/ball-2.jpg" alt=""></a> 
-            <a class="sideAdd" href="#"><img src="/SportMgmt/images/ball-3.jpg" alt=""></a> 
+           
           </div>
         </aside>
       </div>
