@@ -13,11 +13,10 @@
         <div class="col-lg-4 col-md-4 col-sm-4">
           <div class="footer_widget wow fadeInDown">
             <h2>Tag</h2>
-            <ul class="tag_nav">
-              <li><a href="#">Terms of Use</a></li>
-              <li><a href="#">Terms & Conditions Of Play</a></li>
-              <li><a href="#">Privacy Policy18+</a></li>
-              <li><a href="#">About Fantasy League</a></li>
+            <ul class="tag_nav">              
+              <li><a href="http://the12thman.in/terms-and-conditions/" target="_blank">Terms & Conditions</a></li>
+              <li><a href="http://the12thman.in/privacy-policy/" target="_blank">Privacy Policy</a></li>
+              <li><a href="http://the12thman.in/about-us/" target="_blank">About Us</a></li>
               <li><a href="http://the12thman.in/advertise-with-us/">Advertise With Us</a></li>
               <li><a href="http://the12thman.in/">The 12th Man Blog</a></li>
               <li><a href="http://the12thman.in/contact/">Contact Us</a></li>
@@ -36,8 +35,12 @@
         </div>
       </div>
     </div>
+   
+    
     <div class="footer_bottom">
-      <p class="copyright">Copyright &copy; 2016 <a href="index.html">The 12th Man</a></p>
+      <p class="copyright"> &copy; 2016 <a href="http://the12thman.in" target="_blank">The 12th Man</a></p>
+      
     </div>
+           
   </footer>
  
